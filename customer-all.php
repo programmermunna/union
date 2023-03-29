@@ -56,6 +56,51 @@ if(isset($_POST['submit'])){
                                 class="add_brand_btn show_add_new_cat px-4 py-2 text-sm bg-blue-600 text-white rounded focus:ring">Add
                                 Customer</button>
                         </div>
+
+
+                        <div>
+                            <form action="" method="POST">
+                                <div class="table_header_right">
+                                <select name="month" class="input">
+                                    <?php
+                                    if(isset($_POST['month'])){ ?>
+                                        <option selected value="<?php echo $_POST['month']?>"><?php echo $_POST['month']?></option>                                        
+                                    <?php  }?>
+                                    <option value="January">January</option>
+                                    <option value="February">February</option>
+                                    <option value="March">March</option>
+                                    <option value="April">April</option>
+                                    <option value="May">May</option>
+                                    <option value="June">June</option>
+                                    <option value="July">July</option>
+                                    <option value="August">August</option>
+                                    <option value="September">September</option>
+                                    <option value="October">October</option>
+                                    <option value="November">November</option>
+                                    <option value="December">December</option>
+                                </select>
+                                <select name="year" class="input">
+                                    <?php
+                                    if(isset($_POST['month'])){ ?>
+                                        <option selected value="<?php echo $_POST['year']?>"><?php echo $_POST['year']?></option>                                        
+                                    <?php  }?>
+                                    <option value="2022">2022</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2025">2025</option>
+                                    <option value="2026">2026</option>
+                                    <option value="2027">2027</option>
+                                    <option value="2028">2028</option>
+                                    <option value="2029">2029</option>
+                                    <option value="2030">2030</option>
+                                </select>
+                                <input style="cursor:pointer;" name="select" type="submit" class="btn" placeholder="Search" />
+                            </div>
+                        </form>
+                        </div>
+
+
+
                         <form action="" method="POST">
                             <div class="table_header_right">
                                 <input type="search" name="src_text" placeholder="Search Customer" />

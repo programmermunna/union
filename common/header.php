@@ -22,14 +22,7 @@ $setting = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM setting WHERE id
 $website = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM website_setting WHERE id=1"));
 $admin_info = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM admin_info WHERE id=$id"));
 $user_id = $admin_info['id'];
-$order = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM orders WHERE user_id=$user_id"));
-$renew_time = $order['years'];
-$time = time();
-if($renew_time<$time){
-  mysqli_query($conn,"UPDATE admin_info set permision='Pending' WHERE id=$id");
-  mysqli_query($conn,"UPDATE orders set status='Pending' WHERE user_id=$id");
-  header("location:login.php");
-}
+
 
 ?>
 

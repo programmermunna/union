@@ -39,7 +39,7 @@ if(isset($_POST['submit'])){
     $email = mysqli_real_escape_string($conn,$_POST['email']);
     $pass = md5($_POST['pass']);
     if (filter_var($email, FILTER_VALIDATE_EMAIL)){
-    $row = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM admin_info WHERE email='$email' AND pass='$pass' AND permision='Success'"));
+    $row = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM admin_info WHERE email='$email' AND pass='$pass'"));
     if($row>0){
     $id = $row['id'];
     $name = $row['name'];

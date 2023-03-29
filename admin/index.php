@@ -2,16 +2,8 @@
 <?php include("common/sidebar.php")?>
 <?php 
 
-$orders = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(amount) AS amount FROM orders"));
-$total_amount = $orders['amount'];
 
 $total_users = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM admin_info"));
-$total_pending_orders = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM orders WHERE status='Pending'"));
-$total_success_orders = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM orders WHERE status='Success'"));
-
-$orders = mysqli_query($conn,"SELECT orders.*, admin_info.* FROM orders INNER JOIN admin_info ON orders.user_id=admin_info.id WHERE orders.status='Pending' ORDER BY orders.id DESC LIMIT 3");
-
-$renew = mysqli_query($conn,"SELECT renew.*, admin_info.* FROM renew INNER JOIN admin_info ON renew.user_id=admin_info.id WHERE renew.status='Pending' ORDER BY renew.id DESC LIMIT 3");
 
 $users = mysqli_query($conn,"SELECT * FROM admin_info ORDER BY id DESC LIMIT 3");
 
@@ -28,7 +20,7 @@ $users = mysqli_query($conn,"SELECT * FROM admin_info ORDER BY id DESC LIMIT 3")
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Total Sell Amount</p>
-                <h4 class="mb-0">৳<?php echo $total_amount;?></h4>
+                <h4 class="mb-0">৳<?php echo 34?></h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
@@ -45,7 +37,7 @@ $users = mysqli_query($conn,"SELECT * FROM admin_info ORDER BY id DESC LIMIT 3")
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Total Users</p>
-                <h4 class="mb-0"><?php echo $total_users;?></h4>
+                <h4 class="mb-0"><?php echo 22;?></h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
@@ -62,7 +54,7 @@ $users = mysqli_query($conn,"SELECT * FROM admin_info ORDER BY id DESC LIMIT 3")
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Pending Orders</p>
-                <h4 class="mb-0"><?php echo $total_pending_orders;?></h4>
+                <h4 class="mb-0"><?php echo 33?></h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
@@ -79,7 +71,7 @@ $users = mysqli_query($conn,"SELECT * FROM admin_info ORDER BY id DESC LIMIT 3")
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Success Orders</p>
-                <h4 class="mb-0"><?php echo $total_success_orders;?></h4>
+                <h4 class="mb-0"><?php echo 33;?></h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
@@ -115,10 +107,10 @@ $users = mysqli_query($conn,"SELECT * FROM admin_info ORDER BY id DESC LIMIT 3")
                     </tr>
                   </thead>
                   <tbody>
-                  <?php 
-                  $time = time()-2592000;
-                  $result = mysqli_query($conn,"SELECT Orders.*, admin_info.* FROM orders INNER JOIN admin_info ON orders.user_id=admin_info.id WHERE orders.time>$time ORDER BY orders.id DESC LIMIT 7");
-                  while($data= mysqli_fetch_assoc($result)){?>
+
+
+                 
+
                     <tr>
                       <td>
                         <div class="d-flex px-2 py-1">
@@ -126,32 +118,32 @@ $users = mysqli_query($conn,"SELECT * FROM admin_info ORDER BY id DESC LIMIT 3")
                             <img src="../upload/<?php echo $data['file'];?>" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
                           </div>
                           <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm"><?php echo $data['name'];?></h6>
+                            <h6 class="mb-0 text-sm">MUnna</h6>
                           </div>
                         </div>
                       </td>
                       <td>
-                        <p class="text-xs font-weight-bold mb-0"><?php echo $data['email'];?></p>
+                        <p class="text-xs font-weight-bold mb-0">MUnna</p>
                       </td>
                       <td>
-                        <p class="text-xs font-weight-bold mb-0"><?php echo $data['years_num'];?></p>
+                        <p class="text-xs font-weight-bold mb-0">MUnna</p>
                       </td>
                       <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold"><?php echo $data['amount'];?></span>
+                        <span class="text-secondary text-xs font-weight-bold">MUnna</span>
                       </td>
                       <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold"><?php echo date("d-m-y",$data['time']);?></span>
+                        <span class="text-secondary text-xs font-weight-bold"><?php echo date("d-m-y",time());?></span>
                       </td>
                       <td class="align-middle text-center">
                         <?php 
-                        if($data['status']=='Pending'){ ?>
-                      <span class="text-xs font-weight-bold badge badge-sm bg-gradient-danger"><?php echo $data['status'];?></span>
+                        if(1 == 1){ ?>
+                      <span class="text-xs font-weight-bold badge badge-sm bg-gradient-danger">MUnna</span>
                       <?php  }else{?>
-                        <span class="text-xs font-weight-bold badge badge-sm bg-gradient-success"><?php echo $data['status'];?></span>
+                        <span class="text-xs font-weight-bold badge badge-sm bg-gradient-success">MUnna</span>
                         <?php }?>
                       </td>
                     </tr>
-                        <?php }?>
+
                   </tbody>
                 </table>
 
@@ -175,30 +167,27 @@ $users = mysqli_query($conn,"SELECT * FROM admin_info ORDER BY id DESC LIMIT 3")
                       <i class="material-icons text-success text-gradient">notifications</i>
                     </span>
 
-                    <?php while($row = mysqli_fetch_assoc($renew)){?>
+                   
                     <div class="timeline-content">
-                      <h6 class="text-dark text-sm font-weight-bold mb-0"><?php echo $row['name']?> <i style="color:orange">Renew Request</i></h6>
-                      <p class="text-secondary font-weight-bold text-xs mt-1 mb-0"><?php echo time_elapsed_string($row['time'],true);?></p>
+                      <h6 class="text-dark text-sm font-weight-bold mb-0">sdf<i style="color:orange">Renew Request</i></h6>
+                      <p class="text-secondary font-weight-bold text-xs mt-1 mb-0"><?php echo time_elapsed_string(time(),true);?></p>
                     </div>
-                    <?php }?>
+
                     <span class="timeline-step">
                       <i class="material-icons text-success text-gradient">notifications</i>
                     </span>
-                    <?php while($row1 = mysqli_fetch_assoc($orders)){?>
+
                     <div class="timeline-content">
-                      <h6 class="text-dark text-sm font-weight-bold mb-0"><?php echo $row1['name']?> <i style="color:green">created a new order</i></h6>
-                      <p class="text-secondary font-weight-bold text-xs mt-1 mb-0"><?php echo time_elapsed_string($row1['time'],true);?></p>
+                      <h6 class="text-dark text-sm font-weight-bold mb-0"><?php echo "MUnna"?> <i style="color:green">created a new order</i></h6>
+                      <p class="text-secondary font-weight-bold text-xs mt-1 mb-0"><?php echo time_elapsed_string(time(),true);?></p>
                     </div>
-                    <?php }?>
                     <span class="timeline-step">
                       <i class="material-icons text-success text-gradient">notifications</i>
                     </span>
-                    <?php while($row2 = mysqli_fetch_assoc($users)){?>
                     <div class="timeline-content">
-                      <h6 class="text-dark text-sm font-weight-bold mb-0"><?php echo $row2['name']?> <i style="color:blue">created a new account</i></h6>
-                      <p class="text-secondary font-weight-bold text-xs mt-1 mb-0"><?php echo time_elapsed_string($row2['join_date'],true);?></p>
+                      <h6 class="text-dark text-sm font-weight-bold mb-0"><?php echo "MUnna"?> <i style="color:blue">created a new account</i></h6>
+                      <p class="text-secondary font-weight-bold text-xs mt-1 mb-0"><?php echo time_elapsed_string(time(),true);?></p>
                     </div>
-                    <?php }?>
 
                 </div>
                 
