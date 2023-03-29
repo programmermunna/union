@@ -33,14 +33,6 @@ if(isset($_POST['submit'])){
 
     <!-- Page Content -->
     <section class="content_wrapper">
-        <!-- Page Details Title -->
-        <div class="page_details">
-            <div>
-                <a href="index.php" class="go_home"><small>Home</small></a>
-                <small>/</small>
-                <small>All Customer's</small>
-            </div>
-        </div>
 
         <!-- Page Main Content -->
         <section class="page_main_content">

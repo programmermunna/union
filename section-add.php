@@ -6,10 +6,11 @@
 
 if(isset($_POST['submit'])){
   $name = $_POST['name'];
+  $vlg_id = $_POST['vlg_id'];
 
-  $insert = mysqli_query($conn,"INSERT INTO village (admin_id,name) VALUE ($id,'$name')");
+  $insert = mysqli_query($conn,"INSERT INTO section (admin_id,vlg_id,name) VALUE ($id,'$vlg_id','$name')");
   if($insert){
-    header("Location:village.php?msg=সফল ভাবে গ্রামের নাম যুক্ত হয়েছে");
+    header("Location:section.php?msg=সফল ভাবে গ্রামের নাম যুক্ত হয়েছে");
   }
 }
 ?>
@@ -27,10 +28,22 @@ if(isset($_POST['submit'])){
           <h1 class="add_page_title">গ্রাম যুক্ত করুন
               </h1>
           <form id="setting_form" action="" method="POST" enctype="multipart/form-data">
-          <div>
+            <div>
               <label>গ্রামের নাম</label>
+              <select name="vlg_id" class="input">
+              <?php
+              $villages = mysqli_query($conn,"SELECT * FROM village");
+              while($data = mysqli_fetch_assoc($villages)){ ?>
+              <option value="<?php echo $data['id']?>"><?php echo $data['name']?></option>
+              <?php }?>
+              </select>
+            </div>
+
+            <div>
+              <label>পাড়ার নাম</label>
               <input type="text" name="name" class="input"/>
             </div>
+
             <input name="submit" class="btn submit_btn" type="submit" value="যুক্ত করুণ" />
           </form>
         </div>

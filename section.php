@@ -4,24 +4,24 @@
 <?php
 
   
-if(isset($_POST['add_village'])){
-  $add_village = $_POST['add_village_name'];
+if(isset($_POST['add_section'])){
+  $add_section = $_POST['add_section_name'];
 
-  $insert_village = mysqli_query($conn,"INSERT INTO village(admin_id,name) VALUE($id'$add_village')");
-  if($insert_village){
-    $msg = "Successfully created a new village";
-    header("location:village.php?msg=$msg");
+  $insert_section = mysqli_query($conn,"INSERT INTO section(admin_id,name) VALUE($id'$add_section')");
+  if($insert_section){
+    $msg = "Successfully created a new section";
+    header("location:section.php?msg=$msg");
   }
 }
 
 if(isset($_POST['update'])){
   $id = $_POST['id'];
-  $up_village = $_POST['up_village'];
+  $up_section = $_POST['up_section'];
 
-  $insert_village = mysqli_query($conn,"UPDATE village SET village='$up_village' WHERE id=$id");
-  if($insert_village){
-    $msg = "Successfully created a new village";
-    header("location:village.php?msg=$msg");
+  $insert_section = mysqli_query($conn,"UPDATE section SET section='$up_section' WHERE id=$id");
+  if($insert_section){
+    $msg = "Successfully created a new section";
+    header("location:section.php?msg=$msg");
   }
 }
 
@@ -43,7 +43,7 @@ if(isset($_POST['update'])){
                 <div class="table_content_wrapper">
                     <div style="display:flex; justify-content: space-between;" class="page_title">
                       <div>
-                            <h3>গ্রামের তালিকা</h3>
+                            <h3>পাড়ার তালিকা</h3>
                         </div>
                         <div>
                         
@@ -51,12 +51,12 @@ if(isset($_POST['update'])){
                     </div>
                     <header class="table_header">
                         <div class="table_header_left">
-                        <a href="village-add.php" class="add_village_btn show_add_new_cat px-4 py-2 text-sm bg-blue-600 text-white rounded focus:ring">গ্রাম যুক্ত করুন</a>
+                        <a href="section-add.php" class="add_section_btn show_add_new_cat px-4 py-2 text-sm bg-blue-600 text-white rounded focus:ring">পাড়া যুক্ত করুন</a>
                         </div>
 
                         <form action="" method="GET">
                             <div class="table_header_right">
-                                <input type="search" name="src" placeholder="Search village" />
+                                <input type="search" name="src" placeholder="Search section" />
                                 <input style="cursor:pointer;" type="submit" class="btn" placeholder="Search" />
                             </div>
                         </form>
@@ -66,6 +66,7 @@ if(isset($_POST['update'])){
                                 <thead>
                                     <tr>
                                         <th class="table_th"><div class="table_th_div"><span>ক্রমিক নং</span></div></th>
+                                        <th class="table_th"><div class="table_th_div"><span>পাড়ার নাম</span></div></th>
                                         <th class="table_th"><div class="table_th_div"><span>গ্রামের নাম</span></div></th>
                                         <th class="table_th"><div class="table_th_div"><span>প্রতিক্রিয়া</span></div></th>
                                     </tr>
@@ -74,32 +75,36 @@ if(isset($_POST['update'])){
                                 <?php
                                 if(isset($_GET['src'])){
                                     $src = $_GET['src'];
-                                    $SQL = "SELECT * FROM village WHERE admin_id=$id AND name LIKE '%$src%'";
+                                    $SQL = "SELECT * FROM section WHERE admin_id=$id AND name LIKE '%$src%'";
                                 }else{
                                 $pagination = "ON";                              
                                 $showRecordPerPage = 8;
                                 if(isset($_GET['page']) && !empty($_GET['page'])){
                                 $currentPage = $_GET['page'];}else{$currentPage = 1;}
                                 $startFrom = ($currentPage * $showRecordPerPage) - $showRecordPerPage;
-                                $totalEmpSQL = "SELECT * FROM village WHERE admin_id=$id ORDER BY id DESC";
+                                $totalEmpSQL = "SELECT * FROM section WHERE admin_id=$id ORDER BY id DESC";
                                 $allEmpResult = mysqli_query($conn, $totalEmpSQL);
                                 $totalEmployee = mysqli_num_rows($allEmpResult);
                                 $lastPage = ceil($totalEmployee/$showRecordPerPage);
                                 $firstPage = 1;
                                 $nextPage = $currentPage + 1;
                                 $previousPage = $currentPage - 1;                                
-                                $SQL = "SELECT * FROM village WHERE admin_id=$id ORDER BY id DESC LIMIT $startFrom, $showRecordPerPage";
+                                $SQL = "SELECT * FROM section WHERE admin_id=$id ORDER BY id DESC LIMIT $startFrom, $showRecordPerPage";
                                 }
                                 $query = mysqli_query($conn, $SQL);
                                 $i = 0;
-                                while($row = mysqli_fetch_assoc($query)){ $i++; ?>
+                                while($row = mysqli_fetch_assoc($query)){ $i++;
+                                $vlg_id = $row['vlg_id'];
+                                $vlg_id = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM village WHERE id=$vlg_id"));
+                                ?>
                                     <tr>
                                         <td class="p-3 border whitespace-nowrap"><div class="text-center"><?php echo $i?></div></td>
                                         <td class="p-3 border whitespace-nowrap"><div class="text-center"><?php echo $row['name']?></div></td>                                       
+                                        <td class="p-3 border whitespace-nowrap"><div class="text-center"><?php echo $vlg_id['name']?></div></td>                                       
                                         <td class="p-3 border whitespace-nowrap">
                                             <div class="w-full flex_center gap-1">
-                                                <a class="btn table_edit_btn" href="village-edit.php?id=<?php echo $row['id']?>">এডিট করুন</a>
-                                                <a class="btn table_edit_btn" href="delete.php?src=village&&table=village&&id=<?php echo $row['id']?>">ডিলেট করুন</a>
+                                                <a class="btn table_edit_btn" href="section-edit.php?id=<?php echo $row['id']?>">এডিট করুন</a>
+                                                <a class="btn table_edit_btn" href="delete.php?src=section&&table=section&&id=<?php echo $row['id']?>">ডিলেট করুন</a>
                                             </div>
                                         </td>
                                     </tr>
