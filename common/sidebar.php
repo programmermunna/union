@@ -3,7 +3,7 @@
           <button class="btn nav_btn"><span class="nav_icon dashboard_icon"> </span><span class="nav_text">ড্যাশবোর্ড</span></button>
         </a>
 
-        <a href="brand.php">
+        <a href="village.php">
           <button class="btn nav_btn"><span class="nav_icon product_icon"> </span><span class="nav_text">গ্রাম</span></button>
         </a>
 

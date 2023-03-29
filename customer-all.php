@@ -53,7 +53,7 @@ if(isset($_POST['submit'])){
                     <header class="table_header">
                         <div class="table_header_left">
                             <button
-                                class="add_brand_btn show_add_new_cat px-4 py-2 text-sm bg-blue-600 text-white rounded focus:ring">Add
+                                class="add_village_btn show_add_new_cat px-4 py-2 text-sm bg-blue-600 text-white rounded focus:ring">Add
                                 Customer</button>
                         </div>
 
@@ -311,7 +311,7 @@ if(isset($_POST['submit'])){
     </section>
 
     <form action="" method="POST" enctype="multipart/form-data">
-        <div class="add_category_wrapper add_brand" style="display: none;">
+        <div class="add_category_wrapper add_village" style="display: none;">
             <div class="hide_add_new_cat fixed inset-0 w-full h-screen bg-black bg-opacity-50 z-40"></div>
             <div
                 class="fixed w-[96%] md:w-[500px] inset-0 m-auto p-5 bg-white rounded shadow z-50 h-fit add_product_main">
@@ -355,17 +355,17 @@ if(isset($_POST['submit'])){
     </form>
 
     <script>
-    let add_brand_btn = document.querySelector(".add_brand_btn");
-    let add_brand = document.querySelector(".add_brand");
-    let edit_brand_btn = document.querySelector(".edit_brand_btn");
-    let edit_brand = document.querySelector(".edit_brand");
+    let add_village_btn = document.querySelector(".add_village_btn");
+    let add_village = document.querySelector(".add_village");
+    let edit_village_btn = document.querySelector(".edit_village_btn");
+    let edit_village = document.querySelector(".edit_village");
 
-    add_brand_btn.addEventListener("click", () => {
-        add_brand.style.display = "block";
+    add_village_btn.addEventListener("click", () => {
+        add_village.style.display = "block";
     });
 
-    edit_brand_btn.addEventListener("click", () => {
-        edit_brand.style.display = "block";
+    edit_village_btn.addEventListener("click", () => {
+        edit_village.style.display = "block";
     });
     </script>
 
