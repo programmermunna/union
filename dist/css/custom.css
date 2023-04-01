@@ -401,5 +401,28 @@ li.main-category.cat:hover .category-wrap {
   flex-direction: unset;
 }
 
+}
 
+
+
+
+/* ---------kor data add section------------- */
+.requird_star{
+  color:red;
+}
+
+.radio_div{
+  width:100% !important; 
+  display:inline !important;
+}
+.pesa{
+  float:left !important;
+  padding:20px !important;
+}
+
+@media only screen and (max-width: 678px) {
+  .pesa{
+    float:none !important;
+    padding:20px !important;
+  }
 }

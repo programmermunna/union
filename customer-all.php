@@ -44,9 +44,7 @@ if(isset($_POST['submit'])){
                     </div>
                     <header class="table_header">
                         <div class="table_header_left">
-                            <button
-                                class="add_village_btn show_add_new_cat px-4 py-2 text-sm bg-blue-600 text-white rounded focus:ring">Add
-                                Customer</button>
+                            <a href="customer-add.php" class="px-4 py-2 text-sm bg-blue-600 text-white rounded focus:ring">Add Customer</a>
                         </div>
 
 
@@ -345,29 +343,6 @@ if(isset($_POST['submit'])){
             </div>
         </div>
     </form>
-
-    <script>
-    let add_village_btn = document.querySelector(".add_village_btn");
-    let add_village = document.querySelector(".add_village");
-    let edit_village_btn = document.querySelector(".edit_village_btn");
-    let edit_village = document.querySelector(".edit_village");
-
-    add_village_btn.addEventListener("click", () => {
-        add_village.style.display = "block";
-    });
-
-    edit_village_btn.addEventListener("click", () => {
-        edit_village.style.display = "block";
-    });
-    </script>
-
-
-
-
-
-
-
-
 
     <!-- Page Content -->
 </main>
