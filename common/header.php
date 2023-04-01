@@ -31,8 +31,11 @@ $user_id = $admin_info['id'];
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="upload/<?php echo $website['favicon']?>">
     <title><?php echo $website['name']?></title>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <link rel="icon" type="image/png" href="upload/<?php echo $website['favicon']?>">
     <link href="dist/css/category.css" rel="stylesheet" />
     <link href="dist/css/styles.css" rel="stylesheet" />
     <link href="dist/css/custom.css" rel="stylesheet" />

@@ -105,29 +105,97 @@ if(isset($_POST['submit'])){
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th class="table_th"><div class="table_th_div"><span>ক্রমিক নং.</span></div></th>
-                                        <th class="table_th"><div class="table_th_div"><span>খানা প্রধানের নাম</span></div></th>
-                                        <th class="table_th"><div class="table_th_div"><span>পিতা/স্বামীর নাম</span></div></th>
-                                        <th class="table_th"><div class="table_th_div"><span>সদস্য সংখ্যা</span></div></th>
-                                        <th class="table_th"><div class="table_th_div"><span>হোল্ডিং নং</span></div></th>
-                                        <th class="table_th"><div class="table_th_div"><span>জাতীয় পরিচয়পত্র</span></div></th>
-                                        <th class="table_th"><div class="table_th_div"><span>পেশা</span></div></th>
-                                        <th class="table_th"><div class="table_th_div"><span>গৃহের বিবরন</span></div></th>
-                                        <th class="table_th"><div class="table_th_div"><span>স্থাপনার মুল্য</span></div></th>
-                                        <th class="table_th"><div class="table_th_div"><span>বার্ষিক কর</span></div></th>
-                                        <th class="table_th"><div class="table_th_div"><span>নগদ কর</span></div></th>
-                                        <th class="table_th"><div class="table_th_div"><span>বকেয়া কর</span></div></th>
-                                        <th class="table_th"><div class="table_th_div"><span>অর্থ বছর</span></div></th>
-                                        <th class="table_th"><div class="table_th_div"><span>মোবাইল নং</span></div></th>
-                                        <th class="table_th"><div class="table_th_div"><span>প্রতিক্রিয়া</span></div></th>
+                                        <th class="table_th">
+                                            <div class="table_th_div"><span>Sl.</span></div>
+                                        </th>
+                                        <th class="table_th">
+                                            <div class="table_th_div"><span>Name</span></div>
+                                        </th>
+                                        <th class="table_th">
+                                            <div class="table_th_div"><span>Email</span></div>
+                                        </th>
+                                        <th class="table_th">
+                                            <div class="table_th_div"><span>Phone</span></div>
+                                        </th>
+                                        <th class="table_th">
+                                            <div class="table_th_div"><span>Address</span></div>
+                                        </th>
+                                        <th class="table_th">
+                                            <div class="table_th_div"><span>City</span></div>
+                                        </th>
+                                        <th class="table_th">
+                                            <div class="table_th_div"><span>Photo</span></div>
+                                        </th>
+                                        <th class="table_th">
+                                            <div class="table_th_div"><span>Action</span></div>
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody id="customers_wrapper" class="text-sm">
-                                <?php
-                                $empSQL = "SELECT * FROM person WHERE admin_id=$id ORDER BY id DESC";
+                                    <?php
+                                if(isset($_POST['search'])){
+                                    $src_text = trim($_POST['src_text']);
+                                    $sql = "SELECT * FROM customer WHERE name = '$src_text' OR email = '$src_text' OR phone = '$src_text' OR address = '$src_text' OR city = '$src_text' AND admin_id=$id";
+                                    $search_query = mysqli_query($conn,$sql);
+                                 }
+                                 if(isset($search_query)){
+                                    $i = 0;
+                                    while($row = mysqli_fetch_assoc($search_query)){$i++ ?>
+                                    <tr>
+                                        <td class="p-3 border whitespace-nowrap">
+                                            <div class="text-center"><?php echo $i?></div>
+                                        </td>
+                                        <td class="p-3 border whitespace-nowrap">
+                                            <div class="text-center"><?php echo $row['name']?></div>
+                                        </td>
+                                        <td class="p-3 border whitespace-nowrap">
+                                            <div class="text-center"><?php echo $row['email']?></div>
+                                        </td>
+                                        <td class="p-3 border whitespace-nowrap">
+                                            <div class="text-center"><?php echo $row['phone']?></div>
+                                        </td>
+                                        <td class="p-3 border whitespace-nowrap">
+                                            <div class="text-center"><?php echo $row['address']?></div>
+                                        </td>
+                                        <td class="p-3 border whitespace-nowrap">
+                                            <div class="text-center"><?php echo $row['city']?></div>
+                                        </td>
+                                        <td class="p-3 border whitespace-nowrap">
+                                            <div class="text-center"><img class="row_img"
+                                                    src="upload/<?php echo $row['file']?>"></div>
+                                        </td>
+                                        <td class="p-3 border whitespace-nowrap">
+                                            <div class="w-full flex_center gap-1">
+                                                <a class="btn table_edit_btn"
+                                                    href="customer-edit.php?id=<?php echo $row['id']?>">Edit</a>
+                                                <a class="btn table_edit_btn"
+                                                    href="delete.php?src=customer&&id=<?php echo $row['id']?>">Delete</a>
+                                                <a class="btn table_edit_btn"
+                                                    href="customer-view.php?id=<?php echo $row['id']?>">View</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <?php }}else{
+                                // --------
+                                $showRecordPerPage = 8;
+                                if(isset($_GET['page']) && !empty($_GET['page'])){
+                                    $currentPage = $_GET['page'];
+                                }else{
+                                    $currentPage = 1;
+                                }
+                                $startFrom = ($currentPage * $showRecordPerPage) - $showRecordPerPage;
+                                $totalEmpSQL = "SELECT * FROM customer WHERE admin_id=$id ORDER BY id DESC";
+                                $allEmpResult = mysqli_query($conn, $totalEmpSQL);
+                                $totalEmployee = mysqli_num_rows($allEmpResult);
+                                $lastPage = ceil($totalEmployee/$showRecordPerPage);
+                                $firstPage = 1;
+                                $nextPage = $currentPage + 1;
+                                $previousPage = $currentPage - 1;
+                                $empSQL = "SELECT * FROM customer WHERE admin_id=$id ORDER BY id DESC LIMIT $startFrom, $showRecordPerPage";
                                 $query = mysqli_query($conn, $empSQL);
                                 $i = 0;
                                 while($row = mysqli_fetch_assoc($query)){ $i++;
+                                // $i=0; while($row = mysqli_fetch_assoc($query )){ $i++ 
                                 ?>
                                     <tr>
                                         <td class="p-3 border whitespace-nowrap">
@@ -137,44 +205,21 @@ if(isset($_POST['submit'])){
                                             <div class="text-center"><?php echo $row['name']?></div>
                                         </td>
                                         <td class="p-3 border whitespace-nowrap">
-                                            <div class="text-center"><?php echo $row['guardian_name']?></div>
+                                            <div class="text-center"><?php echo $row['email']?></div>
                                         </td>
                                         <td class="p-3 border whitespace-nowrap">
-                                            <div class="text-center"><?php echo $row['family_member']?></div>
+                                            <div class="text-center"><?php echo $row['phone']?></div>
                                         </td>
                                         <td class="p-3 border whitespace-nowrap">
-                                            <div class="text-center"><?php echo $row['holding_no']?></div>
+                                            <div class="text-center"><?php echo $row['address']?></div>
                                         </td>
                                         <td class="p-3 border whitespace-nowrap">
-                                            <div class="text-center"><?php echo $row['nid_no']?></div>
+                                            <div class="text-center"><?php echo $row['city']?></div>
                                         </td>
                                         <td class="p-3 border whitespace-nowrap">
-                                            <div class="text-center"><?php echo $row['profession']?></div>
+                                            <div class="text-center"><img class="row_img"
+                                                    src="upload/<?php echo $row['file']?>"></div>
                                         </td>
-                                        <td class="p-3 border whitespace-nowrap">
-                                            <div class="text-center"><?php echo $row['home']?></div>
-                                        </td>
-                                        <td class="p-3 border whitespace-nowrap">
-                                            <div class="text-center"><?php echo $row['net_worth']?></div>
-                                        </td>
-                                        <td class="p-3 border whitespace-nowrap">
-                                            <div class="text-center"><?php echo $row['annual_tax']?></div>
-                                        </td>
-                                        <td class="p-3 border whitespace-nowrap">
-                                            <div class="text-center"><?php echo $row['ablable_tax']?></div>
-                                        </td>
-                                        <td class="p-3 border whitespace-nowrap">
-                                            <div class="text-center"><?php echo $row['due_tax']?></div>
-                                        </td>
-                                        <td class="p-3 border whitespace-nowrap">
-                                            <div class="text-center"><?php echo $row['present_year']?></div>
-                                        </td>
-                                        <td class="p-3 border whitespace-nowrap">
-                                            <div class="text-center"><?php echo $row['mobile_no']?></div>
-                                        </td>
-                                        </td>
-
-
                                         <td class="p-3 border whitespace-nowrap">
                                             <div class="w-full flex_center gap-1">
                                                 <a class="btn table_edit_btn"
@@ -192,7 +237,63 @@ if(isset($_POST['submit'])){
                             </table>
                         </div>
                     </div>
-                    
+                    <!-- -------------pagination---------------- -->
+                    <br>
+                    <div class="w-full" style="display: flex; justify-content: space-between;">
+
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination_buttons">
+
+                                <?php if($currentPage >= 2) { ?>
+                                <li class="pagination"><a class="page-link"
+                                        href="?page=<?php echo $previousPage ?>">Previws</a>
+                                </li>
+                                <?php } ?>
+                                <?php if($currentPage != $firstPage) { ?>
+                                <li class="pagination">
+                                    <a class="page-link" href="?page=<?php echo $firstPage ?>">
+                                        <span class="page-link" aria-hidden="true">1</span>
+                                    </a>
+                                </li>
+                                <?php } ?>
+
+                                <li class="pagination active"><a class="page-link active"
+                                        href="?page=<?php echo $currentPage ?>"><?php echo $currentPage ?></a></li>
+
+                                <?php if($currentPage < $lastPage) { ?>
+                                <li class="pagination "><a class="page-link"
+                                        href="?page=<?php echo $currentPage+1 ?>"><?php echo $currentPage+1 ?></a></li>
+                                <?php } ?>
+
+                                <?php if($currentPage < $lastPage) { ?>
+                                <li class="pagination "><a class="page-link"
+                                        href="?page=<?php echo $currentPage+1+1 ?>"><?php echo $currentPage+1+1 ?></a>
+                                </li>
+                                <?php } ?>
+
+                                <?php if($currentPage < $lastPage) { ?>
+                                <li class="pagination "><a class="page-link"
+                                        href="?page=<?php echo $currentPage+1+1+1 ?>"><?php echo $currentPage+1+1+1 ?></a>
+                                </li>
+                                <?php } ?>
+
+                                <?php if($currentPage < $lastPage) { ?>
+                                <li class="pagination"><a class="page-link"
+                                        href="?page=<?php echo $nextPage ?>"><?php //echo $nextPage  ?>Next</a></li>
+                                <?php } ?>
+
+                                <li class="pagination">
+                                    <a class="page-link" href="?page=<?php echo $lastPage ?>" aria-label="Next">
+                                        <span aria-hidden="true">Last</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <div class="pagination_buttons">Page <?php echo $currentPage ?> of <?php echo $lastPage ?></div>
+                    </div>
+                    <?php } ?>
+                    <!-- -------------pagination---------------- -->
+
 
                 </div>
             </div>
