@@ -155,16 +155,16 @@ if(isset($_POST['submit'])){
                                             <div class="text-center"><?php echo $row['home']?></div>
                                         </td>
                                         <td class="p-3 border whitespace-nowrap">
-                                            <div class="text-center"><?php echo $row['net_worth']?> ৳</div>
+                                            <div class="text-center">৳ <?php echo $row['net_worth']?></div>
                                         </td>
                                         <td class="p-3 border whitespace-nowrap">
-                                            <div class="text-center"><?php echo $row['annual_tax']?> ৳</div>
+                                            <div class="text-center">৳ <?php echo $row['annual_tax']?></div>
                                         </td>
                                         <td class="p-3 border whitespace-nowrap">
-                                            <div class="text-center"><?php echo $row['ablable_tax']?> ৳</div>
+                                            <div class="text-center">৳ <?php echo $row['ablable_tax']?></div>
                                         </td>
                                         <td class="p-3 border whitespace-nowrap">
-                                            <div class="text-center"><?php echo $row['due_tax']?> ৳</div>
+                                            <div class="text-center">৳ <?php echo $row['due_tax']?></div>
                                         </td>
                                         <td class="p-3 border whitespace-nowrap">
                                             <div class="text-center"><?php echo $row['present_year']?></div>
@@ -173,7 +173,6 @@ if(isset($_POST['submit'])){
                                             <div class="text-center"><?php echo $row['mobile_no']?></div>
                                         </td>
                                         </td>
-
 
                                         <td class="p-3 border whitespace-nowrap">
                                             <div class="w-full flex_center gap-1">

@@ -2,10 +2,6 @@
 <?php include("common/header.php");?>
 <!-- Header -->
 <?php
-if(isset($_GET['id'])){
-  $id = $_GET['id'];
-}
-$row = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM customer WHERE id='$id'"));
 
 if(isset($_POST['submit'])){
   $sl_no = $_POST['sl_no'];
