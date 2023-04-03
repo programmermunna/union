@@ -240,7 +240,7 @@ if(isset($_POST['submit'])){
             type:"GET",
             data:
             {
-              reference:"section of village",
+              reference:"section of village in customer add page",
               vlg_id:vlg_id,
             },         
             success:function(data){

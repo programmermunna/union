@@ -2,28 +2,32 @@
 <?php include("common/header.php");?>
 <!-- Header -->
 <?php 
-if(isset($_POST['submit'])){
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $address = $_POST['address'];
-    $city = $_POST['city'];
-    $time = time();
-  
-    $file_name = $_FILES['file']['name'];
-    $file_tmp = $_FILES['file']['tmp_name'];
-    move_uploaded_file($file_tmp,"upload/$file_name");
-  
-    $sql = "INSERT INTO customer(admin_id,name,email,phone,address,city,file,time) VALUES($id,'$name','$email','$phone','$address','$city','$file_name','$time')";
-    $query = mysqli_query($conn,$sql);
-    if($query){
-    $msg = "Successfully Created New Customer!";
-    header("location:customer-all.php?msg=$msg");
-    }else{
-    echo "Something is worng!";
+
+if(isset($_GET['session_destroy'])){
+    if($_GET['session_destroy'] == 'true'){
+        unset($_SESSION['village']);
+        unset($_SESSION['section']);
     }
-  }
- 
+}
+
+if(isset($_GET['village'])){
+    $_SESSION['village'] = $_GET['village'];
+}
+if(isset($_SESSION['village'])){
+    $sess_vlg = $_SESSION['village'];
+}else{
+    $sess_vlg = 0;
+}
+
+if(isset($_GET['section'])){
+    $_SESSION['section'] = $_GET['section'];
+}
+if(isset($_SESSION['section'])){
+    $sess_sec = $_SESSION['section'];
+}else{
+    $sess_sec = 0;
+}
+
 ?> 
 <!-- Main Content -->
 <main class="main_content"> 
@@ -44,47 +48,43 @@ if(isset($_POST['submit'])){
                     </div>
                     <header class="table_header">
                         <div class="table_header_left">
+                            <a href="customer-all.php?session_destroy=true" class="px-4 py-2 text-sm bg-blue-600 text-white rounded focus:ring"><i class="fa-solid fa-rotate-right"></i> refresh</a>
                             <a href="customer-add.php" class="px-4 py-2 text-sm bg-blue-600 text-white rounded focus:ring">Add Customer</a>
                         </div>
 
 
                         <div>
-                            <form action="" method="POST">
+                            <form action="" method="GET">
                                 <div class="table_header_right">
-                                <select name="month" class="input">
+                                <select style="width: 350PX;" name="village" id="village" class="input">
                                     <?php
-                                    if(isset($_POST['month'])){ ?>
-                                        <option selected value="<?php echo $_POST['month']?>"><?php echo $_POST['month']?></option>                                        
-                                    <?php  }?>
-                                    <option value="January">January</option>
-                                    <option value="February">February</option>
-                                    <option value="March">March</option>
-                                    <option value="April">April</option>
-                                    <option value="May">May</option>
-                                    <option value="June">June</option>
-                                    <option value="July">July</option>
-                                    <option value="August">August</option>
-                                    <option value="September">September</option>
-                                    <option value="October">October</option>
-                                    <option value="November">November</option>
-                                    <option value="December">December</option>
-                                </select>
-                                <select name="year" class="input">
+                                    if($sess_vlg != 0 ){ 
+                                    $select_village  = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM village WHERE id=$sess_vlg"));                                        
+                                    ?>
+                                        <option selected value="<?php echo $select_village['id']?>"><?php echo $select_village['name']?></option>                                        
+                                    <?php  }else{ ?>
+                                    <option selected disabled>গ্রাম বাছাই করুণ</option>
+                                   <?php }?>
+
                                     <?php
-                                    if(isset($_POST['month'])){ ?>
-                                        <option selected value="<?php echo $_POST['year']?>"><?php echo $_POST['year']?></option>                                        
+                                    $villages = mysqli_query($conn,"SELECT * FROM village");
+                                    while($village = mysqli_fetch_assoc($villages)){ ?>
+                                        <option value="<?php echo $village['id']?>"><?php echo $village['name']?></option>
                                     <?php  }?>
-                                    <option value="2022">2022</option>
-                                    <option value="2023">2023</option>
-                                    <option value="2024">2024</option>
-                                    <option value="2025">2025</option>
-                                    <option value="2026">2026</option>
-                                    <option value="2027">2027</option>
-                                    <option value="2028">2028</option>
-                                    <option value="2029">2029</option>
-                                    <option value="2030">2030</option>
                                 </select>
-                                <input style="cursor:pointer;" name="select" type="submit" class="btn" placeholder="Search" />
+
+
+                                <select name="section" class="input" id="section">
+                                <?php
+                                    if($sess_sec != 0 ){ 
+                                    $select_section  = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM section WHERE id=$sess_sec"));                                        
+                                    ?>
+                                        <option selected value="<?php echo $select_section['id']?>"><?php echo $select_section['name']?></option>                                        
+                                    <?php  }else{ ?>
+                                    <option selected disabled>পাড়া/মহল্লা বাছাই করুণ</option>
+                                   <?php }?>
+                                </select>
+                                <input style="cursor:pointer;" type="submit" class="btn" placeholder="Search" />
                             </div>
                         </form>
                         </div>
@@ -124,7 +124,13 @@ if(isset($_POST['submit'])){
                                 </thead>
                                 <tbody id="customers_wrapper" class="text-sm">
                                 <?php
-                                $empSQL = "SELECT * FROM person WHERE admin_id=$id ORDER BY id DESC";
+                                if($sess_vlg != 0 && $sess_sec != 0){
+                                    $empSQL = "SELECT * FROM person WHERE admin_id=$id AND village = $sess_vlg AND section = $sess_sec ORDER BY id DESC";
+                                }elseif($sess_vlg != 0){
+                                    $empSQL = "SELECT * FROM person WHERE admin_id=$id AND village = $sess_vlg ORDER BY id DESC";
+                                }else{
+                                    $empSQL = "SELECT * FROM person WHERE admin_id=$id ORDER BY id DESC";
+                                }
                                 $query = mysqli_query($conn, $empSQL);
                                 $i = 0;
                                 while($row = mysqli_fetch_assoc($query)){ $i++;
@@ -198,52 +204,29 @@ if(isset($_POST['submit'])){
         </section>
     </section>
 
-    <form action="" method="POST" enctype="multipart/form-data">
-        <div class="add_category_wrapper add_village" style="display: none;">
-            <div class="hide_add_new_cat fixed inset-0 w-full h-screen bg-black bg-opacity-50 z-40"></div>
-            <div
-                class="fixed w-[96%] md:w-[500px] inset-0 m-auto p-5 bg-white rounded shadow z-50 h-fit add_product_main">
-                <h3 class="p-4 border-b text-center">
-                    Add New Customer
-                </h3>
-
-                <div>
-                    <label>Full Name</label>
-                    <input type="text" name="name" placeholder="Full name" class="input" />
-                </div>
-                <div>
-                    <label>Email</label>
-                    <input type="text" name="email" placeholder="Email" class="input" />
-                </div>
-                <div>
-                    <label>Phone</label>
-                    <input type="text" name="phone" placeholder="Phone" class="input" />
-                </div>
-                <div>
-                    <label>Address</label>
-                    <input type="text" name="address" placeholder="Address" class="input" />
-                </div>
-                <div>
-                    <label>City</label>
-                    <input type="text" name="city" placeholder="City" class="input" />
-                </div>
-                <div>
-                    <label>Photo</label>
-                    <input type="file" name="file" title="profile" placeholder="City" />
-                </div>
-
-                <div class="p-4 flex items-center justify-end gap-x-3 border-t mt-4">
-                    <button class="btn w-fit p-2 bg-blue-600 text-white rounded focus:ring-2" type="submit"
-                        name="submit">Create Product</button>
-                    <button
-                        class="btn w-fit p-2 bg-red-400 text-white rounded focus:ring-2 hide_add_new_cat">Cancel</button>
-                </div>
-            </div>
-        </div>
-    </form>
-
     <!-- Page Content -->
 </main>
+
+<script>
+    $(document).ready(function(){  
+      $("#village").on("change",function(){
+        var vlg_id = $(this).val();
+        $.ajax({
+            url:"include/ajax.php",
+            type:"GET",
+            data:
+            {
+              reference:"section of village in customer all page",
+              vlg_id:vlg_id,
+            },         
+            success:function(data){
+              $("#section").html(data);
+              }
+            });
+        })
+
+    })
+</script>
 <!-- Side Navbar Links -->
 <?php include("common/footer.php");?>
 <!-- Side Navbar Links -->
