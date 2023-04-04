@@ -91,10 +91,10 @@ if(isset($_SESSION['section'])){
 
 
 
-                        <form action="" method="POST">
+                        <form action="" method="GET">
                             <div class="table_header_right">
-                                <input type="search" name="src_text" placeholder="Search Customer" />
-                                <input style="cursor:pointer;" type="submit" name="search" class="btn"
+                                <input type="search" name="src" placeholder="Search Customer" />
+                                <input style="cursor:pointer;" type="submit" class="btn"
                                     placeholder="Search" />
                             </div>
                         </form>
@@ -124,7 +124,10 @@ if(isset($_SESSION['section'])){
                                 </thead>
                                 <tbody id="customers_wrapper" class="text-sm">
                                 <?php
-                                if($sess_vlg != 0 && $sess_sec != 0){
+                                if(isset($_GET['src'])){
+                                    $src = $_GET['src'];
+                                    $empSQL = "SELECT * FROM person WHERE admin_id=$id AND (name LIKE '$src' OR mobile_no = '$src' OR nid_no = '$src' OR holding_no = '$src' OR guardian_name LIKE '$src') ORDER BY id DESC";
+                                }elseif($sess_vlg != 0 && $sess_sec != 0){
                                     $empSQL = "SELECT * FROM person WHERE admin_id=$id AND village = $sess_vlg AND section = $sess_sec ORDER BY id DESC";
                                 }elseif($sess_vlg != 0){
                                     $empSQL = "SELECT * FROM person WHERE admin_id=$id AND village = $sess_vlg ORDER BY id DESC";
