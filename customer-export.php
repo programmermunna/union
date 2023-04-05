@@ -1,0 +1,62 @@
+<?php include("include/functions.php");
+
+header('Content-Type:application/xls');
+header('Content-Disposition:attachment;filename=report.xls');
+
+
+$sql="select * from person";
+$res=mysqli_query($conn,$sql); ?>
+    <table>
+            <tr style="font-weight:bolder;">
+                <td>করদাতার নাম</td>
+                <td>পিতা/স্বামীর নাম</td>
+                <td>গ্রাম</td>
+                <td>পাড়া/মহল্লা</td>
+                <td>ওয়ার্ড নং</td>
+                <td>পরিবারের সদস্য সংখ্যা</td>
+                <td>পুরুষ</td>
+                <td>মহিলা</td>
+                <td>হোল্ডিং নং</td>
+                <td>জাতীয় পরিচয়পত্র নং</td>
+                <td>পেশা</td>
+                <td>গৃহের বিবরন</td>
+                <td>স্থাপনার মুল্য</td>
+                <td>বার্ষিক কর</td>
+                <td>নগদ কর</td>
+                <td>বকেয়া কর</td>
+                <td>অর্থ বছর</td>
+                <td>মোবাইল নং</td>
+            </tr>
+<?php
+while($row=mysqli_fetch_assoc($res)){ ?>
+	        <tr>
+                <td><?php echo $row['name'];?></td>
+                <td><?php echo $row['guardian_name'];?></td>
+                <td><?php echo $row['village'];?></td>
+                <td><?php echo $row['section'];?></td>
+                <td><?php echo $row['word_no'];?></td>
+                <td><?php echo $row['family_member'];?></td>
+                <td><?php echo $row['male'];?></td>
+                <td><?php echo $row['female'];?></td>
+                <td><?php echo $row['holding_no'];?></td>
+                <td><?php echo $row['nid_no'];?></td>
+                <td><?php echo $row['profession'];?></td>
+                <td><?php echo $row['home'];?></td>
+                <td><?php echo $row['net_worth'];?></td>
+                <td><?php echo $row['annual_tax'];?></td>
+                <td><?php echo $row['ablable_tax'];?></td>
+                <td><?php echo $row['due_tax'];?></td>
+                <td><?php echo $row['present_year'];?></td>
+                <td><?php echo $row['mobile_no'];?></td>
+            </tr>
+<?php }?>
+    </table>
+
+
+    <style>
+        table,tr,td{
+            border:1px solid gray;
+            text-align: center;
+            padding:10px !important;
+        }
+    </style>

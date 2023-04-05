@@ -394,16 +394,53 @@ li.main-category.cat:hover .category-wrap {
 }
 
 .table_header_left {
-  display: block;
-  text-align: right;
+  margin-top: 0;
 }
+
+.table_header_left  a{
+  width: 33%;
+  height: 50px;
+  text-align: center;
+}
+
+.table_header_right {
+  display: block;
+  text-align: center;
+}
+.table_header_right select{
+  width: 100% !important;
+  margin-bottom: 10px;
+}
+.table_header_right > input{
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.table_th {
+  font-size: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .main_content_container {
   flex-direction: unset;
 }
 
 }
-
-
 
 
 /* ---------kor data add section------------- */

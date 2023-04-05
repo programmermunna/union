@@ -50,6 +50,7 @@ if(isset($_SESSION['section'])){
                         <div class="table_header_left">
                             <a href="customer-all.php?session_destroy=true" class="px-4 py-2 text-sm bg-blue-600 text-white rounded focus:ring"><i class="fa-solid fa-rotate-right"></i> refresh</a>
                             <a href="customer-add.php" class="px-4 py-2 text-sm bg-blue-600 text-white rounded focus:ring">Add Customer</a>
+                            <a href="customer-export.php" class="px-4 py-2 text-sm bg-blue-600 text-white rounded focus:ring">Export Excel</a>
                         </div>
 
 
@@ -109,11 +110,11 @@ if(isset($_SESSION['section'])){
                                         <th class="table_th"><div class="table_th_div"><span>খানা প্রধানের ছবি</span></div></th>
                                         <th class="table_th"><div class="table_th_div"><span>খানা প্রধানের নাম</span></div></th>
                                         <th class="table_th"><div class="table_th_div"><span>পিতা/স্বামীর নাম</span></div></th>
+                                        <th class="table_th"><div class="table_th_div"><span>পেশা</span></div></th>
+                                        <th class="table_th"><div class="table_th_div"><span>গৃহের বিবরন</span></div></th>
                                         <th class="table_th"><div class="table_th_div"><span>সদস্য সংখ্যা</span></div></th>
                                         <th class="table_th"><div class="table_th_div"><span>হোল্ডিং নং</span></div></th>
                                         <th class="table_th"><div class="table_th_div"><span>জাতীয় পরিচয়পত্র</span></div></th>
-                                        <th class="table_th"><div class="table_th_div"><span>পেশা</span></div></th>
-                                        <th class="table_th"><div class="table_th_div"><span>গৃহের বিবরন</span></div></th>
                                         <th class="table_th"><div class="table_th_div"><span>স্থাপনার মুল্য</span></div></th>
                                         <th class="table_th"><div class="table_th_div"><span>বার্ষিক কর</span></div></th>
                                         <th class="table_th"><div class="table_th_div"><span>নগদ কর</span></div></th>
@@ -156,6 +157,12 @@ if(isset($_SESSION['section'])){
                                             <div class="text-center"><?php echo $row['guardian_name']?></div>
                                         </td>
                                         <td class="p-3 border whitespace-nowrap">
+                                            <div class="text-center"><?php echo $row['profession']?></div>
+                                        </td>
+                                        <td class="p-3 border whitespace-nowrap">
+                                            <div class="text-center"><?php echo $row['home']?></div>
+                                        </td>
+                                        <td class="p-3 border whitespace-nowrap">
                                             <div class="text-center"><?php echo $row['family_member']?></div>
                                         </td>
                                         <td class="p-3 border whitespace-nowrap">
@@ -163,12 +170,6 @@ if(isset($_SESSION['section'])){
                                         </td>
                                         <td class="p-3 border whitespace-nowrap">
                                             <div class="text-center"><?php echo $row['nid_no']?></div>
-                                        </td>
-                                        <td class="p-3 border whitespace-nowrap">
-                                            <div class="text-center"><?php echo $row['profession']?></div>
-                                        </td>
-                                        <td class="p-3 border whitespace-nowrap">
-                                            <div class="text-center"><?php echo $row['home']?></div>
                                         </td>
                                         <td class="p-3 border whitespace-nowrap">
                                             <div class="text-center">৳ <?php echo $row['net_worth']?></div>
