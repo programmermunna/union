@@ -28,10 +28,18 @@ if(isset($_POST['submit'])){
   $present_year = $_POST['present_year'];
   $mobile_no = $_POST['mobile_no'];
 
+
+  $file_name = $_FILES['file']['name'];
+  $file_tmp = $_FILES['file']['tmp_name'];
+  move_uploaded_file($file_tmp,"upload/$file_name");
+  if(empty($file_name)){
+    $file_name = $data['file_name'];
+  }
+
   if( empty($sl_no) || empty($name) || empty($guardian_name) || empty($village) || empty($section) || empty($family_member) || empty($word_no) || empty($net_worth)){
     header("Location:customer-add.php?err=Please Fill-Up Carefully!");
   }else{
-    $sql = "UPDATE person SET sl_no='$sl_no', name='$name', guardian_name='$guardian_name', village='$village', section='$section', word_no='$word_no', family_member='$family_member', male='$male', female='$female', holding_no='$holding_no', nid_no='$nid_no', profession='$profession', home='$home', net_worth='$net_worth', annual_tax='$annual_tax', ablable_tax='$ablable_tax', due_tax='$due_tax', present_year='$present_year', mobile_no='$mobile_no' WHERE id=$id";
+    $sql = "UPDATE person SET sl_no='$sl_no', name='$name', guardian_name='$guardian_name', village='$village', section='$section', word_no='$word_no', family_member='$family_member', male='$male', female='$female', holding_no='$holding_no', nid_no='$nid_no', profession='$profession', home='$home', net_worth='$net_worth', annual_tax='$annual_tax', ablable_tax='$ablable_tax', due_tax='$due_tax', present_year='$present_year', mobile_no='$mobile_no',file_name='$file_name' WHERE id=$id";
     $update = mysqli_query($conn,$sql);
     if($update){
       header("location:customer-all.php?msg=করদাতা সম্পাদন হয়েছে");
@@ -299,6 +307,12 @@ if(isset($_POST['submit'])){
             <div>
             <label>মোবাইল নং</label>
             <input type="text" name="mobile_no" class="input"  value="<?php echo $data['mobile_no']?>"/>
+            </div> 
+
+            <div>
+            <label>ছবি</label>
+            <img style="width:120px" src="upload/<?php echo $data['file_name']?>" alt="image">            
+            <input type="file" name="file" class="input"  value="<?php echo $data['file_name']?>"/>
             </div> 
 
             <input class="btn submit_btn" name="submit" type="submit" value="সম্পাদন  করুন" />

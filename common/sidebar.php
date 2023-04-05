@@ -15,7 +15,7 @@
           <button class="btn nav_btn"><span class="nav_icon seller_icon"> </span><span class="nav_text">করদাতা</span></button>
         </a>
 
-        <div class="relative">
+        <!-- <div class="relative">
           <button class="btn nav_btn nav_btn_toggler">
             <span class="nav_icon setting_icon2"> </span>
             <span class="nav_text">সেটিংস</span>
@@ -29,7 +29,7 @@
               <button class="sub_link">ওয়েবসাইট সেটিং</button>
             </a>
           </div>
-        </div>
+        </div> -->
 
         <!-- Toggle Nav Text -->
         <div id="toggle_nav_text">

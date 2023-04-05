@@ -265,7 +265,10 @@ $data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM person WHERE id='$i
             <input disabled type="text" name="mobile_no" class="input disabled"  value="<?php echo $data['mobile_no']?>"/>
             </div> 
 
-            <!-- <input disabled class="btn submit_btn" name="submit" type="submit" value="সম্পাদন  করুন" /> -->
+            <div>
+            <label>ছবি</label>
+            <img style="width:220px;margin:auto" src="upload/<?php echo $data['file_name']?>" alt="image">
+            </div> 
           </form>
         </div>
       </section>

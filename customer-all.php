@@ -106,6 +106,7 @@ if(isset($_SESSION['section'])){
                                 <thead>
                                     <tr>
                                         <th class="table_th"><div class="table_th_div"><span>ক্রমিক নং.</span></div></th>
+                                        <th class="table_th"><div class="table_th_div"><span>খানা প্রধানের ছবি</span></div></th>
                                         <th class="table_th"><div class="table_th_div"><span>খানা প্রধানের নাম</span></div></th>
                                         <th class="table_th"><div class="table_th_div"><span>পিতা/স্বামীর নাম</span></div></th>
                                         <th class="table_th"><div class="table_th_div"><span>সদস্য সংখ্যা</span></div></th>
@@ -143,8 +144,14 @@ if(isset($_SESSION['section'])){
                                             <div class="text-center"><?php echo $i?></div>
                                         </td>
                                         <td class="p-3 border whitespace-nowrap">
+                                            <div class="text-center">
+                                            <img style="width: 70px;height:70px;margin:auto" src="upload/<?php echo $row['file_name']?>" alt="image">
+                                        </div>
+                                        </td>
+                                        <td class="p-3 border whitespace-nowrap">
                                             <div class="text-center"><?php echo $row['name']?></div>
                                         </td>
+                                        
                                         <td class="p-3 border whitespace-nowrap">
                                             <div class="text-center"><?php echo $row['guardian_name']?></div>
                                         </td>
@@ -188,7 +195,7 @@ if(isset($_SESSION['section'])){
                                                 <a class="btn table_edit_btn"
                                                     href="customer-edit.php?id=<?php echo $row['id']?>">Edit</a>
                                                 <a class="btn table_edit_btn"
-                                                    href="delete.php?src=customer&&id=<?php echo $row['id']?>">Delete</a>
+                                                    href="delete.php?src=customer-all&&table=person&&id=<?php echo $row['id']?>">Delete</a>
                                                 <a class="btn table_edit_btn"
                                                     href="customer-view.php?id=<?php echo $row['id']?>">View</a>
                                             </div>

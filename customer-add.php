@@ -24,11 +24,16 @@ if(isset($_POST['submit'])){
   $present_year = $_POST['present_year'];
   $mobile_no = $_POST['mobile_no'];
 
+
+  $file_name = $_FILES['file']['name'];
+  $file_tmp = $_FILES['file']['tmp_name'];
+  move_uploaded_file($file_tmp,"upload/$file_name");  
+
   if( empty($sl_no) || empty($name) || empty($guardian_name) || empty($village) || empty($section) || empty($family_member) || empty($word_no) || empty($net_worth)){
     header("Location:customer-add.php?err=Please Fill-Up Carefully!");
   }else{
-    $sql = "INSERT INTO person (admin_id,sl_no,name,guardian_name,village,section,word_no,family_member,male,female,holding_no,nid_no,profession,home,net_worth,annual_tax,ablable_tax,due_tax,present_year,mobile_no) 
-    VALUES ('$id','$sl_no','$name','$guardian_name','$village','$section','$word_no','$family_member','$male','$female','$holding_no','$nid_no','$profession','$home','$net_worth','$annual_tax','$ablable_tax','$due_tax','$present_year','$mobile_no')";
+    $sql = "INSERT INTO person (admin_id,sl_no,name,guardian_name,village,section,word_no,family_member,male,female,holding_no,nid_no,profession,home,net_worth,annual_tax,ablable_tax,due_tax,present_year,mobile_no,file_name,time) 
+    VALUES ('$id','$sl_no','$name','$guardian_name','$village','$section','$word_no','$family_member','$male','$female','$holding_no','$nid_no','$profession','$home','$net_worth','$annual_tax','$ablable_tax','$due_tax','$present_year','$mobile_no','$file_name','$time')";
     $insert = mysqli_query($conn,$sql);
     if($insert){
       header("location:customer-add.php?msg=নতুন করদাতা যুক্ত হয়েছে");
@@ -222,6 +227,12 @@ if(isset($_POST['submit'])){
             <input type="text" name="mobile_no" class="input" />
             </div> 
 
+            <div>
+            <label>ছবি</label>
+            <input type="file" name="file" class="input" />
+            </div> 
+
+            <br>
             <input class="btn submit_btn" name="submit" type="submit" value="যুক্ত করুন" />
           </form>
         </div>

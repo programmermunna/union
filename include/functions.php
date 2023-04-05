@@ -6,6 +6,8 @@ if(!session_start()){
 }
 
 
+$time = time();
+
 function time_elapsed_string($datetime, $full = false) {
   /**int to string time by arif */
   $datte=date("Y-m-d H:i:s",$datetime);
