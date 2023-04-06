@@ -4,11 +4,7 @@ RewriteCond %{REQUEST_FILENAME}\.php -f
 RewriteRule ^(.*)$ $1.php [NC,L]
 ## Redirect from extensions to non-extensions
  RewriteCond %{THE_REQUEST} \s/+(.+?)\.php[\s?] [NC]
- RewriteRule ^ /%1 [R=301,NE,L]  
-
-
-
-
+ RewriteRule ^ /%1 [R=301,NE,L] 
 
 <ifModule mod_headers.c> 
     Header set Access-Control-Allow-Origin *

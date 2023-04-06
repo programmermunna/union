@@ -4,17 +4,23 @@
   <?php include("common/navbar.php")?>
 <?php
 if(isset($_POST['submit'])){
-  $pmn_method = $_POST['pmn_method'];
-  $pmn_number = $_POST['pmn_number'];
+  $union_name = $_POST['union_name'];
+  $admin_id = rand(1000,99999999);
+  $pass = md5($_POST['pass']);
+  $cpass = md5($_POST['cpass']);
 
-  $sql = "INSERT INTO payment_method(pmn_method,pmn_number) VALUE('$pmn_method','$pmn_number')";
+  $sql = "INSERT INTO union_name (admin_id,union_name,pass,time) VALUE ('$admin_id','$union_name','$pass',$time)";
   $query = mysqli_query($conn,$sql);
   if($query){
-    $msg = "Successfully Inserted";
-    header("location:payment-method.php?msg=$msg");
+    $msg = "ইনিয়ন যুক্ত করা সফল হয়েছে।";
+    header("location:union.php?msg=$msg");
+  }
+  if($pass == $cpass && !empty($union_name)){    
+  }else{
+    $err = "Something is error";
+    header("location:union.php?err=$err");
   }
 }
-$pmn_method = mysqli_query($conn,"SELECT * FROM payment_method");
 ?>
   <div class="container-fluid py-4">
       <div class="row">
@@ -34,18 +40,16 @@ $pmn_method = mysqli_query($conn,"SELECT * FROM payment_method");
                         <div class="profile">
                           <div style="display:block">
                               <div>
-                                <label for="name">Payment Method</label>
-                                <select style="width:100%;padding:5px;border:1px solid #979797bf;border-radius:2px;" name="pmn_method" id="">
-                                  <option value="Bkash">Bkash</option>
-                                  <option value="Nogod">Nogod</option>
-                                  <option value="Rocket">Rocket</option>
-                                  <option value="Upay">Upay</option>
-                                  <option value="Bank">Bank</option>
-                                </select>
+                                <label for="union_name">ইউনিয়নের নাম</label>
+                                <input required name="union_name" type="text">
                               </div>
                               <div>
-                                <label for="name">Payment Number</label>
-                                <input required name="pmn_number" type="text">
+                                <label for="pass">পাসওয়ার্ড</label>
+                                <input required name="pass" type="password">
+                              </div>
+                              <div>
+                                <label for="cpass">পুনরায় পাসওয়ার্ড</label>
+                                <input required name="cpass" type="password">
                               </div>
                           </div>
                           <div>                            
@@ -58,21 +62,20 @@ $pmn_method = mysqli_query($conn,"SELECT * FROM payment_method");
                     <table class="table">
                       <thead>
                         <tr>
-                          <th>Payment method</th>
-                          <th>Payment Number</th>
-                          <th>Action</th>
+                          <th>ইউনিয়নের নাম</th>
+                          <th>প্রতিক্রিয়া</th>
                         </tr>
                       </thead>
                       <tbody>
                         <?php 
-                        while($row = mysqli_fetch_assoc($pmn_method)){
+                        $union = mysqli_query($conn,"SELECT * FROM union_name");
+                        while($row = mysqli_fetch_assoc($union)){
                         ?>
                         <tr>
-                          <td><?php echo $row['pmn_method']?></td>
-                          <td><?php echo $row['pmn_number']?></td>
+                          <td><?php echo $row['union_name'];?></td>
                           <td>
-                            <a href="payment-edit.php?id=<?php echo $row['id']?>">Edit</a>
-                            <a href="delete.php?src=payment-method&&id=<?php echo $row['id']?>">Delete</a>
+                            <a class="btn btn-primary p-2" href="payment-edit.php?id=<?php echo $row['id']?>">Edit</a>
+                            <a class="btn btn-primary p-2" href="union-delete.php?src=union&&table=union_name&&id=<?php echo $row['id']?>">Delete</a>
                           </td>
                         </tr>
                         <?php }?>

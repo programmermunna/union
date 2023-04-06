@@ -3473,6 +3473,17 @@ h3{
   .lg\:rounded-bl-none{
     border-bottom-left-radius: 0px;
   }
+
+/* .table_header_left a{
+  height: 50px;
+  text-align: center;
+} */
+
+
+
+
+
+
 }
 
 @media (min-width: 1280px){

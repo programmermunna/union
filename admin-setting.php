@@ -53,11 +53,11 @@ if(isset($_POST['submit'])){
           <form id="setting_form" action="" method="POST" enctype="multipart/form-data">
           <div>
               <label>Name</label>
-              <input type="text" name="name" class="input" value="<?php echo $admin_info['name']; ?>" />
+              <input type="text" name="name" class="input" value="00" />
             </div>
           <div>
               <label>Email</label>
-              <input type="text" name="email" class="input" value="<?php echo $admin_info['email']; ?>" />
+              <input type="text" name="email" class="input" value="00" />
             </div>
             <div>
               <label>Image</label>

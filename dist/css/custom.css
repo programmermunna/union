@@ -463,3 +463,12 @@ li.main-category.cat:hover .category-wrap {
     padding:20px !important;
   }
 }
+
+@media only screen and (min-width: 1280px) {
+  .table_header_left a{
+    height: 50px !important;
+    text-align: center !important;
+}
+
+}
+

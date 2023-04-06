@@ -12,16 +12,11 @@ if(isset($_SESSION['admin_id'])){
   $id = $_SESSION['admin_id'];
 }
 if($id<1){
-  $check = mysqli_query($conn,"SELECT * FROM admin_info WHERE id=$id AND permision='Pending'");
-  if($check){
     header('location:login.php');
-  }
 }
 
 $setting = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM setting WHERE id=1"));
 $website = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM website_setting WHERE id=1"));
-$admin_info = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM admin_info WHERE id=$id"));
-$user_id = $admin_info['id'];
 
 
 ?>

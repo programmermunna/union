@@ -4,10 +4,7 @@
 <?php 
      
     $date = date("F Y",time());
-
-    $customer = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM customer WHERE admin_id=$id"));
-
-
+    $customer = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM person WHERE admin_id=$id"));
 
 ?>
     <!-- Main Content -->

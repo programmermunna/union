@@ -4,57 +4,29 @@ if(isset($_SESSION['admin_id'])){
   $id = $_SESSION['admin_id'];
 }elseif(isset($_COOKIE['admin_id'])){
   $id = $_COOKIE['admin_id'];  
-}
-
-if(isset($id)){
-  $check = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM admin_info WHERE id=$id"));
-  if($check['permision']=='Success'){
-    header('location:index.php');
-  }
-  
-}
-
-if(isset($_SESSION['landing_id'])){
-   $landing_id = $_SESSION['landing_id'];  
-}elseif(isset($_COOKIE['landing_id'])){
-   $landing_id = $_COOKIE['landing_id'];
-}
-
-if(isset($landing_id)){
-  $user = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM admin_info WHERE id=$landing_id"));
-  if($user['permision'] == 'Success'){
-    $demo_email = "";
-    $demo_pass = "";
-  }else{
-    $demo_email = "admin@gmail.com";
-    $demo_pass = "1234";
-  }
 }else{
-  $demo_email = "admin@gmail.com";
-  $demo_pass = "1234";
+  $id = 0;
 }
-
+if($id>0){
+    header('location:index.php');
+}
 
 if(isset($_POST['submit'])){
-    $email = mysqli_real_escape_string($conn,$_POST['email']);
+    $union_id = $_POST['union_id'];
     $pass = md5($_POST['pass']);
-    if (filter_var($email, FILTER_VALIDATE_EMAIL)){
-    $row = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM admin_info WHERE email='$email' AND pass='$pass'"));
+    $row = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM union_name WHERE admin_id='$union_id' AND pass='$pass'"));
     if($row>0){
-    $id = $row['id'];
-    $name = $row['name'];
+    $id = $row['admin_id'];
     $_SESSION['admin_id'] = $id;
     setcookie('admin_id', $id , time()+2592000);
     header('location:index.php');
     }else{
-      $msg = "You are not ablable. Please purchase first.";
+      $msg = "Soemthing is error!";
       header("location:login.php?msg=$msg");
     }
-  }else{
-    $msg = "Email is not Vali.";
-    header("location:login.php?msg=$msg");
-  }
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -77,8 +49,14 @@ if(isset($_POST['submit'])){
                 <div class="contact">
                     <form action="" method="POST" >
                         <h3>LOGIN</h3>
-                        <input name="email" type="email" placeholder="EMAIL" value="<?php if(isset($demo_email)){ echo $demo_email;}?>">
-                        <input name="pass" type="password" placeholder="PASSWORD" value="<?php if(isset($demo_pass)){ echo $demo_pass;}?>">
+                        <select name="union_id" class="input" style="width:100%;">
+                        <?php 
+                        $union = mysqli_query($conn,"SELECT * FROM union_name");
+                        while($data = mysqli_fetch_assoc($union)){ ?>
+                        <option value="<?php echo $data['admin_id']?>"><?php echo $data['union_name']?></option>
+                       <?php }?>
+                        </select>
+                        <input name="pass" type="password" placeholder="PASSWORD">
                         <button style="background:#EB75A4" name="submit" type="submit" class="submit">LOGIN</button>
                     </form>
                 </div>
