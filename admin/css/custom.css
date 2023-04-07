@@ -7,11 +7,10 @@ label {
   margin: 0;
   margin-top: 10px;
 }
-.edit,
-.view {
+.edit, .view {
   box-shadow: 0 0 1px gray;
   padding: 20px;
-  width: 50%;
+  width: 100%;
 }
 .profile {
   margin-top: 20px;

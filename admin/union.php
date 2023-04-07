@@ -62,17 +62,22 @@ if(isset($_POST['submit'])){
                     <table class="table">
                       <thead>
                         <tr>
+                          <th>ক্রমিক নং</th>
                           <th>ইউনিয়নের নাম</th>
+                          <th>তারিখ</th>
                           <th>প্রতিক্রিয়া</th>
                         </tr>
                       </thead>
                       <tbody>
                         <?php 
                         $union = mysqli_query($conn,"SELECT * FROM union_name");
-                        while($row = mysqli_fetch_assoc($union)){
+                        $i = 0;
+                        while($row = mysqli_fetch_assoc($union)){ $i++;
                         ?>
                         <tr>
+                          <td><?php echo $i;?></td>
                           <td><?php echo $row['union_name'];?></td>
+                          <td><?php $time = $row['time']; echo $date = date("d-m-Y",$time); ?></td>
                           <td>
                             <a class="btn btn-primary p-2" href="union-edit.php?id=<?php echo $row['id']?>">Edit</a>
                             <a class="btn btn-primary p-2" href="union-delete.php?src=union&&table=union_name&&id=<?php echo $row['id']?>">Delete</a>
@@ -82,17 +87,7 @@ if(isset($_POST['submit'])){
                       </tbody>
                     </table>
                     </div>
-
-
-                      </div>
-
-                      <div class="view">
-                        <div class="view-content" style="margin-left:50px;width:100%">
-                          <div class="view-img">
-                            <img style="width:100%" src="../upload/setting.webp">
-                          </div>
-                        </div>
-                      </div>
+                  </div>
 
             </div>
           </div>

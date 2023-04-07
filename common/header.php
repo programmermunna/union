@@ -12,13 +12,15 @@ if(isset($_SESSION['admin_id'])){
   $id = $_SESSION['admin_id'];
 }
 if($id<1){
-    header('location:login.php');
+    header('location:logout.php');
 }
 
 $setting = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM setting WHERE id=1"));
 $website = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM website_setting WHERE id=1"));
-
-
+$union = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM union_name WHERE admin_id=$id"));
+if($union<1){
+  header("location:logout.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +51,7 @@ $website = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM website_setting 
                 <?php if($setting['logo']!=""){ ?>               
                   <img style="width:200px;height:60px" src="upload/<?php echo $setting['logo'];?>" alt="">
                  <?php }else{ ?>                  
-                  <span style="font-size:19px;color:#fff;"><?php echo $setting['name'];?></span>
+                  <span style="font-size:18px;color:#fff;"><?php echo $union['union_name']?></span>
                <?php  } ?>
               </div>
             </a>
@@ -87,24 +89,11 @@ $website = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM website_setting 
                   <span class="setting_icon"></span>
                   <span>Setting</span>
                 </p>
-              </a>
-              <?php 
-              if(isset($_POST['logout'])){
-              setcookie('admin_id', $id , time() - 2592000);
-              if(isset($_SESSION['admin_id'])){
-                  unset($_SESSION['admin_id']);
-                  session_destroy();
-                  header('location:login.php');
-              }
-              header('location:login.php');
-              } 
-              ?>
-              <form action="" method="POST">
+              </a>              
               <p>
                 <span style="cursor:pointer;" class="logout_icon"></span>
-                <input style="cursor:pointer;" type="submit" name="logout" value="Logout">
+                <a href="logout.php" class="">Logout</a>
               </p>
-            </form>
             </div>
           </div>
         </div>
