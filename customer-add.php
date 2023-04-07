@@ -81,7 +81,7 @@ if(isset($_POST['submit'])){
             <select name="village" id="village" class="input" required>
               <option style="display:none;" value="নির্বাচন করুন">নির্বাচন করুন</option>
               <?php 
-              $villages = mysqli_query($conn,"SELECT * FROM village");
+              $villages = mysqli_query($conn,"SELECT * FROM village WHERE admin_id=$id");
               while($village = mysqli_fetch_assoc($villages)){ ?>
                 <option value="<?php echo $village['id']?>"><?php echo $village['name']?></option>
              <?php }?>
@@ -242,8 +242,7 @@ if(isset($_POST['submit'])){
 
 
 <script>
-    $(document).ready(function(){  
-
+    $(document).ready(function(){ 
       $("#village").on("change",function(){
         var vlg_id = $(this).val();
         $.ajax({
@@ -252,6 +251,7 @@ if(isset($_POST['submit'])){
             data:
             {
               reference:"section of village in customer add page",
+              id:<?php echo $id?>,
               vlg_id:vlg_id,
             },         
             success:function(data){

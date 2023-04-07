@@ -60,7 +60,7 @@ if(isset($_SESSION['section'])){
                                 <select style="width: 350PX;" name="village" id="village" class="input">
                                     <?php
                                     if($sess_vlg != 0 ){ 
-                                    $select_village  = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM village WHERE id=$sess_vlg"));                                        
+                                    $select_village  = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM village WHERE admin_id=$id AND id=$sess_vlg"));
                                     ?>
                                         <option selected value="<?php echo $select_village['id']?>"><?php echo $select_village['name']?></option>                                        
                                     <?php  }else{ ?>
@@ -68,7 +68,7 @@ if(isset($_SESSION['section'])){
                                    <?php }?>
 
                                     <?php
-                                    $villages = mysqli_query($conn,"SELECT * FROM village");
+                                    $villages = mysqli_query($conn,"SELECT * FROM village WHERE admin_id=$id");
                                     while($village = mysqli_fetch_assoc($villages)){ ?>
                                         <option value="<?php echo $village['id']?>"><?php echo $village['name']?></option>
                                     <?php  }?>
@@ -78,7 +78,7 @@ if(isset($_SESSION['section'])){
                                 <select name="section" class="input" id="section">
                                 <?php
                                     if($sess_sec != 0 ){ 
-                                    $select_section  = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM section WHERE id=$sess_sec"));                                        
+                                    $select_section  = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM section WHERE admin_id=$id AND id=$sess_sec"));                                        
                                     ?>
                                         <option selected value="<?php echo $select_section['id']?>"><?php echo $select_section['name']?></option>                                        
                                     <?php  }else{ ?>
@@ -128,13 +128,13 @@ if(isset($_SESSION['section'])){
                                 <?php
                                 if(isset($_GET['src'])){
                                     $src = $_GET['src'];
-                                    $empSQL = "SELECT * FROM person WHERE admin_id=$id AND (name LIKE '$src' OR mobile_no = '$src' OR nid_no = '$src' OR holding_no = '$src' OR guardian_name LIKE '$src') ORDER BY id DESC";
-                                }elseif($sess_vlg != 0 && $sess_sec != 0){
-                                    $empSQL = "SELECT * FROM person WHERE admin_id=$id AND village = $sess_vlg AND section = $sess_sec ORDER BY id DESC";
-                                }elseif($sess_vlg != 0){
-                                    $empSQL = "SELECT * FROM person WHERE admin_id=$id AND village = $sess_vlg ORDER BY id DESC";
+                                    $empSQL = "SELECT * FROM person WHERE admin_id=$id AND (name LIKE '$src' OR mobile_no = '$src' OR nid_no = '$src' OR holding_no = '$src' OR guardian_name LIKE '$src')";
+                                }elseif($sess_vlg > 0 && $sess_sec > 0){
+                                    $empSQL = "SELECT * FROM person WHERE admin_id=$id AND village = $sess_vlg AND section = $sess_sec ";
+                                }elseif($sess_vlg > 0){
+                                    $empSQL = "SELECT * FROM person WHERE admin_id=$id AND village = $sess_vlg ";
                                 }else{
-                                    $empSQL = "SELECT * FROM person WHERE admin_id=$id ORDER BY id DESC";
+                                    $empSQL = "SELECT * FROM person WHERE admin_id=$id ";
                                 }
                                 $query = mysqli_query($conn, $empSQL);
                                 $i = 0;
@@ -228,6 +228,7 @@ if(isset($_SESSION['section'])){
             data:
             {
               reference:"section of village in customer all page",
+              id:<?php echo $id?>,
               vlg_id:vlg_id,
             },         
             success:function(data){

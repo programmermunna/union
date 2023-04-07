@@ -8,19 +8,37 @@ if(isset($_GET['id'])){
 }
 
 if(isset($_POST['submit'])){
-  $pmn_method = $_POST['pmn_method'];
-  $pmn_number = $_POST['pmn_number'];
+  $union_name = $_POST['union_name'];
+  $old_pass = md5($_POST['old_pass']);
+  $new_pass = md5($_POST['new_pass']);
+  $c_pass = md5($_POST['c_pass']);
 
-  $sql = "UPDATE payment_method SET pmn_method='$pmn_method', pmn_number='$pmn_number' WHERE id=$id";
+  if(empty($old_pass) || empty($new_pass) || empty($c_pass) && !empty($union_name)){
+    $sql = "UPDATE union SET union_name='$union_name' WHERE id=$id";    
+  }elseif(!empty($old_pass) && !empty($new_pass) && !empty($c_pass) && !empty($union_name)){
+    if($new_pass == $c_pass && !empty($old_pass)){
+      $check = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM union WHERE id=$id"));
+      if($check){
+        $sql = "UPDATE union SET union_name='$union_name' WHERE id=$id";
+      }
+    }
+  }elseif($new_pass == $c_pass && !empty($old_pass)){
+    $check = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM union WHERE id=$id"));
+  }
+
+
+
+
   $query = mysqli_query($conn,$sql);
   if($query){
     $msg = "Successfully Updated";
     header("location:payment-method.php?msg=$msg");
   }
-}
+}    
 
-    
-$row = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM payment_method WHERE id=$id"));
+
+$unions = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM union_name WHERE id=$id"));
+
 ?>
   <div class="container-fluid py-4">
       <div class="row">
@@ -41,18 +59,19 @@ $row = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM payment_method WHERE
                           <div style="display:block">
                               <div>
                                 <label for="name">Payment Method</label>
-                                <select style="width:100%;padding:5px;border:1px solid #979797bf;border-radius:2px;" name="pmn_method" id="">
-                                  <option  style="display:none;" selected value="Bkash"><?php echo $row['pmn_method']?></option>
-                                  <option value="Bkash">Bkash</option>
-                                  <option value="Nogod">Nogod</option>
-                                  <option value="Rocket">Rocket</option>
-                                  <option value="Upay">Upay</option>
-                                  <option value="Bank">Bank</option>
-                                </select>
+                                <input type="text" name="union_name" value="<?php echo $unions['union_name']?>">
                               </div>
                               <div>
-                                <label for="name">Payment Number</label>
-                                <input name="pmn_number" type="text" value="<?php echo $row['pmn_number']?>">
+                                <label for="old_pass">Old Password</label>
+                                <input name="old_pass" type="password">
+                              </div>
+                              <div>
+                                <label for="new_pass">New Password</label>
+                                <input name="new_pass" type="password">
+                              </div>
+                              <div>
+                                <label for="c_pass">Confirm Password</label>
+                                <input name="c_pass" type="password">
                               </div>
                           </div>
                           <div>                            
@@ -74,24 +93,6 @@ $row = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM payment_method WHERE
       </div>
     </div>
   </main>  
-
-  <script>    
-    $('#summernote').summernote({
-    placeholder: 'Write here details',
-    tabsize: 2,
-    height: 200,
-    toolbar: [
-    ['style', ['style']],
-    ['font', ['bold', 'underline', 'clear']],
-    ['color', ['color']],
-    ['para', ['ul', 'ol', 'paragraph']],
-    ['table', ['table']],
-    ['insert', ['link', 'picture', 'video']],
-    ['view', ['fullscreen', 'codeview', 'help']]
-    ]
-});
-  </script>
-
   
   <?php include("common/footer.php")?>
   <?php if (isset($_GET['msg'])) { ?><div id="munna" data-text="<?php echo $_GET['msg']; ?>"></div><?php } ?>

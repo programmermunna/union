@@ -32,7 +32,7 @@ if(isset($_POST['submit'])){
               <label>গ্রামের নাম</label>
               <select name="vlg_id" class="input">
               <?php
-              $villages = mysqli_query($conn,"SELECT * FROM village");
+              $villages = mysqli_query($conn,"SELECT * FROM village WHERE admin_id=$id");
               while($data = mysqli_fetch_assoc($villages)){ ?>
               <option value="<?php echo $data['id']?>"><?php echo $data['name']?></option>
               <?php }?>

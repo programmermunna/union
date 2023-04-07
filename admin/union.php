@@ -74,7 +74,7 @@ if(isset($_POST['submit'])){
                         <tr>
                           <td><?php echo $row['union_name'];?></td>
                           <td>
-                            <a class="btn btn-primary p-2" href="payment-edit.php?id=<?php echo $row['id']?>">Edit</a>
+                            <a class="btn btn-primary p-2" href="union-edit.php?id=<?php echo $row['id']?>">Edit</a>
                             <a class="btn btn-primary p-2" href="union-delete.php?src=union&&table=union_name&&id=<?php echo $row['id']?>">Delete</a>
                           </td>
                         </tr>
