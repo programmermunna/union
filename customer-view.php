@@ -24,8 +24,8 @@ $data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM person WHERE id='$i
           <form id="edit_customer_form" action="" method="POST" enctype="multipart/form-data">
 
             <div>
-              <label>ক্রমিক নং <span class="requird_star">*</span></label>
-              <input disabled type="number" name="sl_no" class="input disabled" required value="<?php echo $data['sl_no']?>"/>
+              <label>আইডি নং <span class="requird_star">*</span></label>
+              <input disabled type="number" name="id_no" class="input disabled" required value="<?php echo $data['id_no']?>"/>
             </div>
 
             <div>

@@ -20,19 +20,19 @@
           <div style="width:100%;background:#ddd;"><h3 style="text-align:center;padding:5px;color:#1f54dd;font-weight:bold;">সমস্ত তথ্য</h3></div>
         <br>
 
-        <div class="home_content">        
+        <div class="home_content">
            <!-- ------box------ -->
           <div class="home_card">
             <div>
               <div class="card_top">
                 <div class="card_top_icon from-blue-500 to-blue-600">&#x2637</div>
                 <div class="card_top_info">
-                  <p class="card_top_numbers">৳<?php echo 22?></p>                  
+                  <p class="card_top_numbers"><?php echo 22?></p>                  
                 </div>
               </div>
               <div class="card_bottom">
                 <div class="card_percentage">
-                  <p style="margin: 0 auto;">সমস্ত খরচ</p>
+                  <p style="margin: 0 auto;">কাষ্টময়ার</p>
                 </div>
                 <div class="card_line">
                   <div style="width: 100%" class="from-blue-500 via-blue-600 to-blue-700"></div>
@@ -45,7 +45,7 @@
         </div>
 
         <br>
-        <div style="width:100%;background:#ddd;"><h3 style="text-align:center;padding:5px;color:#1f54dd;font-weight:bold;">এই মাস</h3></div>
+        <div style="width:100%;background:#ddd;"><h3 style="text-align:center;padding:5px;color:#1f54dd;font-weight:bold;">এই বছরের কর</h3></div>
         <br>
 
         <div class="home_content">
@@ -55,12 +55,12 @@
               <div class="card_top">
                 <div class="card_top_icon from-blue-500 to-blue-600">&#x2637</div>
                 <div class="card_top_info">
-                  <p class="card_top_numbers">৳<?php echo 222 ?></p>                  
+                  <p class="card_top_numbers"><?php echo 222 ?></p>                  
                 </div>
               </div>
               <div class="card_bottom">
                 <div class="card_percentage">
-                  <p style="margin: 0 auto;">এই মাসের খরচ</p>
+                  <p style="margin: 0 auto;">কাষ্টময়ার</p>
                 </div>
                 <div class="card_line">
                   <div style="width: 100%" class="from-blue-500 via-blue-600 to-blue-700"></div>

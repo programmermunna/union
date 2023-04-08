@@ -65,7 +65,7 @@ if(isset($_POST['update'])){
                              <table class="table ">
                                 <thead>
                                     <tr>
-                                        <th class="table_th"><div class="table_th_div"><span>ক্রমিক নং</span></div></th>
+                                        <th class="table_th"><div class="table_th_div"><span>আইডি নং</span></div></th>
                                         <th class="table_th"><div class="table_th_div"><span>পাড়ার নাম</span></div></th>
                                         <th class="table_th"><div class="table_th_div"><span>গ্রামের নাম</span></div></th>
                                         <th class="table_th"><div class="table_th_div"><span>প্রতিক্রিয়া</span></div></th>

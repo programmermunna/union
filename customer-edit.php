@@ -8,7 +8,7 @@ if(isset($_GET['id'])){
 $data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM person WHERE id='$id'"));
 
 if(isset($_POST['submit'])){
-  $sl_no = $_POST['sl_no'];
+  $id_no = $_POST['id_no'];
   $name = $_POST['name'];
   $guardian_name = $_POST['guardian_name'];
   $village = $_POST['village'];
@@ -36,10 +36,10 @@ if(isset($_POST['submit'])){
     $file_name = $data['file_name'];
   }
 
-  if( empty($sl_no) || empty($name) || empty($guardian_name) || empty($village) || empty($section) || empty($family_member) || empty($word_no) || empty($net_worth)){
+  if( empty($id_no) || empty($name) || empty($guardian_name) || empty($village) || empty($section) || empty($family_member) || empty($word_no) || empty($net_worth)){
     header("Location:customer-add.php?err=Please Fill-Up Carefully!");
   }else{
-    $sql = "UPDATE person SET sl_no='$sl_no', name='$name', guardian_name='$guardian_name', village='$village', section='$section', word_no='$word_no', family_member='$family_member', male='$male', female='$female', holding_no='$holding_no', nid_no='$nid_no', profession='$profession', home='$home', net_worth='$net_worth', annual_tax='$annual_tax', ablable_tax='$ablable_tax', due_tax='$due_tax', present_year='$present_year', mobile_no='$mobile_no',file_name='$file_name' WHERE id=$id";
+    $sql = "UPDATE person SET id_no='$id_no', name='$name', guardian_name='$guardian_name', village='$village', section='$section', word_no='$word_no', family_member='$family_member', male='$male', female='$female', holding_no='$holding_no', nid_no='$nid_no', profession='$profession', home='$home', net_worth='$net_worth', annual_tax='$annual_tax', ablable_tax='$ablable_tax', due_tax='$due_tax', present_year='$present_year', mobile_no='$mobile_no',file_name='$file_name' WHERE id=$id";
     $update = mysqli_query($conn,$sql);
     if($update){
       header("location:customer-all.php?msg=করদাতা সম্পাদন হয়েছে");
@@ -68,8 +68,8 @@ if(isset($_POST['submit'])){
           <form id="edit_customer_form" action="" method="POST" enctype="multipart/form-data">
 
             <div>
-              <label>ক্রমিক নং <span class="requird_star">*</span></label>
-              <input type="number" name="sl_no" class="input" required value="<?php echo $data['sl_no']?>"/>
+              <label>আইডি নং <span class="requird_star">*</span></label>
+              <input type="number" name="id_no" class="input" required value="<?php echo $data['id_no']?>"/>
             </div>
 
             <div>
@@ -151,8 +151,8 @@ if(isset($_POST['submit'])){
               <label>পেশা <span class="requird_star">*</span></label>
               <br>
               <div class="pesa">
-                <label>ব্যাবসাঃ</label>
-                <input type="radio" required name="profession" value="ব্যাবসা"
+                <label for="business">ব্যাবসাঃ</label>
+                <input type="radio" id="business" required name="profession" value="ব্যাবসা"
                 <?php
                 if($data['profession'] == 'ব্যাবসা'){
                   echo "checked";
@@ -161,8 +161,8 @@ if(isset($_POST['submit'])){
                 >
               </div>
               <div class="pesa">
-                <label>চাকুরীঃ</label>
-                <input type="radio" required name="profession" value="চাকুরি"
+                <label for="job">চাকুরীঃ</label>
+                <input type="radio" id="job" required name="profession" value="চাকুরি"
                 <?php
                 if($data['profession'] == 'চাকুরি'){
                   echo "checked";
@@ -171,8 +171,8 @@ if(isset($_POST['submit'])){
                 >
               </div>
               <div class="pesa">
-                <label>কৃষিঃ</label>
-                <input type="radio" required name="profession" value="কৃষি"
+                <label for="farmer">কৃষিঃ</label>
+                <input type="radio" id="farmer" required name="profession" value="কৃষি"
                 <?php
                 if($data['profession'] == 'কৃষি'){
                   echo "checked";
@@ -181,8 +181,8 @@ if(isset($_POST['submit'])){
                 >
               </div>
               <div class="pesa">
-                <label>দিন-মজুরঃ</label>
-                <input type="radio" required name="profession" value="দিন-মজুর"
+                <label for="labor">দিন-মজুরঃ</label>
+                <input type="radio" id="labor" required name="profession" value="দিন-মজুর"
                 <?php
                 if($data['profession'] == 'দিন-মজুর'){
                   echo "checked";
@@ -191,8 +191,8 @@ if(isset($_POST['submit'])){
                 >
               </div>
               <div class="pesa">
-                <label>প্রবাসীঃ</label>
-                <input type="radio" required name="profession" value="প্রবাসী"
+                <label for="expatriate">প্রবাসীঃ</label>
+                <input type="radio" id="expatriate" required name="profession" value="প্রবাসী"
                 <?php
                 if($data['profession'] == 'প্রবাসী'){
                   echo "checked";
@@ -201,8 +201,8 @@ if(isset($_POST['submit'])){
                 >
               </div>
               <div class="pesa">
-                <label>শ্রমিকঃ</label>
-                <input type="radio" required name="profession" value="শ্রমিক"
+                <label for="worker">শ্রমিকঃ</label>
+                <input type="radio" id="worker" required name="profession" value="শ্রমিক"
                 <?php
                 if($data['profession'] == 'শ্রমিক'){
                   echo "checked";
@@ -220,8 +220,8 @@ if(isset($_POST['submit'])){
               <label>গৃহের বিবরন <span class="requird_star">*</span></label>
               <br>              
               <div class="pesa">
-                <label>কাঁচাঃ</label>
-                <input type="radio" required name="home" value="কাঁচা"
+                <label for="kacha">কাঁচাঃ</label>
+                <input type="radio" id="kacha" required name="home" value="কাঁচা"
                 <?php
                 if($data['home'] == 'কাঁচা'){
                   echo "checked";
@@ -231,8 +231,8 @@ if(isset($_POST['submit'])){
               </div>
               
               <div class="pesa">
-                <label>পাকাঃ</label>
-                <input type="radio" required name="home" value="পাকা"
+                <label for="paka">পাকাঃ</label>
+                <input type="radio" id="paka" required name="home" value="পাকা"
                 <?php
                 if($data['home'] == 'পাকা'){
                   echo "checked";
@@ -242,8 +242,8 @@ if(isset($_POST['submit'])){
               </div>
               
               <div class="pesa">
-                <label>আধাপাকাঃ</label>
-                <input type="radio" required name="home" value="আধাপাকা"
+                <label for="adhapaka">আধাপাকাঃ</label>
+                <input type="radio" id="adhapaka" required name="home" value="আধাপাকা"
                 <?php
                 if($data['home'] == 'আধাপাকা'){
                   echo "checked";
@@ -253,8 +253,8 @@ if(isset($_POST['submit'])){
               </div>
               
               <div class="pesa">
-                <label>বিল্ডিংঃ</label>
-                <input type="radio" required name="home" value="বিল্ডিং"
+                <label for="building">বিল্ডিংঃ</label>
+                <input type="radio" id="building" required name="home" value="বিল্ডিং"
                 <?php
                 if($data['home'] == 'বিল্ডিং'){
                   echo "checked";
@@ -264,8 +264,8 @@ if(isset($_POST['submit'])){
               </div>
               
               <div class="pesa">
-                <label>টিনসেটঃ</label>
-                <input type="radio" required name="home" value="টিনসেট"
+                <label for="tinset">টিনসেটঃ</label>
+                <input type="radio" id="tinset" required name="home" value="টিনসেট"
                 <?php
                 if($data['home'] == 'টিনসেট'){
                   echo "checked";

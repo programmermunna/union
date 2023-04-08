@@ -1252,6 +1252,7 @@ h3{
   /* padding: 0.75rem; */
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity));
+  padding: 0 !important;
 }
 
 @media (min-width: 768px){
@@ -1311,6 +1312,7 @@ h3{
   text-transform: uppercase;
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
+  padding:20px; 
 }
 
 .add_page_title > button{

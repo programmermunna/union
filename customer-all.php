@@ -106,7 +106,7 @@ if(isset($_SESSION['section'])){
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th class="table_th"><div class="table_th_div"><span>ক্রমিক নং.</span></div></th>
+                                        <th class="table_th"><div class="table_th_div"><span>আইডি নং.</span></div></th>
                                         <th class="table_th"><div class="table_th_div"><span>খানা প্রধানের ছবি</span></div></th>
                                         <th class="table_th"><div class="table_th_div"><span>খানা প্রধানের নাম</span></div></th>
                                         <th class="table_th"><div class="table_th_div"><span>পিতা/স্বামীর নাম</span></div></th>
@@ -142,7 +142,7 @@ if(isset($_SESSION['section'])){
                                 ?>
                                     <tr>
                                         <td class="p-3 border whitespace-nowrap">
-                                            <div class="text-center"><?php echo $i?></div>
+                                            <div class="text-center"><?php echo $row['id_no']?></div>
                                         </td>
                                         <td class="p-3 border whitespace-nowrap">
                                             <div class="text-center">

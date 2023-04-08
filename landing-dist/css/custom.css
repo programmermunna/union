@@ -192,3 +192,54 @@ select {
     display: block;
   }
 }
+
+.hero-inners{
+  display: flex;
+  justify-content: center;
+}
+
+.card{
+  width: 60%;
+  box-shadow: 0px 0px 5px gray;
+  padding:20px;
+  padding-bottom: 0;
+}
+
+.from>form>div{
+  /* display: flex; */
+  width: 100%;
+  padding: 5px;
+}
+
+.from>form>div input{
+  width: 100%;
+  outline:none;
+  padding:0px 10px;
+}
+
+.from>form>div input[type=submit]{
+  background: #0695cebe;
+  color:#fff;
+  border: none;
+  padding:5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.from>form>div input[type=submit]:hover{
+  background: #0695cefd;
+  color:#fff;
+  border: none;
+  padding:5px;
+  cursor: pointer;
+}
+
+
+@media only screen and (max-width: 768px) {
+  .card{
+    width: 90%;
+  }
+  .from>form>div{
+    text-align: left !important;
+  }
+}

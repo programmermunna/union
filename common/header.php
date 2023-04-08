@@ -58,44 +58,13 @@ if($union<1){
           </div>
 
           <button onclick="toggle_nav()" class="menu_icon"></button>
-            <hidden id="search_toggle"></hidden>
-          
+            <hidden id="search_toggle"></hidden>       
         </div>
 
         <div class="header_right">
           <button onclick="toggle_full_screen()" class="expand_icon"></button>
+          <a style="color:#fff" href="logout.php">Logout</a>
 
-          <!-- Header Profile Image -->
-          <div class="profile_image_wrapper">
-            <button id="header_profile_image">
-              <img
-                src="upload/<?php echo $admin_info['file']?>"
-                alt=""
-              />
-            </button>
-
-            <!-- Profile Options -->
-            <div id="profile_options_overlay"></div>
-            <div id="profile_options">
-              <a href="admin-setting.php">
-                <p>
-                  <span class="user_icon"></span>
-                  <span>Admin</span>
-                </p>
-              </a>
-
-              <a href="setting-index.php">
-                <p>
-                  <span class="setting_icon"></span>
-                  <span>Setting</span>
-                </p>
-              </a>              
-              <p>
-                <span style="cursor:pointer;" class="logout_icon"></span>
-                <a href="logout.php" class="">Logout</a>
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </header>

@@ -39,10 +39,11 @@ $mail = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM mail_setting WHERE 
     <link rel="stylesheet" href="landing-dist/css/style.css">
     <link rel="stylesheet" href="landing-dist/css/slicknav.css">
     <link rel="stylesheet" href="landing-dist/css/custom.css">
+    <link rel="stylesheet" href="landing-dist/css/form.css">
 </head>
 <body class="is-boxed has-animations">
     <div class="body-wrap">
-    <header class="site-header">
+        <header class="site-header">
             <div class="container">
                 <div class="site-header-inner">
                     <div class="brand header-brand">

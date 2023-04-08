@@ -62,7 +62,7 @@ if(isset($_POST['submit'])){
                     <table class="table">
                       <thead>
                         <tr>
-                          <th>ক্রমিক নং</th>
+                          <th>আইডি নং</th>
                           <th>ইউনিয়নের নাম</th>
                           <th>তারিখ</th>
                           <th>প্রতিক্রিয়া</th>

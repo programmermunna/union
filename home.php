@@ -2,18 +2,63 @@
         <main>
             <section class="hero" style="padding:30px 0">
                 <div class="container">
-                    <div class="hero-inner">
-						<div class="hero-copy">
-	                        <h1 class="hero-title mt-0"><?php echo "This is Product Title"?></h1>
-	                        <p style="text-align:left;" class="hero-paragraph"><?php echo "This is Product Summery"?></p>
-	                        <div class="hero-cta">
-								<a style="margin-right:5px" class="button button-primary" href="order.php">Buy it now</a>
-								<a style="background:#3B82F6" class="button button-primary" target="_blank" href="login.php">See Demo</a>
+                    <div class="hero-inners">
+						<div class="card">
+							<div class="from">
+								<form action="tax-holder.php" method="POST">
+									<div>
+										<label for="union">ইউনিয়নের নাম</label>
+										<select name="union" id="union">
+											<option value="মুকন্দগাতি">মুকন্দগাতি</option>
+											<option value="মুকন্দগাতি">মুকন্দগাতি</option>
+											<option value="মুকন্দগাতি">মুকন্দগাতি</option>
+											<option value="মুকন্দগাতি">মুকন্দগাতি</option>
+											<option value="মুকন্দগাতি">মুকন্দগাতি</option>
+										</select>
+									</div>
+									<div>
+										<label for="union">গ্রামের নাম</label>
+										<select name="union" id="union">
+											<option value="মুকন্দগাতি">মুকন্দগাতি</option>
+											<option value="মুকন্দগাতি">মুকন্দগাতি</option>
+											<option value="মুকন্দগাতি">মুকন্দগাতি</option>
+											<option value="মুকন্দগাতি">মুকন্দগাতি</option>
+											<option value="মুকন্দগাতি">মুকন্দগাতি</option>
+										</select>
+									</div>
+									<div>
+										<label for="union">পাড়ার নাম</label>
+										<select name="union" id="union">
+											<option value="মুকন্দগাতি">মুকন্দগাতি</option>
+											<option value="মুকন্দগাতি">মুকন্দগাতি</option>
+											<option value="মুকন্দগাতি">মুকন্দগাতি</option>
+											<option value="মুকন্দগাতি">মুকন্দগাতি</option>
+											<option value="মুকন্দগাতি">মুকন্দগাতি</option>
+										</select>
+									</div>
+									<div>
+										<label for="union">করদাতার পিতা/স্বামী</label>
+										<br>
+										<input type="text" >
+									</div>
+									<div>
+										<label for="union">করদাতার নাম</label>
+										<br>
+										<input type="text" >
+									</div>									
+									<div style="color:red;font-size:15px;font-weight:bolder">অথবা</div>
+									<div>
+									<label for="union">আইডি নং, ভোটার আইডি কার্ড, মোবাইল নং, হোল্ডিং নং</label>
+										<br>
+										<input type="text" name="exect_id" >
+									</div>
+
+									<div>
+									<input type="submit" name="submit" value="Submit">
+									</div>
+									
+								</form>
 							</div>
-						</div>
-						<div class="hero-media" style="margin-top:55px">
-						<img class="template_img" src="upload/contact.jpg">
-						<h3 style="text-align:center">200 ৳/Year</h3>
 						</div>
                     </div>
                 </div>

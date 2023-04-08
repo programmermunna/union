@@ -17,26 +17,21 @@ if(isset($_POST['submit'])){
     $sql = "UPDATE union SET union_name='$union_name' WHERE id=$id";    
   }elseif(!empty($old_pass) && !empty($new_pass) && !empty($c_pass) && !empty($union_name)){
     if($new_pass == $c_pass && !empty($old_pass)){
-      $check = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM union WHERE id=$id"));
+      $check = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM union_name WHERE id=$id"));
       if($check){
-        $sql = "UPDATE union SET union_name='$union_name' WHERE id=$id";
+        $sql = "UPDATE union_name SET union_name='$union_name' WHERE id=$id";
       }
     }
   }elseif($new_pass == $c_pass && !empty($old_pass)){
-    $check = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM union WHERE id=$id"));
+    $check = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM union_name WHERE id=$id"));
   }
-
-
-
 
   $query = mysqli_query($conn,$sql);
   if($query){
     $msg = "Successfully Updated";
-    header("location:payment-method.php?msg=$msg");
+    header("location:union.php?msg=$msg");
   }
-}    
-
-
+}
 $unions = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM union_name WHERE id=$id"));
 
 ?>
