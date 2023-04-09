@@ -7,72 +7,144 @@
 							<div class="from">
 								<?php
 								if(isset($_POST['submit'])){ 
-									if(isset($_POST['submit'])){
 									$exect_id = $_POST['exect_id'];
+									
+									if(isset($_POST['union'])){
+										$union = $_POST['union'];
+									}
+									if(isset($_POST['village'])){
+										$village = $_POST['village'];
+									}
+									if(isset($_POST['section'])){
+										$section = $_POST['section'];
+									}
+									if(isset($_POST['guardian_name'])){
+										$guardian_name = $_POST['guardian_name'];
+									}
+									if(isset($_POST['tax_holder_name'])){
+										$tax_holder_name = $_POST['tax_holder_name'];
+									}
 
-									$union = $_POST['union'];
-									$village = $_POST['village'];
-									$section = $_POST['section'];
-									$guardian_name = $_POST['guardian_name'];
-									$tax_holder_name = $_POST['tax_holder_name'];
-								
 									if(!empty($exect_id)){		
 										$sql = "SELECT * FROM person WHERE (id_no = $exect_id OR holding_no = $exect_id OR nid_no = $exect_id OR mobile_no = $exect_id)";
-										$query = mysqli_query($conn,$sql);
+										$data = mysqli_fetch_assoc(mysqli_query($conn,$sql));
+										$vlg_id = $data['village'];
+										$section_id = $data['section'];
+										$village = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM village WHERE id=$vlg_id"));
+										$section = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM section WHERE id=$section_id"));
 									}elseif(!empty($union) && !empty($village) && !empty($section) && !empty($guardian_name) && !empty($tax_holder_name)){
-										$sql = "SELECT * FROM person WHERE (id_no = $exect_id OR holding_no = $exect_id OR nid_no = $exect_id OR mobile_no = $exect_id)";
-										$query = mysqli_query($conn,$sql);
+										$sql = "SELECT * FROM person WHERE admin_id=$union AND village=$village AND section=$section AND guardian_name='$guardian_name' AND name='$tax_holder_name'";
+										$data = mysqli_fetch_assoc(mysqli_query($conn,$sql));
+										$vlg_id = $data['village'];
+										$section_id = $data['section'];
+										$village = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM village WHERE id=$vlg_id"));
+										$section = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM section WHERE id=$section_id"));
 									}else{
-										echo "<h1>No Data Found</h1>";
-									}
-									
+										echo "<h1 style='text-align:center'>No Data Found</h1>";
+										echo "<br>";
+										exit;
 									}
 								?>
 								<form action="">									
 									<div>
-										<label for="union">করদাতার পিতা/স্বামী</label>
+										<label for="union">আইডি নং</label>
 										<br>
-										<input type="text" >
+										<input type="text" name="id_no" value="<?php echo $data['id_no'] ?>" >
 									</div>
 									<div>
 										<label for="union">করদাতার নাম</label>
 										<br>
-										<input type="text" >
+										<input type="text" name="name" value="<?php echo $data['name'] ?>" >
 									</div>
 									<div>
-										<label for="union">করদাতার নাম</label>
+										<label for="union">পিতা/স্বামীর নাম </label>
 										<br>
-										<input type="text" >
+										<input type="text" name="guardian_name" value="<?php echo $data['guardian_name'] ?>" >
 									</div>
 									<div>
-										<label for="union">করদাতার নাম</label>
+										<label for="union">গ্রাম</label>
 										<br>
-										<input type="text" >
+										<input type="text" name="village" value="<?php echo $village['name'] ?>" >
 									</div>
 									<div>
-										<label for="union">করদাতার নাম</label>
+										<label for="union">পাড়া/মহল্লা</label>
 										<br>
-										<input type="text" >
+										<input type="text" name="section" value="<?php echo $section['name'] ?>" >
 									</div>
 									<div>
-										<label for="union">করদাতার নাম</label>
+										<label for="union">ওয়ার্ড নং</label>
 										<br>
-										<input type="text" >
+										<input type="text" name="word_no" value="<?php echo $data['word_no'] ?>" >
 									</div>
 									<div>
-										<label for="union">করদাতার নাম</label>
+										<label for="union">পরিবারের সদস্য সংখ্যা</label>
 										<br>
-										<input type="text" >
+										<input type="text" name="family_member" value="<?php echo $data['family_member'] ?>" >
 									</div>
 									<div>
-										<label for="union">করদাতার নাম</label>
+										<label for="union">পুরুষ</label>
 										<br>
-										<input type="text" >
+										<input type="text" name="male" value="<?php echo $data['male'] ?>" >
 									</div>
 									<div>
-										<label for="union">করদাতার নাম</label>
+										<label for="union">মহিলা</label>
 										<br>
-										<img style="width: 200px;height:200px;margin:auto" src="https://munnahasan4.netlify.app/img/code-art.jpg" alt="">
+										<input type="text" name="female" value="<?php echo $data['female'] ?>" >
+									</div>
+									<div>
+										<label for="union">হোল্ডিং নং</label>
+										<br>
+										<input type="text" name="holding_no" value="<?php echo $data['holding_no'] ?>" >
+									</div>
+									<div>
+										<label for="union">জাতীয় পরিচয়পত্র নং</label>
+										<br>
+										<input type="text" name="nid_no" value="<?php echo $data['nid_no'] ?>" >
+									</div>
+									<div>
+										<label for="union">পেশা</label>
+										<br>
+										<input type="text" name="profession" value="<?php echo $data['profession'] ?>" >
+									</div>
+									<div>
+										<label for="union">গৃহের বিবরন</label>
+										<br>
+										<input type="text" name="home" value="<?php echo $data['home'] ?>" >
+									</div>
+									<div>
+										<label for="union">স্থাপনার মুল্য</label>
+										<br>
+										<input type="text" name="net_worth" value="<?php echo $data['net_worth'] ?>" >
+									</div>
+									<div>
+										<label for="union">বার্ষিক কর</label>
+										<br>
+										<input type="text" name="annual_tax" value="<?php echo $data['annual_tax'] ?>" >
+									</div>
+									<div>
+										<label for="union">নগদ কর</label>
+										<br>
+										<input type="text" name="ablable_tax" value="<?php echo $data['ablable_tax'] ?>" >
+									</div>
+									<div>
+										<label for="union">বকেয়া কর</label>
+										<br>
+										<input type="text" name="due_tax" value="<?php echo $data['due_tax'] ?>" >
+									</div>
+									<div>
+										<label for="union">অর্থ বছর</label>
+										<br>
+										<input type="text" name="present_year" value="<?php echo $data['present_year'] ?>" >
+									</div>
+									<div>
+										<label for="union">মোবাইল নং</label>
+										<br>
+										<input type="text" name="mobile_no" value="<?php echo $data['mobile_no'] ?>" >
+									</div>
+									<div>
+										<label for="union">ছবি</label>
+										<br>
+										<img style="width: 200px;height:200px;margin:auto" src="upload/<?php echo $data['file_name']?>" alt="image">
 									</div>									
 								</form>
 								<?php }else{ ?>
