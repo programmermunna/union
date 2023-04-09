@@ -1,4 +1,7 @@
-<?php include("common/home-header.php")?>
+<?php include("common/home-header.php");
+
+
+?>
         <main>
             <section class="hero" style="padding:30px 0">
                 <div class="container">
