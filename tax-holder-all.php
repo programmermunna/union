@@ -43,8 +43,16 @@ if(isset($_SESSION['section'])){
             <div class="main_content_container">
                 <!-- Table -->
                 <div class="table_content_wrapper">
-                    <div class="page_title">
+                    <div class="page_title flex justify-between">
                         <h3>করদাতার তালিকা সমূহ</h4>
+                        <select style="width: 200px;" class="input" name="year">
+                            <?php 
+                            // $years = mysqli_query($conn,"SELECT * FROM person WHERE admin_id=$id AND present_year = ")
+                            $years = mysqli_query($conn,"SELECT DISTINCT present_year FROM person WHERE admin_id=$id");
+                            while($year = mysqli_fetch_assoc($years)){ ?>
+                            <option value="<?php echo $year['present_year']?>"><?php echo $year['present_year']?></option>
+                            <?php  }?>
+                        </select>
                     </div>
                     <header class="table_header">
                         <div class="table_header_left">

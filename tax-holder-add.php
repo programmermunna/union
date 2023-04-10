@@ -21,7 +21,7 @@ if(isset($_POST['submit'])){
   $annual_tax = $_POST['annual_tax'];
   $ablable_tax = $_POST['ablable_tax'];
   $due_tax = $_POST['due_tax'];
-  $present_year = $_POST['present_year'];
+  $present_year = date("Y");
   $mobile_no = $_POST['mobile_no'];
 
 
@@ -222,7 +222,7 @@ if(isset($_POST['submit'])){
 
             <div>
             <label>অর্থ বছর</label>
-            <input type="number" name="present_year" class="input"  value="<?php echo date("Y")?>"/>
+            <input type="number" disabled class="input"  value="<?php echo date("Y")?>"/>
             </div>
 
             <div>

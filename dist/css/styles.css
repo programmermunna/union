@@ -1112,9 +1112,11 @@ h3{
 
 .home_content{
   display: grid;
-  width: 100%;
+  width: 95%;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 1rem;
+  margin: auto;
+
 }
 
 .home_card{
@@ -1141,7 +1143,7 @@ h3{
 
 @media (min-width: 1280px){
   .home_card{
-    grid-column: span 3 / span 3;
+    grid-column: span 4 / span 3;
   }
 }
 
@@ -3480,9 +3482,6 @@ h3{
   height: 50px;
   text-align: center;
 } */
-
-
-
 
 
 
