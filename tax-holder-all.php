@@ -44,13 +44,13 @@ if(isset($_SESSION['section'])){
                 <!-- Table -->
                 <div class="table_content_wrapper">
                     <div class="page_title">
-                        <h4>ALL CUSTOMERS</h4>
+                        <h3>করদাতার তালিকা সমূহ</h4>
                     </div>
                     <header class="table_header">
                         <div class="table_header_left">
-                            <a href="customer-all.php?session_destroy=true" class="px-4 py-2 text-sm bg-blue-600 text-white rounded focus:ring"><i class="fa-solid fa-rotate-right"></i> refresh</a>
-                            <a href="customer-add.php" class="px-4 py-2 text-sm bg-blue-600 text-white rounded focus:ring">Add Customer</a>
-                            <a href="customer-export.php" class="px-4 py-2 text-sm bg-blue-600 text-white rounded focus:ring">Export Excel</a>
+                            <a href="tax-holder-all.php?session_destroy=true" class="px-4 py-2 text-sm bg-blue-600 text-white rounded focus:ring"><i class="fa-solid fa-rotate-right"></i> refresh</a>
+                            <a href="tax-holder-add.php" class="px-4 py-2 text-sm bg-blue-600 text-white rounded focus:ring">Add New</a>
+                            <a href="tax-holder-export.php" class="px-4 py-2 text-sm bg-blue-600 text-white rounded focus:ring">Export Excel</a>
                         </div>
 
 
@@ -85,7 +85,7 @@ if(isset($_SESSION['section'])){
                                     <option selected disabled>পাড়া/মহল্লা বাছাই করুণ</option>
                                    <?php }?>
                                 </select>
-                                <input style="cursor:pointer;" type="submit" class="btn" placeholder="Search" />
+                                <input style="cursor:pointer;" type="submit" class="btn" value="খুজুন"/>
                             </div>
                         </form>
                         </div>
@@ -94,9 +94,8 @@ if(isset($_SESSION['section'])){
 
                         <form action="" method="GET">
                             <div class="table_header_right">
-                                <input type="search" name="src" placeholder="Search Customer" />
-                                <input style="cursor:pointer;" type="submit" class="btn"
-                                    placeholder="Search" />
+                                <input type="search" name="src" placeholder="করদাতা খুজুন" />
+                                <input style="cursor:pointer;" type="submit" class="btn" value="খুজুন"/>
                             </div>
                         </form>
                     </header>
@@ -125,7 +124,7 @@ if(isset($_SESSION['section'])){
                                         <th class="table_th"><div class="table_th_div"><span>প্রতিক্রিয়া</span></div></th>
                                     </tr>
                                 </thead>
-                                <tbody id="customers_wrapper" class="text-sm">
+                                <tbody id="tax_holders_wrapper" class="text-sm">
                                 <?php
                                 if(isset($_GET['src'])){
                                     $src = $_GET['src'];
@@ -198,11 +197,11 @@ if(isset($_SESSION['section'])){
                                         <td class="p-3 border whitespace-nowrap">
                                             <div class="w-full flex_center gap-1">
                                                 <a class="btn table_edit_btn"
-                                                    href="customer-edit.php?id=<?php echo $row['id']?>">Edit</a>
+                                                    href="tax-holder-edit.php?id=<?php echo $row['id']?>">Edit</a>
                                                 <a class="btn table_edit_btn"
-                                                    href="delete.php?src=customer-all&&table=person&&id=<?php echo $row['id']?>">Delete</a>
+                                                    href="delete.php?src=tax-holder-all&&table=person&&id=<?php echo $row['id']?>">Delete</a>
                                                 <a class="btn table_edit_btn"
-                                                    href="customer-view.php?id=<?php echo $row['id']?>">View</a>
+                                                    href="tax-holder-view.php?id=<?php echo $row['id']?>">View</a>
                                             </div>
                                         </td>
                                     </tr>
@@ -231,7 +230,7 @@ if(isset($_SESSION['section'])){
             type:"GET",
             data:
             {
-              reference:"section of village in customer all page",
+              reference:"section of village in tax_holder all page",
               id:<?php echo $id?>,
               vlg_id:vlg_id,
             },         

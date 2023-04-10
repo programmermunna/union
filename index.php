@@ -4,7 +4,7 @@
 <?php 
      
     $date = date("F Y",time());
-    $customer = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM person WHERE admin_id=$id"));
+    $tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM person WHERE admin_id=$id"));
 
 ?>
     <!-- Main Content -->

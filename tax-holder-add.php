@@ -33,13 +33,13 @@ if(isset($_POST['submit'])){
   } 
 
   if( empty($id_no) || empty($name) || empty($guardian_name) || empty($village) || empty($section) || empty($family_member) || empty($net_worth)){
-    header("Location:customer-add.php?err=Please Fill-Up Carefully!");
+    header("Location:tax-holder-add.php?err=Please Fill-Up Carefully!");
   }else{
     $sql = "INSERT INTO person (admin_id,id_no,name,guardian_name,village,section,word_no,family_member,male,female,holding_no,nid_no,profession,home,net_worth,annual_tax,ablable_tax,due_tax,present_year,mobile_no,file_name,time) 
     VALUES ('$id','$id_no','$name','$guardian_name','$village','$section','$word_no','$family_member','$male','$female','$holding_no','$nid_no','$profession','$home','$net_worth','$annual_tax','$ablable_tax','$due_tax','$present_year','$mobile_no','$file_name','$time')";
     $insert = mysqli_query($conn,$sql);
     if($insert){
-      header("location:customer-add.php?msg=নতুন করদাতা যুক্ত হয়েছে");
+      header("location:tax-holder-add.php?msg=নতুন করদাতা যুক্ত হয়েছে");
     }else{
       echo "error";
     }
@@ -62,7 +62,7 @@ if(isset($_POST['submit'])){
             <span>নতুন করদাতা যুক্ত করুন</span>
           </div>
           
-          <form id="edit_customer_form" action="" method="POST" enctype="multipart/form-data">
+          <form id="edit_tax_holder_form" action="" method="POST" enctype="multipart/form-data">
 
             <div>
               <label>আইডি নং <span class="requird_star">*</span></label>
@@ -253,7 +253,7 @@ if(isset($_POST['submit'])){
             type:"GET",
             data:
             {
-              reference:"section of village in customer add page",
+              reference:"section of village in tax_holder add page",
               id:<?php echo $id?>,
               vlg_id:vlg_id,
             },         

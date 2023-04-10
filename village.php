@@ -1,9 +1,7 @@
 <!-- Header -->
 <?php include("common/header.php");?>
 <!-- Header -->
-<?php
-
-  
+<?php  
 if(isset($_POST['add_village'])){
   $add_village = $_POST['add_village_name'];
 
@@ -56,8 +54,8 @@ if(isset($_POST['update'])){
 
                         <form action="" method="GET">
                             <div class="table_header_right">
-                                <input type="search" name="src" placeholder="Search village" />
-                                <input style="cursor:pointer;" type="submit" class="btn" placeholder="Search" />
+                                <input type="search" name="src" placeholder="গ্রাম খুজুন" />
+                                <input style="cursor:pointer;" type="submit" class="btn" value="খুজুন" />
                             </div>
                         </form>
                     </header>
@@ -70,7 +68,7 @@ if(isset($_POST['update'])){
                                         <th class="table_th"><div class="table_th_div"><span>প্রতিক্রিয়া</span></div></th>
                                     </tr>
                                 </thead>
-                                <tbody id="customers_wrapper" class="text-sm">
+                                <tbody id="tax_holders_wrapper" class="text-sm">
                                 <?php
                                 if(isset($_GET['src'])){
                                     $src = $_GET['src'];

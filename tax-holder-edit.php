@@ -6,6 +6,50 @@ if(isset($_GET['id'])){
   $id = $_GET['id'];
 }
 $data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM person WHERE id='$id'"));
+
+if(isset($_POST['submit'])){
+  $id_no = $_POST['id_no'];
+  $name = $_POST['name'];
+  $guardian_name = $_POST['guardian_name'];
+  $village = $_POST['village'];
+  $section = $_POST['section'];
+  $word_no = $_POST['word_no'];
+  $family_member = $_POST['family_member'];
+  $male = $_POST['male'];
+  $female = $_POST['female'];
+  $holding_no = $_POST['holding_no'];
+  $nid_no = $_POST['nid_no'];
+  $profession = $_POST['profession'];
+  $home = $_POST['home'];  
+  $net_worth = $_POST['net_worth'];
+  $annual_tax = $_POST['annual_tax'];
+  $ablable_tax = $_POST['ablable_tax'];
+  $due_tax = $_POST['due_tax'];
+  $present_year = $_POST['present_year'];
+  $mobile_no = $_POST['mobile_no'];
+
+
+  $file_name = $_FILES['file']['name'];
+  $file_tmp = $_FILES['file']['tmp_name'];
+  move_uploaded_file($file_tmp,"upload/$file_name");
+  if(empty($file_name)){
+    $file_name = $data['file_name'];
+  }
+
+  if( empty($id_no) || empty($name) || empty($guardian_name) || empty($village) || empty($section) || empty($family_member) || empty($word_no) || empty($net_worth)){
+    header("Location:tax-holder-add.php?err=Please Fill-Up Carefully!");
+  }else{
+    $sql = "UPDATE person SET id_no='$id_no', name='$name', guardian_name='$guardian_name', village='$village', section='$section', word_no='$word_no', family_member='$family_member', male='$male', female='$female', holding_no='$holding_no', nid_no='$nid_no', profession='$profession', home='$home', net_worth='$net_worth', annual_tax='$annual_tax', ablable_tax='$ablable_tax', due_tax='$due_tax', present_year='$present_year', mobile_no='$mobile_no',file_name='$file_name' WHERE id=$id";
+    $update = mysqli_query($conn,$sql);
+    if($update){
+      header("location:tax-holder-all.php?msg=করদাতা সম্পাদন হয়েছে");
+    }else{
+      echo "error";
+    }
+    
+  }
+
+}
 ?>   
     <!-- Main Content -->
     <main class="main_content">
@@ -21,26 +65,26 @@ $data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM person WHERE id='$i
             <span>করদাতা সম্পাদন করুন</span>
           </div>
           
-          <form id="edit_customer_form" action="" method="POST" enctype="multipart/form-data">
+          <form id="edit_tax_holder_form" action="" method="POST" enctype="multipart/form-data">
 
             <div>
               <label>আইডি নং <span class="requird_star">*</span></label>
-              <input disabled type="number" name="id_no" class="input disabled" required value="<?php echo $data['id_no']?>"/>
+              <input type="number" name="id_no" class="input" required value="<?php echo $data['id_no']?>"/>
             </div>
 
             <div>
             <label>করদাতার নাম <span class="requird_star">* </span></label>
-            <input disabled type="text" name="name" class="input disabled" required value="<?php echo $data['name']?>"/>
+            <input type="text" name="name" class="input" required value="<?php echo $data['name']?>"/>
             </div>
 
             <div>
             <label>পিতা/স্বামীর নাম <span class="requird_star">* </span></label>
-            <input disabled type="text" name="guardian_name" class="input disabled" required value="<?php echo $data['guardian_name']?>"/>
+            <input type="text" name="guardian_name" class="input" required value="<?php echo $data['guardian_name']?>"/>
             </div>
 
             <div>
             <label>গ্রাম <span class="requird_star" >* </span></label>
-            <select disabled name="village" id="village" class="input disabled" required>
+            <select name="village" id="village" class="input" required>
             <?php 
               $vlg_id = $data['village'];
               $selected_village = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM village WHERE id=$vlg_id"));
@@ -57,7 +101,7 @@ $data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM person WHERE id='$i
 
             <div>
             <label>পাড়া/মহল্লা <span class="requird_star">* </span></label>
-            <select disabled name="section" id="section" class="input disabled" required value="<?php echo $data['section']?>">
+            <select name="section" id="section" class="input" required value="<?php echo $data['section']?>">
             <?php 
               $section_id = $data['section'];
               $selected_section = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM section WHERE id=$section_id"));
@@ -68,24 +112,24 @@ $data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM person WHERE id='$i
 
             <div>
             <label>ওয়ার্ড নং <span class="requird_star">*</span></label>
-            <input disabled type="text" name="word_no" class="input disabled"  required value="<?php echo $data['word_no']?>"/>
+            <input type="text" name="word_no" class="input"  required value="<?php echo $data['word_no']?>"/>
             </div>
             
             <div>
             <label>পরিবারের সদস্য সংখ্যা <span class="requird_star">*</span></label>
-            <input disabled type="number" name="family_member" class="input disabled"  required value="<?php echo $data['family_member']?>"/>
+            <input type="number" name="family_member" class="input"  required value="<?php echo $data['family_member']?>"/>
             </div>
 
             <br>
             <div class="radio_div">
               <div style="width:49%;float:left">
                 <label>পুরুষ</label>
-                <input disabled type="number" name="male" class="input disabled"  value="<?php echo $data['male']?>"/>
+                <input type="number" name="male" class="input"  value="<?php echo $data['male']?>"/>
               </div>
                 
               <div style="width:49%;float:right">                  
                 <label>মহিলা</label>
-                <input disabled type="number" name="female" class="input disabled"  value="<?php echo $data['female']?>"/>
+                <input type="number" name="female" class="input"  value="<?php echo $data['female']?>"/>
               </div>
             </div>
 
@@ -94,12 +138,12 @@ $data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM person WHERE id='$i
             <br>
             <div>
             <label>হোল্ডিং নং</label>
-            <input disabled type="text" name="holding_no" class="input disabled" value="<?php echo $data['holding_no']?>"/>
+            <input type="text" name="holding_no" class="input" value="<?php echo $data['holding_no']?>"/>
             </div>
 
             <div>
             <label>জাতীয় পরিচয়পত্র নং</label>
-            <input disabled type="number" name="nid_no" class="input disabled" value="<?php echo $data['nid_no']?>"/>
+            <input type="number" name="nid_no" class="input" value="<?php echo $data['nid_no']?>"/>
             </div>
 
             <br>
@@ -107,8 +151,8 @@ $data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM person WHERE id='$i
               <label>পেশা <span class="requird_star">*</span></label>
               <br>
               <div class="pesa">
-                <label>ব্যাবসাঃ</label>
-                <input disabled type="radio" required name="profession" value="ব্যাবসা"
+                <label for="business">ব্যাবসাঃ</label>
+                <input type="radio" id="business" required name="profession" value="ব্যাবসা"
                 <?php
                 if($data['profession'] == 'ব্যাবসা'){
                   echo "checked";
@@ -117,8 +161,8 @@ $data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM person WHERE id='$i
                 >
               </div>
               <div class="pesa">
-                <label>চাকুরীঃ</label>
-                <input disabled type="radio" required name="profession" value="চাকুরি"
+                <label for="job">চাকুরীঃ</label>
+                <input type="radio" id="job" required name="profession" value="চাকুরি"
                 <?php
                 if($data['profession'] == 'চাকুরি'){
                   echo "checked";
@@ -127,8 +171,8 @@ $data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM person WHERE id='$i
                 >
               </div>
               <div class="pesa">
-                <label>কৃষিঃ</label>
-                <input disabled type="radio" required name="profession" value="কৃষি"
+                <label for="farmer">কৃষিঃ</label>
+                <input type="radio" id="farmer" required name="profession" value="কৃষি"
                 <?php
                 if($data['profession'] == 'কৃষি'){
                   echo "checked";
@@ -137,8 +181,8 @@ $data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM person WHERE id='$i
                 >
               </div>
               <div class="pesa">
-                <label>দিন-মজুরঃ</label>
-                <input disabled type="radio" required name="profession" value="দিন-মজুর"
+                <label for="labor">দিন-মজুরঃ</label>
+                <input type="radio" id="labor" required name="profession" value="দিন-মজুর"
                 <?php
                 if($data['profession'] == 'দিন-মজুর'){
                   echo "checked";
@@ -147,8 +191,8 @@ $data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM person WHERE id='$i
                 >
               </div>
               <div class="pesa">
-                <label>প্রবাসীঃ</label>
-                <input disabled type="radio" required name="profession" value="প্রবাসী"
+                <label for="expatriate">প্রবাসীঃ</label>
+                <input type="radio" id="expatriate" required name="profession" value="প্রবাসী"
                 <?php
                 if($data['profession'] == 'প্রবাসী'){
                   echo "checked";
@@ -157,8 +201,8 @@ $data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM person WHERE id='$i
                 >
               </div>
               <div class="pesa">
-                <label>শ্রমিকঃ</label>
-                <input disabled type="radio" required name="profession" value="শ্রমিক"
+                <label for="worker">শ্রমিকঃ</label>
+                <input type="radio" id="worker" required name="profession" value="শ্রমিক"
                 <?php
                 if($data['profession'] == 'শ্রমিক'){
                   echo "checked";
@@ -176,8 +220,8 @@ $data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM person WHERE id='$i
               <label>গৃহের বিবরন <span class="requird_star">*</span></label>
               <br>              
               <div class="pesa">
-                <label>কাঁচাঃ</label>
-                <input disabled type="radio" required name="home" value="কাঁচা"
+                <label for="kacha">কাঁচাঃ</label>
+                <input type="radio" id="kacha" required name="home" value="কাঁচা"
                 <?php
                 if($data['home'] == 'কাঁচা'){
                   echo "checked";
@@ -187,8 +231,8 @@ $data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM person WHERE id='$i
               </div>
               
               <div class="pesa">
-                <label>পাকাঃ</label>
-                <input disabled type="radio" required name="home" value="পাকা"
+                <label for="paka">পাকাঃ</label>
+                <input type="radio" id="paka" required name="home" value="পাকা"
                 <?php
                 if($data['home'] == 'পাকা'){
                   echo "checked";
@@ -198,8 +242,8 @@ $data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM person WHERE id='$i
               </div>
               
               <div class="pesa">
-                <label>আধাপাকাঃ</label>
-                <input disabled type="radio" required name="home" value="আধাপাকা"
+                <label for="adhapaka">আধাপাকাঃ</label>
+                <input type="radio" id="adhapaka" required name="home" value="আধাপাকা"
                 <?php
                 if($data['home'] == 'আধাপাকা'){
                   echo "checked";
@@ -209,8 +253,8 @@ $data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM person WHERE id='$i
               </div>
               
               <div class="pesa">
-                <label>বিল্ডিংঃ</label>
-                <input disabled type="radio" required name="home" value="বিল্ডিং"
+                <label for="building">বিল্ডিংঃ</label>
+                <input type="radio" id="building" required name="home" value="বিল্ডিং"
                 <?php
                 if($data['home'] == 'বিল্ডিং'){
                   echo "checked";
@@ -220,8 +264,8 @@ $data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM person WHERE id='$i
               </div>
               
               <div class="pesa">
-                <label>টিনসেটঃ</label>
-                <input disabled type="radio" required name="home" value="টিনসেট"
+                <label for="tinset">টিনসেটঃ</label>
+                <input type="radio" id="tinset" required name="home" value="টিনসেট"
                 <?php
                 if($data['home'] == 'টিনসেট'){
                   echo "checked";
@@ -237,38 +281,41 @@ $data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM person WHERE id='$i
             
             <div>
             <label>স্থাপনার মুল্য <span class="requird_star">*</span></label>
-            <input disabled type="number" name="net_worth" class="input disabled"  required value="<?php echo $data['net_worth']?>"/>
+            <input type="number" name="net_worth" class="input"  required value="<?php echo $data['net_worth']?>"/>
             </div>
 
             <div>
             <label>বার্ষিক কর</label>
-            <input disabled type="number" name="annual_tax" class="input disabled"  value="<?php echo $data['annual_tax']?>"/>
+            <input type="number" name="annual_tax" class="input"  value="<?php echo $data['annual_tax']?>"/>
             </div>
 
             <div>
             <label>নগদ কর</label>
-            <input disabled type="number" name="ablable_tax" class="input disabled"  value="<?php echo $data['ablable_tax']?>"/>
+            <input type="number" name="ablable_tax" class="input"  value="<?php echo $data['ablable_tax']?>"/>
             </div>
 
             <div>
             <label>বকেয়া কর</label>
-            <input disabled type="number" name="due_tax" class="input disabled" value="<?php echo $data['due_tax']?>"/>
+            <input type="number" name="due_tax" class="input" value="<?php echo $data['due_tax']?>"/>
             </div>
 
             <div>
             <label>অর্থ বছর</label>
-            <input disabled type="number" name="present_year" class="input disabled"  value="<?php echo $data['present_year']?>"/>
+            <input type="number" name="present_year" class="input"  value="<?php echo $data['present_year']?>"/>
             </div>
 
             <div>
             <label>মোবাইল নং</label>
-            <input disabled type="text" name="mobile_no" class="input disabled"  value="<?php echo $data['mobile_no']?>"/>
+            <input type="text" name="mobile_no" class="input"  value="<?php echo $data['mobile_no']?>"/>
             </div> 
 
             <div>
             <label>ছবি</label>
-            <img style="width:220px;margin:auto" src="upload/<?php echo $data['file_name']?>" alt="image">
+            <img style="width:120px" src="upload/<?php echo $data['file_name']?>" alt="image">            
+            <input type="file" name="file" class="input"  value="<?php echo $data['file_name']?>"/>
             </div> 
+
+            <input class="btn submit_btn" name="submit" type="submit" value="সম্পাদন  করুন" />
           </form>
         </div>
       </section>

@@ -145,7 +145,7 @@ fill="currentColor"
   clip-rule="evenodd"
 />
 </svg>`;
-const customer_svg = `<svg
+const tax_holder_svg = `<svg
 xmlns="http://www.w3.org/2000/svg"
 class="w-4 h-4 text-white"
 viewBox="0 0 20 20"
@@ -335,8 +335,8 @@ window.addEventListener("load", () => {
     .forEach((ele) => (ele.innerHTML = pos_svg));
 
   document
-    .querySelectorAll(".customer_icon")
-    .forEach((ele) => (ele.innerHTML = customer_svg));
+    .querySelectorAll(".tax_holder_icon")
+    .forEach((ele) => (ele.innerHTML = tax_holder_svg));
 
   document
     .querySelectorAll(".seller_icon")

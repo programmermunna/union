@@ -56,8 +56,8 @@ if(isset($_POST['update'])){
 
                         <form action="" method="GET">
                             <div class="table_header_right">
-                                <input type="search" name="src" placeholder="Search section" />
-                                <input style="cursor:pointer;" type="submit" class="btn" placeholder="Search" />
+                                <input type="search" name="src" placeholder="পাড়া খুজুন" />
+                                <input style="cursor:pointer;" type="submit" class="btn" value="খুজুন" />
                             </div>
                         </form>
                     </header>
@@ -71,7 +71,7 @@ if(isset($_POST['update'])){
                                         <th class="table_th"><div class="table_th_div"><span>প্রতিক্রিয়া</span></div></th>
                                     </tr>
                                 </thead>
-                                <tbody id="customers_wrapper" class="text-sm">
+                                <tbody id="tax_holders_wrapper" class="text-sm">
                                 <?php
                                 if(isset($_GET['src'])){
                                     $src = $_GET['src'];

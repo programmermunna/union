@@ -1,4 +1,4 @@
-const customers = [
+const tax_holders = [
   {
     id: "1",
     name: "Linus",
@@ -64,54 +64,54 @@ const customers = [
 const params = new URLSearchParams(window.location.search);
 const get_id = params.get("id");
 
-const view_customer = customers.find((c) => c.id === get_id);
+const view_tax_holder = tax_holders.find((c) => c.id === get_id);
 
-const view_customer_form = document.getElementById("view_customer_form");
+const view_tax_holder_form = document.getElementById("view_tax_holder_form");
 
 function edit_info_btn() {
   location.replace(`edit?id=${get_id}`);
 }
 
-view_customer_form.innerHTML = `
+view_tax_holder_form.innerHTML = `
     <div>
     <b>Name</b>
-    <p>${view_customer.name}</p>
+    <p>${view_tax_holder.name}</p>
     </div>
     <div>
     <b>Email</b>
-    <p>${view_customer.email}</p>
+    <p>${view_tax_holder.email}</p>
     </div>
     <div>
     <b>Phone</b>
-    <p>${view_customer.phone}</p>
+    <p>${view_tax_holder.phone}</p>
     </div>
     <div>
     <b>Address</b>
-    <p>${view_customer.address}</p>
+    <p>${view_tax_holder.address}</p>
     </div>
     <div>
     <b>Shop Name</b>
-    <p>${view_customer.shop_name}</p>
+    <p>${view_tax_holder.shop_name}</p>
     </div>
     <div>
     <b>Account Holder</b>
-    <p>${view_customer.account_holder}</p>
+    <p>${view_tax_holder.account_holder}</p>
     </div>
     <div>
     <b>Account Number</b>
-    <p>${view_customer.account_number}</p>
+    <p>${view_tax_holder.account_number}</p>
     </div>
     <div>
     <b>Bank Name</b>
-    <p>${view_customer.bank_name}</p>
+    <p>${view_tax_holder.bank_name}</p>
     </div>
     <div>
     <b>Branch Name</b>
-    <p>${view_customer.branch_name}</p>
+    <p>${view_tax_holder.branch_name}</p>
     </div>
     <div>
     <b>City</b>
-    <p>${view_customer.city}</p>
+    <p>${view_tax_holder.city}</p>
     </div>
     <div>
     <b>Profile Photo</b>
@@ -119,16 +119,16 @@ view_customer_form.innerHTML = `
     width="80"
     height="80"
     class="rounded"
-    src="${view_customer.image}"
+    src="${view_tax_holder.image}"
     />
     </div>
 `;
 
-view_customer_form.addEventListener("submit", function (e) {
+view_tax_holder_form.addEventListener("submit", function (e) {
   e.preventDefault();
 
   //   Update function (1)
 
-  // Then go to customers page (2)
-  location.replace("all-customers");
+  // Then go to tax_holders page (2)
+  location.replace("all-tax_holders");
 });
