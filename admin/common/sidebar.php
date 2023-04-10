@@ -30,7 +30,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="users-all.php">
+          <a class="nav-link text-white " href="village.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
@@ -43,6 +43,14 @@
               <i class="material-icons opacity-10">table_view</i>
             </div>
             <span class="nav-link-text ms-1">পাড়া</span>
+          </a>
+        </li>      
+        <li class="nav-item">
+          <a class="nav-link text-white " href="users-all.php">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">table_view</i>
+            </div>
+            <span class="nav-link-text ms-1">করদাতা</span>
           </a>
         </li>      
 

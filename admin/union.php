@@ -28,7 +28,7 @@ if(isset($_POST['submit'])){
           <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                <h6 class="text-white text-capitalize ps-3">Payment Method </h6>
+                <h6 class="text-white text-capitalize ps-3">ইউনিয়নের তালিকা সমূহ</h6>
               </div>
             </div>
             <div class="card-body px-0 pb-2">
@@ -95,24 +95,6 @@ if(isset($_POST['submit'])){
       </div>
     </div>
   </main>  
-
-  <script>    
-    $('#summernote').summernote({
-    placeholder: 'Write here details',
-    tabsize: 2,
-    height: 200,
-    toolbar: [
-    ['style', ['style']],
-    ['font', ['bold', 'underline', 'clear']],
-    ['color', ['color']],
-    ['para', ['ul', 'ol', 'paragraph']],
-    ['table', ['table']],
-    ['insert', ['link', 'picture', 'video']],
-    ['view', ['fullscreen', 'codeview', 'help']]
-    ]
-});
-  </script>
-
   
   <?php include("common/footer.php")?>
   <?php if (isset($_GET['msg'])) { ?><div id="munna" data-text="<?php echo $_GET['msg']; ?>"></div><?php } ?>
