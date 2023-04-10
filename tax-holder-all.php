@@ -121,6 +121,7 @@ if(isset($_SESSION['section'])){
                                         <th class="table_th"><div class="table_th_div"><span>বকেয়া কর</span></div></th>
                                         <th class="table_th"><div class="table_th_div"><span>অর্থ বছর</span></div></th>
                                         <th class="table_th"><div class="table_th_div"><span>মোবাইল নং</span></div></th>
+                                        <th class="table_th"><div class="table_th_div"><span>স্টাটাস</span></div></th>
                                         <th class="table_th"><div class="table_th_div"><span>প্রতিক্রিয়া</span></div></th>
                                     </tr>
                                 </thead>
@@ -192,6 +193,12 @@ if(isset($_SESSION['section'])){
                                         <td class="p-3 border whitespace-nowrap">
                                             <div class="text-center"><?php echo $row['mobile_no']?></div>
                                         </td>
+                                        <td class="p-3 border whitespace-nowrap">
+                                          <?php  if($row['status'] == 'Success'){ ?>
+                                            <b><div style="color:green" class="text-center"><?php echo $row['status']?></div></b>
+                                           <?php }else{ ?>
+                                            <b><div style="color:red" class="text-center"><?php echo $row['status']?></div></b>
+                                         <?php  }?>
                                         </td>
 
                                         <td class="p-3 border whitespace-nowrap">

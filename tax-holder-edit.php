@@ -27,6 +27,7 @@ if(isset($_POST['submit'])){
   $due_tax = $_POST['due_tax'];
   $present_year = $_POST['present_year'];
   $mobile_no = $_POST['mobile_no'];
+  $status = $_POST['status'];
 
 
   $file_name = $_FILES['file']['name'];
@@ -39,7 +40,7 @@ if(isset($_POST['submit'])){
   if( empty($id_no) || empty($name) || empty($guardian_name) || empty($village) || empty($section) || empty($family_member) || empty($word_no) || empty($net_worth)){
     header("Location:tax-holder-add.php?err=Please Fill-Up Carefully!");
   }else{
-    $sql = "UPDATE person SET id_no='$id_no', name='$name', guardian_name='$guardian_name', village='$village', section='$section', word_no='$word_no', family_member='$family_member', male='$male', female='$female', holding_no='$holding_no', nid_no='$nid_no', profession='$profession', home='$home', net_worth='$net_worth', annual_tax='$annual_tax', ablable_tax='$ablable_tax', due_tax='$due_tax', present_year='$present_year', mobile_no='$mobile_no',file_name='$file_name' WHERE id=$id";
+    $sql = "UPDATE person SET id_no='$id_no', name='$name', guardian_name='$guardian_name', village='$village', section='$section', word_no='$word_no', family_member='$family_member', male='$male', female='$female', holding_no='$holding_no', nid_no='$nid_no', profession='$profession', home='$home', net_worth='$net_worth', annual_tax='$annual_tax', ablable_tax='$ablable_tax', due_tax='$due_tax', present_year='$present_year', mobile_no='$mobile_no', status='$status',file_name='$file_name' WHERE id=$id";
     $update = mysqli_query($conn,$sql);
     if($update){
       header("location:tax-holder-all.php?msg=করদাতা সম্পাদন হয়েছে");
@@ -307,6 +308,19 @@ if(isset($_POST['submit'])){
             <div>
             <label>মোবাইল নং</label>
             <input type="text" name="mobile_no" class="input"  value="<?php echo $data['mobile_no']?>"/>
+            </div> 
+
+            <div>
+            <label>স্টাটাস</label>
+            <select name="status" class="input">
+              <?php if($data['status']== 'Pending'){ ?>
+                <option selected value="Pending">Pending</option>
+                <option value="Success">Success</option>
+               <?php }else{ ?>
+                <option value="Pending">Pending</option>
+                <option selected value="Success">Success</option>
+                <?php } ?>
+            </select>
             </div> 
 
             <div>

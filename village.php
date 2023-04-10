@@ -73,20 +73,8 @@ if(isset($_POST['update'])){
                                 if(isset($_GET['src'])){
                                     $src = $_GET['src'];
                                     $SQL = "SELECT * FROM village WHERE admin_id=$id AND name LIKE '%$src%'";
-                                }else{
-                                $pagination = "ON";                              
-                                $showRecordPerPage = 8;
-                                if(isset($_GET['page']) && !empty($_GET['page'])){
-                                $currentPage = $_GET['page'];}else{$currentPage = 1;}
-                                $startFrom = ($currentPage * $showRecordPerPage) - $showRecordPerPage;
-                                $totalEmpSQL = "SELECT * FROM village WHERE admin_id=$id ORDER BY id DESC";
-                                $allEmpResult = mysqli_query($conn, $totalEmpSQL);
-                                $totalEmployee = mysqli_num_rows($allEmpResult);
-                                $lastPage = ceil($totalEmployee/$showRecordPerPage);
-                                $firstPage = 1;
-                                $nextPage = $currentPage + 1;
-                                $previousPage = $currentPage - 1;                                
-                                $SQL = "SELECT * FROM village WHERE admin_id=$id ORDER BY id DESC LIMIT $startFrom, $showRecordPerPage";
+                                }else{                                
+                                    $SQL = "SELECT * FROM village WHERE admin_id=$id ";
                                 }
                                 $query = mysqli_query($conn, $SQL);
                                 $i = 0;
@@ -104,63 +92,7 @@ if(isset($_POST['update'])){
                               <?php  } ?>
                             </table>
                             </div>
-                            <br>
-
-                        <!-- -------------pagination---------------- -->
-                        <?php if(isset($pagination)){
-                        if($pagination == "ON"){ ?>
-                        <div class="w-full" style="display: flex; justify-content: space-between;">
-                            <nav aria-label="Page navigation">
-                                <ul class="pagination_buttons">
-
-                                    <?php if($currentPage >= 2) { ?>
-                                    <li class="pagination"><a class="page-link"
-                                            href="?page=<?php echo $previousPage ?>">Previws</a>
-                                    </li>
-                                    <?php } ?>
-                                    <?php if($currentPage != $firstPage) { ?>
-                                    <li class="pagination">
-                                        <a class="page-link" href="?page=<?php echo $firstPage ?>" >
-                                            <span class="page-link" aria-hidden="true">1</span>
-                                        </a>
-                                    </li>
-                                    <?php } ?>
-
-                                    <li class="pagination active"><a class="page-link active"
-                                            href="?page=<?php echo $currentPage ?>"><?php echo $currentPage ?></a></li>
-
-                                     <?php if($currentPage < $lastPage) { ?>
-                                    <li class="pagination "><a class="page-link"
-                                            href="?page=<?php echo $currentPage+1 ?>"><?php echo $currentPage+1 ?></a></li>
-                                      <?php } ?>   
-                                      
-                                      <?php if($currentPage < $lastPage) { ?>
-                                    <li class="pagination "><a class="page-link"
-                                            href="?page=<?php echo $currentPage+1+1 ?>"><?php echo $currentPage+1+1 ?></a></li>
-                                      <?php } ?>   
-
-                                            <?php if($currentPage < $lastPage) { ?>     
-                                    <li class="pagination "><a class="page-link"
-                                            href="?page=<?php echo $currentPage+1+1+1 ?>"><?php echo $currentPage+1+1+1 ?></a></li>
-                                            <?php } ?>   
-
-                                    <?php if($currentPage < $lastPage) { ?>
-                                    <li class="pagination"><a class="page-link"
-                                            href="?page=<?php echo $nextPage ?>"><?php //echo $nextPage  ?>Next</a></li>
-                                    <?php } ?>
-
-                                    <li class="pagination">
-                                        <a class="page-link" href="?page=<?php echo $lastPage ?>" aria-label="Next">
-                                            <span aria-hidden="true">Last</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
-                            <div class="pagination_buttons">Page <?php echo $currentPage ?> of <?php echo $lastPage ?></div>
-                        </div>
-                        <?php }}?>
-                    <!-- -------------pagination---------------- -->
-
+                            <br>                       
 
                         </div>
                     </div>

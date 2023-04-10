@@ -48,6 +48,7 @@ $res = mysqli_query($conn, $empSQL);
                 <td>বকেয়া কর</td>
                 <td>অর্থ বছর</td>
                 <td>মোবাইল নং</td>
+                <td>স্টাটাস</td>
             </tr>
             <?php
             $i;
@@ -73,6 +74,7 @@ $res = mysqli_query($conn, $empSQL);
                 <td><?php echo $row['due_tax'];?></td>
                 <td><?php echo $row['present_year'];?></td>
                 <td><?php echo $row['mobile_no'];?></td>
+                <td><?php echo $row['status'];?></td>
             </tr>
 <?php }?>
     </table>

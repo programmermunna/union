@@ -266,6 +266,12 @@ $data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM person WHERE id='$i
             </div> 
 
             <div>
+            <label>স্টাটাস</label>
+                <input disabled type="text" name="status" class="input disabled"  value="<?php echo $data['status']?>"/>                
+            </select>
+            </div> 
+
+            <div>
             <label>ছবি</label>
             <img style="width:220px;margin:auto" src="upload/<?php echo $data['file_name']?>" alt="image">
             </div> 
