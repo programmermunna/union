@@ -3,6 +3,17 @@
 <!-- Header -->
 <?php 
 
+if(isset($_GET['year'])){
+  $year = $_SESSION['year'] = $_GET['year'];
+}
+
+if(isset($_SESSION['year'])){
+    $year = $_SESSION['year'];
+}else{
+    $year = date("Y",time());
+}
+
+
 if(isset($_GET['session_destroy'])){
     if($_GET['session_destroy'] == 'true'){
         unset($_SESSION['village']);
@@ -45,12 +56,12 @@ if(isset($_SESSION['section'])){
                 <div class="table_content_wrapper">
                     <div class="page_title flex justify-between">
                         <h3>করদাতার তালিকা সমূহ</h4>
-                        <select style="width: 200px;" class="input" name="year">
+                        <select style="width: 200px;" class="input" id="year" name="year" onchange="window.location.href='tax-holder-all.php?year='+this.options [this.selectedIndex].value">
+                            <option selected style="display:none;" value="<?php echo $year?>"><?php echo $year?></option>                            
                             <?php 
-                            // $years = mysqli_query($conn,"SELECT * FROM person WHERE admin_id=$id AND present_year = ")
                             $years = mysqli_query($conn,"SELECT DISTINCT present_year FROM person WHERE admin_id=$id");
-                            while($year = mysqli_fetch_assoc($years)){ ?>
-                            <option value="<?php echo $year['present_year']?>"><?php echo $year['present_year']?></option>
+                            while($data = mysqli_fetch_assoc($years)){ ?>
+                            <option value="<?php echo $data['present_year']?>"><?php echo $data['present_year']?></option>
                             <?php  }?>
                         </select>
                     </div>
@@ -60,7 +71,6 @@ if(isset($_SESSION['section'])){
                             <a href="tax-holder-add.php" class="px-4 py-2 text-sm bg-blue-600 text-white rounded focus:ring">Add New</a>
                             <a href="tax-holder-export.php" class="px-4 py-2 text-sm bg-blue-600 text-white rounded focus:ring">Export Excel</a>
                         </div>
-
 
                         <div>
                             <form action="" method="GET">
@@ -137,13 +147,13 @@ if(isset($_SESSION['section'])){
                                 <?php
                                 if(isset($_GET['src'])){
                                     $src = $_GET['src'];
-                                    $empSQL = "SELECT * FROM person WHERE admin_id=$id AND (name LIKE '$src' OR mobile_no = '$src' OR nid_no = '$src' OR holding_no = '$src' OR guardian_name LIKE '$src')";
+                                    $empSQL = "SELECT * FROM person WHERE admin_id=$id AND present_year='$year' AND (name LIKE '$src' OR mobile_no = '$src' OR nid_no = '$src' OR holding_no = '$src' OR guardian_name LIKE '$src')";
                                 }elseif($sess_vlg > 0 && $sess_sec > 0){
-                                    $empSQL = "SELECT * FROM person WHERE admin_id=$id AND village = $sess_vlg AND section = $sess_sec ";
+                                    $empSQL = "SELECT * FROM person WHERE admin_id=$id AND present_year='$year' AND village = $sess_vlg AND section = $sess_sec ";
                                 }elseif($sess_vlg > 0){
-                                    $empSQL = "SELECT * FROM person WHERE admin_id=$id AND village = $sess_vlg ";
+                                    $empSQL = "SELECT * FROM person WHERE admin_id=$id AND present_year='$year' AND village = $sess_vlg ";
                                 }else{
-                                    $empSQL = "SELECT * FROM person WHERE admin_id=$id ";
+                                    $empSQL = "SELECT * FROM person WHERE admin_id=$id AND present_year='$year' ";
                                 }
                                 $query = mysqli_query($conn, $empSQL);
                                 $i = 0;
