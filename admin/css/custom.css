@@ -202,6 +202,7 @@ p {
 
 .select_bar {
   width: 300px;
+  padding: 5px;
 }
 
 .btn_on_red {
