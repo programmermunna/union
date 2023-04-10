@@ -1,13 +1,35 @@
-<?php include("include/functions.php");
+<?php include("common/header.php");
 
 header('Content-Type:application/xls');
 header('Content-Disposition:attachment;filename=report.xls');
 
 
-$sql="select * from person";
-$res=mysqli_query($conn,$sql); ?>
+if(isset($_SESSION['village'])){
+    $sess_vlg = $_SESSION['village'];
+}else{
+    $sess_vlg = 0;
+}
+
+if(isset($_SESSION['section'])){
+    $sess_sec = $_SESSION['section'];
+}else{
+    $sess_sec = 0;
+}
+
+if($sess_vlg > 0 && $sess_sec > 0){
+    $empSQL = "SELECT * FROM person WHERE admin_id=$id AND village = $sess_vlg AND section = $sess_sec ";
+}elseif($sess_vlg > 0){
+    $empSQL = "SELECT * FROM person WHERE admin_id=$id AND village = $sess_vlg ";
+}else{
+    $empSQL = "SELECT * FROM person WHERE admin_id=$id ";
+}
+
+$res = mysqli_query($conn, $empSQL);
+?>
     <table>
             <tr style="font-weight:bolder;">
+                <td>ক্রমিক নং</td>
+                <td>আইডি নং</td>
                 <td>করদাতার নাম</td>
                 <td>পিতা/স্বামীর নাম</td>
                 <td>গ্রাম</td>
@@ -27,9 +49,12 @@ $res=mysqli_query($conn,$sql); ?>
                 <td>অর্থ বছর</td>
                 <td>মোবাইল নং</td>
             </tr>
-<?php
-while($row=mysqli_fetch_assoc($res)){ ?>
+            <?php
+            $i;
+            while($row=mysqli_fetch_assoc($res)){$i++; ?>
 	        <tr>
+                <td><?php echo $i;?></td>
+                <td><?php echo $row['id_no'];?></td>
                 <td><?php echo $row['name'];?></td>
                 <td><?php echo $row['guardian_name'];?></td>
                 <td><?php echo $row['village'];?></td>

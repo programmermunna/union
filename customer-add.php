@@ -32,7 +32,7 @@ if(isset($_POST['submit'])){
     $file_name = "avatar.jpg";
   } 
 
-  if( empty($id_no) || empty($name) || empty($guardian_name) || empty($village) || empty($section) || empty($family_member) || empty($word_no) || empty($net_worth)){
+  if( empty($id_no) || empty($name) || empty($guardian_name) || empty($village) || empty($section) || empty($family_member) || empty($net_worth)){
     header("Location:customer-add.php?err=Please Fill-Up Carefully!");
   }else{
     $sql = "INSERT INTO person (admin_id,id_no,name,guardian_name,village,section,word_no,family_member,male,female,holding_no,nid_no,profession,home,net_worth,annual_tax,ablable_tax,due_tax,present_year,mobile_no,file_name,time) 
@@ -98,8 +98,8 @@ if(isset($_POST['submit'])){
             </div>
 
             <div>
-            <label>ওয়ার্ড নং <span class="requird_star">*</span></label>
-            <input type="text" name="word_no" class="input"  required/>
+            <label>ওয়ার্ড নং </label>
+            <input type="text" name="word_no" class="input" />
             </div>
             
             <div>
