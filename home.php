@@ -25,20 +25,27 @@
 										$tax_holder_name = $_POST['tax_holder_name'];
 									}
 
-									if(!empty($exect_id)){		
+									if(!empty($exect_id)){
 										$sql = "SELECT * FROM person WHERE (id_no = $exect_id OR holding_no = $exect_id OR nid_no = $exect_id OR mobile_no = $exect_id)";
 										$data = mysqli_fetch_assoc(mysqli_query($conn,$sql));
 										$vlg_id = $data['village'];
 										$section_id = $data['section'];
 										$village = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM village WHERE id=$vlg_id"));
 										$section = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM section WHERE id=$section_id"));
-									}elseif(!empty($union) && !empty($village) && !empty($section) && !empty($guardian_name) && !empty($tax_holder_name)){
+									}elseif(!empty($union) && !empty($village) && !empty($section) && !empty($guardian_name) && !empty($tax_holder_name)){										
 										$sql = "SELECT * FROM person WHERE admin_id=$union AND village=$village AND section=$section AND guardian_name='$guardian_name' AND name='$tax_holder_name'";
 										$data = mysqli_fetch_assoc(mysqli_query($conn,$sql));
-										$vlg_id = $data['village'];
-										$section_id = $data['section'];
-										$village = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM village WHERE id=$vlg_id"));
-										$section = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM section WHERE id=$section_id"));
+										if($data>0){
+											$vlg_id = $data['village'];
+											$section_id = $data['section'];
+											$village = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM village WHERE id=$vlg_id"));
+											$section = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM section WHERE id=$section_id"));
+										}else{
+										echo "<h1 style='text-align:center'>No Data Found</h1>";
+										echo "<br>";
+										exit;
+										}
+										
 									}else{
 										echo "<h1 style='text-align:center'>No Data Found</h1>";
 										echo "<br>";
