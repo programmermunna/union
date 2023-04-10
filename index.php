@@ -5,8 +5,8 @@
      
     $present_year = date("Y",time());
     $total_tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM person WHERE admin_id=$id"));
-    $pending_tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM person WHERE admin_id=$id AND status='Pending'"));
-    $success_tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM person WHERE admin_id=$id AND status='Success'"));
+    $pending_tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM person WHERE admin_id=$id AND present_year=$present_year AND status='Pending'"));
+    $success_tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM person WHERE admin_id=$id AND present_year=$present_year AND status='Success'"));
     $village = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM village WHERE admin_id=$id"));
     $section = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM section WHERE admin_id=$id"));
     
@@ -127,44 +127,7 @@
               </div>
             </div>
           </div>  
-           <!-- ------box------ -->
-          <div class="home_card">
-            <div>
-              <div class="card_top">
-                <div class="card_top_icon from-blue-500 to-blue-600">&#x2637</div>
-                <div class="card_top_info">
-                  <p class="card_top_numbers"><?php echo $success_tax_holder?></p>                  
-                </div>
-              </div>
-              <div class="card_bottom">
-                <div class="card_percentage">
-                  <p style="margin: 0 auto;">পরিশোধিত</p>
-                </div>
-                <div class="card_line">
-                  <div style="width: 100%" class="from-blue-500 via-blue-600 to-blue-700"></div>
-                </div>
-              </div>
-            </div>
-          </div>  
-           <!-- ------box------ -->
-          <div class="home_card">
-            <div>
-              <div class="card_top">
-                <div class="card_top_icon from-blue-500 to-blue-600">&#x2637</div>
-                <div class="card_top_info">
-                  <p class="card_top_numbers"><?php echo $pending_tax_holder?></p>                  
-                </div>
-              </div>
-              <div class="card_bottom">
-                <div class="card_percentage">
-                  <p style="margin: 0 auto;">অপরিশোধিত</p>
-                </div>
-                <div class="card_line">
-                  <div style="width: 100%" class="from-blue-500 via-blue-600 to-blue-700"></div>
-                </div>
-              </div>
-            </div>
-          </div>  
+           
 
           <div class="home_card">
             <div>
@@ -268,6 +231,45 @@
               </div>
             </div>
           </div>
+
+           <!-- ------box------ -->
+           <div class="home_card">
+            <div>
+              <div class="card_top">
+                <div class="card_top_icon from-blue-500 to-blue-600">&#x2637</div>
+                <div class="card_top_info">
+                  <p class="card_top_numbers"><?php echo $success_tax_holder?></p>                  
+                </div>
+              </div>
+              <div class="card_bottom">
+                <div class="card_percentage">
+                  <p style="margin: 0 auto;">পরিশোধিত</p>
+                </div>
+                <div class="card_line">
+                  <div style="width: 100%" class="from-blue-500 via-blue-600 to-blue-700"></div>
+                </div>
+              </div>
+            </div>
+          </div>  
+           <!-- ------box------ -->
+          <div class="home_card">
+            <div>
+              <div class="card_top">
+                <div class="card_top_icon from-blue-500 to-blue-600">&#x2637</div>
+                <div class="card_top_info">
+                  <p class="card_top_numbers"><?php echo $pending_tax_holder?></p>                  
+                </div>
+              </div>
+              <div class="card_bottom">
+                <div class="card_percentage">
+                  <p style="margin: 0 auto;">অপরিশোধিত</p>
+                </div>
+                <div class="card_line">
+                  <div style="width: 100%" class="from-blue-500 via-blue-600 to-blue-700"></div>
+                </div>
+              </div>
+            </div>
+          </div> 
 <br>
         </div>
       </section>

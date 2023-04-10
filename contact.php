@@ -1,9 +1,6 @@
 <?php include("common/home-header.php")?>
 <?php 
-if($landing_id<1){
-    $msg = "Please Login First";
-    header("location:user-login.php?msg=$msg");
-} 
+
 if(isset($_POST['submit'])){
     $email = $_POST['email'];
     $subject = $_POST['subject'];

@@ -228,8 +228,3 @@
   
   <?php include("common/footer.php")?>
   <?php if (isset($_GET['msg'])) { ?><div id="munna" data-text="<?php echo $_GET['msg']; ?>"></div><?php } ?>
-
-
-
-  https://demo.alexamedia-solutions.ro/wp-admin/install.php
-  https://demo.alexamedia-solutions.ro/

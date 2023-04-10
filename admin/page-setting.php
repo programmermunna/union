@@ -31,7 +31,7 @@ $pages = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM pages WHERE id=1")
           <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                <h6 class="text-white text-capitalize ps-3">Page</h6>
+                <h6 class="text-white text-capitalize ps-3">পেজ সমূহ</h6>
               </div>
             </div>
             <div class="card-body px-0 pb-2">
@@ -43,7 +43,7 @@ $pages = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM pages WHERE id=1")
                         <div class="profile">
                           <div style="display:block">
                               <div>
-                                <label for="about">About Page</label>
+                                <label for="about">আমাদের সম্পর্কে পেজ</label>
                                 <textarea name="about" class="summernote"><?php echo $pages['about']?></textarea>
                               </div>
                           </div>
@@ -53,7 +53,7 @@ $pages = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM pages WHERE id=1")
                           <br>
                           <div style="display:block">
                               <div>
-                                <label for="terms">Terms Page</label>
+                                <label for="terms">নিতিমালা পেজ</label>
                                 <textarea name="terms" class="summernote"><?php echo $pages['terms']?></textarea>
                               </div>
                           </div>
@@ -62,14 +62,6 @@ $pages = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM pages WHERE id=1")
                           </div>
                         </div>
                       </form>
-                      </div>
-
-                      <div class="view">
-                        <div class="view-content" style="margin-left:50px;width:100%">
-                          <div class="view-img">
-                            <img style="width:100%" src="../upload/setting.webp">
-                          </div>
-                        </div>
                       </div>
 
             </div>
