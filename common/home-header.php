@@ -34,7 +34,10 @@ $mail = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM mail_setting WHERE 
     <script src="https://kit.fontawesome.com/6788eb3be6.js" crossorigin="anonymous"></script>  
 
     <link rel="icon" type="image/png" href="upload/<?php echo $setting['favicon']?>">
-    <link rel="stylesheet" href="https://fonts.maateen.me/mukti/font.css">
+    <!-- <link rel="stylesheet" href="https://fonts.maateen.me/mukti/font.css"> -->
+    <!-- <link href="https://fonts.maateen.me/apona-lohit/font.css" rel="stylesheet"> -->
+    <!-- <link href="https://fonts.maateen.me/adorsho-lipi/font.css" rel="stylesheet"> -->
+    <link href='https://fonts.googleapis.com/css?family=Anek Bangla' rel='stylesheet'>
 
     <link rel="stylesheet" href="landing-dist/css/style.css">
     <link rel="stylesheet" href="landing-dist/css/slicknav.css">

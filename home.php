@@ -66,97 +66,102 @@
 									<div>
 										<label for="union">আইডি নং</label>
 										<br>
-										<input type="text" name="id_no" value="<?php echo $data['id_no'] ?>" >
+										<input disabled type="text" name="id_no" value="<?php echo $data['id_no'] ?>" >
 									</div>
 									<div>
 										<label for="union">করদাতার নাম</label>
 										<br>
-										<input type="text" name="name" value="<?php echo $data['name'] ?>" >
+										<input disabled type="text" name="name" value="<?php echo $data['name'] ?>" >
 									</div>
 									<div>
 										<label for="union">পিতা/স্বামীর নাম </label>
 										<br>
-										<input type="text" name="guardian_name" value="<?php echo $data['guardian_name'] ?>" >
+										<input disabled type="text" name="guardian_name" value="<?php echo $data['guardian_name'] ?>" >
 									</div>
 									<div>
 										<label for="union">গ্রাম</label>
 										<br>
-										<input type="text" name="village" value="<?php echo $village['name'] ?>" >
+										<input disabled type="text" name="village" value="<?php echo $village['name'] ?>" >
 									</div>
 									<div>
 										<label for="union">পাড়া/মহল্লা</label>
 										<br>
-										<input type="text" name="section" value="<?php echo $section['name'] ?>" >
+										<input disabled type="text" name="section" value="<?php echo $section['name'] ?>" >
 									</div>
 									<div>
 										<label for="union">ওয়ার্ড নং</label>
 										<br>
-										<input type="text" name="word_no" value="<?php echo $data['word_no'] ?>" >
+										<input disabled type="text" name="word_no" value="<?php echo $data['word_no'] ?>" >
 									</div>
 									<div>
 										<label for="union">পরিবারের সদস্য সংখ্যা</label>
 										<br>
-										<input type="text" name="family_member" value="<?php echo $data['family_member'] ?>" >
+										<input disabled type="text" name="family_member" value="<?php echo $data['family_member'] ?>" >
 									</div>
 									<div>
 										<label for="union">পুরুষ</label>
 										<br>
-										<input type="text" name="male" value="<?php echo $data['male'] ?>" >
+										<input disabled type="text" name="male" value="<?php echo $data['male'] ?>" >
 									</div>
 									<div>
 										<label for="union">মহিলা</label>
 										<br>
-										<input type="text" name="female" value="<?php echo $data['female'] ?>" >
+										<input disabled type="text" name="female" value="<?php echo $data['female'] ?>" >
 									</div>
 									<div>
 										<label for="union">হোল্ডিং নং</label>
 										<br>
-										<input type="text" name="holding_no" value="<?php echo $data['holding_no'] ?>" >
+										<input disabled type="text" name="holding_no" value="<?php echo $data['holding_no'] ?>" >
 									</div>
 									<div>
 										<label for="union">জাতীয় পরিচয়পত্র নং</label>
 										<br>
-										<input type="text" name="nid_no" value="<?php echo $data['nid_no'] ?>" >
+										<input disabled type="text" name="nid_no" value="<?php echo $data['nid_no'] ?>" >
 									</div>
 									<div>
 										<label for="union">পেশা</label>
 										<br>
-										<input type="text" name="profession" value="<?php echo $data['profession'] ?>" >
+										<input disabled type="text" name="profession" value="<?php echo $data['profession'] ?>" >
 									</div>
 									<div>
 										<label for="union">গৃহের বিবরন</label>
 										<br>
-										<input type="text" name="home" value="<?php echo $data['home'] ?>" >
+										<input disabled type="text" name="home" value="<?php echo $data['home'] ?>" >
 									</div>
 									<div>
 										<label for="union">স্থাপনার মুল্য</label>
 										<br>
-										<input type="text" name="net_worth" value="<?php echo $data['net_worth'] ?>" >
+										<input disabled type="text" name="net_worth" value="<?php echo $data['net_worth'] ?>" >
 									</div>
 									<div>
 										<label for="union">বার্ষিক কর</label>
 										<br>
-										<input type="text" name="annual_tax" value="<?php echo $data['annual_tax'] ?>" >
+										<input disabled type="text" name="annual_tax" value="<?php echo $data['annual_tax'] ?>" >
 									</div>
 									<div>
 										<label for="union">নগদ কর</label>
 										<br>
-										<input type="text" name="ablable_tax" value="<?php echo $data['ablable_tax'] ?>" >
+										<input disabled type="text" name="ablable_tax" value="<?php echo $data['ablable_tax'] ?>" >
 									</div>
 									<div>
 										<label for="union">বকেয়া কর</label>
 										<br>
-										<input type="text" name="due_tax" value="<?php echo $data['due_tax'] ?>" >
+										<input disabled type="text" name="due_tax" value="<?php echo $data['due_tax'] ?>" >
 									</div>
 									<div>
 										<label for="union">অর্থ বছর</label>
 										<br>
-										<input type="text" name="present_year" value="<?php echo $data['present_year'] ?>" >
+										<input disabled type="text" name="present_year" value="<?php echo $data['present_year'] ?>" >
 									</div>
 									<div>
 										<label for="union">মোবাইল নং</label>
 										<br>
-										<input type="text" name="mobile_no" value="<?php echo $data['mobile_no'] ?>" >
+										<input disabled type="text" name="mobile_no" value="<?php echo $data['mobile_no'] ?>" >
+									</div>
+									<div>
+										<label for="union">স্টাটাস</label>
+										<br>
+										<input disabled type="text" name="status" value="<?php echo $data['status'] ?>" >
 									</div>
 									<div>
 										<label for="union">ছবি</label>
@@ -180,34 +185,34 @@
 									<div>
 										<label for="village">গ্রামের নাম</label>
 										<select name="village" id="village">
-											<option style='display:none;' selected disabled>গ্রাম বাছাই করুণ</option>
+											<option style='display:none;' selected >গ্রাম বাছাই করুণ</option>
 										</select>
 									</div>
 									<div>
 										<label for="section">পাড়ার নাম</label>
 										<select name="section" id="section">
-											<option style='display:none;' selected disabled>পাড়া/মহল্লা বাছাই করুণ</option>
+											<option style='display:none;' selected >পাড়া/মহল্লা বাছাই করুণ</option>
 										</select>
 									</div>
 									<div>
 										<label for="guardian_name">করদাতার পিতা/স্বামী</label>
 										<br>
-										<input name="guardian_name" type="text" >
+										<input  name="guardian_name" type="text" >
 									</div>
 									<div>
 										<label for="tax_holder_name">করদাতার নাম</label>
 										<br>
-										<input name="tax_holder_name" type="text" >
+										<input  name="tax_holder_name" type="text" >
 									</div>									
 									<div style="color:red;font-size:15px;font-weight:bolder">অথবা</div>
 									<div>
 										<label for="exect_id">আইডি নং, ভোটার আইডি কার্ড, মোবাইল নং, হোল্ডিং নং</label>
 										<br>
-										<input name="exect_id" type="number" >
+										<input  name="exect_id" type="number" >
 									</div>
 
 									<div>
-									<input name="submit" type="submit" value="Submit">
+									<input  name="submit" type="submit" value="Submit">
 									</div>									
 								</form>
 								<?php }?>
