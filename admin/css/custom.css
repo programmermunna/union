@@ -147,10 +147,6 @@ p {
   height: unset;
 }
 
-.table-responsive {
-  overflow-x: unset;
-}
-
 .payment_area {
   overflow: auto;
 }
