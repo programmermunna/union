@@ -8,6 +8,7 @@
           <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 search_bar">
+              <span class="add_new"><a style="margin-left:20px" class="btn_on_red" href="tax-holder-add.php"> করদাতা যুক্ত করুণ</a></span>
                 <h6 class="text-white text-capitalize ps-3">করদাতার তালিকা সমূহ</h6>
                 <div class="top_search">
                   <form action="" method="POST">
@@ -124,8 +125,9 @@
                         <?php }?>
                       </td>
                       <td style="text-align:center">
-                        <a href="users-edit.php?src=users-all&&id=<?php echo $data['id'];?>" class="badge badge-sm bg-gradient-success">View</a>
-                        <a href="delete.php?src=users&&id=<?php echo $data['id'];?>" class="badge badge-sm bg-gradient-success">Delete</a>
+                        <a href="tax-holder-edit.php?id=<?php echo $data['id'];?>" class="badge badge-sm bg-gradient-success">Edit</a>
+                        <a href="delete.php?src=tax-holder&&table=person&&id=<?php echo $data['id'];?>" class="badge badge-sm bg-gradient-success">Delete</a>
+                        <a href="tax-holder-view.php?id=<?php echo $data['id'];?>" class="badge badge-sm bg-gradient-success">View</a>
                       </td>
                     </tr>
                     <?php }?>

@@ -214,3 +214,27 @@ p {
   background: #fff;
   color: #000;
 }
+
+.top_bar_flex {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 20px;
+}
+.radio_div{
+  display: flex;
+  gap: 20px;
+}
+.pesa{
+  display: flex;
+}
+.pesa input[type=radio]{  
+  margin-left: 9px;
+  margin-top: 5px;
+}
+
+@media only screen and (max-width: 786px) {
+  .radio_div{
+    display: block;
+  }
+}

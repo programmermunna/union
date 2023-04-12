@@ -23,7 +23,7 @@ if(isset($_POST['submit'])){
         <div class="col-12">
           <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-              <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3" style="display: flex;justify-content:space-between;width:100%;padding:0 20px;">
+              <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 top_bar_flex">
               <div>
                 <span class="add_new"><a style="margin-left:20px" class="btn_on_red" href="village.php"> রিফ্রেস </a></span>
                 <span class="add_new"><a style="margin-left:20px" class="btn_on_red" href="village-add.php"> গ্রাম যুক্ত করুণ</a></span>
