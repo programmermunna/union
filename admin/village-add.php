@@ -7,7 +7,7 @@ if(isset($_POST['submit'])){
   $union = $_POST['union'];
   $village = $_POST['village'];
 
-  $sql = "INSERT INTO village (admin_id,name) VALUE ('$union','$village')";
+  $sql = "INSERT INTO village (admin_id,name,time) VALUE ('$union','$village','$time')";
   $query = mysqli_query($conn,$sql);
   if($query){
     $msg = "গ্রাম যুক্ত করা সফল হয়েছে।";

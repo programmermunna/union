@@ -7,7 +7,7 @@
 if(isset($_POST['submit'])){
   $name = $_POST['name'];
 
-  $insert = mysqli_query($conn,"INSERT INTO village (admin_id,name) VALUE ($id,'$name')");
+  $insert = mysqli_query($conn,"INSERT INTO village (admin_id,name,time) VALUE ($id,'$name','$time')");
   if($insert){
     header("Location:village.php?msg=সফল ভাবে গ্রামের নাম যুক্ত হয়েছে");
   }

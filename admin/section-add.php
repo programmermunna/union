@@ -7,7 +7,7 @@ if(isset($_POST['submit'])){
   $village = $_POST['village'];
   $section = $_POST['section'];
 
-  $sql = "INSERT INTO section (vlg_id,name) VALUE ('$village','$section')";
+  $sql = "INSERT INTO section (vlg_id,name,time) VALUE ('$village','$section','$time')";
   $query = mysqli_query($conn,$sql);
   if($query){
     $msg = "পাড়া যুক্ত করা সফল হয়েছে।";

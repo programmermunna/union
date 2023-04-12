@@ -8,7 +8,7 @@ if(isset($_POST['submit'])){
   $name = $_POST['name'];
   $vlg_id = $_POST['vlg_id'];
 
-  $insert = mysqli_query($conn,"INSERT INTO section (admin_id,vlg_id,name) VALUE ($id,'$vlg_id','$name')");
+  $insert = mysqli_query($conn,"INSERT INTO section (admin_id,vlg_id,name,time) VALUE ($id,'$vlg_id','$name','$time')");
   if($insert){
     header("Location:section.php?msg=সফল ভাবে গ্রামের নাম যুক্ত হয়েছে");
   }
