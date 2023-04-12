@@ -25,11 +25,11 @@ if(isset($_POST['submit'])){
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 top_bar_flex">
               <div>
-                <span class="add_new"><a style="margin-left:20px" class="btn_on_red" href="village.php"> রিফ্রেস </a></span>
-                <span class="add_new"><a style="margin-left:20px" class="btn_on_red" href="village-add.php"> গ্রাম যুক্ত করুণ</a></span>
+                <span class="add_new"><a class="btn_on_red" href="village.php"> রিফ্রেস </a></span>
+                <span class="add_new"><a class="btn_on_red" href="village-add.php"> গ্রাম যুক্ত করুণ</a></span>
               </div>
               <div>
-                <h6 class="text-white text-capitalize"><a style="color:#fff" href="village.php">গ্রাম সমূহ</a></h6>
+                <h6 class="text-white text-capitalize" style="margin:0;"><a style="color:#fff;" href="village.php">গ্রাম সমূহ</a></h6>
               </div>
               <div>
                 <select class="select_bar" name="union" onchange="window.location.href='village.php?union='+this.options [this.selectedIndex].value">

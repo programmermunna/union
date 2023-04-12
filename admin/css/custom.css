@@ -211,6 +211,7 @@ p {
   border: 2px solid #fff;
   border-radius: 6px;
   transition: .5s;
+  margin:0 5px;
 }
 
 .btn_on_red:hover {
@@ -303,6 +304,21 @@ p {
       display: none;
     }
 
+    .top_bar_flex{
+      display: block;
+      text-align: center;
+    }
+    .top_bar_flex>div{
+      padding: 5px 0;
+    }
+    .top_bar_flex>div>select{
+      width: 170px;
+      padding: 5px;
+    }
+    .btn_on_red{
+      padding: 5px;
+    }
+    
 
 
 
