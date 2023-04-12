@@ -125,6 +125,7 @@ p {
 .search_bar {
   display: flex;
   justify-content: space-between;
+  padding: 0 10px;
 }
 
 .edit>table {
@@ -198,7 +199,6 @@ p {
 
 .select_bar {
   width: 300px;
-  padding: 5px;
 }
 
 .btn_on_red {
@@ -237,4 +237,14 @@ p {
   .radio_div{
     display: block;
   }
+}
+
+.tax_btn{
+  margin-left: 0;
+  padding:5px 2px;
+  
+}
+.top_select>select{
+  width: 200px;
+  padding:4px 10px !important;
 }

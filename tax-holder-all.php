@@ -2,6 +2,13 @@
 <?php include("common/header.php");?>
 <!-- Header -->
 <?php 
+if(isset($_GET['session_destroy'])){
+    if($_GET['session_destroy'] == 'true'){
+        unset($_SESSION['village']);
+        unset($_SESSION['section']);
+    }
+}
+
 
 if(isset($_GET['year'])){
   $year = $_SESSION['year'] = $_GET['year'];
@@ -13,13 +20,6 @@ if(isset($_SESSION['year'])){
     $year = date("Y",time());
 }
 
-
-if(isset($_GET['session_destroy'])){
-    if($_GET['session_destroy'] == 'true'){
-        unset($_SESSION['village']);
-        unset($_SESSION['section']);
-    }
-}
 
 if(isset($_GET['village'])){
     $_SESSION['village'] = $_GET['village'];

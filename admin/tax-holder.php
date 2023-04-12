@@ -1,4 +1,52 @@
-<?php include("common/header.php")?>
+<?php include("common/header.php");
+
+if(isset($_GET['session_destroy'])){
+    if($_GET['session_destroy'] == 'true'){
+        unset($_SESSION['union']);
+        unset($_SESSION['village']);
+        unset($_SESSION['section']);
+    }
+}
+
+
+if(isset($_GET['year'])){
+  $year = $_SESSION['year'] = $_GET['year'];
+}
+
+if(isset($_SESSION['year'])){
+    $year = $_SESSION['year'];
+}else{
+    $year = date("Y",time());
+}
+
+
+if(isset($_GET['union'])){
+    $_SESSION['union'] = $_GET['union'];
+}
+if(isset($_SESSION['union'])){
+    $sess_union = $_SESSION['union'];
+}else{
+    $sess_union = 0;
+}
+
+if(isset($_GET['village'])){
+    $_SESSION['village'] = $_GET['village'];
+}
+if(isset($_SESSION['village'])){
+    $sess_vlg = $_SESSION['village'];
+}else{
+    $sess_vlg = 0;
+}
+
+if(isset($_GET['section'])){
+    $_SESSION['section'] = $_GET['section'];
+}
+if(isset($_SESSION['section'])){
+    $sess_sec = $_SESSION['section'];
+}else{
+    $sess_sec = 0;
+}
+?>
 <?php include("common/sidebar.php")?>
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
   <?php include("common/navbar.php")?>
@@ -7,13 +55,73 @@
         <div class="col-12">
           <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-              <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 search_bar">
-              <span class="add_new"><a style="margin-left:20px" class="btn_on_red" href="tax-holder-add.php"> করদাতা যুক্ত করুণ</a></span>
+              <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 search_bar ">
                 <h6 class="text-white text-capitalize ps-3">করদাতার তালিকা সমূহ</h6>
+                <div>
+                  <span class="add_new"><a class="btn_on_red tax_btn" href="tax-holder.php?session_destroy=true">রিফ্রেস</a></span>
+                  <span class="add_new"><a class="btn_on_red tax_btn" href="tax-holder-add.php">যুক্ত করুণ</a></span>
+                  <span class="add_new"><a class="btn_on_red tax_btn" href="tax-holder-add.php"> Excel </a></span>
+                </div>
                 <div class="top_search">
-                  <form action="" method="POST">
-                    <input name="src" type="text" placeholder="এখানে লিখুন">
-                    <button name="search" type="submit">খুজুন</button>
+                  <select style="width: 200px;" class="input" id="year" name="year" onchange="window.location.href='tax-holder.php?year='+this.options [this.selectedIndex].value">
+                    <option selected style="display:none;" value="<?php echo $year?>"><?php echo $year?></option>
+                    <?php 
+                    $years = mysqli_query($conn,"SELECT DISTINCT present_year FROM person");
+                    while($data = mysqli_fetch_assoc($years)){ ?>
+                    <option value="<?php echo $data['present_year']?>"><?php echo $data['present_year']?></option>
+                    <?php  }?>
+                  </select>
+                </div>
+              </div>
+
+              <div class="bg-gradient-primary border-radius-lg pt-3 search_bar ">
+                <h6 class="text-white text-capitalize ps-3"></h6>
+                <form action="" method="GET">
+                  <div class="top_select">
+                    <select name="union" id="union">
+                      <?php if($sess_union>0){ 
+                        $union = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM union_name WHERE admin_id=$sess_union"));
+                      ?>
+                        <option style="display: none;" selected value="<?php echo $union['admin_id'];?>"><?php echo $union['union_name'];?></option>
+                    <?php  }else{?>
+                      <option style="display: none;" selected value="ইউনিয়ন বাছাই করুন">ইউনিয়ন বাছাই করুন</option>
+                    <?php  }?>
+
+                      <?php
+                      $unions = mysqli_query($conn,"SELECT * FROM union_name");
+                      while($union = mysqli_fetch_assoc($unions)){ ?>
+                      <option value="<?php echo $union['admin_id']?>"><?php echo $union['union_name']?></option>
+                    <?php }?>
+                    </select>
+
+                    <select name="village" id="village">
+                    <?php if($sess_vlg>0){ 
+                        $village = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM village WHERE id=$sess_vlg"));
+                      ?>
+                        <option style="display: none;" selected value="<?php echo $village['id'];?>"><?php echo $village['name'];?></option>
+                    <?php  }else{?>
+                      <option style="display: none;" selected value="গ্রাম বাছাই করুন">গ্রাম বাছাই করুন</option>
+                    <?php  }?>
+                      
+                    </select>
+
+                    <select name="section" id="section">
+                    <?php if($sess_sec>0){ 
+                        $section = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM section WHERE id=$sess_sec"));
+                      ?>
+                        <option style="display: none;" selected value="<?php echo $section['id'];?>"><?php echo $section['name'];?></option>
+                    <?php  }else{?>
+                      <option style='display:none;' selected disabled>পাড়া/মহল্লা বাছাই করুণ</option>
+                    <?php  }?>
+
+                    </select>
+                    <input type="submit" value="খুজুন">
+                  </div>
+                </form>
+                <div class="top_search">
+                <form action="" method="GET">
+                    <input name="src" type="text" placeholder="এখানে লিখুন" value="<?php if(isset($_GET['src'])){ echo $_GET['src'];}?>">
+                    <button type="submit">খুজুন</button>
                   </form>
                 </div>
               </div>
@@ -45,23 +153,23 @@
                   </thead>
                   <tbody>
 
-                  <?php                  
-                  if (isset($_GET['page_no']) && $_GET['page_no']!="") {
-                  $page_no = $_GET['page_no'];} else {$page_no = 1;}
-                  $total_records_per_page = 100;
-                  $offset = ($page_no-1) * $total_records_per_page;
-                  $previous_page = $page_no - 1;
-                  $next_page = $page_no + 1;
-                  $adjacents = "2"; 
-
-                  $result_count = mysqli_query($conn,"SELECT * FROM person");
-                  $total_records = mysqli_num_rows($result_count);
-                  $total_no_of_pages = ceil($total_records / $total_records_per_page);
-                  $second_last = $total_no_of_pages - 1;
-
-                  $result = mysqli_query($conn,"SELECT * FROM person LIMIT $offset, $total_records_per_page");
+                  <?php 
+                  if(isset($_GET['src'])){
+                    $src = $_GET['src'];
+                      $empSQL = "SELECT * FROM person WHERE present_year=$year AND (name LIKE '$src' OR id_no = '$src' OR mobile_no = '$src' OR nid_no = '$src' OR holding_no = '$src' OR guardian_name LIKE '$src')";
+                  }elseif($sess_union > 0 && $sess_vlg > 0 && $sess_sec > 0){
+                    $empSQL = "SELECT * FROM person WHERE present_year=$year AND  admin_id = $sess_union AND village = $sess_vlg AND section = $sess_sec ";
+                  }elseif($sess_union > 0 && $sess_vlg > 0){
+                    $empSQL = "SELECT * FROM person WHERE present_year=$year AND  admin_id = $sess_union AND village = $sess_vlg ";
+                  }elseif($sess_union > 0 ){
+                      $empSQL = "SELECT * FROM person WHERE present_year=$year AND admin_id = $sess_union ";
+                  }else{
+                    $empSQL = "SELECT * FROM person WHERE present_year=$year";
+                  }
+                  
+                  $query = mysqli_query($conn,$empSQL);
                   $i=0;
-                  while($data= mysqli_fetch_assoc($result)){ 
+                  while($data= mysqli_fetch_assoc($query)){ 
                     $i++;
                     ?>
                     <tr>
@@ -133,105 +241,55 @@
                     <?php }?>
                   </tbody>
                 </table>
-
-
-              <!-- /* ----------paginations----------- */ -->
-              <style>
-                .paginations>ul{box-shadow: 0 0 1px gray;margin: 0;padding: 10px;}
-                .paginations>ul>li{list-style: none;display: inline-block;line-height: 2.5;}
-                .paginations>ul>li>a{padding: 5px 10px;margin:5px;background: #fff;font-weight: bolder;box-shadow: 0px 0px 2px gray;}
-                .paginations>ul>li>a:hover{background: #E8503C;color: #fff;}
-                .active>a{background: #E8503C !important;color: #fff !important;}
-                .page_of{padding-top: 10px;}
-                @media only screen and (max-width: 850px){.page_of{display: none;}}
-              </style>
-
-              <div style="display:flex;justify-content:space-between;padding:10px 20px;">
-                  <div class="paginations">
-                    <ul>
-                      <?php // if($page_no > 1){ echo "<li><a href='?page_no=1'>First Page</a></li>"; } ?>
-                        
-                      <li <?php if($page_no <= 1){ echo "class=''"; } ?>>
-                      <a <?php if($page_no > 1){ echo "href='?page_no=$previous_page'"; } ?>>Previous</a>
-                      </li>
-                          
-                        <?php 
-                      if ($total_no_of_pages <= 10){  	 
-                        for ($counter = 1; $counter <= $total_no_of_pages; $counter++){
-                          if ($counter == $page_no) {
-                          echo "<li class=''><a>$counter</a></li>";	
-                            }else{
-                              echo "<li><a href='?page_no=$counter'>$counter</a></li>";
-                            }
-                            }
-                      }
-                      elseif($total_no_of_pages > 10){
-                        
-                      if($page_no <= 4) {			
-                      for ($counter = 1; $counter < 8; $counter++){		 
-                          if ($counter == $page_no) {
-                          echo "<li class='active'><a>$counter</a></li>";	
-                            }else{
-                              echo "<li><a href='?page_no=$counter'>$counter</a></li>";
-                            }
-                            }
-                        echo "<li><a>...</a></li>";
-                        echo "<li><a href='?page_no=$second_last'>$second_last</a></li>";
-                        echo "<li><a href='?page_no=$total_no_of_pages'>$total_no_of_pages</a></li>";
-                        }
-
-                      elseif($page_no > 4 && $page_no < $total_no_of_pages - 4) {		 
-                        echo "<li><a href='?page_no=1'>1</a></li>";
-                        echo "<li><a href='?page_no=2'>2</a></li>";
-                            echo "<li><a>...</a></li>";
-                            for ($counter = $page_no - $adjacents; $counter <= $page_no + $adjacents; $counter++) {			
-                              if ($counter == $page_no) {
-                          echo "<li class='active'><a>$counter</a></li>";	
-                            }else{
-                              echo "<li><a href='?page_no=$counter'>$counter</a></li>";
-                            }                  
-                          }
-                          echo "<li><a>...</a></li>";
-                        echo "<li><a href='?page_no=$second_last'>$second_last</a></li>";
-                        echo "<li><a href='?page_no=$total_no_of_pages'>$total_no_of_pages</a></li>";      
-                                }
-                        
-                        else {
-                            echo "<li><a href='?page_no=1'>1</a></li>";
-                        echo "<li><a href='?page_no=2'>2</a></li>";
-                            echo "<li><a>...</a></li>";
-
-                            for ($counter = $total_no_of_pages - 6; $counter <= $total_no_of_pages; $counter++) {
-                              if ($counter == $page_no) {
-                          echo "<li class='active'><a>$counter</a></li>";	
-                            }else{
-                              echo "<li><a href='?page_no=$counter'>$counter</a></li>";
-                            }                   
-                                    }
-                                }
-                      }
-                    ?>
-                        
-                      <li <?php if($page_no >= $total_no_of_pages){ echo "class='disabled'"; } ?>>
-                      <a <?php if($page_no < $total_no_of_pages) { echo "href='?page_no=$next_page'"; } ?>>Next</a>
-                      </li>
-                        <?php if($page_no < $total_no_of_pages){
-                        echo "<li><a href='?page_no=$total_no_of_pages'>Last</a></li>";
-                        } ?>
-                    </ul>
-                  </div>
-                  <div class="page_of">
-                    <div><strong>Page <?php echo $page_no." of ".$total_no_of_pages; ?></strong></div>
-                  </div>
-                </div>
-                <!-- /* ----------paginations----------- */ -->
+             
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </main>  
+  </main>
+
+
+  
+<script>
+    $(document).ready(function(){  
+      $("#union").on("change",function(){
+        var admin_id = $(this).val();
+        $.ajax({
+            url:"../include/ajax.php",
+            type:"GET",
+            data:
+            {
+              reference:"village of union in admin/tax-holder page",
+              admin_id:admin_id,
+            },         
+            success:function(data){
+              console.log(data);
+              $("#village").html(data);
+              }
+            });
+        })
+
+      $("#village").on("change",function(){
+        var vlg_id = $(this).val();
+        $.ajax({
+            url:"../include/ajax.php",
+            type:"GET",
+            data:
+            {
+              reference:"section of village in admin/tax-holder page",
+              vlg_id:vlg_id,
+            },         
+            success:function(data){
+              console.log(data);
+              $("#section").html(data);
+              }
+            });
+        })
+
+    })
+</script>
   
   <?php include("common/footer.php")?>
   <?php if (isset($_GET['msg'])) { ?><div id="munna" data-text="<?php echo $_GET['msg']; ?>"></div><?php } ?>
