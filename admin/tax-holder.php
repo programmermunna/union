@@ -49,21 +49,21 @@ if(isset($_SESSION['section'])){
 ?>
 <?php include("common/sidebar.php")?>
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-  <?php include("common/navbar.php")?>
+  
   <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">
           <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-              <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 search_bar ">
+              <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 search_bar search_bar_left">
                 <h6 class="text-white text-capitalize ps-3">করদাতার তালিকা সমূহ</h6>
                 <div>
                   <span class="add_new"><a class="btn_on_red tax_btn" href="tax-holder.php?session_destroy=true">রিফ্রেস</a></span>
                   <span class="add_new"><a class="btn_on_red tax_btn" href="tax-holder-add.php">যুক্ত করুণ</a></span>
-                  <span class="add_new"><a class="btn_on_red tax_btn" href="tax-holder-add.php"> Excel </a></span>
+                  <span class="add_new"><a class="btn_on_red tax_btn" href="tax-holder-export.php"> Excel </a></span>
                 </div>
                 <div class="top_search">
-                  <select style="width: 200px;" class="input" id="year" name="year" onchange="window.location.href='tax-holder.php?year='+this.options [this.selectedIndex].value">
+                  <select class="input" id="year" name="year" onchange="window.location.href='tax-holder.php?year='+this.options [this.selectedIndex].value">
                     <option selected style="display:none;" value="<?php echo $year?>"><?php echo $year?></option>
                     <?php 
                     $years = mysqli_query($conn,"SELECT DISTINCT present_year FROM person");
@@ -74,7 +74,7 @@ if(isset($_SESSION['section'])){
                 </div>
               </div>
 
-              <div class="bg-gradient-primary border-radius-lg pt-3 search_bar ">
+              <div class="bg-gradient-primary border-radius-lg pt-3 search_bar search_bar_right">
                 <h6 class="text-white text-capitalize ps-3"></h6>
                 <form action="" method="GET">
                   <div class="top_select">

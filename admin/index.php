@@ -9,7 +9,7 @@ $users = mysqli_query($conn,"SELECT * FROM admin_info ORDER BY id DESC LIMIT 3")
 
 ?>
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-  <?php include("common/navbar.php")?>
+  
     <div class="container-fluid py-4">
       <div class="row">
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">

@@ -38,14 +38,34 @@ $mail = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM mail_setting WHERE 
   <!-- Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
 
-<!-- SUMMERNOTE TEXTAREA -->
-<script src="https://code.jquery.com/jquery-3.2.1.js" crossorigin="anonymous"></script> 
+  <!-- SUMMERNOTE TEXTAREA -->
+  <script src="https://code.jquery.com/jquery-3.2.1.js" crossorigin="anonymous"></script> 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js" crossorigin="anonymous"></script>    
   <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet" />
 
   <!-- CSS Files -->
   <link id="pagestyle" href="assets/css/material-dashboard.css?v=3.0.0" rel="stylesheet" />
+  <link rel="stylesheet" href="../landing-dist/css/slicknav.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/custom.css">
 </head>
 <body class="g-sidenav-show  bg-gray-200">
+
+<ul id="menu">
+    <li><a href="index.php">ড্যাশবোর্ড</a></li>
+    <li><a href="union.php">ইউনিয়ন</a></li>
+    <li><a href="village.php">গ্রাম</a></li>
+    <li><a href="section.php">পাড়া</a></li>
+    <li><a href="tax-holder.php">করদাতা</a></li>
+    <li><a href="profile.php">আমার একাউন্ট</a></li>
+    <li><a href="website-setting.php">ওয়েবসাইট</a></li>
+    <li><a href="page-setting.php">পেজ</a></li>
+    <li><a href="mail-setting.php">মেইল</a></li>
+    <li><a href="logout.php">লগআউট</a></li>
+</ul>
+
+<script>
+	$(function(){
+		$('#menu').slicknav();
+	});
+</script>

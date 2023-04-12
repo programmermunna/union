@@ -15137,9 +15137,11 @@ hr.horizontal {
 
 @media (max-width: 1199.98px) {
   .g-sidenav-show.rtl .sidenav {
-    transform: translateX(17.125rem); }
+    transform: translateX(17.125rem);
+   }
   .g-sidenav-show:not(.rtl) .sidenav {
-    transform: translateX(-17.125rem); }
+    transform: translateX(-17.125rem);
+   }
   .g-sidenav-show .sidenav.fixed-start + .main-content {
     margin-left: 0 !important; }
   .g-sidenav-show.g-sidenav-pinned .sidenav {

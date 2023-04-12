@@ -110,6 +110,9 @@ p {
   padding: 5px;
   outline: none;
 }
+.top_search>select{
+  width: 200px;
+}
 
 .top_search>form>button {
   box-shadow: 0 0 2px gray;
@@ -247,4 +250,63 @@ p {
 .top_select>select{
   width: 200px;
   padding:4px 10px !important;
+}
+
+.search_bar_left{
+  border-radius: 10px 10px 0 0;
+}
+
+
+.search_bar_right{
+  border-radius: 0 0 10px 10px;
+}
+
+.slicknav_menu {
+  display:none;
+}
+#menu {
+  display:none;
+}
+
+
+
+@media only screen and (max-width: 786px) {
+  .search_bar_left{
+    display: block;
+    text-align: center;
+  }
+  .search_bar_left>div{
+    padding: 5px 0;
+  }
+  .top_search>select{
+    width: 150px;
+  }
+
+  .search_bar_right{
+    display: block;
+    text-align: center;
+  }
+  .search_bar_right>div{
+    padding: 5px 0;
+  }
+
+  
+    /* #menu is the original menu */
+     #menu {
+        display:none;
+    }
+
+    .slicknav_menu {
+        display:block;
+    }
+    .logout{
+      display: none;
+    }
+
+
+
+
+
+
+
 }
