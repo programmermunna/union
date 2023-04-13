@@ -11,18 +11,29 @@ if(isset($_GET['src'])){
 if(isset($_POST['submit'])){
   $name = $_POST['name'];
   $email = $_POST['email'];
-  $address = $_POST['address'];
-  $time = time();
 
+  $address = $_POST['address'];
+  $old_pass = md5($_POST['old_pass']);
+  $new_pass = md5($_POST['new_pass']);
+  $c_pass = md5($_POST['c_pass']);
+  
   $file_name = $_FILES['file']['name'];
   $file_tmp = $_FILES['file']['tmp_name'];
   move_uploaded_file($file_tmp,"upload/$file_name");
-
+  
   if(empty($file_name)){
-    $user_update = mysqli_query($conn,"UPDATE super_admin SET name='$name', email='$email', address='$address', time='$time' WHERE id=1");
+    $file_name = $admin['file'];
+  }  
+  
+  if($admin['pass'] == $old_pass){
+    if($new_pass == $c_pass){
+      $user_update = mysqli_query($conn,"UPDATE super_admin SET name='$name', email='$email', address='$address',pass='$new_pass',file='$file_name', time='$time' WHERE id=1");
+    }
   }else{
     $user_update = mysqli_query($conn,"UPDATE super_admin SET name='$name', email='$email', address='$address',file='$file_name', time='$time' WHERE id=1");
   }
+
+  
 
 
   if($user_update){
@@ -64,6 +75,18 @@ $user_data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM super_admin WH
                                 <input name="address" type="text" value="<?php echo $user_data['address']?>">
                               </div>
                               <div>
+                                <label for="address">Old Password</label>
+                                <input type="password" name="old_pass" type="text" >
+                              </div>
+                              <div>
+                                <label for="address">New Password</label>
+                                <input type="password" name="new_pass" type="text" >
+                              </div>
+                              <div>
+                                <label for="address">Confirm Password</label>
+                                <input type="password" name="c_pass" type="text" >
+                              </div>
+                              <div>
                                 <label for="address">Photo</label>
                                 <input name="file" type="file" value="<?php echo $user_data['address']?>">
                               </div>
@@ -75,7 +98,7 @@ $user_data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM super_admin WH
                       </form>
                       </div>
                       <div class="view">
-                        <div class="view-content" style="margin-top:90px;margin-left:50px">
+                        <div class="view-content" style="margin-top:60px;margin-left:50px">
                           <h3><?php echo strtoupper($user_data['name']);?></h3>
                           <h6><?php echo $user_data['email']?></h6>
                           <h6><?php echo $user_data['address']?></h6>
