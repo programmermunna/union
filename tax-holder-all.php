@@ -55,7 +55,7 @@ if(isset($_SESSION['section'])){
                 <!-- Table -->
                 <div class="table_content_wrapper">
                     <div class="page_title flex justify-between">
-                        <h3>করদাতার তালিকা সমূহ</h4>
+                        <h3>করদাতার তালিকা</h4>
                         <select style="width: 200px;" class="input" id="year" name="year" onchange="window.location.href='tax-holder-all.php?year='+this.options [this.selectedIndex].value">
                             <option selected style="display:none;" value="<?php echo $year?>"><?php echo $year?></option>                            
                             <?php 

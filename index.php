@@ -18,6 +18,8 @@
     $ablable_tax = $ablable_tax['SUM(ablable_tax)'];
     $due_tax = $due_tax['SUM(due_tax)'];
     
+
+    //this year data
     $this_year_annual_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(annual_tax) FROM person WHERE admin_id=$id AND present_year=$present_year"));
     $this_year_ablable_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(ablable_tax) FROM person WHERE  admin_id=$id  AND status='Success' AND present_year=$present_year"));
     $this_year_due_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(due_tax) FROM person WHERE admin_id=$id AND status='Success' AND present_year=$present_year"));

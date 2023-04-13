@@ -1,28 +1,48 @@
 <?php include("common/header.php")?>
 <?php include("common/sidebar.php")?>
 <?php 
+     
+     $present_year = date("Y",time());
+     $total_tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM person"));
+     $pending_tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM person WHERE present_year=$present_year AND status='Pending'"));
+     $success_tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM person WHERE present_year=$present_year AND status='Success'"));
+     $village = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM village"));
+     $section = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM section"));
+     
+     $annual_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(annual_tax) FROM person"));
+     $ablable_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(ablable_tax) FROM person WHERE  status='Success'"));
+     $due_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(due_tax) FROM person WHERE status='Success'"));
+ 
+     $annual_tax = $annual_tax['SUM(annual_tax)'];
+     $ablable_tax = $ablable_tax['SUM(ablable_tax)'];
+     $due_tax = $due_tax['SUM(due_tax)'];
+     
 
-
-$total_users = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM admin_info"));
-$users = mysqli_query($conn,"SELECT * FROM admin_info ORDER BY id DESC LIMIT 3");
+     //this year data
+     $this_year_annual_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(annual_tax) FROM person WHERE present_year=$present_year"));
+     $this_year_ablable_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(ablable_tax) FROM person WHERE status='Success' AND present_year=$present_year"));
+     $this_year_due_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(due_tax) FROM person WHERE status='Success' AND present_year=$present_year"));
+ 
+     $this_year_annual_tax = $this_year_annual_tax['SUM(annual_tax)'];
+     $this_year_ablable_tax = $this_year_ablable_tax['SUM(ablable_tax)'];
+     $this_year_due_tax = $this_year_due_tax['SUM(due_tax)'];
 
 ?>
-  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-  
+  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">  
     <div class="container-fluid py-4">
 
       <h4>সমস্ত হিসাব</h4>
       <br>
       <div class="row">
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
           <div class="card">
             <div class="card-header p-3 pt-2">
               <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
                 <i class="material-icons opacity-10">weekend</i>
               </div>
               <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">Total Sell Amount</p>
-                <h4 class="mb-0">৳<?php echo 34?></h4>
+                <p class="text-sm mb-0 text-capitalize">সমস্ত কর</p>
+                <h4 class="mb-0">৳<?php echo $this_year_annual_tax?></h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
@@ -31,15 +51,15 @@ $users = mysqli_query($conn,"SELECT * FROM admin_info ORDER BY id DESC LIMIT 3")
             </div>
           </div>
         </div>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
           <div class="card">
             <div class="card-header p-3 pt-2">
               <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10">person</i>
+                <i class="material-icons opacity-10">weekend</i>
               </div>
               <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">Total Users</p>
-                <h4 class="mb-0"><?php echo 22;?></h4>
+                <p class="text-sm mb-0 text-capitalize">জমাকৃত কর</p>
+                <h4 class="mb-0">৳<?php echo $success_tax_holder;?></h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
@@ -48,15 +68,16 @@ $users = mysqli_query($conn,"SELECT * FROM admin_info ORDER BY id DESC LIMIT 3")
             </div>
           </div>
         </div>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        
+        <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
           <div class="card">
             <div class="card-header p-3 pt-2">
               <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10">person</i>
+                <i class="material-icons opacity-10">weekend</i>
               </div>
               <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">Pending Orders</p>
-                <h4 class="mb-0"><?php echo 33?></h4>
+                <p class="text-sm mb-0 text-capitalize">বকেয়া কর</p>
+                <h4 class="mb-0">৳<?php echo $this_year_due_tax?></h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
@@ -65,38 +86,25 @@ $users = mysqli_query($conn,"SELECT * FROM admin_info ORDER BY id DESC LIMIT 3")
             </div>
           </div>
         </div>
-        <div class="col-xl-3 col-sm-6">
-          <div class="card">
-            <div class="card-header p-3 pt-2">
-              <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10">person</i>
-              </div>
-              <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">Success Orders</p>
-                <h4 class="mb-0"><?php echo 33;?></h4>
-              </div>
-            </div>
-            <hr class="dark horizontal my-0">
-            <div class="card-footer p-3">
-              <!-- <p class="mb-0"><span class="text-success text-sm font-weight-bolder">Sohag mia </span>Last Success Orders</p> -->
-            </div>
-          </div>
-        </div>
+
+
+
       </div>
 <br>
+<hr>
 
-      <h4>সমস্ত হিসাব</h4>
+      <h4>সমস্ত তথ্য</h4>
       <br>
       <div class="row">
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
           <div class="card">
             <div class="card-header p-3 pt-2">
               <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
                 <i class="material-icons opacity-10">weekend</i>
               </div>
               <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">Total Sell Amount</p>
-                <h4 class="mb-0">৳<?php echo 34?></h4>
+                <p class="text-sm mb-0 text-capitalize">সমস্ত করদাতা</p>
+                <h4 class="mb-0">৳<?php echo $total_tax_holder?></h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
@@ -105,15 +113,15 @@ $users = mysqli_query($conn,"SELECT * FROM admin_info ORDER BY id DESC LIMIT 3")
             </div>
           </div>
         </div>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
           <div class="card">
             <div class="card-header p-3 pt-2">
               <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10">person</i>
+                <i class="material-icons opacity-10">weekend</i>
               </div>
               <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">Total Users</p>
-                <h4 class="mb-0"><?php echo 22;?></h4>
+                <p class="text-sm mb-0 text-capitalize">গ্রাম</p>
+                <h4 class="mb-0"><?php echo $village;?></h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
@@ -122,15 +130,15 @@ $users = mysqli_query($conn,"SELECT * FROM admin_info ORDER BY id DESC LIMIT 3")
             </div>
           </div>
         </div>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
           <div class="card">
             <div class="card-header p-3 pt-2">
               <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10">person</i>
+                <i class="material-icons opacity-10">weekend</i>
               </div>
               <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">Pending Orders</p>
-                <h4 class="mb-0"><?php echo 33?></h4>
+                <p class="text-sm mb-0 text-capitalize">পাড়া/মহল্লা</p>
+                <h4 class="mb-0"><?php echo $section?></h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
@@ -139,26 +147,125 @@ $users = mysqli_query($conn,"SELECT * FROM admin_info ORDER BY id DESC LIMIT 3")
             </div>
           </div>
         </div>
-        <div class="col-xl-3 col-sm-6">
+      </div>
+<br>
+<hr>
+
+      <h4>অর্থ বছরের কর (<?php echo $present_year;?>)</h4>
+      <br>
+      <div class="row">
+        <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
           <div class="card">
             <div class="card-header p-3 pt-2">
-              <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10">person</i>
+              <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+                <i class="material-icons opacity-10">weekend</i>
               </div>
               <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">Success Orders</p>
-                <h4 class="mb-0"><?php echo 33;?></h4>
+                <p class="text-sm mb-0 text-capitalize">সমস্ত কর</p>
+                <h4 class="mb-0">৳<?php echo $annual_tax?></h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
             <div class="card-footer p-3">
-              <!-- <p class="mb-0"><span class="text-success text-sm font-weight-bolder">Sohag mia </span>Last Success Orders</p> -->
+              <!-- <p class="mb-0"><span class="text-success text-sm font-weight-bolder">৳5000 </span>Last Purchase</p> -->
             </div>
           </div>
         </div>
+        <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-header p-3 pt-2">
+              <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
+                <i class="material-icons opacity-10">weekend</i>
+              </div>
+              <div class="text-end pt-1">
+                <p class="text-sm mb-0 text-capitalize">জমাকৃত কর</p>
+                <h4 class="mb-0">৳<?php echo $ablable_tax;?></h4>
+              </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+              <!-- <p class="mb-0"><span class="text-success text-sm font-weight-bolder">Abir hossen </span> Last User</p> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-header p-3 pt-2">
+              <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
+                <i class="material-icons opacity-10">weekend</i>
+              </div>
+              <div class="text-end pt-1">
+                <p class="text-sm mb-0 text-capitalize">বকেয়া কর</p>
+                <h4 class="mb-0">৳<?php echo $due_tax?></h4>
+              </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+              <!-- <p class="mb-0"><span class="text-danger text-sm font-weight-bolder">sohag hosen</span> Last Pending Order</p> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-4 col-sm-6 mb-xl-0 my-4">
+          <div class="card">
+            <div class="card-header p-3 pt-2">
+              <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
+                <i class="material-icons opacity-10">weekend</i>
+              </div>
+              <div class="text-end pt-1">
+                <p class="text-sm mb-0 text-capitalize">জমাকৃত করদাতা</p>
+                <h4 class="mb-0"><?php echo $success_tax_holder?></h4>
+              </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+              <!-- <p class="mb-0"><span class="text-danger text-sm font-weight-bolder">sohag hosen</span> Last Pending Order</p> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-4 col-sm-6 mb-xl-0 my-4">
+          <div class="card">
+            <div class="card-header p-3 pt-2">
+              <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
+                <i class="material-icons opacity-10">weekend</i>
+              </div>
+              <div class="text-end pt-1">
+                <p class="text-sm mb-0 text-capitalize">বকেয়া করদাতা</p>
+                <h4 class="mb-0"><?php echo $pending_tax_holder?></h4>
+              </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+              <!-- <p class="mb-0"><span class="text-danger text-sm font-weight-bolder">sohag hosen</span> Last Pending Order</p> -->
+            </div>
+          </div>
+        </div>
+
+
+
       </div>
 <br>
-<br>
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       <div class="row mb-4">
         <div class="col-lg-8 col-md-6 mb-md-0 mb-4">

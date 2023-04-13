@@ -34,6 +34,9 @@ if($union<1){
     <script src="https://kit.fontawesome.com/6788eb3be6.js" crossorigin="anonymous"></script>
 
     <link rel="icon" type="image/png" href="upload/<?php echo $website['favicon']?>">
+
+    <link href='https://fonts.googleapis.com/css?family=Anek Bangla' rel='stylesheet'>
+
     <link href="dist/css/category.css" rel="stylesheet" />
     <link href="dist/css/styles.css" rel="stylesheet" />
     <link href="dist/css/custom.css" rel="stylesheet" />

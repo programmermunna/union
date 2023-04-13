@@ -1,3 +1,12 @@
+* {
+  font-family: 'Anek Bangla' !important;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 1.5;
+  text-decoration: none !important;
+}
+
+
 .alert_success {
   color: #fff;
   text-align: center;
@@ -419,23 +428,6 @@ li.main-category.cat:hover .category-wrap {
 .table_th {
   font-size: 10px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .main_content_container {
   flex-direction: unset;
 }
