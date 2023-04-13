@@ -269,6 +269,16 @@ p {
   display:none;
 }
 
+.sms_check{
+  flex-flow: row !important;
+  padding:20px 0;
+}
+.sms_check>input{
+  width: 25px;
+  height: 25px;
+}
+
+
 
 
 @media only screen and (max-width: 786px) {

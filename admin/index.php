@@ -4,7 +4,6 @@
 
 
 $total_users = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM admin_info"));
-
 $users = mysqli_query($conn,"SELECT * FROM admin_info ORDER BY id DESC LIMIT 3");
 
 ?>
@@ -160,19 +159,6 @@ $users = mysqli_query($conn,"SELECT * FROM admin_info ORDER BY id DESC LIMIT 3")
       </div>
 <br>
 <br>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
       <div class="row mb-4">
         <div class="col-lg-8 col-md-6 mb-md-0 mb-4">

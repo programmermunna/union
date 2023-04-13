@@ -32,7 +32,7 @@ $website = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM website_setting 
           <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                <h6 class="text-white text-capitalize ps-3">Website Setting</h6>
+                <h6 class="text-white text-capitalize ps-3">ওয়েবসাইট সেটিং</h6>
               </div>
             </div>
             <div class="card-body px-0 pb-2">
@@ -86,7 +86,7 @@ $website = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM website_setting 
                               </div>
                               <div>
                                 <label for="description">description</label>
-                                <input name="description" type="text" value="<?php echo $website['description']?>">
+                                <textarea name="description" class="input"><?php echo $website['description']?></textarea>
                               </div>
                           </div>
                           <div>                            
@@ -154,15 +154,6 @@ $website = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM website_setting 
                           <input type="submit" name="remove_fav" value="remove">
                         </div>
                       </form>
-
-
-                      </div>
-                      <div class="view">
-                        <div class="view-content" style="margin-left:50px;width:100%">
-                          <div class="view-img">
-                            <img style="width:100%" src="../upload/setting.webp">
-                          </div>
-                        </div>
                       </div>
 
             </div>

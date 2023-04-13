@@ -34,8 +34,42 @@ if(isset($_POST['submit'])){
   $mobile_no = $_POST['mobile_no'];
   $status = $_POST['status'];
 
+  if(empty($_POST['sms_checkbox'])){
+    $sms_checkbox = "OFF";
+  }else{
+    $sms_checkbox = $_POST['sms_checkbox'];
+    if($status == 'Success'){
+    $to = $mobile_no;
+    $token = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+    $message = "Congratulations || ".$id_no." এই আইডি থেকে আপনার করপ্রদান সফল হয়েছে। আপনার কর সম্পর্কে বিস্তারিত জানতে wwww.mkitu.com ওয়েবসাইটে প্রবেশ করুন";
 
- echo $file_name = $_FILES['file']['name']; 
+    $url = "http://api.greenweb.com.bd/api.php?json";
+
+
+    $data= array(
+    'to'=>"$to",
+    'message'=>"$message",
+    'token'=>"$token"
+    ); 
+    $ch = curl_init(); 
+    curl_setopt($ch, CURLOPT_URL,$url);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+    curl_setopt($ch, CURLOPT_ENCODING, '');
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $smsresult = curl_exec($ch);
+
+    //Result
+    echo $smsresult;
+
+    //Error Display
+    echo curl_error($ch);
+  }
+}
+
+
+  $file_name = $_FILES['file']['name']; 
   $file_tmp = $_FILES['file']['tmp_name'];
   move_uploaded_file($file_tmp,"../upload/$file_name");
   if(empty($file_name)){
@@ -329,7 +363,15 @@ if(isset($_POST['submit'])){
                             <label>মোবাইল নং</label>
                             <input type="text" name="mobile_no" class="input"  value="<?php echo $data['mobile_no']?>"/>
                             </div> 
+ 
 
+                            <div>
+                            <label>ছবি</label>
+                            <img style="width:120px" src="../upload/<?php echo $data['file_name']?>" alt="image">            
+                            <input type="file" name="file" class="input"/>
+                            </div> 
+
+                            
                             <div>
                             <label>স্টাটাস</label>
                             <select name="status" class="input">
@@ -341,13 +383,12 @@ if(isset($_POST['submit'])){
                                 <option selected value="Success">Success</option>
                                 <?php } ?>
                             </select>
-                            </div> 
+                            </div>
 
-                            <div>
-                            <label>ছবি</label>
-                            <img style="width:120px" src="../upload/<?php echo $data['file_name']?>" alt="image">            
-                            <input type="file" name="file" class="input"/>
-                            </div> 
+                            <div class="sms_check">
+                            <input type="checkbox" name="sms_checkbox" class="input" />
+                            <span>করদাতার মোবাইলে SMS পাঠাতে এটি নির্বাচন করুন</span>
+                            </div>
 
                             <div>                            
                               <input style="width:100%;margin:10px 0" name="submit" class="submit_btn" type="submit" value="Save">

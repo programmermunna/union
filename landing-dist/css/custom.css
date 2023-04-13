@@ -19,11 +19,12 @@ body {
   padding: 0;
 }
 .logo_img img{
-  width: 60px;
+  width: 150px;
+  width: 150px;
 }
 
-.logo_text a {
-  font-size: 32px;
+.logo_text {
+  font-size: 40px;
 }
 
 .header-brand {

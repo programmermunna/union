@@ -55,7 +55,7 @@ $mail = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM mail_setting WHERE 
                                 <?php if(!empty($setting['logo'])){?>
                                 <div class="logo_img"><img src="upload/<?php echo $setting['logo'];?>"></div>
                                 <?php }else{?>
-                                <div class="logo_text" ><a href="home.php"><?php echo $setting['name'];?></div>
+                                <div class="logo_text" ><?php echo $setting['name'];?></div>
                                 <?php }?>
                             </a>
                         </div>

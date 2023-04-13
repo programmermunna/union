@@ -4,9 +4,9 @@
       <a class="navbar-brand m-0" href="index.php">
         <?php 
         if(!empty($website['logo'])){ ?>
-          <img style="width:200px;height:50px;" src="../upload/logo.png">          
+          <img style="width:200px;height:50px;" src="../upload/<?php echo $website['logo'];?>">          
        <?php }else{ ?>
-        <span class="ms-1 font-weight-bold text-white">Store Management Software</span>
+        <span style="font-size: 30px;" class="ms-1 font-weight-bold text-white"><?php echo $website['name'];?></span>
         <?php }?>
       </a>
     </div>
