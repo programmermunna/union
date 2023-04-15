@@ -20,7 +20,7 @@ if(isset($_POST['submit'])){
   $sql = "UPDATE website_setting SET name='$name',email='$email',address='$address',facebook='$facebook',linkedin='$linkedin',mail='$mail',youtube='$youtube',footer_text='$footer_text',author='$author',keywords='$keywords',description='$description' WHERE id='1'";
   $query = mysqli_query($conn,$sql);
   if($query){
-    $msg = "Successfully Updated";
+    $msg = "সংশোধন সফল হয়েছে";
     header("location:website-setting.php?msg=$msg");
   }
 }
