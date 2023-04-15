@@ -33,7 +33,7 @@ if(isset($_POST['submit'])){
   } 
 
   if( empty($id_no) || empty($name) || empty($guardian_name) || empty($village) || empty($section) || empty($family_member) || empty($net_worth)){
-    header("Location:tax-holder-add.php?err=Please Fill-Up Carefully!");
+    header("Location:tax-holder-add.php?err=সবগুলো ফিল্ড পুরন করুন!");
   }else{
     $sql = "INSERT INTO person (admin_id,id_no,name,guardian_name,village,section,word_no,family_member,male,female,holding_no,nid_no,profession,home,net_worth,annual_tax,ablable_tax,due_tax,present_year,mobile_no,file_name,time) 
     VALUES ('$id','$id_no','$name','$guardian_name','$village','$section','$word_no','$family_member','$male','$female','$holding_no','$nid_no','$profession','$home','$net_worth','$annual_tax','$ablable_tax','$due_tax','$present_year','$mobile_no','$file_name','$time')";

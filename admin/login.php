@@ -25,7 +25,7 @@ if(isset($_POST['submit'])){
       setcookie('super_admin_id', $id , time()+2592000);
       header('location:index.php');
   }else{
-    $msg = "Your Email or Password is wrong!";
+    $msg = "দয়া করে সঠিক তথ্য দিন!";
     header("location:login.php?msg=$msg");
   }
 }

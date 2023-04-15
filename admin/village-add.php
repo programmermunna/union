@@ -13,7 +13,7 @@ if(isset($_POST['submit'])){
     $msg = "গ্রাম যুক্ত করা সফল হয়েছে।";
     header("location:village-add.php?msg=$msg");
   }else{
-    $err = "Something is error";
+    $err = "কোনো ত্রুটি হয়েছে। দয়া করে আবার চেষ্টা করুন";
     header("location:village-add.php?err=$err");
   }
 }

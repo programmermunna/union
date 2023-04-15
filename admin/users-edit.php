@@ -26,10 +26,8 @@ if(isset($_POST['submit'])){
 
 
   if($user_update){
-    $msg = "Successfully Updated!";
+    $msg = "সংশোধন সফল হয়েছে";
     header("location:users-edit.php?src=$src&&id=$id&&msg=$msg");
-  }else{
-    echo "something wrong!";
   }
 }
 $user_data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM admin_info WHERE id=$id"));

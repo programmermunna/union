@@ -7,7 +7,7 @@ if(isset($_POST['add_village'])){
 
   $insert_village = mysqli_query($conn,"INSERT INTO village(admin_id,name) VALUE($id'$add_village')");
   if($insert_village){
-    $msg = "Successfully created a new village";
+    $msg = "গ্রাম যুক্ত করা সফল হয়েছে";
     header("location:village.php?msg=$msg");
   }
 }
@@ -18,7 +18,7 @@ if(isset($_POST['update'])){
 
   $insert_village = mysqli_query($conn,"UPDATE village SET village='$up_village' WHERE id=$id");
   if($insert_village){
-    $msg = "Successfully created a new village";
+    $msg = "গ্রাম সংশোধন করা সফল হয়েছে";
     header("location:village.php?msg=$msg");
   }
 }

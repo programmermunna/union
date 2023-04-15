@@ -16,7 +16,7 @@ if(isset($_POST['submit'])){
   $sql = "UPDATE mail_setting SET smtp_host='$smtp_host',smtp_port='$smtp_port',smtp_user_name='$smtp_user_name',smtp_user_pass='$smtp_user_pass',smtp_security='$smtp_security',site_email='$site_email',site_replay_email='$site_replay_email',sms_token='$sms_token' WHERE id='1'";
   $query = mysqli_query($conn,$sql);
   if($query){
-    $msg = "Successfully Updated";
+    $msg = "সংশোধন সফল হয়েছে";
     header("location:mail-setting.php?msg=$msg");
   }
 }

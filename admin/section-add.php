@@ -12,9 +12,6 @@ if(isset($_POST['submit'])){
   if($query){
     $msg = "পাড়া যুক্ত করা সফল হয়েছে।";
     header("location:section.php?msg=$msg");
-  }else{
-    $err = "Something is error";
-    header("location:section.php?err=$err");
   }
 }
 ?>

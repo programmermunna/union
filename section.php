@@ -9,7 +9,7 @@ if(isset($_POST['add_section'])){
 
   $insert_section = mysqli_query($conn,"INSERT INTO section(admin_id,name) VALUE($id'$add_section')");
   if($insert_section){
-    $msg = "Successfully created a new section";
+    $msg = "সফল ভাবে পাড়া/মহল্লা যুক্ত করা হয়েছে";
     header("location:section.php?msg=$msg");
   }
 }
@@ -20,7 +20,7 @@ if(isset($_POST['update'])){
 
   $insert_section = mysqli_query($conn,"UPDATE section SET section='$up_section' WHERE id=$id");
   if($insert_section){
-    $msg = "Successfully created a new section";
+    $msg = "সফল ভাবে পাড়া/মহল্লা সংসোধন করা হয়েছে";
     header("location:section.php?msg=$msg");
   }
 }

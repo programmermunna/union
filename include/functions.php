@@ -162,15 +162,39 @@ $mail = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM mail_setting WHERE 
 
 <script>
     // ---------popup Notification---------
-    window.addEventListener('DOMContentLoaded', () => {
-    const toast = document.getElementById("toast");
-    if (toast) {
-    toast.innerHTML = `
-    <div id="toast" style="position: fixed; top: 100px; right: 20px; z-index:999; background:#31B0D5; color:white; display:flex; padding:20px 5px !important; align-items:center;  border-radius: 5px; line-height: 0px; ">
-    <span style="font-size:18px;">&#128276;</span>
-    <h6 style="color:white;font-size:15px;margin:0 !important;padding:0 !important">${toast?.dataset?.text} </div></h6> `
+
+    window.addEventListener("DOMContentLoaded", () => {
+  const popup_msg = document.getElementById("popup_msg");
+  if (popup_msg) {
+    popup_msg.innerHTML = `
+  <div id="popup_msg" style="position: fixed; top: 100px; right: 20px; z-index:999; background:#31B0D5; color:white; display:flex; padding:12px; align-items:center; gap:6px; border-radius: 5px; line-height: 0px; ">
+  <span style="font-size:18px;">
+  </span>
+  <h6 style="color:white;">
+  ${popup_msg?.dataset?.text} </div>
+  </h6> `;
     setTimeout(() => {
-        toast.innerHTML = ''
-    }, toast?.dataset?.time || 2000)
-}})
+      popup_msg.innerHTML = "";
+    }, popup_msg?.dataset?.time || 2000);
+  }
+
+  const error_msg = document.getElementById("error_msg");
+  if (error_msg) {
+    error_msg.innerHTML = `
+    <div id="error_msg" style="position: fixed; top: 100px; right: 20px; z-index:999; background:red; color:white; display:flex; padding:12px; align-items:center; gap:6px; border-radius: 5px; line-height: 0px; ">
+    <span style="font-size:18px;">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    </span>
+    <h6 style="color:white;">
+    ${error_msg?.dataset?.text} </div>
+    </h6> `;
+    setTimeout(() => {
+      error_msg.innerHTML = "";
+    }, error_msg?.dataset?.time || 2000);
+  }
+});
     </script>
+
+
+<?php if (isset($_GET['msg'])) {?><div id="popup_msg" data-text="<?php echo $_GET['msg']; ?>"></div><?php }?>
+<?php if (isset($_GET['err'])) {?><div id="error_msg" data-text="<?php echo $_GET['err']; ?>"></div><?php }?>

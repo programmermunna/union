@@ -19,7 +19,7 @@ if(isset($_GET['src'])){
     $delete_union = mysqli_query($conn,"DELETE FROM union_name WHERE id=$id");
 
     if($delete_village && $delete_section && $delete_person && $delete_union){
-      $msg = "Successfully Deleted!";
+      $msg = "মুছে দেওয়া সফল হয়েছে";
       header("location:$src.php?msg=$msg");
     }
 

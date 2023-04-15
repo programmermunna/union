@@ -20,13 +20,15 @@ if(isset($_POST['submit'])){
   
   $query = mysqli_query($conn,$sql);
   if($query){
-    $msg = "Successfully Updated";
+    $msg = "সংশোধন সফল হয়েছে";
     header("location:admin-setting.php?msg=$msg");
   }else{
-    $msg = "Somethings error! Please try again.";  
+    $err = "কোনো ত্রুটি হয়েছে। দয়া করে আবার চেষ্টা করুন";
+    header("location:admin-setting.php?err=$err");  
   }
 }else{
-  $msg = "Somethings error! Please try again.";
+    $err = "কোনো ত্রুটি হয়েছে। দয়া করে আবার চেষ্টা করুন";
+    header("location:admin-setting.php?err=$err");  
 }
 ?>
     <!-- Main Content --> 

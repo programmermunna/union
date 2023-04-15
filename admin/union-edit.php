@@ -28,7 +28,7 @@ if(isset($_POST['submit'])){
 
   $query = mysqli_query($conn,$sql);
   if($query){
-    $msg = "Successfully Updated";
+    $msg = "সংশোধন সফল হয়েছে";
     header("location:union.php?msg=$msg");
   }
 }

@@ -76,7 +76,7 @@ if(isset($_POST['submit'])){
   }
 
   if( empty($id_no) || empty($name) || empty($guardian_name) || empty($village) || empty($section) || empty($family_member) || empty($word_no) || empty($net_worth)){
-    header("Location:tax-holder-add.php?err=Please Fill-Up Carefully!");
+    header("Location:tax-holder-add.php?err=দয়া করে আবার চেষ্টা করুন");
   }else{
     $sql = "UPDATE person SET id_no='$id_no', name='$name', guardian_name='$guardian_name', village='$village', section='$section', word_no='$word_no', family_member='$family_member', male='$male', female='$female', holding_no='$holding_no', nid_no='$nid_no', profession='$profession', home='$home', net_worth='$net_worth', annual_tax='$annual_tax', ablable_tax='$ablable_tax', due_tax='$due_tax', mobile_no='$mobile_no', status='$status',file_name='$file_name' WHERE id=$id";
     $update = mysqli_query($conn,$sql);

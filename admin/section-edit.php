@@ -18,11 +18,8 @@ if(isset($_POST['submit'])){
   $sql = "UPDATE section SET name='$section' WHERE id=$sec_id";
   $query = mysqli_query($conn,$sql);
   if($query){
-    $msg = "পাড়া সম্পাদন করা সফল হয়েছে।";
+    $msg = "পাড়া/মহল্লা সম্পাদন করা সফল হয়েছে।";
     header("location:section.php?msg=$msg");
-  }else{
-    $err = "Something is error";
-    header("location:section.php?err=$err");
   }
 }
 

@@ -37,10 +37,8 @@ if(isset($_POST['submit'])){
 
 
   if($user_update){
-    $msg = "Successfully Updated!";
+    $msg = "সংশোধন সফল হয়েছে";
     header("location:profile.php?msg=$msg");
-  }else{
-    echo "something wrong!";
   }
 }
 $user_data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM super_admin WHERE id=1"));

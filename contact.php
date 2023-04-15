@@ -11,11 +11,11 @@ if(isset($_POST['submit'])){
     $send = mail($to, $subject, $message, $headers);
 
   if($send){
-    $msg = "Send Message Successfully";
+    $msg = "বার্তা প্রেরন সফল হয়েছে";
     header("location:contact.php?msg=$msg");
     }else{
-    $msg = "Something is wrong!";
-    header("location:contact.php?msg=$msg");
+    $err = "কোনো ত্রুটি হয়েছে। দয়া করে আবার চেষ্টা করুন";
+    header("location:contact.php?err=$err");
     }
 }
 

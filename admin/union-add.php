@@ -17,7 +17,7 @@ if(isset($_POST['submit'])){
   }
   if($pass == $cpass && !empty($union_name)){    
   }else{
-    $err = "Something is error";
+    $err = "কোনো ত্রুটি হয়েছে। দয়া করে আবার চেষ্টা করুন";
     header("location:union.php?err=$err");
   }
 }

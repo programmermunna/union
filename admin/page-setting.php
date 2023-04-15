@@ -9,7 +9,7 @@ if(isset($_POST['about_btn'])){
   $sql = "UPDATE pages SET about='$about' WHERE id=1";
   $query = mysqli_query($conn,$sql);
   if($query){
-    $msg = "Successfully Updated";
+    $msg = "পেজের তথ্য সংশোধন করা সফল হয়েছে";
     header("location:page-setting.php?msg=$msg");
   }
 }
@@ -19,7 +19,7 @@ if(isset($_POST['terms_btn'])){
   $sql = "UPDATE pages SET terms='$terms' WHERE id=1";
   $query = mysqli_query($conn,$sql);
   if($query){
-    $msg = "Successfully Updated";
+    $msg = "পেজের তথ্য সংশোধন করা সফল হয়েছে";
     header("location:page-setting.php?msg=$msg");
   }
 }

@@ -19,10 +19,10 @@ if(isset($_POST['submit'])){
     $id = $row['admin_id'];
     $_SESSION['admin_id'] = $id;
     setcookie('admin_id', $id , time()+2592000);
-    header('location:index.php');
+    header('location:index.php?msg=আপনাকে স্বাগতম');
     }else{
-      $msg = "Soemthing is error!";
-      header("location:login.php?msg=$msg");
+      $err = "দয়া করে আবার চেষ্টা করুন।";
+      header("location:login.php?err=$err");
     }
 }
 
