@@ -77,15 +77,15 @@ $website = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM website_setting 
                               </div>
                               <hr>
                               <div>
-                                <label for="author">author</label>
+                                <label for="author">Author</label>
                                 <input name="author" type="text" value="<?php echo $website['author']?>">
                               </div>
                               <div>
-                                <label for="keywords">keywords</label>
+                                <label for="keywords">Keywords</label>
                                 <input name="keywords" type="text" value="<?php echo $website['keywords']?>">
                               </div>
                               <div>
-                                <label for="description">description</label>
+                                <label for="description">Description</label>
                                 <textarea name="description" class="input"><?php echo $website['description']?></textarea>
                               </div>
                           </div>
@@ -117,7 +117,7 @@ $website = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM website_setting 
                       <div style="display:block;text-align:center;margin:30px auto;">
                       <p style="text-align:center">Requered Size: 200*50</p>
                       <form action="" method="POST" enctype="multipart/form-data">
-                          <img style="padding-bottom:30px;max-width:100%" src="../upload/<?php echo $website['logo']?>">
+                          <img style="padding-bottom:30px;width:150px" src="../upload/<?php echo $website['logo']?>">
                           <br>
                           <input class="input_file" type="file" name="file">
                           <input type="submit" name="add" value="Add">
@@ -147,7 +147,7 @@ $website = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM website_setting 
                       <div style="display:block;text-align:center;margin:30px auto;">
                       <p style="text-align:center">Requered Size: 16*16</p>
                       <form action="" method="POST" enctype="multipart/form-data">
-                          <img style="padding-bottom:30px;max-width:100%" src="../upload/<?php echo $website['favicon']?>">
+                          <img style="padding-bottom:30px;width:50px" src="../upload/<?php echo $website['favicon']?>">
                           <br>
                           <input class="input_file" type="file" name="file">
                           <input type="submit" name="add_fav" value="Add">

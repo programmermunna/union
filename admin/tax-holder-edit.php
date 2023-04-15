@@ -40,7 +40,7 @@ if(isset($_POST['submit'])){
     $sms_checkbox = $_POST['sms_checkbox'];
     if($status == 'Success'){
     $to = $mobile_no;
-    $token = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+    $token = $mail['sms_token'];
     $message = "Congratulations || ".$id_no." এই আইডি থেকে আপনার করপ্রদান সফল হয়েছে। আপনার কর সম্পর্কে বিস্তারিত জানতে wwww.mkitu.com ওয়েবসাইটে প্রবেশ করুন";
 
     $url = "http://api.greenweb.com.bd/api.php?json";

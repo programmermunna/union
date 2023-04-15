@@ -123,6 +123,41 @@ function time_elapsed_string($datetime, $full = false) {
 
 // <!-- ===================php mailer=========== -->
     
+
+
+
+$website = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM website_setting WHERE id=1"));
+$mail = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM mail_setting WHERE id=1"));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   ?>
 
 <script>

@@ -59,14 +59,12 @@ label {
 }
 
 .view {
-  display: flex;
-  justify-content: space-between;
-  padding: 80px;
+  
+  text-align: center;
 }
 
 .view>.view-content {
-  width: 65%;
-  margin-top: 20px;
+  padding: 20px;
 }
 
 .view>.view-content>h3 {
@@ -89,14 +87,10 @@ p {
   font-style: normal;
 }
 
-.view>.view-img {
-  width: 35%;
-}
 
 .view>.view-img>img {
-  margin-top: 30px;
-  width: 200px;
-  height: 200px;
+  width: 400px;
+  height: 400px;
   border-radius: 5px;
 }
 
@@ -176,8 +170,6 @@ p {
   }
 
   .view>.view-content {
-    margin: 0 !important;
-    padding: 0 !important;
     width: 100%;
     text-align: center;
   }

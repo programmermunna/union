@@ -15,11 +15,10 @@ if($id<1){
     header('location:logout.php');
 }
 
-$setting = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM setting WHERE id=1"));
-$website = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM website_setting WHERE id=1"));
+
 $union = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM union_name WHERE admin_id=$id"));
 if($union<1){
-  header("location:logout.php");
+  header("location:home.php");
 }
 ?>
 
@@ -51,8 +50,8 @@ if($union<1){
           <div class="header_brand">
             <a href="index.php" class="go_home">
               <div>
-                <?php if($setting['logo']!=""){ ?>               
-                  <img style="width:200px;height:60px" src="upload/<?php echo $setting['logo'];?>" alt="">
+                <?php if($website['logo']!=""){ ?>               
+                  <img style="width:150px;height:50px" src="upload/<?php echo $website['logo'];?>" alt="">
                  <?php }else{ ?>                  
                   <span style="font-size:18px;color:#fff;"><?php echo $union['union_name']?></span>
                <?php  } ?>

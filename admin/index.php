@@ -37,127 +37,7 @@
         <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
           <div class="card">
             <div class="card-header p-3 pt-2">
-              <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10">weekend</i>
-              </div>
-              <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">সমস্ত কর</p>
-                <h4 class="mb-0">৳<?php echo $this_year_annual_tax?></h4>
-              </div>
-            </div>
-            <hr class="dark horizontal my-0">
-            <div class="card-footer p-3">
-              <!-- <p class="mb-0"><span class="text-success text-sm font-weight-bolder">৳5000 </span>Last Purchase</p> -->
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
-            <div class="card-header p-3 pt-2">
               <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10">weekend</i>
-              </div>
-              <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">জমাকৃত কর</p>
-                <h4 class="mb-0">৳<?php echo $success_tax_holder;?></h4>
-              </div>
-            </div>
-            <hr class="dark horizontal my-0">
-            <div class="card-footer p-3">
-              <!-- <p class="mb-0"><span class="text-success text-sm font-weight-bolder">Abir hossen </span> Last User</p> -->
-            </div>
-          </div>
-        </div>
-        
-        <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
-            <div class="card-header p-3 pt-2">
-              <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10">weekend</i>
-              </div>
-              <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">বকেয়া কর</p>
-                <h4 class="mb-0">৳<?php echo $this_year_due_tax?></h4>
-              </div>
-            </div>
-            <hr class="dark horizontal my-0">
-            <div class="card-footer p-3">
-              <!-- <p class="mb-0"><span class="text-danger text-sm font-weight-bolder">sohag hosen</span> Last Pending Order</p> -->
-            </div>
-          </div>
-        </div>
-
-
-
-      </div>
-<br>
-<hr>
-
-      <h4>সমস্ত তথ্য</h4>
-      <br>
-      <div class="row">
-        <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
-            <div class="card-header p-3 pt-2">
-              <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10">weekend</i>
-              </div>
-              <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">সমস্ত করদাতা</p>
-                <h4 class="mb-0">৳<?php echo $total_tax_holder?></h4>
-              </div>
-            </div>
-            <hr class="dark horizontal my-0">
-            <div class="card-footer p-3">
-              <!-- <p class="mb-0"><span class="text-success text-sm font-weight-bolder">৳5000 </span>Last Purchase</p> -->
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
-            <div class="card-header p-3 pt-2">
-              <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10">weekend</i>
-              </div>
-              <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">গ্রাম</p>
-                <h4 class="mb-0"><?php echo $village;?></h4>
-              </div>
-            </div>
-            <hr class="dark horizontal my-0">
-            <div class="card-footer p-3">
-              <!-- <p class="mb-0"><span class="text-success text-sm font-weight-bolder">Abir hossen </span> Last User</p> -->
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
-            <div class="card-header p-3 pt-2">
-              <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10">weekend</i>
-              </div>
-              <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">পাড়া/মহল্লা</p>
-                <h4 class="mb-0"><?php echo $section?></h4>
-              </div>
-            </div>
-            <hr class="dark horizontal my-0">
-            <div class="card-footer p-3">
-              <!-- <p class="mb-0"><span class="text-danger text-sm font-weight-bolder">sohag hosen</span> Last Pending Order</p> -->
-            </div>
-          </div>
-        </div>
-      </div>
-<br>
-<hr>
-
-      <h4>অর্থ বছরের কর (<?php echo $present_year;?>)</h4>
-      <br>
-      <div class="row">
-        <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
-            <div class="card-header p-3 pt-2">
-              <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
                 <i class="material-icons opacity-10">weekend</i>
               </div>
               <div class="text-end pt-1">
@@ -184,7 +64,120 @@
             </div>
             <hr class="dark horizontal my-0">
             <div class="card-footer p-3">
-              <!-- <p class="mb-0"><span class="text-success text-sm font-weight-bolder">Abir hossen </span> Last User</p> -->
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-header p-3 pt-2">
+              <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
+                <i class="material-icons opacity-10">weekend</i>
+              </div>
+              <div class="text-end pt-1">
+                <p class="text-sm mb-0 text-capitalize">বকেয়া কর</p>
+                <h4 class="mb-0">৳<?php echo $due_tax?></h4>
+              </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+<br>
+<hr>
+
+      <h4>সমস্ত তথ্য</h4>
+      <br>
+      <div class="row">
+        <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-header p-3 pt-2">
+              <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+                <i class="material-icons opacity-10">weekend</i>
+              </div>
+              <div class="text-end pt-1">
+                <p class="text-sm mb-0 text-capitalize">সমস্ত করদাতা</p>
+                <h4 class="mb-0"><?php echo $total_tax_holder?></h4>
+              </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-header p-3 pt-2">
+              <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+                <i class="material-icons opacity-10">weekend</i>
+              </div>
+              <div class="text-end pt-1">
+                <p class="text-sm mb-0 text-capitalize">গ্রাম</p>
+                <h4 class="mb-0"><?php echo $village;?></h4>
+              </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-header p-3 pt-2">
+              <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+                <i class="material-icons opacity-10">weekend</i>
+              </div>
+              <div class="text-end pt-1">
+                <p class="text-sm mb-0 text-capitalize">পাড়া/মহল্লা</p>
+                <h4 class="mb-0"><?php echo $section?></h4>
+              </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+            </div>
+          </div>
+        </div>
+      </div>
+<br>
+<hr>
+
+      <h4>অর্থ বছরের কর (<?php echo $present_year;?>)</h4>
+      <br>
+      <div class="row">
+        <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-header p-3 pt-2">
+              <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
+                <i class="material-icons opacity-10">weekend</i>
+              </div>
+              <div class="text-end pt-1">
+                <p class="text-sm mb-0 text-capitalize">সমস্ত কর</p>
+                <h4 class="mb-0">৳<?php echo $this_year_annual_tax?></h4>
+              </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-header p-3 pt-2">
+              <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
+                <i class="material-icons opacity-10">weekend</i>
+              </div>
+              <div class="text-end pt-1">
+                <p class="text-sm mb-0 text-capitalize">জমাকৃত কর</p>
+                <h4 class="mb-0">৳<?php echo $this_year_ablable_tax;?></h4>
+              </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
             </div>
           </div>
         </div>
@@ -197,12 +190,11 @@
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">বকেয়া কর</p>
-                <h4 class="mb-0">৳<?php echo $due_tax?></h4>
+                <h4 class="mb-0">৳<?php echo $this_year_due_tax?></h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
             <div class="card-footer p-3">
-              <!-- <p class="mb-0"><span class="text-danger text-sm font-weight-bolder">sohag hosen</span> Last Pending Order</p> -->
             </div>
           </div>
         </div>
@@ -220,7 +212,6 @@
             </div>
             <hr class="dark horizontal my-0">
             <div class="card-footer p-3">
-              <!-- <p class="mb-0"><span class="text-danger text-sm font-weight-bolder">sohag hosen</span> Last Pending Order</p> -->
             </div>
           </div>
         </div>
@@ -238,7 +229,6 @@
             </div>
             <hr class="dark horizontal my-0">
             <div class="card-footer p-3">
-              <!-- <p class="mb-0"><span class="text-danger text-sm font-weight-bolder">sohag hosen</span> Last Pending Order</p> -->
             </div>
           </div>
         </div>
@@ -251,29 +241,13 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       <div class="row mb-4">
         <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
           <div class="card">
             <div class="card-header pb-0">
               <div class="row">
                 <div class="col-lg-6 col-7">
-                  <h6>This Month Orders</h6>
+                  <h6>সর্বশেষ ১০ জন করদাতার তালিকা</h6>
                 </div>
               </div>
             </div>
@@ -342,7 +316,7 @@
         <div class="col-lg-4 col-md-6">
           <div class="card h-100">
             <div class="card-header pb-0">
-              <h6>Activities</h6>
+              <h6>সম্প্রতি যুক্ত হয়েছে</h6>
             </div>
             <div class="card-body p-3">
               <div class="timeline timeline-one-side">

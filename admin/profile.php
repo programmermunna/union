@@ -97,14 +97,15 @@ $user_data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM super_admin WH
                         </div>
                       </form>
                       </div>
+
                       <div class="view">
-                        <div class="view-content" style="margin-top:60px;margin-left:50px">
+                        <div class="view-img">
+                          <img src="../upload/<?php echo $user_data['file']?>">
+                        </div>
+                        <div class="view-content">
                           <h3><?php echo strtoupper($user_data['name']);?></h3>
                           <h6><?php echo $user_data['email']?></h6>
                           <h6><?php echo $user_data['address']?></h6>
-                        </div>
-                        <div class="view-img">
-                          <img src="../upload/<?php echo $user_data['file']?>">
                         </div>
                       </div>
                 </div>

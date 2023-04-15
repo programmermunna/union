@@ -11,8 +11,9 @@ if(isset($_POST['submit'])){
   $smtp_security = $_POST['smtp_security'];
   $site_email = $_POST['site_email'];
   $site_replay_email = $_POST['site_replay_email'];
+  $sms_token = $_POST['sms_token'];
 
-  $sql = "UPDATE mail_setting SET smtp_host='$smtp_host',smtp_port='$smtp_port',smtp_user_name='$smtp_user_name',smtp_user_pass='$smtp_user_pass',smtp_security='$smtp_security',site_email='$site_email',site_replay_email='$site_replay_email' WHERE id='1'";
+  $sql = "UPDATE mail_setting SET smtp_host='$smtp_host',smtp_port='$smtp_port',smtp_user_name='$smtp_user_name',smtp_user_pass='$smtp_user_pass',smtp_security='$smtp_security',site_email='$site_email',site_replay_email='$site_replay_email',sms_token='$sms_token' WHERE id='1'";
   $query = mysqli_query($conn,$sql);
   if($query){
     $msg = "Successfully Updated";
@@ -65,6 +66,10 @@ $mail = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM mail_setting WHERE 
                               <div>
                                 <label for="address">REPLAY EMAIL</label>
                                 <input name="site_replay_email" type="text" value="<?php echo $mail['site_replay_email']?>">
+                              </div>
+                              <div>
+                                <label for="address">Mobile SMS Api Token</label>
+                                <input name="sms_token" type="text" value="<?php echo $mail['sms_token']?>">
                               </div>
                           </div>
                           <div>                            
