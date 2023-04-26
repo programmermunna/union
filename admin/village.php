@@ -17,6 +17,27 @@ if(isset($_POST['submit'])){
     header("location:village.php?err=$err");
   }
 }
+
+if(isset($_GET['src'])){
+  $src = $_GET['src'];
+  $id = $_GET['id'];
+
+  $check = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM village WHERE id=$id"));
+
+  if($check['edit_permision'] == 'OFF'){
+    $update = mysqli_query($conn,"UPDATE village SET edit_permision='ON' WHERE id=$id");
+  }else{
+    $update = mysqli_query($conn,"UPDATE village SET edit_permision='OFF' WHERE id=$id");
+  }
+
+  if($update){
+    $msg = "আপডেট সফল হয়েছে।";
+    header("location:village.php?msg=$msg");
+  }else{
+    $err = "কোনো ত্রুটি হয়েছে। দয়া করে আবার চেষ্টা করুন";
+    header("location:village.php?err=$err");
+  }
+}
 ?>
   <div class="container-fluid py-4">
       <div class="row">
@@ -56,6 +77,7 @@ if(isset($_POST['submit'])){
                           <th>গ্রামের নাম</th>
                           <th>ইউনিয়নের নাম</th>
                           <th>প্রতিক্রিয়া</th>
+                          <th>Edit Permision</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -78,7 +100,15 @@ if(isset($_POST['submit'])){
                           <td><?php echo $union['union_name'];?></td>
                           <td>
                             <a class="btn btn-primary p-2" href="village-edit.php?id=<?php echo $village['id']?>">Edit</a>
-                            <a class="btn btn-primary p-2" href="village-delete.php?id=<?php echo $village['id']?>">Delete</a>
+                            <a class="btn btn-primary p-2" href="village-delete.php?id=<?php echo $village['id']?>">Delete</a>                            
+                          </td>
+
+                          <td>
+                            <?php if( $village['edit_permision'] == 'ON'){ ?>
+                              <a style="width: 120px;" class="btn btn-success p-2" href="village.php?src=permision&&id=<?php echo $village['id']?>"><?php echo $village['edit_permision']?></a>
+                             <?php }else{ ?>
+                              <a style="width: 120px;" class="btn btn-primary p-2" href="village.php?src=permision&&id=<?php echo $village['id']?>"><?php echo $village['edit_permision']?></a>
+                            <?php  }?>
                           </td>
                         </tr>
                         <?php }?>

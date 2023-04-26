@@ -1,4 +1,7 @@
-
+select{
+  padding: 5px;
+  outline: none;
+}
 .order-view {
   display: flex;
   justify-content: space-around;
@@ -274,6 +277,16 @@ p {
 
 
 
+
+
+
+
+
+
+
+
+
+
 @media only screen and (max-width: 786px) {
   .search_bar_left{
     display: block;
@@ -322,10 +335,4 @@ p {
       padding: 5px;
     }
     
-
-
-
-
-
-
 }

@@ -85,7 +85,6 @@ if(isset($_POST['update'])){
                                         <td class="p-3 border whitespace-nowrap">
                                             <div class="w-full flex_center gap-1">
                                                 <a class="btn table_edit_btn" href="village-edit.php?id=<?php echo $row['id']?>">এডিট করুন</a>
-                                                <a class="btn table_edit_btn" href="delete.php?src=village&&table=village&&id=<?php echo $row['id']?>">ডিলেট করুন</a>
                                             </div>
                                         </td>
                                     </tr>

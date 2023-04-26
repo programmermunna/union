@@ -148,6 +148,7 @@ if(isset($_SESSION['section'])){
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">অর্থ বছর</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">মোবাইল নং</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">স্টাটাস</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">অবস্থা</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">প্রতিক্রিয়া</th>
                     </tr>
                   </thead>
@@ -225,16 +226,27 @@ if(isset($_SESSION['section'])){
                       <td class="align-middle text-center text-sm">
                         <span class="text-secondary text-xs font-weight-bold"><?php echo $data['mobile_no'];?></span>
                       </td>
+
                       <td class="align-middle text-center">
                         <?php if($data['status']=='Pending'){ ?>
-                          <span class="text-xs font-weight-bold badge badge-sm bg-gradient-danger"><?php echo $data['status'];?></span>
+                          <span class="text-xs font-weight-bold badge badge-sm text-danger"><?php echo $data['status'];?></span>
                      <?php }else{?>
-                        <span class="text-xs font-weight-bold badge badge-sm bg-gradient-success"><?php echo $data['status'];?></span>
+                        <span class="text-xs font-weight-bold badge badge-sm text-success"><?php echo $data['status'];?></span>
                         <?php }?>
                       </td>
+
+                      </td>
+                      <td class="align-middle text-center">
+                        <?php if($data['obostha']=='বহাল'){ ?>
+                          <span class="text-xs font-weight-bold badge badge-sm bg-gradient-success"><?php echo $data['obostha'];?></span>
+                     <?php }else{?>
+                        <span class="text-xs font-weight-bold badge badge-sm bg-gradient-danger"><?php echo $data['obostha'];?></span>
+                        <?php }?>
+                      </td>
+
                       <td style="text-align:center">
                         <a href="tax-holder-edit.php?id=<?php echo $data['id'];?>" class="badge badge-sm bg-gradient-success">Edit</a>
-                        <a href="delete.php?src=tax-holder&&table=person&&id=<?php echo $data['id'];?>" class="badge badge-sm bg-gradient-success">Delete</a>
+                        <a href="remove.php?id=<?php echo $data['id'];?>" class="badge badge-sm bg-gradient-success">Remove</a>
                         <a href="tax-holder-view.php?id=<?php echo $data['id'];?>" class="badge badge-sm bg-gradient-success">View</a>
                       </td>
                     </tr>

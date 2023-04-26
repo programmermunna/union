@@ -140,6 +140,7 @@ if(isset($_SESSION['section'])){
                                         <th class="table_th"><div class="table_th_div"><span>অর্থ বছর</span></div></th>
                                         <th class="table_th"><div class="table_th_div"><span>মোবাইল নং</span></div></th>
                                         <th class="table_th"><div class="table_th_div"><span>স্টাটাস</span></div></th>
+                                        <th class="table_th"><div class="table_th_div"><span>অবস্থা</span></div></th>
                                         <th class="table_th"><div class="table_th_div"><span>প্রতিক্রিয়া</span></div></th>
                                     </tr>
                                 </thead>
@@ -211,6 +212,7 @@ if(isset($_SESSION['section'])){
                                         <td class="p-3 border whitespace-nowrap">
                                             <div class="text-center"><?php echo $row['mobile_no']?></div>
                                         </td>
+                                        
                                         <td class="p-3 border whitespace-nowrap">
                                           <?php  if($row['status'] == 'Success'){ ?>
                                             <b><div style="color:green" class="text-center"><?php echo $row['status']?></div></b>
@@ -220,11 +222,19 @@ if(isset($_SESSION['section'])){
                                         </td>
 
                                         <td class="p-3 border whitespace-nowrap">
+                                          <?php  if($row['obostha'] == 'বহাল'){ ?>
+                                            <b><div style="color:#fff;background:green;padding:5px;" class="text-center"><?php echo $row['obostha']?></div></b>
+                                           <?php }else{ ?>
+                                            <b><div style="color:#fff;background:red;padding:5px" class="text-center"><?php echo $row['obostha']?></div></b>
+                                         <?php  }?>
+                                        </td>
+
+                                        <td class="p-3 border whitespace-nowrap">
                                             <div class="w-full flex_center gap-1">
                                                 <a class="btn table_edit_btn"
                                                     href="tax-holder-edit.php?id=<?php echo $row['id']?>">Edit</a>
                                                 <a class="btn table_edit_btn"
-                                                    href="delete.php?src=tax-holder-all&&table=person&&id=<?php echo $row['id']?>">Delete</a>
+                                                    href="remove.php?src=tax-holder-all&&table=person&&id=<?php echo $row['id']?>">Remove</a>
                                                 <a class="btn table_edit_btn"
                                                     href="tax-holder-view.php?id=<?php echo $row['id']?>">View</a>
                                             </div>
