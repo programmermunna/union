@@ -67,6 +67,7 @@ $res = mysqli_query($conn, $empSQL);
                 <td>অর্থ বছর</td>
                 <td>মোবাইল নং</td>
                 <td>স্টাটাস</td>
+                <td>অবস্থা</td>
             </tr>
             <?php
             $i;
@@ -93,6 +94,7 @@ $res = mysqli_query($conn, $empSQL);
                 <td><?php echo $row['present_year'];?></td>
                 <td><?php echo $row['mobile_no'];?></td>
                 <td><?php echo $row['status'];?></td>
+                <td><?php echo $row['obostha'];?></td>
             </tr>
 <?php }?>
     </table>

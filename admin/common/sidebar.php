@@ -1,3 +1,28 @@
+
+
+<ul id="menu">
+    <li><a href="index.php">ড্যাশবোর্ড</a></li>
+    <li><a href="union.php">ইউনিয়ন</a></li>
+    <li><a href="village.php">গ্রাম</a></li>
+    <li><a href="section.php">পাড়া</a></li>
+    <li><a href="tax-holder.php">করদাতা</a></li>
+    <hr>
+    <li><a href="profile.php">আমার একাউন্ট</a></li>
+    <li><a href="website-setting.php">ওয়েবসাইট</a></li>
+    <li><a href="page-setting.php">পেজ</a></li>
+    <li><a href="mail-setting.php">মেইল</a></li>
+    <li><a onclick="return confirm('Are You Sure To Logout?')" href="logout.php">লগআউট</a></li>
+</ul>
+
+<script>
+	$(function(){
+		$('#menu').slicknav();
+	});
+</script>
+
+
+
+
 <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
@@ -54,9 +79,7 @@
           </a>
         </li>      
 
-        <li class="nav-item mt-3">
-          <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">ওয়েবসাইট সম্পর্কিত</h6>
-        </li>
+        <hr>
         <li class="nav-item">
           <a class="nav-link text-white " href="profile.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -90,11 +113,11 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="logout.php">
+          <a class="nav-link text-white" onclick="return confirm('Are You Sure To Logout?')" href="logout.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">person</i>
             </div>
-            <span class="nav-link-text ms-1">লগআউট</span>
+            <span  class="nav-link-text ms-1">লগআউট</span>
           </a>
         </li>
       </ul>

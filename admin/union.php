@@ -41,7 +41,7 @@
                           <td><?php $time = $row['time']; echo $date = date("d-m-Y",$time); ?></td>
                           <td>
                             <a class="btn btn-primary p-2" href="union-edit.php?id=<?php echo $row['id']?>">Edit</a>
-                            <a class="btn btn-primary p-2" href="union-delete.php?src=union&&table=union_name&&id=<?php echo $row['id']?>">Delete</a>
+                            <a onclick="return confirm('Are You Sure To Delete?')" class="btn btn-primary p-2" href="union-delete.php?src=union&&table=union_name&&id=<?php echo $row['id']?>">Delete</a>
                           </td>
                         </tr>
                         <?php }?>

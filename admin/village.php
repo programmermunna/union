@@ -100,7 +100,7 @@ if(isset($_GET['src'])){
                           <td><?php echo $union['union_name'];?></td>
                           <td>
                             <a class="btn btn-primary p-2" href="village-edit.php?id=<?php echo $village['id']?>">Edit</a>
-                            <a class="btn btn-primary p-2" href="village-delete.php?id=<?php echo $village['id']?>">Delete</a>                            
+                            <a onclick="return confirm('Are You Sure To Delete?')" class="btn btn-primary p-2" href="village-delete.php?id=<?php echo $village['id']?>">Delete</a>                            
                           </td>
 
                           <td>

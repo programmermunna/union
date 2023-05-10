@@ -234,8 +234,6 @@ if(isset($_SESSION['section'])){
                                                 <a class="btn table_edit_btn"
                                                     href="tax-holder-edit.php?id=<?php echo $row['id']?>">Edit</a>
                                                 <a class="btn table_edit_btn"
-                                                    href="remove.php?src=tax-holder-all&&table=person&&id=<?php echo $row['id']?>">Remove</a>
-                                                <a class="btn table_edit_btn"
                                                     href="tax-holder-view.php?id=<?php echo $row['id']?>">View</a>
                                             </div>
                                         </td>
