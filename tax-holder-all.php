@@ -6,6 +6,7 @@ if(isset($_GET['session_destroy'])){
     if($_GET['session_destroy'] == 'true'){
         unset($_SESSION['village']);
         unset($_SESSION['section']);
+        header("location:tax-holder-all.php");
     }
 }
 
@@ -17,7 +18,10 @@ if(isset($_GET['year'])){
 if(isset($_SESSION['year'])){
     $year = $_SESSION['year'];
 }else{
-    $year = date("Y",time());
+
+    $year_left = 86400*365;
+    $present_year = $time-$year_left;
+    $year = date("Y",$present_year) ." - ". date("Y",time()); 
 }
 
 
@@ -59,7 +63,7 @@ if(isset($_SESSION['section'])){
                         <select style="width: 200px;" class="input" id="year" name="year" onchange="window.location.href='tax-holder-all.php?year='+this.options [this.selectedIndex].value">
                             <option selected style="display:none;" value="<?php echo $year?>"><?php echo $year?></option>                            
                             <?php 
-                            $years = mysqli_query($conn,"SELECT DISTINCT present_year FROM person WHERE admin_id=$id");
+                            $years = mysqli_query($conn,"SELECT DISTINCT present_year FROM person WHERE admin_id=$id ORDER BY id DESC");
                             while($data = mysqli_fetch_assoc($years)){ ?>
                             <option value="<?php echo $data['present_year']?>"><?php echo $data['present_year']?></option>
                             <?php  }?>

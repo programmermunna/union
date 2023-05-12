@@ -256,7 +256,7 @@
                   <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">নাম</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">করদাতা</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">আইডি নং</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">হোল্ডিং নং</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">বার্ষিক কর</th>
@@ -327,7 +327,7 @@
                     </span>
                     
                     <?php 
-                    $unions = mysqli_query($conn,"SELECT * FROM union_name ORDER BY id DESC LIMIT 3");
+                    $unions = mysqli_query($conn,"SELECT * FROM union_name ORDER BY id DESC LIMIT 4");
                     while($union = mysqli_fetch_assoc($unions)){ ?>
                     <div class="timeline-content">
                       <h6 class="text-dark text-sm font-weight-bold mb-0"><?php echo $union['union_name']?><i style="color:orange"> যুক্ত করা হয়েছে</i></h6>
@@ -340,7 +340,7 @@
                     </span>
 
                     <?php 
-                    $villages = mysqli_query($conn,"SELECT * FROM village ORDER BY id DESC LIMIT 3");
+                    $villages = mysqli_query($conn,"SELECT * FROM village ORDER BY id DESC LIMIT 4");
                     while($village = mysqli_fetch_assoc($villages)){ ?>
                     <div class="timeline-content">
                       <h6 class="text-dark text-sm font-weight-bold mb-0"><?php echo $village['name']?> <i style="color:green">যুক্ত করা হয়েছে</i></h6>
@@ -354,7 +354,7 @@
                     </span>
                     
                     <?php 
-                    $sections = mysqli_query($conn,"SELECT * FROM section ORDER BY id DESC LIMIT 3");
+                    $sections = mysqli_query($conn,"SELECT * FROM section ORDER BY id DESC LIMIT 4");
                     while($section = mysqli_fetch_assoc($sections)){ ?>
                     <div class="timeline-content">
                       <h6 class="text-dark text-sm font-weight-bold mb-0"><?php echo $section['name']?> <i style="color:blue">যুক্ত করা হয়েছে</i></h6>

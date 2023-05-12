@@ -5,6 +5,7 @@ if(isset($_GET['session_destroy'])){
         unset($_SESSION['union']);
         unset($_SESSION['village']);
         unset($_SESSION['section']);
+        header("location:tax-holder.php");
     }
 }
 
@@ -16,7 +17,9 @@ if(isset($_GET['year'])){
 if(isset($_SESSION['year'])){
     $year = $_SESSION['year'];
 }else{
-    $year = date("Y",time());
+    $year_left = 86400*365;
+    $present_year = $time-$year_left;
+    $year = date("Y",$present_year) ." - ". date("Y",time());
 }
 
 
@@ -66,7 +69,7 @@ if(isset($_SESSION['section'])){
                   <select class="input" id="year" name="year" onchange="window.location.href='tax-holder.php?year='+this.options [this.selectedIndex].value">
                     <option selected style="display:none;" value="<?php echo $year?>"><?php echo $year?></option>
                     <?php 
-                    $years = mysqli_query($conn,"SELECT DISTINCT present_year FROM person");
+                    $years = mysqli_query($conn,"SELECT DISTINCT present_year FROM person ORDER BY id DESC");
                     while($data = mysqli_fetch_assoc($years)){ ?>
                     <option value="<?php echo $data['present_year']?>"><?php echo $data['present_year']?></option>
                     <?php  }?>
@@ -159,13 +162,13 @@ if(isset($_SESSION['section'])){
                     $src = $_GET['src'];
                       $empSQL = "SELECT * FROM person WHERE present_year=$year AND (name LIKE '$src' OR id_no = '$src' OR mobile_no = '$src' OR nid_no = '$src' OR holding_no = '$src' OR guardian_name LIKE '$src')";
                   }elseif($sess_union > 0 && $sess_vlg > 0 && $sess_sec > 0){
-                    $empSQL = "SELECT * FROM person WHERE present_year=$year AND  admin_id = $sess_union AND village = $sess_vlg AND section = $sess_sec ";
+                    $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  admin_id = $sess_union AND village = $sess_vlg AND section = $sess_sec ";
                   }elseif($sess_union > 0 && $sess_vlg > 0){
-                    $empSQL = "SELECT * FROM person WHERE present_year=$year AND  admin_id = $sess_union AND village = $sess_vlg ";
+                    $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  admin_id = $sess_union AND village = $sess_vlg ";
                   }elseif($sess_union > 0 ){
-                      $empSQL = "SELECT * FROM person WHERE present_year=$year AND admin_id = $sess_union ";
+                      $empSQL = "SELECT * FROM person WHERE present_year='$year' AND admin_id = $sess_union ";
                   }else{
-                    $empSQL = "SELECT * FROM person WHERE present_year=$year";
+                    $empSQL = "SELECT * FROM person WHERE present_year='$year'";
                   }
                   
                   $query = mysqli_query($conn,$empSQL);
@@ -246,7 +249,7 @@ if(isset($_SESSION['section'])){
 
                       <td style="text-align:center">
                         <a href="tax-holder-edit.php?id=<?php echo $data['id'];?>" class="badge badge-sm bg-gradient-success">Edit</a>
-                        <a href="remove.php?id=<?php echo $data['id'];?>" class="badge badge-sm bg-gradient-success">Remove</a>
+                        <a onclick="return confirm('Are You Sure To Delete?')"  href="remove.php?id=<?php echo $data['id'];?>" class="badge badge-sm bg-gradient-success">Remove</a>
                         <a href="tax-holder-view.php?id=<?php echo $data['id'];?>" class="badge badge-sm bg-gradient-success">View</a>
                       </td>
                     </tr>

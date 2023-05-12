@@ -33,13 +33,13 @@ header('Content-Disposition:attachment;filename=report.xls');
 
 
   if($sess_union > 0 && $sess_vlg > 0 && $sess_sec > 0){
-    $empSQL = "SELECT * FROM person WHERE present_year=$year AND  admin_id = $sess_union AND village = $sess_vlg AND section = $sess_sec ";
+    $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  admin_id = $sess_union AND village = $sess_vlg AND section = $sess_sec ";
   }elseif($sess_union > 0 && $sess_vlg > 0){
-    $empSQL = "SELECT * FROM person WHERE present_year=$year AND  admin_id = $sess_union AND village = $sess_vlg ";
+    $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  admin_id = $sess_union AND village = $sess_vlg ";
   }elseif($sess_union > 0 ){
-      $empSQL = "SELECT * FROM person WHERE present_year=$year AND admin_id = $sess_union ";
+      $empSQL = "SELECT * FROM person WHERE present_year='$year' AND admin_id = $sess_union ";
   }else{
-    $empSQL = "SELECT * FROM person WHERE present_year=$year";
+    $empSQL = "SELECT * FROM person WHERE present_year='$year'";
   }
 
 $res = mysqli_query($conn, $empSQL);

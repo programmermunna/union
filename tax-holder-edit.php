@@ -74,7 +74,7 @@ if(isset($_POST['submit'])){
     if($status == 'Success'){
     $to = $mobile_no;
     $token = $mail['sms_token'];
-    $message = "Congratulations || ".$id_no." এই আইডি থেকে আপনার করপ্রদান সফল হয়েছে। আপনার কর সম্পর্কে বিস্তারিত জানতে wwww.mkitu.com ওয়েবসাইটে প্রবেশ করুন";
+    $message = "Congratulations ".$name." || ".$id_no." এই আইডি থেকে আপনার করপ্রদান সফল হয়েছে। আপনার কর সম্পর্কে বিস্তারিত জানতে wwww.mkitu.com ওয়েবসাইটে প্রবেশ করুন";
 
     $url = "http://api.greenweb.com.bd/api.php?json";
 

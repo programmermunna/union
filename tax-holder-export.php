@@ -22,11 +22,11 @@ if(isset($_SESSION['year'])){
 }
 
 if($sess_vlg > 0 && $sess_sec > 0){
-    $empSQL = "SELECT * FROM person WHERE admin_id=$id AND present_year=$year AND village = $sess_vlg AND section = $sess_sec ";
+    $empSQL = "SELECT * FROM person WHERE admin_id=$id AND present_year='$year' AND village = $sess_vlg AND section = $sess_sec ";
 }elseif($sess_vlg > 0){
-    $empSQL = "SELECT * FROM person WHERE admin_id=$id AND present_year=$year AND village = $sess_vlg ";
+    $empSQL = "SELECT * FROM person WHERE admin_id=$id AND present_year='$year' AND village = $sess_vlg ";
 }else{
-    $empSQL = "SELECT * FROM person WHERE admin_id=$id AND present_year=$year ";
+    $empSQL = "SELECT * FROM person WHERE admin_id=$id AND present_year='$year' ";
 }
 
 $res = mysqli_query($conn, $empSQL);

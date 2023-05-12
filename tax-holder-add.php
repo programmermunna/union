@@ -21,9 +21,12 @@ if(isset($_POST['submit'])){
   $annual_tax = $_POST['annual_tax'];
   $ablable_tax = $_POST['ablable_tax'];
   $due_tax = $_POST['due_tax'];
-  $present_year = date("Y");
   $mobile_no = $_POST['mobile_no'];
 
+
+  $year_left = 86400*365;
+  $present_year = $time-$year_left;
+  $present_year = date("Y",$present_year) ." - ". date("Y",time()); 
 
   $file_name = $_FILES['file']['name'];
   $file_tmp = $_FILES['file']['tmp_name'];
@@ -222,7 +225,14 @@ if(isset($_POST['submit'])){
 
             <div>
             <label>অর্থ বছর</label>
-            <input type="number" disabled class="input"  value="<?php echo date("Y")?>"/>
+            <input type="text" disabled class="input"  value="<?php 
+
+            $time = time();
+            $year_left = 86400*365;
+            $time = $time-$year_left;
+            echo date("Y",$time) ." - ". date("Y",time());            
+            
+            ?>"/>
             </div>
 
             <div>
