@@ -9,15 +9,8 @@ if(isset($_POST['submit'])){
   $address = $_POST['address'];
   $facebook = $_POST['facebook'];
   $linkedin = $_POST['linkedin'];
-  $mail = $_POST['mail'];
-  $youtube = $_POST['youtube'];
-  $footer_text = $_POST['footer_text'];
 
-  $author = $_POST['author'];
-  $keywords = $_POST['keywords'];
-  $description = $_POST['description'];
-
-  $sql = "UPDATE website_setting SET name='$name',email='$email',address='$address',facebook='$facebook',linkedin='$linkedin',mail='$mail',youtube='$youtube',footer_text='$footer_text',author='$author',keywords='$keywords',description='$description' WHERE id='1'";
+  $sql = "UPDATE website_setting SET name='$name',email='$email',address='$address'footer_text='$footer_text' WHERE id='1'";
   $query = mysqli_query($conn,$sql);
   if($query){
     $msg = "সংশোধন সফল হয়েছে";
@@ -56,37 +49,8 @@ $website = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM website_setting 
                                 <input name="address" type="text" value="<?php echo $website['address']?>">
                               </div>
                               <div>
-                                <label for="facebook">Facebook</label>
-                                <input name="facebook" type="text" value="<?php echo $website['facebook']?>">
-                              </div>
-                              <div>
-                                <label for="linkedin">Linkedin</label>
-                                <input name="linkedin" type="text" value="<?php echo $website['linkedin']?>">
-                              </div>
-                              <div>
-                                <label for="mail">Mail</label>
-                                <input name="mail" type="text" value="<?php echo $website['mail']?>">
-                              </div>
-                              <div>
-                                <label for="youtube">Youtube</label>
-                                <input name="youtube" type="text" value="<?php echo $website['youtube']?>">
-                              </div>
-                              <div>
                                 <label for="footer_text">Footer Text</label>
                                 <input name="footer_text" type="text" value="<?php echo $website['footer_text']?>">
-                              </div>
-                              <hr>
-                              <div>
-                                <label for="author">Author</label>
-                                <input name="author" type="text" value="<?php echo $website['author']?>">
-                              </div>
-                              <div>
-                                <label for="keywords">Keywords</label>
-                                <input name="keywords" type="text" value="<?php echo $website['keywords']?>">
-                              </div>
-                              <div>
-                                <label for="description">Description</label>
-                                <textarea name="description" class="input"><?php echo $website['description']?></textarea>
                               </div>
                           </div>
                           <div>                            

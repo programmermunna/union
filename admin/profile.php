@@ -98,7 +98,7 @@ $user_data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM super_admin WH
 
                       <div class="view">
                         <div class="view-img">
-                          <img src="../upload/<?php echo $user_data['file']?>">
+                          <img style="width: 100%;height:auto" src="../upload/<?php echo $user_data['file']?>">
                         </div>
                         <div class="view-content">
                           <h3><?php echo strtoupper($user_data['name']);?></h3>

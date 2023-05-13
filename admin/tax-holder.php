@@ -78,7 +78,12 @@ if(isset($_SESSION['section'])){
               </div>
 
               <div class="bg-gradient-primary border-radius-lg pt-3 search_bar search_bar_right">
-                <h6 class="text-white text-capitalize ps-3"></h6>
+              <div class="top_search top_search_t">
+                <form action="" method="GET">
+                    <input name="src" type="text" placeholder="এখানে লিখুন" value="<?php if(isset($_GET['src'])){ echo $_GET['src'];}?>">
+                    <button type="submit">খুজুন</button>
+                  </form>
+                </div>
                 <form action="" method="GET">
                   <div class="top_select">
                     <select name="union" id="union">
@@ -118,11 +123,11 @@ if(isset($_SESSION['section'])){
                     <?php  }?>
 
                     </select>
-                    <input type="submit" value="খুজুন">
+                    <input class="left_src_btn" type="submit" value="খুজুন">
                   </div>
                 </form>
-                <div class="top_search">
-                <form action="" method="GET">
+                <div class="top_search top_search_b">
+                  <form action="" method="GET">
                     <input name="src" type="text" placeholder="এখানে লিখুন" value="<?php if(isset($_GET['src'])){ echo $_GET['src'];}?>">
                     <button type="submit">খুজুন</button>
                   </form>

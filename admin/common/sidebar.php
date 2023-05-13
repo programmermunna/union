@@ -1,6 +1,14 @@
 
-
-<ul id="menu">
+<div class="header-area">
+  <a class="logo" href="index.php">
+      <?php 
+      if(!empty($website['logo'])){ ?>
+        <img src="../upload/<?php echo $website['logo'];?>">          
+    <?php }else{ ?>
+      <span><?php echo $website['name'];?></span>
+      <?php }?>
+  </a>
+  <ul id="menu">
     <li><a href="index.php">ড্যাশবোর্ড</a></li>
     <li><a href="union.php">ইউনিয়ন</a></li>
     <li><a href="village.php">গ্রাম</a></li>
@@ -12,10 +20,11 @@
     <li><a href="page-setting.php">পেজ</a></li>
     <li><a href="mail-setting.php">মেইল</a></li>
     <li><a onclick="return confirm('Are You Sure To Logout?')" href="logout.php">লগআউট</a></li>
-</ul>
-
-<script>
-	$(function(){
+  </ul>
+</div>
+  
+  <script>
+    $(function(){
 		$('#menu').slicknav();
 	});
 </script>

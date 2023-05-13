@@ -155,42 +155,6 @@ p {
 
 
 
-@media only screen and (max-width: 768px) {
-
-  .search_bar {
-    display: block;
-  }
-
-  .order-view {
-    display: block;
-  }
-
-  .order-view>.edit,
-  .view {
-    width: 100%;
-    display: block;
-    padding: 10px;
-  }
-
-  .view>.view-content {
-    width: 100%;
-    text-align: center;
-  }
-
-  .view>.view-img {
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 100%;
-    text-align: center;
-  }
-
-  .input_file {
-    outline: auto;
-    width: 100%;
-    margin-bottom: 10px;
-  }
-}
-
 .input {
   width: 100%;
   padding: 5px;
@@ -232,13 +196,6 @@ p {
   margin-left: 9px;
   margin-top: 5px;
 }
-
-@media only screen and (max-width: 786px) {
-  .radio_div{
-    display: block;
-  }
-}
-
 .tax_btn{
   margin-left: 0;
   padding:5px 2px;
@@ -273,21 +230,66 @@ p {
   width: 25px;
   height: 25px;
 }
+.logo{
+  display: none;
+}
+.top_search_t{
+  display: none;
+}
 
 
 
+@media only screen and (max-width: 768px) {  
+  .logo{
+    display: block;
+    position: fixed;
+    top:10px;
+    left:20px;
+  } 
+  .logo>img{
+    width: 100px;
+  } 
+  .logo>span{
+    font-size: 25px;
+    color: #fff;
+  } 
 
+  .search_bar {
+    display: block;
+  }
 
+  .order-view {
+    display: block;
+  }
 
+  .order-view>.edit,
+  .view {
+    width: 100%;
+    display: block;
+    padding: 10px;
+  }
 
+  .view>.view-content {
+    width: 100%;
+    text-align: center;
+  }
 
+  .view>.view-img {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%;
+    text-align: center;
+  }
 
+  .input_file {
+    outline: auto;
+    width: 100%;
+    margin-bottom: 10px;
+  }
 
-
-
-
-
-@media only screen and (max-width: 786px) {
+  .radio_div{
+    display: block;
+  }
   .search_bar_left{
     display: block;
     text-align: center;
@@ -308,31 +310,52 @@ p {
   }
 
   
-    /* #menu is the original menu */
-     #menu {
-        display:none;
-    }
+    #menu {
+      display:none;
+  }
 
-    .slicknav_menu {
-        display:block;
-    }
-    .logout{
-      display: none;
-    }
+  .slicknav_menu {
+      display:block;
+  }
+  .logout{
+    display: none;
+  }
 
-    .top_bar_flex{
-      display: block;
-      text-align: center;
-    }
-    .top_bar_flex>div{
-      padding: 5px 0;
-    }
-    .top_bar_flex>div>select{
-      width: 170px;
-      padding: 5px;
-    }
-    .btn_on_red{
-      padding: 5px;
-    }
-    
+  .top_bar_flex{
+    display: block;
+    text-align: center;
+  }
+  .top_bar_flex>div{
+    padding: 5px 0;
+  }
+  .top_bar_flex>div>select{
+    width: 170px;
+    padding: 5px;
+  }
+  .btn_on_red{
+    padding: 5px;
+  }  
+  .top_search_t{
+    display: block;
+  }
+  .top_search_t>form{
+    width: 90%;
+    margin:0 auto;
+    display: flex;
+  }
+  .top_search_t>form>input{
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .top_search_b{
+    display: none;
+  }
+  .top_select>select,.left_src_btn{
+    width: 90%;
+  }
+  .search_bar_right {
+    padding-bottom: 10px;
+}
+  
 }
