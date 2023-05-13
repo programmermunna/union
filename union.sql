@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 12, 2023 at 07:32 PM
+-- Generation Time: May 13, 2023 at 12:03 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -61,15 +61,16 @@ CREATE TABLE `mail_setting` (
   `smtp_user_pass` varchar(255) NOT NULL,
   `smtp_security` varchar(255) NOT NULL,
   `site_email` varchar(255) NOT NULL,
-  `site_replay_email` varchar(255) NOT NULL
+  `site_replay_email` varchar(255) NOT NULL,
+  `sms_token` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `mail_setting`
 --
 
-INSERT INTO `mail_setting` (`id`, `smtp_host`, `smtp_port`, `smtp_user_name`, `smtp_user_pass`, `smtp_security`, `site_email`, `site_replay_email`) VALUES
-(1, 'mail.xdomainhost.com', 465, 'store@xdomainhost.com', 'DTk^=PgMp7_V', 'ssl', 'store@xdomainhost.com', 'store@xdomainhost.com');
+INSERT INTO `mail_setting` (`id`, `smtp_host`, `smtp_port`, `smtp_user_name`, `smtp_user_pass`, `smtp_security`, `site_email`, `site_replay_email`, `sms_token`) VALUES
+(1, 'mail.xdomainhost.com', 465, 'store@xdomainhost.com', 'DTk^=PgMp7_V', 'ssl', 'store@xdomainhost.com', 'store@xdomainhost.com', 'xxxxx xxxxx xxxxx xxxxx');
 
 -- --------------------------------------------------------
 
@@ -116,9 +117,10 @@ CREATE TABLE `person` (
   `annual_tax` int(255) NOT NULL,
   `ablable_tax` int(255) NOT NULL,
   `due_tax` int(255) NOT NULL,
-  `present_year` int(255) NOT NULL,
+  `present_year` varchar(255) NOT NULL,
   `mobile_no` varchar(300) NOT NULL,
   `status` varchar(255) NOT NULL DEFAULT 'Pending',
+  `obostha` varchar(255) NOT NULL DEFAULT 'বহাল',
   `file_name` varchar(255) NOT NULL DEFAULT 'avatar.jpg',
   `time` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -127,14 +129,31 @@ CREATE TABLE `person` (
 -- Dumping data for table `person`
 --
 
-INSERT INTO `person` (`admin_id`, `id`, `id_no`, `name`, `guardian_name`, `village`, `section`, `word_no`, `family_member`, `male`, `female`, `holding_no`, `nid_no`, `profession`, `home`, `net_worth`, `annual_tax`, `ablable_tax`, `due_tax`, `present_year`, `mobile_no`, `status`, `file_name`, `time`) VALUES
-(345345, 36, 8084096, 'আবান', 'আবান', '22', '19', '3535', 424, 22, 22, '2424', '2424242', 'ব্যাবসা', 'পাকা', 2424, 2424, 2424, 2424, 2020, '24242424', 'Success', 'avatar.jpg', 1680962485),
-(345345, 37, 7532617, 'আহিল', 'আহিল', '22', '22', '3434', 5, 3, 2, '43434', '343434', 'ব্যাবসা', 'আধাপাকা', 100000, 100, 100, 3434, 2023, 'sdfsdfdsfsfd', 'Success', 'avatar.jpg', 1680962922),
-(345345, 39, 79552093, 'আরিয', 'আরিয', '19', '24', '33', 22, 22, 33, '', '223', 'কৃষি', 'পাকা', 242, 24242, 42, 4242, 2023, '2424', 'Success', 'avatar.jpg', 1680963004),
-(345345, 40, 48167177, 'আব্দুল্লাহ', 'আব্দুল্লাহ', '22', '19', '343', 44, 343, 4343, '3434', '343', 'চাকুরি', 'পাকা', 3433, 434, 3434, 343, 2023, '434', 'Pending', 'avatar.jpg', 1680963095),
-(345345, 41, 67840065, 'আনিকা', 'আনিকা', '19', '24', '3434', 343, 34, 34, '24234', '34334', 'দিন-মজুর', 'আধাপাকা', 3434, 3434, 34, 3434, 2023, '34343434', 'Pending', 'khobor-logo-bn.png', 1680963205),
-(345345, 42, 62455807, 'aaabir', 'aaa', '22', '22', 'aaa', 11, 2, 2, '', '34234234', 'চাকুরি', 'বিল্ডিং', 4444, 100, 100, 0, 2023, '012354558', 'Success', 'munna.jpg', 1681114642),
-(345435, 50, 28099353, 'aaa', 'aaa', '24', '29', '3434', 34343, 343, 4343, '3434', '34343', 'দিন-মজুর', 'পাকা', 3434, 3434, 3434, 3434, 2023, '343434', 'Pending', 'avatar.jpg', 1681289590);
+INSERT INTO `person` (`admin_id`, `id`, `id_no`, `name`, `guardian_name`, `village`, `section`, `word_no`, `family_member`, `male`, `female`, `holding_no`, `nid_no`, `profession`, `home`, `net_worth`, `annual_tax`, `ablable_tax`, `due_tax`, `present_year`, `mobile_no`, `status`, `obostha`, `file_name`, `time`) VALUES
+(345345, 36, 8084096, 'আবান', 'আবান', '22', '19', '3535', 424, 22, 22, '2424', '2424242', 'ব্যাবসা', 'পাকা', 2424, 2424, 2424, 2424, '2020', '24242424', 'Success', 'বহাল', 'avatar.jpg', 1680962485),
+(345345, 37, 7532617, 'আহিল', 'আহিল', '22', '22', '3434', 5, 3, 2, '', '343434', 'ব্যাবসা', 'আধাপাকা', 10000, 100, 100, 34342, '2023', '343242424', 'Success', 'বাতিল', 'ccb0956f1d63cab069840c18224e9001.png', 1680962922),
+(345345, 39, 79552093, 'আরিয', 'আরিয', '19', '24', '33', 22, 22, 33, '', '223', 'কৃষি', 'পাকা', 242, 24242, 42, 4242, '2023', '2424', 'Success', 'বাতিল', 'avatar.jpg', 1680963004),
+(345345, 40, 48167177, 'আব্দুল্লাহ', 'আব্দুল্লাহ', '22', '19', '343', 44, 343, 4343, '3434', '343', 'চাকুরি', 'পাকা', 3433, 434, 3434, 343, '2023', '434', 'Pending', 'বহাল', 'avatar.jpg', 1680963095),
+(345345, 41, 67840065, 'আনিকা', 'আনিকা', '19', '24', '3434', 343, 34, 34, '', '34334', 'দিন-মজুর', 'আধাপাকা', 3434, 3434, 34, 3434, '2023', '34343434', 'Pending', 'বাতিল', 'ccb0956f1d63cab069840c18224e9001.png', 1680963205),
+(345345, 42, 62455807, 'aaabir', 'aaa', '22', '22', 'aaa', 11, 2, 2, '', '34234234', 'চাকুরি', 'বিল্ডিং', 4444, 100, 100, 0, '2023', '012354558', 'Success', 'বাতিল', 'munna.jpg', 1681114642),
+(345435, 50, 28099353, 'aaa', 'aaa', '24', '29', '3434', 34343, 343, 4343, '3434', '34343', 'দিন-মজুর', 'পাকা', 3434, 3434, 3434, 3434, '2023', '343434', 'Pending', 'বাতিল', 'avatar.jpg', 1681289590),
+(345345, 51, 55259627, 'সোহান', 'জব্বার', '22', '19', '৭', 10, 5, 5, '594794', '297664966', 'চাকুরি', 'আধাপাকা', 500000, 100, 999, -1, '2023', '2656626', 'Pending', 'বহাল', '23472155_2022317248052326_4135593204184294385_n.jpg', 1683885358),
+(345345, 52, 71504842, 'sdfsdf', 'sdfdsf', '22', '19', '53', 12, 11, 1, '45334', '234234234', 'চাকুরি', 'আধাপাকা', 50000, 100, 99, 1, '2022 - 2023', '2154870', 'Pending', 'বহাল', '337528688_558205639479945_2609749035816108570_n.jpg', 1683885773),
+(345345, 53, 19682679, 'মীম', 'আসাদুল', '22', '22', '৭', 3, 1, 1, '4545', '2525235235', 'দিন-মজুর', 'বিল্ডিং', 234234, 100, 100, -1, '2022 - 2023', '24234324234', 'Pending', 'বহাল', '343659384_1418802215533269_2895522246338142294_n.jpg', 1683885919),
+(345345, 54, 54494265, '32424', '4234324234', '22', '22', '2342342', 2324, 234234, 234234, '23424', '234234', 'ব্যাবসা', 'পাকা', 2422, 24, 2342, 24232, '2022 - 2023', '23423423', 'Pending', 'বহাল', 'avatar.jpg', 1683885981);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `screenshots`
+--
+
+CREATE TABLE `screenshots` (
+  `id` int(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `time` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -166,34 +185,6 @@ INSERT INTO `section` (`admin_id`, `id`, `vlg_id`, `name`, `time`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `setting`
---
-
-CREATE TABLE `setting` (
-  `admin_id` int(255) NOT NULL,
-  `id` int(255) NOT NULL,
-  `logo` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `phone` int(255) NOT NULL,
-  `address` varchar(255) NOT NULL,
-  `city` varchar(255) NOT NULL,
-  `country` varchar(255) NOT NULL,
-  `website` varchar(255) NOT NULL,
-  `file` varchar(255) NOT NULL DEFAULT 'img.png',
-  `time` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `setting`
---
-
-INSERT INTO `setting` (`admin_id`, `id`, `logo`, `name`, `email`, `phone`, `address`, `city`, `country`, `website`, `file`, `time`) VALUES
-(345345, 1, '', 'ইউনিয়ন কর', 'example@gmail.com', 1719182586, 'Bangladesh', 'Dinajpur', 'Bangladesh', 'https://www.bangladeshisoftware.com/', '279898054_460186332543908_6542258482236105019_n.jpg', 1668911551);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `super_admin`
 --
 
@@ -212,7 +203,7 @@ CREATE TABLE `super_admin` (
 --
 
 INSERT INTO `super_admin` (`id`, `name`, `email`, `address`, `pass`, `file`, `time`) VALUES
-(1, 'Munna Hasan', 'admin@gmail.com', 'Dinajpur, Bangladesh', '81dc9bdb52d04dc20036dbd8313ed055', 'avatar.jpg', 1668918669);
+(1, 'Munna Hasan', 'admin@gmail.com', 'Dinajpur, Bangladesh', '4a7d1ed414474e4033ac29ccb8653d9b', 'munna.jpg', 1683970404);
 
 -- --------------------------------------------------------
 
@@ -251,6 +242,7 @@ CREATE TABLE `village` (
   `admin_id` int(255) NOT NULL,
   `id` int(255) NOT NULL,
   `name` varchar(255) NOT NULL,
+  `edit_permision` varchar(255) NOT NULL DEFAULT 'OFF',
   `time` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -258,11 +250,12 @@ CREATE TABLE `village` (
 -- Dumping data for table `village`
 --
 
-INSERT INTO `village` (`admin_id`, `id`, `name`, `time`) VALUES
-(345345, 19, 'চালা', 0),
-(345345, 22, 'মুকন্দগাতী', 0),
-(345435, 24, 'দুকুরিয়া', 0),
-(345435, 25, 'ভেন্নাগাছি', 0);
+INSERT INTO `village` (`admin_id`, `id`, `name`, `edit_permision`, `time`) VALUES
+(345345, 19, 'চালা', 'ON', 0),
+(345345, 22, 'মুকন্দগাতী', 'ON', 0),
+(345435, 24, 'দুকুরিয়া', 'OFF', 0),
+(345435, 25, 'ভেন্নাগাছি', 'OFF', 0),
+(345345, 35, 'চন্দনগাতী', 'OFF', 1683970469);
 
 -- --------------------------------------------------------
 
@@ -278,22 +271,15 @@ CREATE TABLE `website_setting` (
   `email` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL,
   `time` int(255) NOT NULL,
-  `facebook` varchar(255) NOT NULL,
-  `linkedin` varchar(255) NOT NULL,
-  `mail` varchar(255) NOT NULL,
-  `youtube` varchar(255) NOT NULL,
-  `footer_text` varchar(255) NOT NULL,
-  `author` varchar(255) NOT NULL,
-  `keywords` varchar(255) NOT NULL,
-  `description` varchar(255) NOT NULL
+  `footer_text` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `website_setting`
 --
 
-INSERT INTO `website_setting` (`id`, `favicon`, `logo`, `name`, `email`, `address`, `time`, `facebook`, `linkedin`, `mail`, `youtube`, `footer_text`, `author`, `keywords`, `description`) VALUES
-(1, 'mortgage.png', '', 'ইউনিয়ন কর', 'example@gmail.com', 'তামাই, বেলকুচি, সিরাজগঞ্জ', 1665301857, 'https://www.facebook.com/', 'linkedin.com', 'mail.com', 'youtube.com', '©2023 all rights reserved.', 'Munna', '', '');
+INSERT INTO `website_setting` (`id`, `favicon`, `logo`, `name`, `email`, `address`, `time`, `footer_text`) VALUES
+(1, 'mortgage.png', 'google-logo-transparent.png', 'ইউনিয়ন কর', 'example@gmail.com', 'তামাই, বেলকুচি, সিরাজগঞ্জ', 1665301857, '©2023 all rights reserved.');
 
 --
 -- Indexes for dumped tables
@@ -324,15 +310,15 @@ ALTER TABLE `person`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `section`
+-- Indexes for table `screenshots`
 --
-ALTER TABLE `section`
+ALTER TABLE `screenshots`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `setting`
+-- Indexes for table `section`
 --
-ALTER TABLE `setting`
+ALTER TABLE `section`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -385,19 +371,19 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT for table `person`
 --
 ALTER TABLE `person`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+
+--
+-- AUTO_INCREMENT for table `screenshots`
+--
+ALTER TABLE `screenshots`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `section`
 --
 ALTER TABLE `section`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
-
---
--- AUTO_INCREMENT for table `setting`
---
-ALTER TABLE `setting`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `super_admin`
@@ -415,7 +401,7 @@ ALTER TABLE `union_name`
 -- AUTO_INCREMENT for table `village`
 --
 ALTER TABLE `village`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `website_setting`

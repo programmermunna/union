@@ -21,9 +21,6 @@ $mail = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM mail_setting WHERE 
     <title><?php echo $setting['name']?></title>
 
     <meta charset="UTF-8">
-    <meta name="author" content="<?php echo $setting['author']?>">
-    <meta name="keywords" content="<?php echo $setting['keywords']?>">
-    <meta name="description" content="<?php echo $setting['description']?>">
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -46,7 +43,18 @@ $mail = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM mail_setting WHERE 
 </head>
 <body class="is-boxed has-animations">
     <div class="body-wrap">
-        <header class="site-header">
+        <a class="mobile_logo" href="home.php">
+            <?php if(!empty($setting['logo'])){?>
+            <div class="logo_img"><img src="upload/<?php echo $setting['logo'];?>"></div>
+            <?php }else{?>
+            <div class="logo_text" ><?php echo $setting['name'];?></div>
+            <?php }?>
+        </a>
+        <div class="top_space">
+            <br>
+            <br>
+        </div>
+        <header class="site-header">            
             <div class="container">
                 <div class="site-header-inner">
                     <div class="brand header-brand">
@@ -60,7 +68,9 @@ $mail = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM mail_setting WHERE 
                             </a>
                         </div>
 
-                        <div class="nav">                            
+
+                        
+                        <div class="nav">                                                        
                             <ul id="menu">
                                 <li><a href="home.php">হোম</a></li>
                                 <li><a href="about.php">আমাদের সম্পর্কে</a></li>

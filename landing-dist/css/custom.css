@@ -163,14 +163,39 @@ select {
 .slicknav_menu {
   display: none;
 }
+.mobile_logo{
+  display: none;
+}
+.top_space{
+  display: none;
+}
 
 @media only screen and (max-width: 768px) {
+  .site-header{
+    display: none;
+  }
+  .mobile_logo{
+    display: block;
+    position: fixed;
+    top:10px;
+    left:10px;
+    z-index: 99;
+    width: 120px
+  }
+  .top_space{
+    display: block;
+  }
   #menu {
     display: none;
   }
 
   .slicknav_menu {
     display: block;
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    top: 0;
+    right: 0;
   }
 
   .logo {
