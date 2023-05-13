@@ -236,6 +236,9 @@ p {
 .top_search_t{
   display: none;
 }
+.top_space{
+  display: none;
+}
 
 
 
@@ -245,6 +248,7 @@ p {
     position: fixed;
     top:10px;
     left:20px;
+    z-index: 6;
   } 
   .logo>img{
     width: 100px;
@@ -316,6 +320,11 @@ p {
 
   .slicknav_menu {
       display:block;
+      position: fixed;
+      top:0;
+      right: 0;
+      width: 100%;
+      z-index: 5;
   }
   .logout{
     display: none;
@@ -356,6 +365,10 @@ p {
   }
   .search_bar_right {
     padding-bottom: 10px;
+}
+.top_space{
+  display: block;
+  padding-bottom:50px;
 }
   
 }
