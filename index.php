@@ -281,4 +281,4 @@
 <!-- Side Navbar Links -->
 <?php include("common/footer.php");?>
 <!-- Side Navbar Links -->
-<?php if (isset($_GET['msg'])) { ?><div id="munna" data-text="<?php echo $_GET['msg']; ?>"></div><?php } ?>
+

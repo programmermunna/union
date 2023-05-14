@@ -127,4 +127,3 @@ $website = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM website_setting 
   </main>  
   
   <?php include("common/footer.php")?>
-  <?php if (isset($_GET['msg'])) { ?><div id="munna" data-text="<?php echo $_GET['msg']; ?>"></div><?php } ?>

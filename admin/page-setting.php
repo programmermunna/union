@@ -91,7 +91,6 @@ $pages = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM pages WHERE id=1")
 
   
   <?php include("common/footer.php")?>
-  <?php if (isset($_GET['msg'])) { ?><div id="munna" data-text="<?php echo $_GET['msg']; ?>"></div><?php } ?>
 
 
   
