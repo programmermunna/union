@@ -254,7 +254,7 @@ if(isset($_SESSION['section'])){
 
                       <td style="text-align:center">
                         <a href="tax-holder-edit.php?id=<?php echo $data['id'];?>" class="badge badge-sm bg-gradient-success">Edit</a>
-                        <a onclick="return confirm('Are You Sure To Delete?')"  href="remove.php?id=<?php echo $data['id'];?>" class="badge badge-sm bg-gradient-success">Remove</a>
+                        <a href="remove.php?id=<?php echo $data['id'];?>" class="badge badge-sm bg-gradient-success">Remove</a>
                         <a href="tax-holder-view.php?id=<?php echo $data['id'];?>" class="badge badge-sm bg-gradient-success">View</a>
                       </td>
                     </tr>

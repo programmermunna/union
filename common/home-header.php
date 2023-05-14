@@ -76,7 +76,8 @@ $mail = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM mail_setting WHERE 
                                 <li><a href="about.php">আমাদের সম্পর্কে</a></li>
                                 <li><a href="terms.php">নিতিমালা</a></li>
                                 <li><a href="contact.php">যোগাযোগ</a></li>
-                                <li><a href="login.php">লগিন</a></li>
+                                <li><a href="admin/">এডমিন </a></li>
+                                 <li><a href="login.php">লগিন</a></li>
                             </ul>     
                         </div>                        
                     </div>

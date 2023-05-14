@@ -7,10 +7,9 @@ if(isset($_POST['submit'])){
   $name = $_POST['name'];
   $email = $_POST['email'];
   $address = $_POST['address'];
-  $facebook = $_POST['facebook'];
-  $linkedin = $_POST['linkedin'];
+  $footer_text = $_POST['footer_text'];
 
-  $sql = "UPDATE website_setting SET name='$name',email='$email',address='$address'footer_text='$footer_text' WHERE id='1'";
+  $sql = "UPDATE website_setting SET name='$name',email='$email',address='$address', footer_text='$footer_text' WHERE id='1'";
   $query = mysqli_query($conn,$sql);
   if($query){
     $msg = "সংশোধন সফল হয়েছে";

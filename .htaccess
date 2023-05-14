@@ -13,4 +13,3 @@ RewriteRule ^(.*)$ $1.php [NC,L]
 
 </ifModule>
 # TN START GZIP COMPRESSION
-

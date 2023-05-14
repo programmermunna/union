@@ -28,50 +28,6 @@ if(isset($_POST['submit'])){
 
 
 ?>
-<!-- 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
-    <link rel="stylesheet" href="dist/css/login.css" />
-    <link rel="stylesheet" href="dist/css/styles.css" />
-    <link rel="stylesheet" href="dist/css/custom.css" />
-</head>
-
-<body class="bg-gray-100">
-    <section class="login">
-        <div class="login_box">
-            <div class="left">
-                <div class="contact">
-                    <form action="" method="POST" >
-                        <h3>LOGIN</h3>
-                        <select name="union_id" class="input" style="width:100%;">
-                        <?php 
-                        $union = mysqli_query($conn,"SELECT * FROM union_name");
-                        while($data = mysqli_fetch_assoc($union)){ ?>
-                        <option value="<?php echo $data['admin_id']?>"><?php echo $data['union_name']?></option>
-                       <?php }?>
-                        </select>
-                        <input name="pass" type="password" placeholder="PASSWORD">
-                        <button style="background:#EB75A4" name="submit" type="submit" class="submit">LOGIN</button>
-                    </form>
-                </div>
-            </div>
-            <div class="right">
-                <div class="right-text">
-                    <h2>Union Management</h2>
-                    <h5>Login As Staf</h5>
-                </div>
-            </div>
-        </div>
-    </section>
-</body>
-</html> -->
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -126,6 +82,10 @@ if(isset($_POST['submit'])){
                   <div class="text-center">
                     <button name="submit" type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Login</button>
                   </div>
+                  <div class="text-center">
+                    <a href="home.php">Return Home</a>
+                  </div>
+                  
                   
                 </form>
               </div>

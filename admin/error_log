@@ -1,0 +1,63 @@
+[13-May-2023 10:27:16 America/New_York] PHP Warning:  Undefined array key "facebook" in /home/munna/public_html/admin/website-setting.php on line 10
+[13-May-2023 10:27:16 America/New_York] PHP Warning:  Undefined array key "linkedin" in /home/munna/public_html/admin/website-setting.php on line 11
+[13-May-2023 10:27:16 America/New_York] PHP Warning:  Undefined variable $footer_text in /home/munna/public_html/admin/website-setting.php on line 13
+[13-May-2023 10:27:47 America/New_York] PHP Warning:  Undefined array key "facebook" in /home/munna/public_html/admin/website-setting.php on line 10
+[13-May-2023 10:27:47 America/New_York] PHP Warning:  Undefined array key "linkedin" in /home/munna/public_html/admin/website-setting.php on line 11
+[13-May-2023 10:27:47 America/New_York] PHP Warning:  Undefined variable $footer_text in /home/munna/public_html/admin/website-setting.php on line 13
+[13-May-2023 10:29:21 America/New_York] PHP Warning:  Undefined array key "facebook" in /home/munna/public_html/admin/website-setting.php on line 10
+[13-May-2023 10:29:21 America/New_York] PHP Warning:  Undefined array key "linkedin" in /home/munna/public_html/admin/website-setting.php on line 11
+[13-May-2023 10:29:21 America/New_York] PHP Warning:  Undefined variable $footer_text in /home/munna/public_html/admin/website-setting.php on line 13
+[13-May-2023 10:29:24 America/New_York] PHP Warning:  Undefined array key "facebook" in /home/munna/public_html/admin/website-setting.php on line 10
+[13-May-2023 10:29:24 America/New_York] PHP Warning:  Undefined array key "linkedin" in /home/munna/public_html/admin/website-setting.php on line 11
+[13-May-2023 10:29:24 America/New_York] PHP Warning:  Undefined variable $footer_text in /home/munna/public_html/admin/website-setting.php on line 13
+[13-May-2023 12:24:05 America/New_York] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in /home/munna/public_html/admin/village-edit.php:58
+Stack trace:
+#0 {main}
+  thrown in /home/munna/public_html/admin/village-edit.php on line 58
+[13-May-2023 12:24:14 America/New_York] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in /home/munna/public_html/admin/village-edit.php:58
+Stack trace:
+#0 {main}
+  thrown in /home/munna/public_html/admin/village-edit.php on line 58
+[13-May-2023 12:24:25 America/New_York] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in /home/munna/public_html/admin/village-edit.php:58
+Stack trace:
+#0 {main}
+  thrown in /home/munna/public_html/admin/village-edit.php on line 58
+[13-May-2023 12:24:32 America/New_York] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in /home/munna/public_html/admin/village-edit.php:58
+Stack trace:
+#0 {main}
+  thrown in /home/munna/public_html/admin/village-edit.php on line 58
+[13-May-2023 12:24:39 America/New_York] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in /home/munna/public_html/admin/village-edit.php:58
+Stack trace:
+#0 {main}
+  thrown in /home/munna/public_html/admin/village-edit.php on line 58
+[13-May-2023 12:25:00 America/New_York] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in /home/munna/public_html/admin/section-edit.php:52
+Stack trace:
+#0 {main}
+  thrown in /home/munna/public_html/admin/section-edit.php on line 52
+[13-May-2023 12:25:09 America/New_York] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in /home/munna/public_html/admin/section-edit.php:52
+Stack trace:
+#0 {main}
+  thrown in /home/munna/public_html/admin/section-edit.php on line 52
+[13-May-2023 12:25:16 America/New_York] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in /home/munna/public_html/admin/section-edit.php:52
+Stack trace:
+#0 {main}
+  thrown in /home/munna/public_html/admin/section-edit.php on line 52
+[13-May-2023 12:25:24 America/New_York] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in /home/munna/public_html/admin/section-edit.php:52
+Stack trace:
+#0 {main}
+  thrown in /home/munna/public_html/admin/section-edit.php on line 52
+[13-May-2023 12:25:31 America/New_York] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in /home/munna/public_html/admin/section-edit.php:52
+Stack trace:
+#0 {main}
+  thrown in /home/munna/public_html/admin/section-edit.php on line 52
+[13-May-2023 12:25:40 America/New_York] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in /home/munna/public_html/admin/section-edit.php:52
+Stack trace:
+#0 {main}
+  thrown in /home/munna/public_html/admin/section-edit.php on line 52
+[13-May-2023 12:25:49 America/New_York] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in /home/munna/public_html/admin/section-edit.php:52
+Stack trace:
+#0 {main}
+  thrown in /home/munna/public_html/admin/section-edit.php on line 52
+[14-May-2023 03:06:34 America/New_York] PHP Warning:  Undefined variable $id in /home/munna/public_html/admin/logout.php on line 3
+[14-May-2023 03:11:38 America/New_York] PHP Warning:  Undefined variable $id in /home/munna/public_html/admin/logout.php on line 3
+[14-May-2023 03:12:15 America/New_York] PHP Warning:  Undefined variable $id in /home/munna/public_html/admin/logout.php on line 3

@@ -65,8 +65,6 @@ if($union<1){
 
         <div class="header_right">
           <button onclick="toggle_full_screen()" class="expand_icon"></button>
-          <a style="color:#fff" onclick="return confirm('Are You Sure To Logout?')" href="logout.php">Logout</a>
-
         </div>
       </div>
     </header>

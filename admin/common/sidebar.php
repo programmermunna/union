@@ -19,7 +19,9 @@
     <li><a href="website-setting.php">ওয়েবসাইট</a></li>
     <li><a href="page-setting.php">পেজ</a></li>
     <li><a href="mail-setting.php">মেইল</a></li>
-    <li><a onclick="return confirm('Are You Sure To Logout?')" href="logout.php">লগআউট</a></li>
+    <li><a href="../home.php">হোম</a></li>
+    <li><a href="../index.php">স্টাফ</a></li>
+    <li><a href="logout.php">লগআউট</a></li>
   </ul>
 </div>
   
@@ -121,8 +123,26 @@
             <span class="nav-link-text ms-1">মেইল</span>
           </a>
         </li>
+        
         <li class="nav-item">
-          <a class="nav-link text-white" onclick="return confirm('Are You Sure To Logout?')" href="logout.php">
+          <a class="nav-link text-white" href="../home.php">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">person</i>
+            </div>
+            <span  class="nav-link-text ms-1">হোম</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="../index.php">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">person</i>
+            </div>
+            <span  class="nav-link-text ms-1">স্টাফ</span>
+          </a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link text-white" href="logout.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">person</i>
             </div>

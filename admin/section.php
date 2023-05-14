@@ -75,7 +75,7 @@ if(isset($_POST['submit'])){
                           <td><?php echo $village_name['name'];?></td>
                           <td>
                             <a class="btn btn-primary p-2" href="section-edit.php?id=<?php echo $section['id']?>">Edit</a>
-                            <a onclick="return confirm('Are You Sure To Delete?')" class="btn btn-primary p-2" href="section-delete.php?id=<?php echo $section['id']?>">Delete</a>
+                            <a class="btn btn-primary p-2" href="section-delete.php?id=<?php echo $section['id']?>">Delete</a>
                           </td>
                         </tr>
                         <?php }?>

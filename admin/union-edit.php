@@ -75,13 +75,6 @@ $unions = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM union_name WHERE 
                         </div>
                       </form>
                       </div>
-                      <div class="view">
-                        <div class="view-content" style="margin-left:50px;width:100%">
-                          <div class="view-img">
-                            <img style="width:100%" src="../upload/setting.webp">
-                          </div>
-                        </div>
-                      </div>
             </div>
           </div>
         </div>
