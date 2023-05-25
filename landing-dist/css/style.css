@@ -364,7 +364,6 @@ h6,
 h1,
 .h1 {
     font-size: 38px;
-    line-height: 48px;
     letter-spacing: -0.1px
 }
 
@@ -380,7 +379,6 @@ h1,
 h2,
 .h2 {
     font-size: 32px;
-    line-height: 42px;
     letter-spacing: -0.1px
 }
 
@@ -388,7 +386,6 @@ h2,
     h2,
     .h2 {
         font-size: 38px;
-        line-height: 48px;
         letter-spacing: -0.1px
     }
 }
@@ -2638,7 +2635,7 @@ label {
 }
 
 .container {
-    max-width: 1128px
+    max-width: 1280px
 }
 
 .container-sm {

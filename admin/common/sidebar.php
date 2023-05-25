@@ -3,7 +3,7 @@
   <a class="logo" href="index.php">
       <?php 
       if(!empty($website['logo'])){ ?>
-        <img src="../upload/<?php echo $website['logo'];?>">          
+        <img style="width:50px;height:50px;position: fixed;top:0px" src="../upload/<?php echo $website['logo'];?>">          
     <?php }else{ ?>
       <span><?php echo $website['name'];?></span>
       <?php }?>
@@ -37,16 +37,16 @@
 <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-      <a class="navbar-brand m-0" href="index.php">
+      <a style="padding:0;padding-left:65px" class="navbar-brand m-0" href="index.php">
         <?php 
         if(!empty($website['logo'])){ ?>
-          <img style="width:150px;height:50px;" src="../upload/<?php echo $website['logo'];?>">          
+          <img style="width:100px;height:100px;" src="../upload/<?php echo $website['logo'];?>">          
        <?php }else{ ?>
         <span style="font-size: 30px;" class="ms-1 font-weight-bold text-white"><?php echo $website['name'];?></span>
         <?php }?>
       </a>
     </div>
-    <hr class="horizontal light mt-0 mb-2">
+    <hr class="horizontal light mt-4 mb-2">
     <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">

@@ -7,9 +7,6 @@ if(isset($_SESSION['landing_id'])){
 }else{
   $landing_id = 0;
 }
-
-
-
 $user_info = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM admin_info WHERE id=$landing_id"));
 $setting = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM website_setting"));
 $pages = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM pages"));
@@ -38,16 +35,17 @@ $mail = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM mail_setting WHERE 
 
     <link rel="stylesheet" href="landing-dist/css/style.css">
     <link rel="stylesheet" href="landing-dist/css/slicknav.css">
+    <link rel="stylesheet" href="landing-dist/css/home-slider.css">
     <link rel="stylesheet" href="landing-dist/css/custom.css">
     <link rel="stylesheet" href="landing-dist/css/form.css">
 </head>
 <body class="is-boxed has-animations">
-    <div class="body-wrap">
+    <div class="body-wrap header_area">
         <a class="mobile_logo" href="home.php">
             <?php if(!empty($setting['logo'])){?>
-            <div class="logo_img"><img src="upload/<?php echo $setting['logo'];?>"></div>
+            <div><img src="upload/home-logo.png"></div>
             <?php }else{?>
-            <div class="logo_text" ><?php echo $setting['name'];?></div>
+            <div style="color:#fff;" class="logo_text" ><?php echo $setting['name'];?></div>
             <?php }?>
         </a>
         <div class="top_space">
@@ -61,7 +59,7 @@ $mail = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM mail_setting WHERE 
                         <div class="logo">
                             <a href="home.php">
                                 <?php if(!empty($setting['logo'])){?>
-                                <div class="logo_img"><img src="upload/<?php echo $setting['logo'];?>"></div>
+                                <div><img src="upload/home-logo.png"></div>
                                 <?php }else{?>
                                 <div class="logo_text" ><?php echo $setting['name'];?></div>
                                 <?php }?>

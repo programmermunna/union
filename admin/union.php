@@ -10,7 +10,7 @@
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 top_bar_flex">
                 <h6 class="text-white text-capitalize ps-3">ইউনিয়নের তালিকা সমূহ</h6>
-                <span class="add_new"><a style="margin-left:20px" class="btn_on_red" href="union-add.php"> গ্রাম যুক্ত করুণ</a></span>
+                <span class="add_new"><a style="margin-left:20px" class="btn_on_red" href="union-add.php"> ইউনিয়ন যুক্ত করুণ</a></span>
               </div>
             </div>
             <div class="card-body px-0 pb-2">

@@ -227,7 +227,7 @@ if(isset($_POST['submit'])){
             <label>অর্থ বছর</label>
             <input type="text" disabled class="input"  value="<?php 
 
-            $time = time();
+            // $time = time();
             $year_left = 86400*365;
             $time = $time-$year_left;
             echo date("Y",$time) ." - ". date("Y",time());            
