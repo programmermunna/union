@@ -4,15 +4,18 @@
   
 <?php
 if(isset($_POST['submit'])){
-  $union_name = $_POST['union_name'];
+  $division = $_POST['division'];
+  $district = $_POST['district'];
+  $upazila = $_POST['upazila'];
+  $union = $_POST['union'];
   $admin_id = rand(1000,99999999);
   $pass = md5($_POST['pass']);
   $cpass = md5($_POST['cpass']);
 
-  $sql = "INSERT INTO union_name (admin_id,union_name,pass,time) VALUE ('$admin_id','$union_name','$pass',$time)";
+  $sql = "INSERT INTO union_name (admin_id,upazila_id,bn_name,pass,time) VALUE ('$admin_id','$upazila','$union','$pass',$time)";
   $query = mysqli_query($conn,$sql);
   if($query){
-    $msg = "ইনিয়ন যুক্ত করা সফল হয়েছে।";
+    $msg = "ইউনিয়ন যুক্ত করা সফল হয়েছে।";
     header("location:union.php?msg=$msg");
   }
   if($pass == $cpass && !empty($union_name)){    
@@ -40,8 +43,30 @@ if(isset($_POST['submit'])){
                         <div class="profile">
                           <div style="display:block">
                               <div>
-                                <label for="union_name">ইউনিয়নের নাম</label>
-                                <input required name="union_name" type="text">
+                                <label for="union_name">বিভাগ নাম</label>
+                                <select class="input division" name="division" id="division">
+                                  <option>সিলেক্ট বিভাগ</option>
+                                  <?php $divisions = mysqli_query($conn,"SELECT * FROM divisions");
+                                  while($division = mysqli_fetch_assoc($divisions)){ ?>
+                                  <option value="<?php echo $division['id']?>"><?php echo $division['bn_name']?></option>
+                                  <?php  }?>
+                                </select>
+                              </div>
+                              <div>
+                                <label for="district">জেলা নাম</label>
+                                <select class="input district" name="district" id="district">
+
+                                </select>
+                              </div>
+                              <div>
+                                <label for="upazila">উপজেলা নাম</label>
+                                <select class="input upazila" name="upazila" id="upazila">
+
+                                </select>
+                              </div>
+                              <div>
+                                <label for="union">ইউনিয়নের নাম</label>
+                                <input required name="union" type="text">
                               </div>
                               <div>
                                 <label for="pass">পাসওয়ার্ড</label>
@@ -64,7 +89,22 @@ if(isset($_POST['submit'])){
         </div>
       </div>
     </div>
-  </main>  
+  </main> 
+  
+  
+  <script>
+
+    $(".division").on("change",function(){
+      var division = $(this).val();
+      return opt_func("../","districts","division_id",division,".district");
+      })
+
+    
+    $(".district").on("change",function(){
+      var district = $(this).val();
+      return opt_func("../","upazilas","district_id",district,".upazila");
+      })
+  </script>
   
   <?php include("common/footer.php")?>
 

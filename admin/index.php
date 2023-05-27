@@ -330,7 +330,7 @@
                     $unions = mysqli_query($conn,"SELECT * FROM union_name ORDER BY id DESC LIMIT 4");
                     while($union = mysqli_fetch_assoc($unions)){ ?>
                     <div class="timeline-content">
-                      <h6 class="text-dark text-sm font-weight-bold mb-0"><?php echo $union['union_name']?><i style="color:orange"> যুক্ত করা হয়েছে</i></h6>
+                      <h6 class="text-dark text-sm font-weight-bold mb-0"><?php echo $union['bn_name']?><i style="color:orange"> যুক্ত করা হয়েছে</i></h6>
                       <p class="text-secondary font-weight-bold text-xs mt-1 mb-0"><?php echo time_elapsed_string($union['time'],true);?></p>
                     </div>
                     <?php }?>

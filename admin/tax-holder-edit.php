@@ -129,11 +129,11 @@ if(isset($_POST['submit'])){
                               <?php
                               $admin_id = $data['admin_id'];
                               $selected_union = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM union_name WHERE admin_id=$admin_id")); ?>
-                                <option selected value="<?php echo $selected_union['admin_id']?>"><?php echo $selected_union['union_name']?></option>                              
+                                <option selected value="<?php echo $selected_union['admin_id']?>"><?php echo $selected_union['bn_name']?></option>                              
 
                              <?php $unions = mysqli_query($conn,"SELECT * FROM union_name");
                               while($union = mysqli_fetch_assoc($unions)){ ?>
-                                <option value="<?php echo $union['admin_id']?>"><?php echo $union['union_name']?></option>
+                                <option value="<?php echo $union['admin_id']?>"><?php echo $union['bn_name']?></option>
                             <?php }?>
                             </select>
                             </div>

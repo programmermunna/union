@@ -10,7 +10,31 @@
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 top_bar_flex">
                 <h6 class="text-white text-capitalize ps-3">ইউনিয়নের তালিকা সমূহ</h6>
-                <span class="add_new"><a style="margin-left:20px" class="btn_on_red" href="union-add.php"> ইউনিয়ন যুক্ত করুণ</a></span>
+                
+                <div>
+                  <span class="add_new"><a class="btn_on_red tax_btn" href="union.php">রিফ্রেস</a></span>
+                  <span class="add_new"><a class="btn_on_red tax_btn" href="union-add.php">যুক্ত করুণ</a></span>
+                </div>
+
+                <div>
+                <form action="" method="GET">
+                <select class="select_bar division">
+                  <option >বিভাগ বাছাই করুন</option>
+                    <?php 
+                    $divisions = mysqli_query($conn,"SELECT * FROM divisions");
+                    while($division = mysqli_fetch_assoc($divisions)){ ?>
+                    <option value="<?php echo $division['id'];?>"><?php echo $division['bn_name'];?></option>
+                    <?php }?>
+                  </select>
+                <select class="select_bar district">
+                  <option >জেলা বাছাই করুন</option>
+                  </select>
+                <select name="upazila" class="select_bar upazila">
+                  <option >উপজেলা বাছাই করুন</option>
+                </select>
+                <input type="submit" value="খুজুন">
+                </form>
+                </div>
               </div>
             </div>
             <div class="card-body px-0 pb-2">
@@ -23,22 +47,31 @@
                     <table class="table">
                       <thead>
                         <tr>
-                          <th>আইডি নং</th>
-                          <th>ইউনিয়নের নাম</th>
-                          <th>তারিখ</th>
+                          <th>ক্রমিক নং</th>
+                          <th>ইউনিয়ন</th>
+                          <th>উপজেলা</th>
                           <th>প্রতিক্রিয়া</th>
                         </tr>
                       </thead>
                       <tbody>
                         <?php 
-                        $union = mysqli_query($conn,"SELECT * FROM union_name");
+                        if(isset($_GET['upazila'])){
+                          $upazila = $_GET['upazila'];
+                          if(is_numeric($upazila)){
+                            $union = mysqli_query($conn,"SELECT * FROM union_name WHERE upazila_id=$upazila");
+                          }}else{
+                            $union = mysqli_query($conn,"SELECT * FROM union_name");
+                          }
                         $i = 0;
-                        while($row = mysqli_fetch_assoc($union)){ $i++;
+                        while($row = mysqli_fetch_assoc($union)){                                                     
+                          $i++;
+                          $upazila_id = $row['upazila_id'];
+                          $upazila = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM upazilas WHERE id='$upazila_id'"));
                         ?>
                         <tr>
                           <td><?php echo $i;?></td>
-                          <td><?php echo $row['union_name'];?></td>
-                          <td><?php $time = $row['time']; echo $date = date("d-m-Y",$time); ?></td>
+                          <td><?php echo $row['bn_name'];?></td>
+                          <td><?php echo $upazila['bn_name'];?></td>
                           <td>
                             <a class="btn btn-primary p-2" href="union-edit.php?id=<?php echo $row['id']?>">Edit</a>
                             <a class="btn btn-primary p-2" href="union-delete.php?src=union&&table=union_name&&id=<?php echo $row['id']?>">Delete</a>
@@ -56,7 +89,21 @@
       </div>
     </div>
   </main>  
-  
+  <script>
+
+      $(".division").on("change",function(){
+        var division = $(this).val();
+        return opt_func("../","districts","division_id",division,".district");
+        })
+
+
+      $(".district").on("change",function(){
+        var district = $(this).val();
+        return opt_func("../","upazilas","district_id",district,".upazila");
+        })
+
+
+  </script>
   <?php include("common/footer.php")?>
 
 

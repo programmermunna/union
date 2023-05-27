@@ -161,7 +161,7 @@ p {
 }
 
 .select_bar {
-  width: 300px;
+  width: 150px;
 }
 
 .btn_on_red {
@@ -202,7 +202,7 @@ p {
   
 }
 .top_select>select{
-  width: 200px;
+  width: 130px;
   padding:4px 10px !important;
 }
 

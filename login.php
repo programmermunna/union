@@ -71,7 +71,7 @@ if(isset($_POST['submit'])){
                         <?php 
                         $union = mysqli_query($conn,"SELECT * FROM union_name");
                         while($data = mysqli_fetch_assoc($union)){ ?>
-                        <option value="<?php echo $data['admin_id']?>"><?php echo $data['union_name']?></option>
+                        <option value="<?php echo $data['admin_id']?>"><?php echo $data['bn_name']?></option>
                        <?php }?>
                     </select>
                   </div>

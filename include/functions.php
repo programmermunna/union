@@ -193,6 +193,26 @@ $mail = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM mail_setting WHERE 
     }, error_msg?.dataset?.time || 2000);
   }
 });
+
+
+//option functions
+      function opt_func(url_before, table, cond, cond_val,aft_cls) {
+        $.ajax({
+            url:url_before+"include/ajax.php",
+            type:"GET",
+            data:
+            {
+              reference:"option",
+              table:table,
+              cond:cond,
+              cond_val:cond_val,
+            },         
+            success:function(data){
+              $(aft_cls).html(data);
+              }
+            });
+        }
+
     </script>
 
 

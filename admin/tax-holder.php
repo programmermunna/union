@@ -84,48 +84,35 @@ if(isset($_SESSION['section'])){
                     <button type="submit">খুজুন</button>
                   </form>
                 </div>
-                <form action="" method="GET">
+
+                <div>                  
+                  <form action="" method="GET">
                   <div class="top_select">
-                    <select name="union" id="union">
-                      <?php if($sess_union>0){ 
-                        $union = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM union_name WHERE admin_id=$sess_union"));
-                      ?>
-                        <option style="display: none;" selected value="<?php echo $union['admin_id'];?>"><?php echo $union['union_name'];?></option>
-                    <?php  }else{?>
-                      <option style="display: none;" selected value="ইউনিয়ন বাছাই করুন">ইউনিয়ন বাছাই করুন</option>
-                    <?php  }?>
-
-                      <?php
-                      $unions = mysqli_query($conn,"SELECT * FROM union_name");
-                      while($union = mysqli_fetch_assoc($unions)){ ?>
-                      <option value="<?php echo $union['admin_id']?>"><?php echo $union['union_name']?></option>
+                  <form action="" method="GET">
+                  <select class="select_bar division">
+                  <option >বিভাগ বাছাই করুন</option>
+                    <?php 
+                    $divisions = mysqli_query($conn,"SELECT * FROM divisions");
+                    while($division = mysqli_fetch_assoc($divisions)){ ?>
+                    <option value="<?php echo $division['id'];?>"><?php echo $division['bn_name'];?></option>
                     <?php }?>
+                  </select>
+                  <select class="select_bar district">
+                    <option >জেলা বাছাই করুন</option>
                     </select>
+                  <select name="upazila" class="select_bar upazila">
+                    <option >উপজেলা বাছাই করুন</option>
+                  </select>
+                  <select name="union" class="select_bar union">
+                    <option >ইউনিয়ন বাছাই করুন</option>
+                  </select>
+                  <input type="submit" value="খুজুন">
+                  </form>
+                    </div>
+                 </form>
+                </div>
 
-                    <select name="village" id="village">
-                    <?php if($sess_vlg>0){ 
-                        $village = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM village WHERE id=$sess_vlg"));
-                      ?>
-                        <option style="display: none;" selected value="<?php echo $village['id'];?>"><?php echo $village['name'];?></option>
-                    <?php  }else{?>
-                      <option style="display: none;" selected value="গ্রাম বাছাই করুন">গ্রাম বাছাই করুন</option>
-                    <?php  }?>
-                      
-                    </select>
 
-                    <select name="section" id="section">
-                    <?php if($sess_sec>0){ 
-                        $section = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM section WHERE id=$sess_sec"));
-                      ?>
-                        <option style="display: none;" selected value="<?php echo $section['id'];?>"><?php echo $section['name'];?></option>
-                    <?php  }else{?>
-                      <option style='display:none;' selected disabled>পাড়া/মহল্লা বাছাই করুণ</option>
-                    <?php  }?>
-
-                    </select>
-                    <input class="left_src_btn" type="submit" value="খুজুন">
-                  </div>
-                </form>
                 <div class="top_search top_search_b">
                   <form action="" method="GET">
                     <input name="src" type="text" placeholder="এখানে লিখুন" value="<?php if(isset($_GET['src'])){ echo $_GET['src'];}?>">
@@ -273,42 +260,23 @@ if(isset($_SESSION['section'])){
 
   
 <script>
-    $(document).ready(function(){  
-      $("#union").on("change",function(){
-        var admin_id = $(this).val();
-        $.ajax({
-            url:"../include/ajax.php",
-            type:"GET",
-            data:
-            {
-              reference:"village of union in admin/tax-holder page",
-              admin_id:admin_id,
-            },         
-            success:function(data){
-              console.log(data);
-              $("#village").html(data);
-              }
-            });
+      $(".division").on("change",function(){
+        var division = $(this).val();
+        return opt_func("../","districts","division_id",division,".district");
         })
 
-      $("#village").on("change",function(){
-        var vlg_id = $(this).val();
-        $.ajax({
-            url:"../include/ajax.php",
-            type:"GET",
-            data:
-            {
-              reference:"section of village in admin/tax-holder page",
-              vlg_id:vlg_id,
-            },         
-            success:function(data){
-              console.log(data);
-              $("#section").html(data);
-              }
-            });
+
+      $(".district").on("change",function(){
+        var district = $(this).val();
+        return opt_func("../","upazilas","district_id",district,".upazila");
         })
 
-    })
+      $(".upazila").on("change",function(){
+        var upazila = $(this).val();
+        return opt_func("../","union_name","upazila_id",upazila,".union");
+        })
+
+
 </script>
   
   <?php include("common/footer.php")?>

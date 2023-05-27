@@ -27,7 +27,7 @@ if($union<1){
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><?php echo $website['name']?>-<?php echo $union['union_name']?></title>
+    <title><?php echo $website['name']?>-<?php echo $union['bn_name']?></title>
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://kit.fontawesome.com/6788eb3be6.js" crossorigin="anonymous"></script>
@@ -53,7 +53,7 @@ if($union<1){
                 <?php if($website['logo']=""){ ?>               
                   <img style="width:150px;height:50px" src="upload/<?php echo $website['logo'];?>" alt="">
                  <?php }else{ ?>                  
-                  <span style="font-size:18px;color:#fff;"><?php echo $union['union_name']?></span>
+                  <span style="font-size:18px;color:#fff;"><?php echo $union['bn_name']?></span>
                <?php  } ?>
               </div>
             </a>

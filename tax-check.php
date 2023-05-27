@@ -178,7 +178,7 @@
 											<?php
 											$unions = mysqli_query($conn,"SELECT * FROM union_name");
 											while($union = mysqli_fetch_assoc($unions)){ ?>
-											<option value="<?php echo $union['admin_id']?>"><?php echo $union['union_name']?></option>
+											<option value="<?php echo $union['admin_id']?>"><?php echo $union['bn_name']?></option>
 											<?php }?>
 										</select>
 									</div>

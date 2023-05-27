@@ -89,9 +89,6 @@ if(isset($_POST['submit'])){
       </div>
     </div>
   </main>  
-
-
-  
   <?php include("common/footer.php")?>
 
 

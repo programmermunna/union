@@ -50,7 +50,7 @@ if(isset($_POST['submit'])){
                               <div>
                                 <label for="union_name">ইউনিয়নের নাম</label>
                                 <select name="union" class="input">
-                                    <option selected disabled value="<?php echo $union['admin_id'];?>"><?php echo $union['union_name'];?></option>
+                                    <option selected disabled value="<?php echo $union['admin_id'];?>"><?php echo $union['bn_name'];?></option>
                                 </select>
                               </div>
                               <div>

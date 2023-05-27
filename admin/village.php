@@ -58,7 +58,7 @@ if(isset($_GET['src'])){
                   <?php 
                   $unions = mysqli_query($conn,"SELECT * FROM union_name");
                   while($union = mysqli_fetch_assoc($unions)){ ?>
-                    <option value="<?php echo $union['admin_id'];?>"><?php echo $union['union_name'];?></option>
+                    <option value="<?php echo $union['admin_id'];?>"><?php echo $union['bn_name'];?></option>
                     <?php }?>
                   </select>
                 </div>
@@ -97,7 +97,7 @@ if(isset($_GET['src'])){
                         <tr>
                           <td><?php echo $i;?></td>
                           <td><?php echo $village['name'];?></td>
-                          <td><?php echo $union['union_name'];?></td>
+                          <td><?php echo $union['bn_name'];?></td>
                           <td>
                             <a class="btn btn-primary p-2" href="village-edit.php?id=<?php echo $village['id']?>">Edit</a>
                             <a class="btn btn-primary p-2" href="village-delete.php?id=<?php echo $village['id']?>">Delete</a>                            
