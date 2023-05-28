@@ -7,7 +7,6 @@
      $pending_tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM person WHERE present_year=$present_year AND status='Pending'"));
      $success_tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM person WHERE present_year=$present_year AND status='Success'"));
      $village = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM village"));
-     $section = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM section"));
      
      $annual_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(annual_tax) FROM person"));
      $ablable_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(ablable_tax) FROM person WHERE  status='Success'"));
@@ -131,10 +130,6 @@
             <div class="card-header p-3 pt-2">
               <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
                 <i class="material-icons opacity-10">weekend</i>
-              </div>
-              <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">পাড়া/মহল্লা</p>
-                <h4 class="mb-0"><?php echo $section?></h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
@@ -354,11 +349,11 @@
                     </span>
                     
                     <?php 
-                    $sections = mysqli_query($conn,"SELECT * FROM section ORDER BY id DESC LIMIT 4");
-                    while($section = mysqli_fetch_assoc($sections)){ ?>
+                    $villages = mysqli_query($conn,"SELECT * FROM village ORDER BY id DESC LIMIT 4");
+                    while($village = mysqli_fetch_assoc($villages)){ ?>
                     <div class="timeline-content">
-                      <h6 class="text-dark text-sm font-weight-bold mb-0"><?php echo $section['name']?> <i style="color:blue">যুক্ত করা হয়েছে</i></h6>
-                      <p class="text-secondary font-weight-bold text-xs mt-1 mb-0"><?php echo time_elapsed_string($section['time'],true);?></p>
+                      <h6 class="text-dark text-sm font-weight-bold mb-0"><?php echo $village['name']?> <i style="color:green">যুক্ত করা হয়েছে</i></h6>
+                      <p class="text-secondary font-weight-bold text-xs mt-1 mb-0"><?php echo time_elapsed_string($village['time'],true);?></p>
                     </div>
                     <?php }?>
 

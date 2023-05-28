@@ -5,7 +5,6 @@
 if(isset($_GET['session_destroy'])){
     if($_GET['session_destroy'] == 'true'){
         unset($_SESSION['village']);
-        unset($_SESSION['section']);
         header("location:tax-holder-all.php");
     }
 }
@@ -33,16 +32,6 @@ if(isset($_SESSION['village'])){
 }else{
     $sess_vlg = 0;
 }
-
-if(isset($_GET['section'])){
-    $_SESSION['section'] = $_GET['section'];
-}
-if(isset($_SESSION['section'])){
-    $sess_sec = $_SESSION['section'];
-}else{
-    $sess_sec = 0;
-}
-
 ?> 
 <!-- Main Content -->
 <main class="main_content"> 
@@ -96,17 +85,6 @@ if(isset($_SESSION['section'])){
                                     <?php  }?>
                                 </select>
 
-
-                                <select name="section" class="input" id="section">
-                                <?php
-                                    if($sess_sec != 0 ){ 
-                                    $select_section  = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM section WHERE admin_id=$id AND id=$sess_sec"));                                        
-                                    ?>
-                                        <option selected value="<?php echo $select_section['id']?>"><?php echo $select_section['name']?></option>                                        
-                                    <?php  }else{ ?>
-                                    <option selected disabled>পাড়া/মহল্লা বাছাই করুণ</option>
-                                   <?php }?>
-                                </select>
                                 <input style="cursor:pointer;" type="submit" class="btn" value="খুজুন"/>
                             </div>
                         </form>
@@ -154,7 +132,7 @@ if(isset($_SESSION['section'])){
                                     $src = $_GET['src'];
                                     $empSQL = "SELECT * FROM person WHERE admin_id=$id AND present_year='$year' AND (name LIKE '$src' OR mobile_no = '$src' OR nid_no = '$src' OR holding_no = '$src' OR guardian_name LIKE '$src')";
                                 }elseif($sess_vlg > 0 && $sess_sec > 0){
-                                    $empSQL = "SELECT * FROM person WHERE admin_id=$id AND present_year='$year' AND village = $sess_vlg AND section = $sess_sec ";
+                                    $empSQL = "SELECT * FROM person WHERE admin_id=$id AND present_year='$year' AND village = $sess_vlg ";
                                 }elseif($sess_vlg > 0){
                                     $empSQL = "SELECT * FROM person WHERE admin_id=$id AND present_year='$year' AND village = $sess_vlg ";
                                 }else{
@@ -257,28 +235,6 @@ if(isset($_SESSION['section'])){
 
     <!-- Page Content -->
 </main>
-
-<script>
-    $(document).ready(function(){  
-      $("#village").on("change",function(){
-        var vlg_id = $(this).val();
-        $.ajax({
-            url:"include/ajax.php",
-            type:"GET",
-            data:
-            {
-              reference:"section of village in tax_holder all page",
-              id:<?php echo $id?>,
-              vlg_id:vlg_id,
-            },         
-            success:function(data){
-              $("#section").html(data);
-              }
-            });
-        })
-
-    })
-</script>
 <!-- Side Navbar Links -->
 <?php include("common/footer.php");?>
 <!-- Side Navbar Links -->

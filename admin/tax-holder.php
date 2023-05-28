@@ -4,7 +4,6 @@ if(isset($_GET['session_destroy'])){
     if($_GET['session_destroy'] == 'true'){
         unset($_SESSION['union']);
         unset($_SESSION['village']);
-        unset($_SESSION['section']);
         header("location:tax-holder.php");
     }
 }
@@ -39,15 +38,6 @@ if(isset($_SESSION['village'])){
     $sess_vlg = $_SESSION['village'];
 }else{
     $sess_vlg = 0;
-}
-
-if(isset($_GET['section'])){
-    $_SESSION['section'] = $_GET['section'];
-}
-if(isset($_SESSION['section'])){
-    $sess_sec = $_SESSION['section'];
-}else{
-    $sess_sec = 0;
 }
 ?>
 <?php include("common/sidebar.php")?>
@@ -89,7 +79,7 @@ if(isset($_SESSION['section'])){
                   <form action="" method="GET">
                   <div class="top_select">
                   <form action="" method="GET">
-                  <select class="select_bar division">
+                  <select name="division" class="select_bar division">
                   <option >বিভাগ বাছাই করুন</option>
                     <?php 
                     $divisions = mysqli_query($conn,"SELECT * FROM divisions");
@@ -97,13 +87,13 @@ if(isset($_SESSION['section'])){
                     <option value="<?php echo $division['id'];?>"><?php echo $division['bn_name'];?></option>
                     <?php }?>
                   </select>
-                  <select class="select_bar district">
+                  <select name="district" class="select_bar district">
                     <option >জেলা বাছাই করুন</option>
                     </select>
-                  <select name="upazila" class="select_bar upazila">
+                  <select name="upazila" name="upazila" class="select_bar upazila">
                     <option >উপজেলা বাছাই করুন</option>
                   </select>
-                  <select name="union" class="select_bar union">
+                  <select name="union" name="union" class="select_bar union">
                     <option >ইউনিয়ন বাছাই করুন</option>
                   </select>
                   <input type="submit" value="খুজুন">
@@ -153,8 +143,8 @@ if(isset($_SESSION['section'])){
                   if(isset($_GET['src'])){
                     $src = $_GET['src'];
                       $empSQL = "SELECT * FROM person WHERE present_year=$year AND (name LIKE '$src' OR id_no = '$src' OR mobile_no = '$src' OR nid_no = '$src' OR holding_no = '$src' OR guardian_name LIKE '$src')";
-                  }elseif($sess_union > 0 && $sess_vlg > 0 && $sess_sec > 0){
-                    $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  admin_id = $sess_union AND village = $sess_vlg AND section = $sess_sec ";
+                  }elseif($sess_union > 0 && $sess_vlg > 0){
+                    $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  admin_id = $sess_union AND village = $sess_vlg ";
                   }elseif($sess_union > 0 && $sess_vlg > 0){
                     $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  admin_id = $sess_union AND village = $sess_vlg ";
                   }elseif($sess_union > 0 ){

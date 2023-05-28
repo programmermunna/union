@@ -195,23 +195,6 @@
 
     })
 
-	$(document).ready(function(){  
-      $("#village").on("change",function(){
-        var vlg_id = $(this).val();
-        $.ajax({
-            url:"include/ajax.php",
-            type:"GET",
-            data:
-            {
-              reference:"section of village in home page",
-              vlg_id:vlg_id,
-            },         
-            success:function(data){
-              $("#section").html(data);
-              }
-            });
-        })
-    })
 </script>
 <?php include("common/home-footer.php")?>
 

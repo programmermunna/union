@@ -15,9 +15,6 @@
 									if(isset($_POST['village'])){
 										$village = $_POST['village'];
 									}
-									if(isset($_POST['section'])){
-										$section = $_POST['section'];
-									}
 									if(isset($_POST['guardian_name'])){
 										$guardian_name = $_POST['guardian_name'];
 									}
@@ -31,9 +28,7 @@
 											$data = mysqli_fetch_assoc(mysqli_query($conn,$sql));
 											if($data>0){
 												$vlg_id = $data['village'];
-												$section_id = $data['section'];
 												$village = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM village WHERE id=$vlg_id"));
-												$section = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM section WHERE id=$section_id"));
 											}else{
 												echo "<h1 style='text-align:center'>No Data Found</h1>";
 												echo "<br>";
@@ -42,14 +37,12 @@
 										}else{
 											header("location:home.php");
 										}
-									}elseif(!empty($union) && !empty($village) && !empty($section) && !empty($guardian_name) && !empty($tax_holder_name)){										
-										$sql = "SELECT * FROM person WHERE admin_id=$union AND village=$village AND section=$section AND guardian_name='$guardian_name' AND name='$tax_holder_name'";
+									}elseif(!empty($union) && !empty($village) && !empty($guardian_name) && !empty($tax_holder_name)){										
+										$sql = "SELECT * FROM person WHERE admin_id=$union AND village=$village AND guardian_name='$guardian_name' AND name='$tax_holder_name'";
 										$data = mysqli_fetch_assoc(mysqli_query($conn,$sql));
 										if($data>0){
 											$vlg_id = $data['village'];
-											$section_id = $data['section'];
 											$village = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM village WHERE id=$vlg_id"));
-											$section = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM section WHERE id=$section_id"));
 										}else{
 										echo "<h1 style='text-align:center'>No Data Found</h1>";
 										echo "<br>";
@@ -82,11 +75,6 @@
 										<label for="union">গ্রাম</label>
 										<br>
 										<input disabled type="text" name="village" value="<?php echo $village['name'] ?>" >
-									</div>
-									<div>
-										<label for="union">পাড়া/মহল্লা</label>
-										<br>
-										<input disabled type="text" name="section" value="<?php echo $section['name'] ?>" >
 									</div>
 									<div>
 										<label for="union">ওয়ার্ড নং</label>
@@ -189,12 +177,6 @@
 										</select>
 									</div>
 									<div>
-										<label for="section">পাড়ার নাম</label>
-										<select name="section" id="section">
-											<option style='display:none;' selected >পাড়া/মহল্লা বাছাই করুণ</option>
-										</select>
-									</div>
-									<div>
 										<label for="guardian_name">করদাতার পিতা/স্বামী</label>
 										<br>
 										<input  name="guardian_name" type="text" >
@@ -248,23 +230,6 @@
 
     })
 
-	$(document).ready(function(){  
-      $("#village").on("change",function(){
-        var vlg_id = $(this).val();
-        $.ajax({
-            url:"include/ajax.php",
-            type:"GET",
-            data:
-            {
-              reference:"section of village in home page",
-              vlg_id:vlg_id,
-            },         
-            success:function(data){
-              $("#section").html(data);
-              }
-            });
-        })
-    })
 </script>
 <?php include("common/home-footer.php")?>
 

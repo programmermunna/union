@@ -16,7 +16,6 @@ if(isset($_POST['submit'])){
 
   $admin_id = $_POST['union']; 
   $village = $_POST['village']; 
-  $section = $_POST['section'];
 
   $word_no = $_POST['word_no'];
   $family_member = $_POST['family_member'];
@@ -76,10 +75,10 @@ if(isset($_POST['submit'])){
     $file_name = $data['file_name'];
   } 
 
-  if( empty($admin_id) || empty($id_no) || empty($name) || empty($guardian_name) || empty($village) || empty($section) || empty($family_member) || empty($word_no) || empty($net_worth)){
+  if( empty($admin_id) || empty($id_no) || empty($name) || empty($guardian_name) || empty($village) || empty($family_member) || empty($word_no) || empty($net_worth)){
     header("Location:tax-holder-add.php?err=সঠিক ভাবে ফরম পূরন করুন");
   }else{
-    $sql = "UPDATE person SET  admin_id='$admin_id', id_no='$id_no', name='$name', guardian_name='$guardian_name', village='$village', section='$section', word_no='$word_no', family_member='$family_member', male='$male', female='$female', holding_no='$holding_no', nid_no='$nid_no', profession='$profession', home='$home', net_worth='$net_worth', annual_tax='$annual_tax', ablable_tax='$ablable_tax', due_tax='$due_tax', mobile_no='$mobile_no', status='$status',file_name='$file_name' WHERE id=$id";
+    $sql = "UPDATE person SET  admin_id='$admin_id', id_no='$id_no', name='$name', guardian_name='$guardian_name', village='$village', word_no='$word_no', family_member='$family_member', male='$male', female='$female', holding_no='$holding_no', nid_no='$nid_no', profession='$profession', home='$home', net_worth='$net_worth', annual_tax='$annual_tax', ablable_tax='$ablable_tax', due_tax='$due_tax', mobile_no='$mobile_no', status='$status',file_name='$file_name' WHERE id=$id";
     $update = mysqli_query($conn,$sql);
     if($update){
       header("location:tax-holder.php?msg=করদাতা সম্পাদন হয়েছে");
@@ -154,17 +153,6 @@ if(isset($_POST['submit'])){
                             <?php }?>
                               <option style="display:none;" value="নির্বাচন করুন">নির্বাচন করুন</option>
                               
-                            </select>
-                            </div>
-
-                            <div>
-                            <label>পাড়া/মহল্লা <span class="requird_star">* </span></label>
-                            <select name="section" id="section" class="input" required value="<?php echo $data['section']?>">
-                            <?php 
-                              $section_id = $data['section'];
-                              $selected_section = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM section WHERE id=$section_id"));
-                              ?>
-                              <option value="<?php echo $selected_section['id']?>"><?php echo $selected_section['name']?></option>              
                             </select>
                             </div>
 
@@ -422,23 +410,6 @@ if(isset($_POST['submit'])){
             success:function(data){
               console.log(data);
               $("#village").html(data);
-              }
-            });
-        })
-
-      $("#village").on("change",function(){
-        var vlg_id = $(this).val();
-        $.ajax({
-            url:"../include/ajax.php",
-            type:"GET",
-            data:
-            {
-              reference:"section of village in admin/tax-holder-add page",
-              vlg_id:vlg_id,
-            },         
-            success:function(data){
-              console.log(data);
-              $("#section").html(data);
               }
             });
         })

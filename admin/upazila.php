@@ -2,19 +2,6 @@
 <?php include("common/sidebar.php")?>
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
   
-<?php
-if(isset($_POST['submit'])){
-  $village = $_POST['village'];
-  $section = $_POST['section'];
-
-  $sql = "INSERT INTO section (admin_id,name) VALUE ('$village','$section')";
-  $query = mysqli_query($conn,$sql);
-  if($query){
-    $msg = "গ্রাম যুক্ত করা সফল হয়েছে।";
-    header("location:section.php?msg=$msg");
-  }
-}
-?>
   <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">
@@ -22,7 +9,7 @@ if(isset($_POST['submit'])){
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 top_bar_flex" >
                 <div>
-                  <h6 class="text-white text-capitalize" style="margin: 0;"><a style="color:#fff" href="section.php">উপজেলা সমূহ</a></h6>
+                  <h6 class="text-white text-capitalize" style="margin: 0;"><a style="color:#fff" href="upazila.php">উপজেলা সমূহ</a></h6>
                 </div>
               <div>
                 <select class="select_bar" onchange="window.location.href='upazila.php?district_id='+this.options [this.selectedIndex].value">

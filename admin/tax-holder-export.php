@@ -24,16 +24,9 @@ header('Content-Disposition:attachment;filename=report.xls');
       $sess_vlg = 0;
   }
 
-  if(isset($_SESSION['section'])){
-      $sess_sec = $_SESSION['section'];
-  }else{
-      $sess_sec = 0;
-  }
 
-
-
-  if($sess_union > 0 && $sess_vlg > 0 && $sess_sec > 0){
-    $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  admin_id = $sess_union AND village = $sess_vlg AND section = $sess_sec ";
+  if($sess_union > 0 && $sess_vlg > 0){
+    $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  admin_id = $sess_union AND village = $sess_vlg ";
   }elseif($sess_union > 0 && $sess_vlg > 0){
     $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  admin_id = $sess_union AND village = $sess_vlg ";
   }elseif($sess_union > 0 ){
@@ -51,7 +44,6 @@ $res = mysqli_query($conn, $empSQL);
                 <td>করদাতার নাম</td>
                 <td>পিতা/স্বামীর নাম</td>
                 <td>গ্রাম</td>
-                <td>পাড়া/মহল্লা</td>
                 <td>ওয়ার্ড নং</td>
                 <td>পরিবারের সদস্য সংখ্যা</td>
                 <td>পুরুষ</td>
@@ -78,7 +70,6 @@ $res = mysqli_query($conn, $empSQL);
                 <td><?php echo $row['name'];?></td>
                 <td><?php echo $row['guardian_name'];?></td>
                 <td><?php echo $row['village'];?></td>
-                <td><?php echo $row['section'];?></td>
                 <td><?php echo $row['word_no'];?></td>
                 <td><?php echo $row['family_member'];?></td>
                 <td><?php echo $row['male'];?></td>

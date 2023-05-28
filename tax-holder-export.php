@@ -10,11 +10,6 @@ if(isset($_SESSION['village'])){
     $sess_vlg = 0;
 }
 
-if(isset($_SESSION['section'])){
-    $sess_sec = $_SESSION['section'];
-}else{
-    $sess_sec = 0;
-}
 if(isset($_SESSION['year'])){
     $year = $_SESSION['year'];
 }else{
@@ -22,9 +17,9 @@ if(isset($_SESSION['year'])){
 }
 
 if($sess_vlg > 0 && $sess_sec > 0){
-    $empSQL = "SELECT * FROM person WHERE admin_id=$id AND present_year='$year' AND village = $sess_vlg AND section = $sess_sec ";
+    $empSQL = "SELECT * FROM person WHERE admin_id=$id AND present_year='$year' AND village = $sess_vlg";
 }elseif($sess_vlg > 0){
-    $empSQL = "SELECT * FROM person WHERE admin_id=$id AND present_year='$year' AND village = $sess_vlg ";
+    $empSQL = "SELECT * FROM person WHERE admin_id=$id AND present_year='$year' AND village = $sess_vlg";
 }else{
     $empSQL = "SELECT * FROM person WHERE admin_id=$id AND present_year='$year' ";
 }
@@ -38,7 +33,6 @@ $res = mysqli_query($conn, $empSQL);
                 <td>করদাতার নাম</td>
                 <td>পিতা/স্বামীর নাম</td>
                 <td>গ্রাম</td>
-                <td>পাড়া/মহল্লা</td>
                 <td>ওয়ার্ড নং</td>
                 <td>পরিবারের সদস্য সংখ্যা</td>
                 <td>পুরুষ</td>
@@ -65,7 +59,6 @@ $res = mysqli_query($conn, $empSQL);
                 <td><?php echo $row['name'];?></td>
                 <td><?php echo $row['guardian_name'];?></td>
                 <td><?php echo $row['village'];?></td>
-                <td><?php echo $row['section'];?></td>
                 <td><?php echo $row['word_no'];?></td>
                 <td><?php echo $row['family_member'];?></td>
                 <td><?php echo $row['male'];?></td>

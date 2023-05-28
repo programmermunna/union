@@ -6,11 +6,6 @@
         <a href="village.php">
           <button class="btn nav_btn"><span class="nav_icon product_icon"> </span><span class="nav_text">গ্রাম</span></button>
         </a>
-
-        <a href="section.php">
-          <button class="btn nav_btn"><span class="nav_icon product_icon"> </span><span class="nav_text">পাড়া</span></button>
-        </a>
-
         <a href="tax-holder-all.php">
           <button class="btn nav_btn"><span class="nav_icon seller_icon"> </span><span class="nav_text">করদাতা</span></button>
         </a>

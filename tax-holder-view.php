@@ -56,17 +56,6 @@ $data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM person WHERE id='$i
             </div>
 
             <div>
-            <label>পাড়া/মহল্লা <span class="requird_star">* </span></label>
-            <select disabled name="section" id="section" class="input disabled" required value="<?php echo $data['section']?>">
-            <?php 
-              $section_id = $data['section'];
-              $selected_section = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM section WHERE id=$section_id"));
-              ?>
-              <option value="<?php echo $selected_section['id']?>"><?php echo $selected_section['name']?></option>              
-            </select>
-            </div>
-
-            <div>
             <label>ওয়ার্ড নং <span class="requird_star">*</span></label>
             <input disabled type="text" name="word_no" class="input disabled"  required value="<?php echo $data['word_no']?>"/>
             </div>
@@ -282,28 +271,6 @@ $data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM person WHERE id='$i
     </main>
 
 
-<script>
-    $(document).ready(function(){  
-
-      $("#village").on("change",function(){
-        var vlg_id = $(this).val();
-        $.ajax({
-            url:"include/ajax.php",
-            type:"GET",
-            data:
-            {
-              reference:"section of village",
-              vlg_id:vlg_id,
-            },         
-            success:function(data){
-              // console.log(data);
-              $("#section").html(data);
-              }
-            });
-        })
-
-    })
-</script>
 
 <!-- Side Navbar Links -->
 <?php include("common/footer.php");?>
