@@ -2,13 +2,16 @@
 
 if(isset($_GET['session_destroy'])){
     if($_GET['session_destroy'] == 'true'){
+        unset($_SESSION['division']);
+        unset($_SESSION['district']);
+        unset($_SESSION['upazila']);
         unset($_SESSION['union']);
         unset($_SESSION['village']);
         header("location:tax-holder.php");
     }
 }
 
-
+//union Year
 if(isset($_GET['year'])){
   $year = $_SESSION['year'] = $_GET['year'];
 }
@@ -21,7 +24,37 @@ if(isset($_SESSION['year'])){
     $year = date("Y",$present_year) ." - ". date("Y",time());
 }
 
+//union division
+if(isset($_GET['division'])){
+    $_SESSION['division'] = $_GET['division'];
+}
+if(isset($_SESSION['division'])){
+    $sess_division = $_SESSION['division'];
+}else{
+    $sess_division = 0;
+}
 
+//union district
+if(isset($_GET['district'])){
+    $_SESSION['district'] = $_GET['district'];
+}
+if(isset($_SESSION['district'])){
+    $sess_district = $_SESSION['district'];
+}else{
+    $sess_district = 0;
+}
+
+//vilage upazila
+if(isset($_GET['upazila'])){
+    $_SESSION['upazila'] = $_GET['upazila'];
+}
+if(isset($_SESSION['upazila'])){
+    $sess_upazila = $_SESSION['upazila'];
+}else{
+    $sess_upazila = 0;
+}
+
+//union session
 if(isset($_GET['union'])){
     $_SESSION['union'] = $_GET['union'];
 }
@@ -31,14 +64,16 @@ if(isset($_SESSION['union'])){
     $sess_union = 0;
 }
 
+//vilage session
 if(isset($_GET['village'])){
     $_SESSION['village'] = $_GET['village'];
 }
 if(isset($_SESSION['village'])){
-    $sess_vlg = $_SESSION['village'];
+    $sess_village = $_SESSION['village'];
 }else{
-    $sess_vlg = 0;
+    $sess_village = 0;
 }
+
 ?>
 <?php include("common/sidebar.php")?>
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
@@ -80,7 +115,10 @@ if(isset($_SESSION['village'])){
                   <div class="top_select">
                   <form action="" method="GET">
                   <select name="division" class="select_bar division">
-                  <option >বিভাগ বাছাই করুন</option>
+                  <option ><?php if($sess_division >0){
+                    $division_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM divisions WHERE id=$sess_division"));
+                    echo $division_name['bn_name'];}else{
+                      echo "বিভাগ বাছাই করুন";}?></option>
                     <?php 
                     $divisions = mysqli_query($conn,"SELECT * FROM divisions");
                     while($division = mysqli_fetch_assoc($divisions)){ ?>
@@ -88,20 +126,34 @@ if(isset($_SESSION['village'])){
                     <?php }?>
                   </select>
                   <select name="district" class="select_bar district">
-                    <option >জেলা বাছাই করুন</option>
+                    <option ><?php if($sess_district >0){
+                      $district_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM districts WHERE id=$sess_district"));
+                      echo $district_name['bn_name'];}else{
+                        echo "জেলা বাছাই করুন";}?></option>
                     </select>
                   <select name="upazila" name="upazila" class="select_bar upazila">
-                    <option >উপজেলা বাছাই করুন</option>
+                    <option ><?php if($sess_upazila >0){
+                      $upazila_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM upazilas WHERE id=$sess_upazila"));
+                      echo $upazila_name['bn_name'];}else{
+                        echo "উপজেলা বাছাই করুন";}?></option>
                   </select>
                   <select name="union" name="union" class="select_bar union">
-                    <option >ইউনিয়ন বাছাই করুন</option>
+                    <option ><?php if($sess_union >0){
+                      $union_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM union_name WHERE id=$sess_union"));
+                      echo $union_name['bn_name'];}else{
+                        echo "ইউনিয়ন বাছাই করুন";}?></option>
+                  </select>
+                  <select name="village" name="village" class="select_bar village">
+                    <option ><?php if($sess_village >0){
+                      $village_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM village WHERE id=$sess_village"));
+                      echo $village_name['bn_name'];}else{
+                        echo "গ্রাম বাছাই করুন";}?></option>
                   </select>
                   <input type="submit" value="খুজুন">
                   </form>
                     </div>
                  </form>
                 </div>
-
 
                 <div class="top_search top_search_b">
                   <form action="" method="GET">
@@ -143,11 +195,11 @@ if(isset($_SESSION['village'])){
                   if(isset($_GET['src'])){
                     $src = $_GET['src'];
                       $empSQL = "SELECT * FROM person WHERE present_year=$year AND (name LIKE '$src' OR id_no = '$src' OR mobile_no = '$src' OR nid_no = '$src' OR holding_no = '$src' OR guardian_name LIKE '$src')";
-                  }elseif($sess_union > 0 && $sess_vlg > 0){
-                    $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  admin_id = $sess_union AND village = $sess_vlg ";
-                  }elseif($sess_union > 0 && $sess_vlg > 0){
-                    $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  admin_id = $sess_union AND village = $sess_vlg ";
                   }elseif($sess_union > 0 ){
+                    $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  admin_id = $sess_union AND village = $sess_vlg ";
+                  }elseif($sess_union > 0 && $sess_village > 0){
+                    $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  admin_id = $sess_union AND village = $sess_vlg ";
+                  }elseif($sess_village > 0 ){
                       $empSQL = "SELECT * FROM person WHERE present_year='$year' AND admin_id = $sess_union ";
                   }else{
                     $empSQL = "SELECT * FROM person WHERE present_year='$year'";
@@ -266,7 +318,10 @@ if(isset($_SESSION['village'])){
         return opt_func("../","union_name","upazila_id",upazila,".union");
         })
 
-
+      $(".union").on("change",function(){
+        var upazila = $(this).val();
+        return opt_func("../","village","union_id",upazila,".village");
+        })
 </script>
   
   <?php include("common/footer.php")?>

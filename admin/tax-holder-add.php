@@ -9,8 +9,12 @@ if(isset($_POST['submit'])){
   $name = $_POST['name'];
   $guardian_name = $_POST['guardian_name'];
 
-  $admin_id = $_POST['union']; 
-  $village = $_POST['village']; 
+  $division = $_POST['division'];
+  $district = $_POST['district'];
+  $upazila = $_POST['upazila'];
+  $union = $_POST['union'];
+  $admin_id = $_POST['union'];
+  $village = $_POST['village'];  
 
   $word_no = $_POST['word_no'];
   $family_member = $_POST['family_member'];
@@ -30,25 +34,24 @@ if(isset($_POST['submit'])){
   $times = $time-$year_left;
   $present_year = date("Y",$times) ." - ". date("Y",time());
 
-  $file_name = $_FILES['file']['name'];
+ echo $file_name = $_FILES['file']['name'];
   $file_tmp = $_FILES['file']['tmp_name'];
-  move_uploaded_file($file_tmp,"upload/$file_name");
+  move_uploaded_file($file_tmp,"../upload/$file_name");
   if(empty($file_name)){
     $file_name = "avatar.jpg";
   } 
 
-  if( empty($id_no) || empty($name) || empty($guardian_name) || empty($village) || empty($family_member) || empty($net_worth)){
+  if( empty($id_no) || empty($name) || empty($guardian_name) || empty($division) || empty($district) || empty($upazila) || empty($union) || empty($village) || empty($family_member) || empty($net_worth)){
     header("Location:tax-holder-add.php?err=সঠিক ভাবে ফরম পূরন করুন");
   }else{
-    $sql = "INSERT INTO person (admin_id,id_no,name,guardian_name,village,word_no,family_member,male,female,holding_no,nid_no,profession,home,net_worth,annual_tax,ablable_tax,due_tax,present_year,mobile_no,file_name,time) 
-    VALUES ('$admin_id','$id_no','$name','$guardian_name','$village','$word_no','$family_member','$male','$female','$holding_no','$nid_no','$profession','$home','$net_worth','$annual_tax','$ablable_tax','$due_tax','$present_year','$mobile_no','$file_name','$time')";
+    $sql = "INSERT INTO person (admin_id,id_no,name,guardian_name,division_id,district_id,upazila_id,union_id,village,word_no,family_member,male,female,holding_no,nid_no,profession,home,net_worth,annual_tax,ablable_tax,due_tax,present_year,mobile_no,file_name,time) 
+    VALUES ('$admin_id','$id_no','$name','$guardian_name','$division','$district','$upazila','$union','$village','$word_no','$family_member','$male','$female','$holding_no','$nid_no','$profession','$home','$net_worth','$annual_tax','$ablable_tax','$due_tax','$present_year','$mobile_no','$file_name','$time')";
     $insert = mysqli_query($conn,$sql);
     if($insert){
       header("location:tax-holder-add.php?msg=নতুন করদাতা যুক্ত হয়েছে");
     }else{
-      echo "error";
+      echo mysqli_error($conn);
     }
-    
   }
 
 }
@@ -65,14 +68,14 @@ if(isset($_POST['submit'])){
             <div class="card-body px-0 pb-2">
               <div class="table-responsive p-4">
 
-                <div class="order-view">
-                  <div class="edit">
-                      <form action="" method="POST">
-                        <div class="profile">
-                          <div style="display:block">
-                          <div>
-              <label>আইডি নং <span class="requird_star">*</span></label>
-              <input type="number" name="id_no" class="input" required value="<?php echo rand(100,99999999);?>"/>
+          <div class="order-view">
+            <div class="edit">
+            <form action="" method="POST" enctype="multipart/form-data">
+            <div class="profile">
+            <div style="display:block">
+            <div>
+            <label>আইডি নং <span class="requird_star">*</span></label>
+            <input type="number" name="id_no" class="input" required value="<?php echo rand(100,99999999);?>"/>
             </div>
 
             <div>
@@ -86,24 +89,45 @@ if(isset($_POST['submit'])){
             </div>
 
             <div>
-            <label>ইউনিয়ন <span class="requird_star" >* </span></label>
-            <select name="union" id="union" class="input" required>
-              <option style="display:none;" value="নির্বাচন করুন">নির্বাচন করুন</option>
+            <label>বিভাগ <span class="requird_star" >* </span></label>
+            <select name="division" id="division" class="input division" required>
+              <option style="display:none;" value="বাছাই করুন">বাছাই করুন</option>
               <?php 
-              $unions = mysqli_query($conn,"SELECT * FROM union_name");
-              while($union = mysqli_fetch_assoc($unions)){ ?>
-                <option value="<?php echo $union['admin_id']?>"><?php echo $union['bn_name']?></option>
+              $divisions = mysqli_query($conn,"SELECT * FROM divisions");
+              while($division = mysqli_fetch_assoc($divisions)){ ?>
+                <option value="<?php echo $division['id']?>"><?php echo $division['bn_name']?></option>
              <?php }?>
             </select>
             </div>
 
             <div>
-            <label>গ্রাম <span class="requird_star" >* </span></label>
-            <select name="village" id="village" class="input" required>
-              <option style="display:none;" value="নির্বাচন করুন">নির্বাচন করুন</option>
-              
+            <label>জেলা <span class="requird_star" >* </span></label>
+            <select name="district" id="district" class="input district" required>
+              <option>জেলা বাছাই করুন</option>
             </select>
             </div>
+
+            <div>
+            <label>উপজেলা <span class="requird_star" >* </span></label>
+            <select name="upazila" id="upazila" class="input upazila" required>
+              <option>উপজেলা বাছাই করুন</option>
+            </select>
+            </div>
+
+            <div>
+            <label>ইউনিয়ন <span class="requird_star" >* </span></label>
+            <select name="union" id="union" class="input union" required>
+              <option>ইউনিয়ন বাছাই করুন</option>
+            </select>
+            </div>
+
+            <div>
+            <label>গ্রাম <span class="requird_star" >* </span></label>
+            <select name="village" id="village" class="input village" required>
+              <option>গ্রাম বাছাই করুন</option>
+            </select>
+            </div>
+
 
             <div>
             <label>ওয়ার্ড নং </label>
@@ -252,25 +276,26 @@ if(isset($_POST['submit'])){
   </main>  
 
   <script>
-    $(document).ready(function(){ 
-      $("#union").on("change",function(){
-        var union_id = $(this).val();
-        $.ajax({
-            url:"../include/ajax.php",
-            type:"GET",
-            data:
-            {
-              reference:"village of union in admin/tax-holder-add page",
-              union_id:union_id,
-            },         
-            success:function(data){
-              console.log(data);
-              $("#village").html(data);
-              }
-            });
+      $(".division").on("change",function(){
+        var division = $(this).val();
+        return opt_func("../","districts","division_id",division,".district");
         })
 
-    })
+
+      $(".district").on("change",function(){
+        var district = $(this).val();
+        return opt_func("../","upazilas","district_id",district,".upazila");
+        })
+
+      $(".upazila").on("change",function(){
+        var upazila = $(this).val();
+        return opt_func("../","union_name","upazila_id",upazila,".union");
+        })
+
+      $(".union").on("change",function(){
+        var upazila = $(this).val();
+        return opt_func("../","village","union_id",upazila,".village");
+        })
 </script>
   
   <?php include("common/footer.php")?>
