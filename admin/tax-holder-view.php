@@ -39,21 +39,63 @@ $data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM person WHERE id='$i
                       </div>
 
                       <div>
-                      <label>গ্রাম <span class="requird_star" >* </span></label>
-                      <select disabled name="village" id="village" class="input disabled" required>
-                      <?php 
-                        $vlg_id = $data['village'];
-                        $selected_village = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM village WHERE id=$vlg_id"));
-                        ?>
-                        <option value="<?php echo $selected_village['id']?>"><?php echo $selected_village['name']?></option>
+                            <label>বিভাগ <span class="requird_star" >* </span></label>
+                            <select disabled name="division" id="division" class="input division" required>
+                              <?php 
+                              $division_id =  $data['division_id'];
+                              $division_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM divisions WHERE id=$division_id"));
+                              ?>
+                              <option selected value="<?php echo $division_name['bn_name'];?>"><?php echo $division_name['bn_name'];?></option>                              
+                            </select>
+                            </div>
 
-                        <?php 
-                        $villages = mysqli_query($conn,"SELECT * FROM village");
-                        while($village = mysqli_fetch_assoc($villages)){ ?>
-                          <option value="<?php echo $village['id']?>"><?php echo $village['name']?></option>
-                      <?php }?>
-                      </select>
-                      </div>
+                            <div>
+                            <label>জেলা <span class="requird_star" >* </span></label>
+                            <select disabled name="district" id="district" class="input " required>
+                            <?php 
+                              $district_id =  $data['district_id'];
+                              $district_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM districts WHERE id=$district_id"));
+                              ?>
+                              <option selected value="<?php echo $district_name['bn_name'];?>"><?php echo $district_name['bn_name'];?></option>
+                              
+                            </select>
+                            </div>
+
+                            <div>
+                            <label>উপজেলা <span class="requird_star" >* </span></label>
+                            <select disabled name="upazila" id="upazila" class="input " required>
+                            <?php 
+                              $upazila_id =  $data['upazila_id'];
+                              $upazila_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM upazilas WHERE id=$upazila_id"));
+                              ?>
+                              <option selected value="<?php echo $upazila_name['bn_name'];?>"><?php echo $upazila_name['bn_name'];?></option>
+
+                            </select>
+                            </div>
+
+                            <div>
+                            <label>ইউনিয়ন <span class="requird_star" >* </span></label>
+                            <select disabled name="union" id="union" class="input " required>
+                              <?php 
+                              $union_id =  $data['union_id'];
+                              $union_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM union_name WHERE id=$union_id"));
+                              ?>
+                              <option selected value="<?php echo $union_name['bn_name'];?>"><?php echo $union_name['bn_name'];?></option>
+                              
+                            </select>
+                            </div>
+
+                            <div>
+                            <label>গ্রাম <span class="requird_star" >* </span></label>
+                            <select disabled name="village" id="village" class="input " required>
+                            <?php 
+                              $village_id =  $data['village'];
+                              $village_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM village WHERE id=$village_id"));
+                              ?>
+                              <option selected value="<?php echo $village_name['bn_name'];?>"><?php echo $village_name['bn_name'];?></option>
+                              
+                            </select>
+                            </div>
 
                       <div>
                       <label>ওয়ার্ড নং <span class="requird_star">*</span></label>

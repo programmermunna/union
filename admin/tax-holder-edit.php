@@ -13,9 +13,14 @@ if(isset($_POST['submit'])){
   $id_no = $_POST['id_no'];
   $name = $_POST['name'];
   $guardian_name = $_POST['guardian_name'];
+  
+  $division = $_POST['division'];
+  $district = $_POST['district'];
+  $upazila = $_POST['upazila'];
+  $union = $_POST['union'];
+  $admin_id = $_POST['union'];
+  $village = $_POST['village'];  
 
-  $admin_id = $_POST['union']; 
-  $village = $_POST['village']; 
 
   $word_no = $_POST['word_no'];
   $family_member = $_POST['family_member'];
@@ -40,7 +45,7 @@ if(isset($_POST['submit'])){
     if($status == 'Success'){
     $to = $mobile_no;
     $token = $mail['sms_token'];
-    $message = "Congratulations || ".$id_no." এই আইডি থেকে আপনার করপ্রদান সফল হয়েছে। আপনার কর সম্পর্কে বিস্তারিত জানতে wwww.mkitu.com ওয়েবসাইটে প্রবেশ করুন";
+    $message = "Congratulations || ".$id_no." এই আইডি থেকে ৳".$ablable_tax." টাকা করপ্রদান সফল হয়েছে। আপনার কর সম্পর্কে বিস্তারিত জানতে wwww.mkitu.com ওয়েবসাইটে প্রবেশ করুন";
 
     $url = "http://api.greenweb.com.bd/api.php?json";
 
@@ -75,10 +80,10 @@ if(isset($_POST['submit'])){
     $file_name = $data['file_name'];
   } 
 
-  if( empty($admin_id) || empty($id_no) || empty($name) || empty($guardian_name) || empty($village) || empty($family_member) || empty($word_no) || empty($net_worth)){
+  if( empty($admin_id) || empty($id_no) || empty($name) || empty($guardian_name) || empty($division) || empty($district) || empty($upazila) || empty($union) || empty($village)  || empty($family_member) || empty($word_no) || empty($net_worth)){
     header("Location:tax-holder-add.php?err=সঠিক ভাবে ফরম পূরন করুন");
   }else{
-    $sql = "UPDATE person SET  admin_id='$admin_id', id_no='$id_no', name='$name', guardian_name='$guardian_name', village='$village', word_no='$word_no', family_member='$family_member', male='$male', female='$female', holding_no='$holding_no', nid_no='$nid_no', profession='$profession', home='$home', net_worth='$net_worth', annual_tax='$annual_tax', ablable_tax='$ablable_tax', due_tax='$due_tax', mobile_no='$mobile_no', status='$status',file_name='$file_name' WHERE id=$id";
+    $sql = "UPDATE person SET  admin_id='$admin_id', id_no='$id_no', name='$name', guardian_name='$guardian_name', division_id='$division', district_id='$district', upazila_id='$upazila', union_id='$union', village='$village', word_no='$word_no', family_member='$family_member', male='$male', female='$female', holding_no='$holding_no', nid_no='$nid_no', profession='$profession', home='$home', net_worth='$net_worth', annual_tax='$annual_tax', ablable_tax='$ablable_tax', due_tax='$due_tax', mobile_no='$mobile_no', status='$status',file_name='$file_name' WHERE id=$id";
     $update = mysqli_query($conn,$sql);
     if($update){
       header("location:tax-holder.php?msg=করদাতা সম্পাদন হয়েছে");
@@ -123,35 +128,65 @@ if(isset($_POST['submit'])){
                             </div>
 
                             <div>
-                            <label>ইউনিয়ন <span class="requird_star" >* </span></label>
-                            <select name="union" id="union" class="input" required>
-                              <?php
-                              $admin_id = $data['admin_id'];
-                              $selected_union = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM union_name WHERE admin_id=$admin_id")); ?>
-                                <option selected value="<?php echo $selected_union['admin_id']?>"><?php echo $selected_union['bn_name']?></option>                              
-
-                             <?php $unions = mysqli_query($conn,"SELECT * FROM union_name");
-                              while($union = mysqli_fetch_assoc($unions)){ ?>
-                                <option value="<?php echo $union['admin_id']?>"><?php echo $union['bn_name']?></option>
+                            <label>বিভাগ <span class="requird_star" >* </span></label>
+                            <select name="division" id="division" class="input division" required>
+                              <?php 
+                              $division_id =  $data['division_id'];
+                              $division_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM divisions WHERE id=$division_id"));
+                              ?>
+                              <option selected value="<?php echo $division_name['bn_name'];?>"><?php echo $division_name['bn_name'];?></option>
+                              <?php 
+                              $divisions = mysqli_query($conn,"SELECT * FROM divisions");
+                              while($division = mysqli_fetch_assoc($divisions)){ ?>
+                                <option value="<?php echo $division['id']?>"><?php echo $division['bn_name']?></option>
                             <?php }?>
                             </select>
                             </div>
 
                             <div>
-                            <label>গ্রাম <span class="requird_star" >* </span></label>
-                            <select name="village" id="village" class="input" required>
+                            <label>জেলা <span class="requird_star" >* </span></label>
+                            <select name="district" id="district" class="input district" required>
                             <?php 
-                              $vlg_id = $data['village'];
-                              $selected_village = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM village WHERE id=$vlg_id"));
+                              $district_id =  $data['district_id'];
+                              $district_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM districts WHERE id=$district_id"));
                               ?>
-                              <option value="<?php echo $selected_village['id']?>"><?php echo $selected_village['name']?></option>
+                              <option selected value="<?php echo $district_name['bn_name'];?>"><?php echo $district_name['bn_name'];?></option>
+                              
+                            </select>
+                            </div>
 
+                            <div>
+                            <label>উপজেলা <span class="requird_star" >* </span></label>
+                            <select name="upazila" id="upazila" class="input upazila" required>
+                            <?php 
+                              $upazila_id =  $data['upazila_id'];
+                              $upazila_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM upazilas WHERE id=$upazila_id"));
+                              ?>
+                              <option selected value="<?php echo $upazila_name['bn_name'];?>"><?php echo $upazila_name['bn_name'];?></option>
+
+                            </select>
+                            </div>
+
+                            <div>
+                            <label>ইউনিয়ন <span class="requird_star" >* </span></label>
+                            <select name="union" id="union" class="input union" required>
                               <?php 
-                              $villages = mysqli_query($conn,"SELECT * FROM village");
-                              while($village = mysqli_fetch_assoc($villages)){ ?>
-                                <option value="<?php echo $village['id']?>"><?php echo $village['name']?></option>
-                            <?php }?>
-                              <option style="display:none;" value="নির্বাচন করুন">নির্বাচন করুন</option>
+                              $union_id =  $data['union_id'];
+                              $union_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM union_name WHERE id=$union_id"));
+                              ?>
+                              <option selected value="<?php echo $union_name['bn_name'];?>"><?php echo $union_name['bn_name'];?></option>
+                              
+                            </select>
+                            </div>
+
+                            <div>
+                            <label>গ্রাম <span class="requird_star" >* </span></label>
+                            <select name="village" id="village" class="input village" required>
+                            <?php 
+                              $village_id =  $data['village'];
+                              $village_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM village WHERE id=$village_id"));
+                              ?>
+                              <option selected value="<?php echo $village_name['bn_name'];?>"><?php echo $village_name['bn_name'];?></option>
                               
                             </select>
                             </div>
@@ -396,25 +431,26 @@ if(isset($_POST['submit'])){
 </main>  
 
   <script>
-    $(document).ready(function(){ 
-      $("#union").on("change",function(){
-        var union_id = $(this).val();
-        $.ajax({
-            url:"../include/ajax.php",
-            type:"GET",
-            data:
-            {
-              reference:"village of union in admin/tax-holder-add page",
-              union_id:union_id,
-            },         
-            success:function(data){
-              console.log(data);
-              $("#village").html(data);
-              }
-            });
+   $(".division").on("change",function(){
+        var division = $(this).val();
+        return opt_func("../","districts","division_id",division,".district");
         })
 
-    })
+
+      $(".district").on("change",function(){
+        var district = $(this).val();
+        return opt_func("../","upazilas","district_id",district,".upazila");
+        })
+
+      $(".upazila").on("change",function(){
+        var upazila = $(this).val();
+        return opt_func("../","union_name","upazila_id",upazila,".union");
+        })
+
+      $(".union").on("change",function(){
+        var upazila = $(this).val();
+        return opt_func("../","village","union_id",upazila,".village");
+        })
 </script>
   
   <?php include("common/footer.php")?>
