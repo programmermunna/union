@@ -20,13 +20,15 @@ if(isset($_SESSION['year'])){
     $year = $_SESSION['year'];
 }else{
     $year_left = 86400*365;
-    $present_year = $time-$year_left;
-    $year = date("Y",$present_year) ." - ". date("Y",time());
+    $year_cal = $time-$year_left;
+    $year = date("Y",$year_cal) ." - ". date("Y",time());
 }
 
 //union division
 if(isset($_GET['division'])){
-    $_SESSION['division'] = $_GET['division'];
+    if(is_numeric($_GET['division']) && !empty($_GET['division'])){
+      $_SESSION['division'] = $_GET['division'];
+    }
 }
 if(isset($_SESSION['division'])){
     $sess_division = $_SESSION['division'];
@@ -36,7 +38,9 @@ if(isset($_SESSION['division'])){
 
 //union district
 if(isset($_GET['district'])){
-    $_SESSION['district'] = $_GET['district'];
+    if(is_numeric($_GET['district']) && !empty($_GET['district'])){
+      $_SESSION['district'] = $_GET['district'];
+    }
 }
 if(isset($_SESSION['district'])){
     $sess_district = $_SESSION['district'];
@@ -46,7 +50,9 @@ if(isset($_SESSION['district'])){
 
 //vilage upazila
 if(isset($_GET['upazila'])){
-    $_SESSION['upazila'] = $_GET['upazila'];
+    if(is_numeric($_GET['upazila']) && !empty($_GET['upazila'])){
+      $_SESSION['upazila'] = $_GET['upazila'];
+    }
 }
 if(isset($_SESSION['upazila'])){
     $sess_upazila = $_SESSION['upazila'];
@@ -56,7 +62,9 @@ if(isset($_SESSION['upazila'])){
 
 //union session
 if(isset($_GET['union'])){
-    $_SESSION['union'] = $_GET['union'];
+    if(is_numeric($_GET['union']) && !empty($_GET['union'])){
+      $_SESSION['union'] = $_GET['union'];
+    }
 }
 if(isset($_SESSION['union'])){
     $sess_union = $_SESSION['union'];
@@ -66,7 +74,9 @@ if(isset($_SESSION['union'])){
 
 //vilage session
 if(isset($_GET['village'])){
-    $_SESSION['village'] = $_GET['village'];
+    if(is_numeric($_GET['village']) && !empty($_GET['village'])){
+      $_SESSION['village'] = $_GET['village'];
+    }
 }
 if(isset($_SESSION['village'])){
     $sess_village = $_SESSION['village'];
@@ -194,13 +204,17 @@ if(isset($_SESSION['village'])){
                   <?php 
                   if(isset($_GET['src'])){
                     $src = $_GET['src'];
-                      $empSQL = "SELECT * FROM person WHERE present_year=$year AND (name LIKE '$src' OR id_no = '$src' OR mobile_no = '$src' OR nid_no = '$src' OR holding_no = '$src' OR guardian_name LIKE '$src')";
-                  }elseif($sess_union > 0 ){
-                    $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  admin_id = $sess_union AND village = $sess_vlg ";
-                  }elseif($sess_union > 0 && $sess_village > 0){
-                    $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  admin_id = $sess_union AND village = $sess_vlg ";
-                  }elseif($sess_village > 0 ){
-                      $empSQL = "SELECT * FROM person WHERE present_year='$year' AND admin_id = $sess_union ";
+                    $empSQL = "SELECT * FROM person WHERE present_year='$year' AND (name LIKE '$src' OR guardian_name LIKE '$src' OR id_no = '$src' OR mobile_no = '$src' OR nid_no = '$src' OR holding_no = '$src')";
+                  }elseif($sess_division > 0 && $sess_district > 0  && $sess_upazila > 0 && $sess_union > 0 && $sess_village > 0){
+                    $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union AND  village = $sess_village";
+                  }elseif($sess_division > 0 && $sess_district > 0  && $sess_upazila > 0 && $sess_union > 0){
+                    $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union";
+                  }elseif($sess_division > 0 && $sess_district > 0  && $sess_upazila > 0){
+                    $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila";
+                  }elseif($sess_division > 0 && $sess_district > 0){
+                    $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district";
+                  }elseif($sess_division > 0){
+                    $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  division_id = $sess_division";
                   }else{
                     $empSQL = "SELECT * FROM person WHERE present_year='$year'";
                   }
@@ -212,7 +226,7 @@ if(isset($_SESSION['village'])){
                     ?>
                     <tr>
                       <td class="align-middle text-center text-sm">
-                        <span class="text-secondary text-xs font-weight-bold"><?php echo $i;?></span>
+                        <span class="text-secondary text-xs font-weight-bold"><?php echo $data['id'];?></span>
                       </td>
                       <td>
                         <div class="d-flex px-2 py-1">
@@ -275,15 +289,14 @@ if(isset($_SESSION['village'])){
                       </td>
                       <td class="align-middle text-center">
                         <?php if($data['obostha']=='বহাল'){ ?>
-                          <span class="text-xs font-weight-bold badge badge-sm bg-gradient-success"><?php echo $data['obostha'];?></span>
-                     <?php }else{?>
-                        <span class="text-xs font-weight-bold badge badge-sm bg-gradient-danger"><?php echo $data['obostha'];?></span>
-                        <?php }?>
+                          <a href="remove.php?action=বাতিল&&id=<?php echo $data['id'];?>"><span class="text-xs font-weight-bold badge badge-sm bg-gradient-success"><?php echo $data['obostha'];?></span></a>
+                        <?php }else{?>
+                          <a href="remove.php?action=বহাল&&id=<?php echo $data['id'];?>"><span class="text-xs font-weight-bold badge badge-sm bg-gradient-danger"><?php echo $data['obostha'];?></span></a>
+                        <?php }?>                      
                       </td>
 
                       <td style="text-align:center">
                         <a href="tax-holder-edit.php?id=<?php echo $data['id'];?>" class="badge badge-sm bg-gradient-success">Edit</a>
-                        <a href="remove.php?id=<?php echo $data['id'];?>" class="badge badge-sm bg-gradient-success">Remove</a>
                         <a href="tax-holder-view.php?id=<?php echo $data['id'];?>" class="badge badge-sm bg-gradient-success">View</a>
                       </td>
                     </tr>
