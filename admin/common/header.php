@@ -1,4 +1,5 @@
 <?php include('../include/functions.php');
+
 if(isset($_SESSION['super_admin_id'])){
    $id = $_SESSION['super_admin_id'];
    $getUser = "SELECT * FROM super_admin WHERE id='$id'";
@@ -15,8 +16,92 @@ if(isset($_SESSION['super_admin_id'])){
 if($id<1){
   header('location:login.php');
 }
-
 $admin = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM super_admin WHERE id=1"));
+
+if(isset($_GET['session_destroy'])){
+  $reload = $_GET['reload'];
+  if($_GET['session_destroy'] == 'true'){
+      unset($_SESSION['division']);
+      unset($_SESSION['district']);
+      unset($_SESSION['upazila']);
+      unset($_SESSION['union']);
+      unset($_SESSION['village']);
+      header("location:$page_name");
+  }
+}
+
+//union Year
+if(isset($_GET['year'])){
+  $year = $_SESSION['year'] = $_GET['year'];
+}
+
+if(isset($_SESSION['year'])){
+    $year = $_SESSION['year'];
+}else{
+    $year_left = 86400*365;
+    $year_cal = $time-$year_left;
+    $year = date("Y",$year_cal) ." - ". date("Y",time());
+}
+
+//union division
+if(isset($_GET['division'])){
+    if(is_numeric($_GET['division']) && !empty($_GET['division'])){
+      $_SESSION['division'] = $_GET['division'];
+    }
+}
+if(isset($_SESSION['division'])){
+    $sess_division = $_SESSION['division'];
+}else{
+    $sess_division = 0;
+}
+
+//union district
+if(isset($_GET['district'])){
+    if(is_numeric($_GET['district']) && !empty($_GET['district'])){
+      $_SESSION['district'] = $_GET['district'];
+    }
+}
+if(isset($_SESSION['district'])){
+    $sess_district = $_SESSION['district'];
+}else{
+    $sess_district = 0;
+}
+
+//vilage upazila
+if(isset($_GET['upazila'])){
+    if(is_numeric($_GET['upazila']) && !empty($_GET['upazila'])){
+      $_SESSION['upazila'] = $_GET['upazila'];
+    }
+}
+if(isset($_SESSION['upazila'])){
+    $sess_upazila = $_SESSION['upazila'];
+}else{
+    $sess_upazila = 0;
+}
+
+//union session
+if(isset($_GET['union'])){
+    if(is_numeric($_GET['union']) && !empty($_GET['union'])){
+      $_SESSION['union'] = $_GET['union'];
+    }
+}
+if(isset($_SESSION['union'])){
+    $sess_union = $_SESSION['union'];
+}else{
+    $sess_union = 0;
+}
+
+//vilage session
+if(isset($_GET['village'])){
+    if(is_numeric($_GET['village']) && !empty($_GET['village'])){
+      $_SESSION['village'] = $_GET['village'];
+    }
+}
+if(isset($_SESSION['village'])){
+    $sess_village = $_SESSION['village'];
+}else{
+    $sess_village = 0;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,3 +134,4 @@ $admin = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM super_admin WHERE 
   <link rel="stylesheet" href="css/custom.css">
 </head>
 <body class="g-sidenav-show  bg-gray-200">
+

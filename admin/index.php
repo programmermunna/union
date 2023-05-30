@@ -1,12 +1,12 @@
 <?php include("common/header.php")?>
 <?php include("common/sidebar.php")?>
-<?php 
-     
+<?php   
      $present_year = date("Y",time());
      $total_tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM person"));
      $pending_tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM person WHERE present_year=$present_year AND status='Pending'"));
      $success_tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM person WHERE present_year=$present_year AND status='Success'"));
      $village = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM village"));
+     $union = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM union_name"));
      
      $annual_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(annual_tax) FROM person"));
      $ablable_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(ablable_tax) FROM person WHERE  status='Success'"));
@@ -130,6 +130,10 @@
             <div class="card-header p-3 pt-2">
               <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
                 <i class="material-icons opacity-10">weekend</i>
+              </div>
+              <div class="text-end pt-1">
+                <p class="text-sm mb-0 text-capitalize">ইউনিয়ন</p>
+                <h4 class="mb-0"><?php echo $union;?></h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
@@ -267,15 +271,21 @@
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>
-                            <img src="../upload/<?php echo $data['file_name'];?>" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
+                            <a href="tax-holder-view?id=<?php echo $data['id'];?>">
+                              <img src="../upload/<?php echo $data['file_name'];?>" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
+                            </a>
                           </div>
                           <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm"><?php echo $data['name'];?></h6>
+                            <a href="tax-holder-view?id=<?php echo $data['id'];?>">
+                              <h6 class="mb-0 text-sm"><?php echo $data['name'];?></h6>
+                            </a>
                           </div>
                         </div>
                       </td>
                       <td>
-                        <p class="text-xs font-weight-bold mb-0"><?php echo $data['id_no'];?></p>
+                        <a href="tax-holder-view?id=<?php echo $data['id'];?>">
+                          <p class="text-xs font-weight-bold mb-0"><?php echo $data['id_no'];?></p>
+                        </a>
                       </td>
                       <td>
                         <p class="text-xs font-weight-bold mb-0"><?php echo $data['holding_no'];?></p>
@@ -338,28 +348,11 @@
                     $villages = mysqli_query($conn,"SELECT * FROM village ORDER BY id DESC LIMIT 4");
                     while($village = mysqli_fetch_assoc($villages)){ ?>
                     <div class="timeline-content">
-                      <h6 class="text-dark text-sm font-weight-bold mb-0"><?php echo $village['name']?> <i style="color:green">যুক্ত করা হয়েছে</i></h6>
+                      <h6 class="text-dark text-sm font-weight-bold mb-0"><?php echo $village['bn_name']?> <i style="color:green">যুক্ত করা হয়েছে</i></h6>
                       <p class="text-secondary font-weight-bold text-xs mt-1 mb-0"><?php echo time_elapsed_string($village['time'],true);?></p>
                     </div>
                     <?php }?>
-
-
-                    <span class="timeline-step">
-                      S<i class="material-icons text-success text-gradient">notifications</i>
-                    </span>
-                    
-                    <?php 
-                    $villages = mysqli_query($conn,"SELECT * FROM village ORDER BY id DESC LIMIT 4");
-                    while($village = mysqli_fetch_assoc($villages)){ ?>
-                    <div class="timeline-content">
-                      <h6 class="text-dark text-sm font-weight-bold mb-0"><?php echo $village['name']?> <i style="color:green">যুক্ত করা হয়েছে</i></h6>
-                      <p class="text-secondary font-weight-bold text-xs mt-1 mb-0"><?php echo time_elapsed_string($village['time'],true);?></p>
-                    </div>
-                    <?php }?>
-
-
                 </div>
-                
               </div>
             </div>
           </div>

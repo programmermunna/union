@@ -11,17 +11,27 @@
                 <div>
                   <h6 class="text-white text-capitalize" style="margin: 0;"><a style="color:#fff" href="district.php">জেলা সমূহ</a></h6>
                 </div>
-              <div>
-                <select class="select_bar" onchange="window.location.href='district.php?division_id='+this.options [this.selectedIndex].value">
-                  <option >বিভাগ বাছাই করুন</option>
-                    <?php 
-                    $divisions = mysqli_query($conn,"SELECT * FROM divisions");
-                    while($division = mysqli_fetch_assoc($divisions)){ ?>
-                    <option value="<?php echo $division['id'];?>"><?php echo $division['bn_name'];?></option>
-                    <?php }?>
-                  </select>
+                <div>
+                <span class="add_new"><a class="btn_on_red tax_btn" href="district.php?session_destroy=true">রিফ্রেস</a></span>
                 </div>
-              </div>
+                <div>
+                  <div class="top_select">
+                    <form action="" method="GET">
+                    <select name="division" class="select_bar division">
+                    <option ><?php if($sess_division >0){
+                      $division_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM divisions WHERE id=$sess_division"));
+                      echo $division_name['bn_name'];}else{
+                        echo "বিভাগ বাছাই করুন";}?></option>
+                      <?php 
+                      $divisions = mysqli_query($conn,"SELECT * FROM divisions");
+                      while($division = mysqli_fetch_assoc($divisions)){ ?>
+                      <option value="<?php echo $division['id'];?>"><?php echo $division['bn_name'];?></option>
+                      <?php }?>
+                    </select>
+                    <input type="submit" value="খুজুন">
+                    </form>
+                  </div>
+                </div>
             </div>
             <div class="card-body px-0 pb-2">
               <div class="table-responsive p-4">
@@ -39,9 +49,8 @@
                       </thead>
                       <tbody>
                         <?php 
-                        if(isset($_GET['division_id'])){
-                          $division_id = $_GET['division_id'];
-                          $districts = mysqli_query($conn,"SELECT * FROM districts WHERE division_id=$division_id");
+                        if($sess_division > 0){
+                          $districts = mysqli_query($conn,"SELECT * FROM districts WHERE division_id=$sess_division");
                         }else{
                           $districts = mysqli_query($conn,"SELECT * FROM districts");
                         }

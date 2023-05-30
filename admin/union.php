@@ -12,7 +12,7 @@
                 <h6 class="text-white text-capitalize ps-3">ইউনিয়নের তালিকা সমূহ</h6>
                 
                 <div>
-                  <span class="add_new"><a class="btn_on_red tax_btn" href="union.php">রিফ্রেস</a></span>
+                  <span class="add_new"><a class="btn_on_red tax_btn" href="union.php?session_destroy=true">রিফ্রেস</a></span>
                   <span class="add_new"><a class="btn_on_red tax_btn" href="union-add.php">যুক্ত করুণ</a></span>
                 </div>
 
@@ -55,11 +55,9 @@
                       </thead>
                       <tbody>
                         <?php 
-                        if(isset($_GET['upazila'])){
-                          $upazila = $_GET['upazila'];
-                          if(is_numeric($upazila)){
-                            $union = mysqli_query($conn,"SELECT * FROM union_name WHERE upazila_id=$upazila");
-                          }}else{
+                        if($sess_upazila >0){
+                            $union = mysqli_query($conn,"SELECT * FROM union_name WHERE upazila_id=$sess_upazila");
+                          }else{
                             $union = mysqli_query($conn,"SELECT * FROM union_name");
                           }
                         $i = 0;

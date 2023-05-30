@@ -10,6 +10,9 @@
   </a>
   <ul id="menu">
     <li><a href="index.php">ড্যাশবোর্ড</a></li>
+    <li><a href="division.php">বিভাগ</a></li>
+    <li><a href="district.php">জেলা</a></li>
+    <li><a href="upazila.php">উপজেলা</a></li>
     <li><a href="union.php">ইউনিয়ন</a></li>
     <li><a href="village.php">গ্রাম</a></li>
     <li><a href="tax-holder.php">করদাতা</a></li>

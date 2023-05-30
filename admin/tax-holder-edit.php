@@ -19,7 +19,7 @@ if(isset($_POST['submit'])){
   $upazila = $_POST['upazila'];
   $union = $_POST['union'];
   $admin_id = $_POST['union'];
-  $village = $_POST['village'];  
+  $village = $_POST['village'];
 
 
   $word_no = $_POST['word_no'];
@@ -101,7 +101,7 @@ if(isset($_POST['submit'])){
           <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                <h6 class="text-white text-capitalize ps-3">নতুন করদাতা যুক্ত করুণ</h6>
+                <h6 class="text-white text-capitalize ps-3">করদাতা সম্পাদন করুণ</h6>
               </div>
             </div>
             <div class="card-body px-0 pb-2">
@@ -134,7 +134,7 @@ if(isset($_POST['submit'])){
                               $division_id =  $data['division_id'];
                               $division_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM divisions WHERE id=$division_id"));
                               ?>
-                              <option selected value="<?php echo $division_name['bn_name'];?>"><?php echo $division_name['bn_name'];?></option>
+                              <option selected value="<?php echo $division_name['id'];?>"><?php echo $division_name['bn_name'];?></option>
                               <?php 
                               $divisions = mysqli_query($conn,"SELECT * FROM divisions");
                               while($division = mysqli_fetch_assoc($divisions)){ ?>
@@ -150,7 +150,7 @@ if(isset($_POST['submit'])){
                               $district_id =  $data['district_id'];
                               $district_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM districts WHERE id=$district_id"));
                               ?>
-                              <option selected value="<?php echo $district_name['bn_name'];?>"><?php echo $district_name['bn_name'];?></option>
+                              <option selected value="<?php echo $district_name['id'];?>"><?php echo $district_name['bn_name'];?></option>
                               
                             </select>
                             </div>
@@ -162,7 +162,7 @@ if(isset($_POST['submit'])){
                               $upazila_id =  $data['upazila_id'];
                               $upazila_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM upazilas WHERE id=$upazila_id"));
                               ?>
-                              <option selected value="<?php echo $upazila_name['bn_name'];?>"><?php echo $upazila_name['bn_name'];?></option>
+                              <option selected value="<?php echo $upazila_name['id'];?>"><?php echo $upazila_name['bn_name'];?></option>
 
                             </select>
                             </div>
@@ -174,7 +174,7 @@ if(isset($_POST['submit'])){
                               $union_id =  $data['union_id'];
                               $union_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM union_name WHERE id=$union_id"));
                               ?>
-                              <option selected value="<?php echo $union_name['bn_name'];?>"><?php echo $union_name['bn_name'];?></option>
+                              <option selected value="<?php echo $union_name['id'];?>"><?php echo $union_name['bn_name'];?></option>
                               
                             </select>
                             </div>
@@ -186,7 +186,7 @@ if(isset($_POST['submit'])){
                               $village_id =  $data['village'];
                               $village_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM village WHERE id=$village_id"));
                               ?>
-                              <option selected value="<?php echo $village_name['bn_name'];?>"><?php echo $village_name['bn_name'];?></option>
+                              <option selected value="<?php echo $village_name['id'];?>"><?php echo $village_name['bn_name'];?></option>
                               
                             </select>
                             </div>

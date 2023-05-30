@@ -96,7 +96,7 @@ if(isset($_GET['src'])){
                         ?>
                         <tr>
                           <td><?php echo $i;?></td>
-                          <td><?php echo $village['name'];?></td>
+                          <td><?php echo $village['bn_name'];?></td>
                           <td><?php echo $union['bn_name'];?></td>
                           <td>
                             <a class="btn btn-primary p-2" href="village-edit.php?id=<?php echo $village['id']?>">Edit</a>
