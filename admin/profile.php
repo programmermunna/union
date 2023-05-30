@@ -19,7 +19,7 @@ if(isset($_POST['submit'])){
   
   $file_name = $_FILES['file']['name'];
   $file_tmp = $_FILES['file']['tmp_name'];
-  move_uploaded_file($file_tmp,"upload/$file_name");
+  move_uploaded_file($file_tmp,"../upload/$file_name");
   
   if(empty($file_name)){
     $file_name = $admin['file'];
@@ -86,7 +86,7 @@ $user_data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM super_admin WH
                               </div>
                               <div>
                                 <label for="address">Photo</label>
-                                <input name="file" type="file" value="<?php echo $user_data['address']?>">
+                                <input name="file" type="file">
                               </div>
                           </div>
                           <div>                            

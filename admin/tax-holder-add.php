@@ -136,18 +136,18 @@ if(isset($_POST['submit'])){
             
             <div>
             <label>পরিবারের সদস্য সংখ্যা <span class="requird_star">*</span></label>
-            <input type="number" name="family_member" class="input"  required/>
+            <input type="text" name="family_member" class="input"  required/>
             </div>
 
             <div class="radio_div">
               <div style="width:49%;float:left">
                 <label>পুরুষ</label>
-                <input type="number" name="male" class="input" />
+                <input type="text" name="male" class="input" />
               </div>
                 
               <div style="width:49%;float:right">                  
                 <label>মহিলা</label>
-                <input type="number" name="female" class="input" />
+                <input type="text" name="female" class="input" />
               </div>
             </div>
 
@@ -158,7 +158,7 @@ if(isset($_POST['submit'])){
 
             <div>
             <label>জাতীয় পরিচয়পত্র নং</label>
-            <input type="number" name="nid_no" class="input" />
+            <input type="text" name="nid_no" class="input" />
             </div>
 
             <br>

@@ -84,8 +84,7 @@ if(isset($_POST['submit'])){
                   </div>
                   <div class="text-center">
                     <a href="home.php">Return Home</a>
-                  </div>
-                  
+                  </div>                 
                   
                 </form>
               </div>

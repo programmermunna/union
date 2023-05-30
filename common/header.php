@@ -12,14 +12,12 @@ if(isset($_SESSION['admin_id'])){
   $id = $_SESSION['admin_id'];
 }
 if($id<1){
-    header('location:logout.php');
+    header('location:home.php');
 }
-
-
 $union = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM union_name WHERE admin_id=$id"));
-if($union<1){
-  header("location:logout.php");
-}
+// if($union<1){
+//   header("location:home.php");
+// }
 $union_id = $union['id'];
 $upazila_id = $union['upazila_id'];
 $upazilas = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM upazilas WHERE id=$upazila_id"));
@@ -27,17 +25,6 @@ $district_id = $upazilas['district_id'];
 $districts = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM districts WHERE id=$district_id"));
 $division_id = $districts['division_id'];
 $divisions = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM divisions WHERE id=$division_id"));
-
-
-
-
-
-
-
-
-
-
-
 
 if(isset($_GET['session_destroy'])){
   $reload = $_GET['reload'];

@@ -1,13 +1,5 @@
 <?php include("include/functions.php");?>
 <?php
-if(isset($_SESSION['landing_id'])){
-   $landing_id = $_SESSION['landing_id'];  
-}elseif(isset($_COOKIE['landing_id'])){
- $landing_id = $_COOKIE['landing_id'];
-}else{
-  $landing_id = 0;
-}
-$user_info = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM admin_info WHERE id=$landing_id"));
 $setting = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM website_setting"));
 $pages = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM pages"));
 $mail = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM mail_setting WHERE id=1"));
