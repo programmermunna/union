@@ -44,12 +44,6 @@ if(isset($_POST['submit'])){
                             </div>
                             </form>
 						</div>
-
-						<div class="hero-media my_account" style="padding:0;padding-top:20px"> 
-                            <div>
-							    <img style="width:100%;height:unset" src="upload/contact.jpg">
-                            </div>
-						</div>
                     </div>
                 </div>
             </section>
