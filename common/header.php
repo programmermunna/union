@@ -20,6 +20,70 @@ $union = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM union_name WHERE a
 if($union<1){
   header("location:logout.php");
 }
+$union_id = $union['id'];
+$upazila_id = $union['upazila_id'];
+$upazilas = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM upazilas WHERE id=$upazila_id"));
+$district_id = $upazilas['district_id'];
+$districts = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM districts WHERE id=$district_id"));
+$division_id = $districts['division_id'];
+$divisions = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM divisions WHERE id=$division_id"));
+
+
+
+
+
+
+
+
+
+
+
+
+if(isset($_GET['session_destroy'])){
+  $reload = $_GET['reload'];
+  if($_GET['session_destroy'] == 'true'){
+      unset($_SESSION['union']);
+      unset($_SESSION['village']);
+      header("location:$page_name");
+  }
+}
+
+//union Year
+if(isset($_GET['year'])){
+  $year = $_SESSION['year'] = $_GET['year'];
+}
+
+if(isset($_SESSION['year'])){
+    $year = $_SESSION['year'];
+}else{
+    $year_left = 86400*365;
+    $year_cal = $time-$year_left;
+    $year = date("Y",$year_cal) ." - ". date("Y",time());
+}
+
+//union session
+if(isset($_GET['union'])){
+    if(is_numeric($_GET['union']) && !empty($_GET['union'])){
+      $_SESSION['union'] = $_GET['union'];
+    }
+}
+if(isset($_SESSION['union'])){
+    $sess_union = $_SESSION['union'];
+}else{
+    $sess_union = 0;
+}
+
+//vilage session
+if(isset($_GET['village'])){
+    if(is_numeric($_GET['village']) && !empty($_GET['village'])){
+      $_SESSION['village'] = $_GET['village'];
+    }
+}
+if(isset($_SESSION['village'])){
+    $sess_village = $_SESSION['village'];
+}else{
+    $sess_village = 0;
+}
 ?>
 
 <!DOCTYPE html>

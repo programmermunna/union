@@ -45,13 +45,7 @@ $data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM person WHERE id='$i
               $vlg_id = $data['village'];
               $selected_village = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM village WHERE id=$vlg_id"));
               ?>
-              <option value="<?php echo $selected_village['id']?>"><?php echo $selected_village['name']?></option>
-
-              <?php 
-              $villages = mysqli_query($conn,"SELECT * FROM village");
-              while($village = mysqli_fetch_assoc($villages)){ ?>
-                <option value="<?php echo $village['id']?>"><?php echo $village['name']?></option>
-             <?php }?>
+              <option value="<?php echo $selected_village['id']?>"><?php echo $selected_village['bn_name']?></option>
             </select>
             </div>
 

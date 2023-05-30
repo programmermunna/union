@@ -81,7 +81,7 @@ if(isset($_POST['update'])){
                                 while($row = mysqli_fetch_assoc($query)){ $i++; ?>
                                     <tr>
                                         <td class="p-3 border whitespace-nowrap"><div class="text-center"><?php echo $i?></div></td>
-                                        <td class="p-3 border whitespace-nowrap"><div class="text-center"><?php echo $row['name']?></div></td>                                       
+                                        <td class="p-3 border whitespace-nowrap"><div class="text-center"><?php echo $row['bn_name']?></div></td>                                       
                                         <td class="p-3 border whitespace-nowrap">
                                             <div class="w-full flex_center gap-1">
                                                 <a class="btn table_edit_btn" href="village-edit.php?id=<?php echo $row['id']?>">এডিট করুন</a>

@@ -13,16 +13,13 @@ if(isset($_GET['session_destroy'])){
 if(isset($_GET['year'])){
   $year = $_SESSION['year'] = $_GET['year'];
 }
-
 if(isset($_SESSION['year'])){
     $year = $_SESSION['year'];
 }else{
-
     $year_left = 86400*365;
-    $present_year = $time-$year_left;
+    $year = $time-$year_left;
     $year = date("Y",$present_year) ." - ". date("Y",time()); 
 }
-
 
 if(isset($_GET['village'])){
     $_SESSION['village'] = $_GET['village'];
@@ -70,10 +67,10 @@ if(isset($_SESSION['village'])){
                                 <div class="table_header_right">
                                 <select style="width: 350PX;" name="village" id="village" class="input">
                                     <?php
-                                    if($sess_vlg != 0 ){ 
+                                    if($sess_vlg > 0 ){ 
                                     $select_village  = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM village WHERE admin_id=$id AND id=$sess_vlg"));
                                     ?>
-                                        <option selected value="<?php echo $select_village['id']?>"><?php echo $select_village['name']?></option>                                        
+                                    <option selected value="<?php echo $select_village['id']?>"><?php echo $select_village['bn_name']?></option>                                        
                                     <?php  }else{ ?>
                                     <option selected disabled>গ্রাম বাছাই করুণ</option>
                                    <?php }?>
@@ -81,7 +78,7 @@ if(isset($_SESSION['village'])){
                                     <?php
                                     $villages = mysqli_query($conn,"SELECT * FROM village WHERE admin_id=$id");
                                     while($village = mysqli_fetch_assoc($villages)){ ?>
-                                        <option value="<?php echo $village['id']?>"><?php echo $village['name']?></option>
+                                        <option value="<?php echo $village['id']?>"><?php echo $village['bn_name']?></option>
                                     <?php  }?>
                                 </select>
 
@@ -89,8 +86,6 @@ if(isset($_SESSION['village'])){
                             </div>
                         </form>
                         </div>
-
-
 
                         <form action="" method="GET">
                             <div class="table_header_right">
@@ -131,8 +126,6 @@ if(isset($_SESSION['village'])){
                                 if(isset($_GET['src'])){
                                     $src = $_GET['src'];
                                     $empSQL = "SELECT * FROM person WHERE admin_id=$id AND present_year='$year' AND (name LIKE '$src' OR mobile_no = '$src' OR nid_no = '$src' OR holding_no = '$src' OR guardian_name LIKE '$src')";
-                                }elseif($sess_vlg > 0 && $sess_sec > 0){
-                                    $empSQL = "SELECT * FROM person WHERE admin_id=$id AND present_year='$year' AND village = $sess_vlg ";
                                 }elseif($sess_vlg > 0){
                                     $empSQL = "SELECT * FROM person WHERE admin_id=$id AND present_year='$year' AND village = $sess_vlg ";
                                 }else{

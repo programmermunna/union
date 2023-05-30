@@ -37,8 +37,8 @@ if(isset($_POST['submit'])){
   if( empty($id_no) || empty($name) || empty($guardian_name) || empty($village) || empty($family_member) || empty($net_worth)){
     header("Location:tax-holder-add.php?err=সবগুলো ফিল্ড পুরন করুন!");
   }else{
-    $sql = "INSERT INTO person (admin_id,id_no,name,guardian_name,village,word_no,family_member,male,female,holding_no,nid_no,profession,home,net_worth,annual_tax,ablable_tax,due_tax,present_year,mobile_no,file_name,time) 
-    VALUES ('$id','$id_no','$name','$guardian_name','$village','$word_no','$family_member','$male','$female','$holding_no','$nid_no','$profession','$home','$net_worth','$annual_tax','$ablable_tax','$due_tax','$present_year','$mobile_no','$file_name','$time')";
+    $sql = "INSERT INTO person (admin_id,id_no,name,guardian_name,division_id,district_id,upazila_id,union_id,village,word_no,family_member,male,female,holding_no,nid_no,profession,home,net_worth,annual_tax,ablable_tax,due_tax,present_year,mobile_no,file_name,time) 
+    VALUES ('$id','$id_no','$name','$guardian_name','$division_id','$district_id','$upazila_id','$union_id','$village','$word_no','$family_member','$male','$female','$holding_no','$nid_no','$profession','$home','$net_worth','$annual_tax','$ablable_tax','$due_tax','$present_year','$mobile_no','$file_name','$time')";
     $insert = mysqli_query($conn,$sql);
     if($insert){
       header("location:tax-holder-add.php?msg=নতুন করদাতা যুক্ত হয়েছে");
@@ -88,7 +88,7 @@ if(isset($_POST['submit'])){
               <?php 
               $villages = mysqli_query($conn,"SELECT * FROM village WHERE admin_id=$id");
               while($village = mysqli_fetch_assoc($villages)){ ?>
-                <option value="<?php echo $village['id']?>"><?php echo $village['name']?></option>
+                <option value="<?php echo $village['id']?>"><?php echo $village['bn_name']?></option>
              <?php }?>
             </select>
             </div>
@@ -100,19 +100,19 @@ if(isset($_POST['submit'])){
             
             <div>
             <label>পরিবারের সদস্য সংখ্যা <span class="requird_star">*</span></label>
-            <input type="number" name="family_member" class="input"  required/>
+            <input type="text" name="family_member" class="input"  required/>
             </div>
 
             <br>
             <div class="radio_div">
               <div style="width:49%;float:left">
                 <label>পুরুষ</label>
-                <input type="number" name="male" class="input" />
+                <input type="text" name="male" class="input" />
               </div>
                 
               <div style="width:49%;float:right">                  
                 <label>মহিলা</label>
-                <input type="number" name="female" class="input" />
+                <input type="text" name="female" class="input" />
               </div>
             </div>
 
@@ -126,7 +126,7 @@ if(isset($_POST['submit'])){
 
             <div>
             <label>জাতীয় পরিচয়পত্র নং</label>
-            <input type="number" name="nid_no" class="input" />
+            <input type="text" name="nid_no" class="input" />
             </div>
 
             <br>

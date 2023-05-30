@@ -6,7 +6,7 @@ if(isset($_GET['id'])){
   $id = $_GET['id'];
 }
 $data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM person WHERE id=$id"));
-
+$id = $data['admin_id'];
 $village_id = $data['village'];
 $village = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM village WHERE id=$village_id"));
 $vls_status = $village['edit_permision']; 
@@ -37,9 +37,7 @@ if(isset($_POST['submit'])){
   $mobile_no = $_POST['mobile_no'];
   $status = $_POST['status'];
 
-
-  if($vls_status == ''){  
-
+  if($vls_status == ''){
   $file_name = $_FILES['file']['name'];
   $file_tmp = $_FILES['file']['tmp_name'];
   move_uploaded_file($file_tmp,"upload/$file_name");
@@ -142,12 +140,12 @@ if(isset($_POST['submit'])){
               $vlg_id = $data['village'];
               $selected_village = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM village WHERE id=$vlg_id"));
               ?>
-              <option value="<?php echo $selected_village['id']?>"><?php echo $selected_village['name']?></option>
+              <option value="<?php echo $selected_village['id']?>"><?php echo $selected_village['bn_name']?></option>
 
               <?php 
-              $villages = mysqli_query($conn,"SELECT * FROM village");
+              $villages = mysqli_query($conn,"SELECT * FROM village WHERE admin_id=$id");
               while($village = mysqli_fetch_assoc($villages)){ ?>
-                <option value="<?php echo $village['id']?>"><?php echo $village['name']?></option>
+                <option value="<?php echo $village['id']?>"><?php echo $village['bn_name']?></option>
              <?php }?>
             </select>
             </div>
@@ -159,19 +157,19 @@ if(isset($_POST['submit'])){
             
             <div>
             <label>পরিবারের সদস্য সংখ্যা <span class="requird_star">*</span></label>
-            <input <?php echo $vls_status;?>  type="number" name="family_member" class="input"  required value="<?php echo $data['family_member']?>"/>
+            <input <?php echo $vls_status;?>  type="text" name="family_member" class="input"  required value="<?php echo $data['family_member']?>"/>
             </div>
 
             <br>
             <div class="radio_div">
               <div style="width:49%;float:left">
                 <label>পুরুষ</label>
-                <input <?php echo $vls_status;?>  type="number" name="male" class="input"  value="<?php echo $data['male']?>"/>
+                <input <?php echo $vls_status;?>  type="text" name="male" class="input"  value="<?php echo $data['male']?>"/>
               </div>
                 
               <div style="width:49%;float:right">                  
                 <label>মহিলা</label>
-                <input <?php echo $vls_status;?>  type="number" name="female" class="input"  value="<?php echo $data['female']?>"/>
+                <input <?php echo $vls_status;?>  type="text" name="female" class="input"  value="<?php echo $data['female']?>"/>
               </div>
             </div>
 
@@ -185,7 +183,7 @@ if(isset($_POST['submit'])){
 
             <div>
             <label>জাতীয় পরিচয়পত্র নং</label>
-            <input <?php echo $vls_status;?>  type="number" name="nid_no" class="input" value="<?php echo $data['nid_no']?>"/>
+            <input <?php echo $vls_status;?>  type="text" name="nid_no" class="input" value="<?php echo $data['nid_no']?>"/>
             </div>
 
             <br>

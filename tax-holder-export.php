@@ -3,7 +3,6 @@
 header('Content-Type:application/xls');
 header('Content-Disposition:attachment;filename=report.xls');
 
-
 if(isset($_SESSION['village'])){
     $sess_vlg = $_SESSION['village'];
 }else{
@@ -16,9 +15,7 @@ if(isset($_SESSION['year'])){
     $year = date("Y",time());
 }
 
-if($sess_vlg > 0 && $sess_sec > 0){
-    $empSQL = "SELECT * FROM person WHERE admin_id=$id AND present_year='$year' AND village = $sess_vlg";
-}elseif($sess_vlg > 0){
+if($sess_vlg > 0){
     $empSQL = "SELECT * FROM person WHERE admin_id=$id AND present_year='$year' AND village = $sess_vlg";
 }else{
     $empSQL = "SELECT * FROM person WHERE admin_id=$id AND present_year='$year' ";
@@ -52,9 +49,9 @@ $res = mysqli_query($conn, $empSQL);
             </tr>
             <?php
             $i;
-            while($row=mysqli_fetch_assoc($res)){$i++; ?>
+            while($row=mysqli_fetch_assoc($res)){?>
 	        <tr>
-                <td><?php echo $i;?></td>
+                <td><?php echo $row['id'];?></td>
                 <td><?php echo $row['id_no'];?></td>
                 <td><?php echo $row['name'];?></td>
                 <td><?php echo $row['guardian_name'];?></td>

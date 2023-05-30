@@ -9,7 +9,7 @@ if(isset($_GET['id'])){
 
 if(isset($_POST['submit'])){
   $name = $_POST['name'];
-  $update = mysqli_query($conn,"UPDATE village SET name='$name' WHERE id=$id");
+  $update = mysqli_query($conn,"UPDATE village SET bn_name='$name' WHERE id=$id");
   if($update){
     header("Location:village.php?msg=সফল ভাবে গ্রামের নাম সংসধন করা হয়েছে");
   }
@@ -31,7 +31,7 @@ if(isset($_POST['submit'])){
           <form id="setting_form" action="" method="POST" enctype="multipart/form-data">
           <div>
               <label>গ্রামের নাম</label>
-              <input type="text" name="name" class="input" value="<?php echo $data['name']?>" />
+              <input required type="text" name="name" class="input" value="<?php echo $data['bn_name']?>" />
             </div>
             <input name="submit" class="btn submit_btn" type="submit" value="সম্পাদন করুণ" />
           </form>

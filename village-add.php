@@ -2,12 +2,11 @@
 <?php include("common/header.php");?>
 <!-- Header -->
 <?php
-
-
+echo $union_id;
 if(isset($_POST['submit'])){
   $name = $_POST['name'];
 
-  $insert = mysqli_query($conn,"INSERT INTO village (admin_id,name,time) VALUE ($id,'$name','$time')");
+  $insert = mysqli_query($conn,"INSERT INTO village (admin_id,union_id,bn_name,time) VALUE ($id,'$union_id','$name','$time')");
   if($insert){
     header("Location:village.php?msg=সফল ভাবে গ্রামের নাম যুক্ত হয়েছে");
   }
@@ -21,7 +20,6 @@ if(isset($_POST['submit'])){
 
       <!-- Page Content -->
       <section class="content_wrapper">
-
         <!-- Page Main Content -->
         <div class="add_page_main_content">
           <h1 class="add_page_title">গ্রাম যুক্ত করুন
@@ -29,9 +27,9 @@ if(isset($_POST['submit'])){
           <form id="setting_form" action="" method="POST" enctype="multipart/form-data">
           <div>
               <label>গ্রামের নাম</label>
-              <input type="text" name="name" class="input"/>
+              <input required type="text" name="name" class="input"/>
             </div>
-            <input name="submit" class="btn submit_btn" type="submit" value="যুক্ত করুণ" />
+            <input  name="submit" class="btn submit_btn" type="submit" value="যুক্ত করুণ" />
           </form>
         </div>
       </section>
