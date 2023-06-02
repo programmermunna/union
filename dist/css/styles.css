@@ -1194,6 +1194,10 @@ h3{
   letter-spacing: 0.05em;
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
+  color: #fff;
+}
+.card_percentage>p{
+  color: #fff !important;
 }
 
 .card_top_info > .card_top_text{

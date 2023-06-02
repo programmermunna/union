@@ -44,7 +44,7 @@
 
         <div class="home_content">
            <!-- ------box------ -->
-          <div class="home_card">
+          <div class="home_card" style="background:linear-gradient(160deg, #0093E9 37%, #80D0C7 100%)">
             <div>
               <div class="card_top">
                 <div class="card_top_icon from-blue-500 to-blue-600">&#x2637</div>
@@ -63,7 +63,7 @@
             </div>
           </div>  
            <!-- ------box------ -->
-          <div class="home_card">
+          <div class="home_card" style="background:linear-gradient(160deg, #0093E9 37%, #80D0C7 100%)">
             <div>
               <div class="card_top">
                 <div class="card_top_icon from-blue-500 to-blue-600">&#x2637</div>
@@ -82,7 +82,7 @@
             </div>
           </div>  
            <!-- ------box------ -->
-          <div class="home_card">
+          <div class="home_card" style="background:linear-gradient(160deg, #0093E9 37%, #80D0C7 100%)">
             <div>
               <div class="card_top">
                 <div class="card_top_icon from-blue-500 to-blue-600">&#x2637</div>
@@ -110,7 +110,7 @@
 
         <div class="home_content">
            <!-- ------box------ -->
-          <div class="home_card">
+          <div class="home_card" style="background:linear-gradient(160deg, #cc2b5e 37%, #753a88 100%)">
             <div>
               <div class="card_top">
                 <div class="card_top_icon from-blue-500 to-blue-600">&#x2637</div>
@@ -130,7 +130,7 @@
           </div>  
            
 
-          <div class="home_card">
+          <div class="home_card" style="background:linear-gradient(160deg, #cc2b5e 37%, #753a88 100%)">
             <div>
               <div class="card_top">
                 <div class="card_top_icon from-blue-500 to-blue-600">&#x2637</div>
@@ -158,7 +158,7 @@
 
         <div class="home_content">
            <!-- ------box------ -->
-          <div class="home_card">
+          <div class="home_card" style="background:linear-gradient(160deg, #34e89e 37%, #0f3443 100%)">
             <div>
               <div class="card_top">
                 <div class="card_top_icon from-blue-500 to-blue-600">&#x2637</div>
@@ -177,7 +177,7 @@
             </div>
           </div>
            <!-- ------box------ -->
-          <div class="home_card">
+          <div class="home_card" style="background:linear-gradient(160deg, #34e89e 37%, #0f3443 100%)">
             <div>
               <div class="card_top">
                 <div class="card_top_icon from-blue-500 to-blue-600">&#x2637</div>
@@ -196,7 +196,7 @@
             </div>
           </div>
            <!-- ------box------ -->
-          <div class="home_card">
+          <div class="home_card" style="background:linear-gradient(160deg, #34e89e 37%, #0f3443 100%)">
             <div>
               <div class="card_top">
                 <div class="card_top_icon from-blue-500 to-blue-600">&#x2637</div>
@@ -216,7 +216,7 @@
           </div>
 
            <!-- ------box------ -->
-           <div class="home_card">
+           <div class="home_card" style="background:linear-gradient(160deg, #34e89e 37%, #0f3443 100%)">
             <div>
               <div class="card_top">
                 <div class="card_top_icon from-blue-500 to-blue-600">&#x2637</div>
@@ -235,7 +235,7 @@
             </div>
           </div>  
            <!-- ------box------ -->
-          <div class="home_card">
+          <div class="home_card" style="background:linear-gradient(160deg, #34e89e 37%, #0f3443 100%)">
             <div>
               <div class="card_top">
                 <div class="card_top_icon from-blue-500 to-blue-600">&#x2637</div>
