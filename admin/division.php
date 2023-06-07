@@ -23,7 +23,7 @@
                       <thead>
                         <tr>
                           <th>ক্রমিক নং</th>
-                          <th>ইউনিয়নের নাম</th>
+                          <th>বিভাগ</th>
                         </tr>
                       </thead>
                       <tbody>

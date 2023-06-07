@@ -4,7 +4,7 @@
                 <div class="container">
                     <div class="hero-inners">
 						<div class="card1">
-							<div class="card1_inner">
+							<!-- <div class="card1_inner">
 								<img src="upload/commitioner.jpg" alt="Image">
 								<h2>জি এস এম জাফরউল্লাহ্‌ এনডিসি</h2>
 								<p>বিভাগীয় কমিশনার (অতিরিক্ত সচিব)</p>
@@ -13,6 +13,22 @@
 								<img src="upload/commitioner3.jpg" alt="Image">
 								<h2>মোঃ এনামুল হক</h2>
 								<p>পরিচালক (যুগ্মসচিব), স্থানীয় সরকার, রাজশাহী বিভাগ</p>
+							</div> -->
+							<div class="card1_inner">
+								<img src="upload/metro.jpg" alt="Image">
+								<h2>বাংলাদেশ মেট্রোল</h2>
+								<p>ঢাকা, বাংলাদেশ</p>
+							</div>
+							<div class="card1_inner">
+								<img src="upload/cornofuli.jpg" alt="Image">
+								<h2>কর্নফুলি টানেল</h2>
+								<p>পতেঙ্গায়, বাংলাদেশ</p>
+							</div>
+							<div class="card1_link">
+								<a target="_blank" href="https://surokkha.gov.bd/"><img src="https://bangladesh.gov.bd/sites/default/files/files/bangladesh.gov.bd/graphical_result_button/d58fb64e_d478_48dd_a0f2_1058a4f6ca8d/bangladesh-portal--batton-bangla.png" alt=""></a>
+								<a target="_blank" href="https://janatarsarkar.gov.bd/"><img src="http://bangladesh.gov.bd/sites/default/files/files/bangladesh.gov.bd/graphical_result_button/00ed884a_8459_48ed_9f70_c08faeae5592/Jonotar-Sorkar-banner-Bangl%20(1).jpg" alt=""></a>
+								<a target="_blank" href="https://www.mygov.bd/"><img src="http://bangladesh.gov.bd/sites/default/files/files/bangladesh.gov.bd/graphical_result_button/6b8058ef_c17d_4a2d_9b26_b4779731503b/mygov_bn.jpg" alt=""></a>
+								<a target="_blank" href="http://www.bangladesh.gov.bd/site/view/district_branding_book/%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BF%E0%A6%82%20%E0%A6%AC%E0%A7%81%E0%A6%95"><img src="http://bangladesh.gov.bd/sites/default/files/files/bangladesh.gov.bd/graphical_result_button/d2712647_cde4_4e80_afdc_a1ab27bcd2bd/Tamplate_DistrictBranding_b%20(3).png" alt=""></a>
 							</div>
 						</div>
 						<div class="card2">

@@ -6,7 +6,7 @@ if(isset($_GET['id'])){
   $id = $_GET['id'];
 }
 $data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM person WHERE id=$id"));
-$id = $data['admin_id'];
+// $id = $data['admin_id'];
 $village_id = $data['village'];
 $village = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM village WHERE id=$village_id"));
 $vls_status = $village['edit_permision']; 
@@ -15,8 +15,8 @@ if($vls_status == 'OFF'){
 }else{
   $vls_status = "";
 }
-
 $sms_checkbox = "OFF";
+
 if(isset($_POST['submit'])){
   $id_no = $_POST['id_no'];
   $name = $_POST['name'];
@@ -33,7 +33,7 @@ if(isset($_POST['submit'])){
   $net_worth = $_POST['net_worth'];
   $annual_tax = $_POST['annual_tax'];
   $ablable_tax = $_POST['ablable_tax'];
-  $due_tax = $_POST['due_tax'];
+  $due_tax = $_POST['due_tax']; 
   $mobile_no = $_POST['mobile_no'];
   $status = $_POST['status'];
 
@@ -51,7 +51,7 @@ if(isset($_POST['submit'])){
     $sql = "UPDATE person SET id_no='$id_no', name='$name', guardian_name='$guardian_name', village='$village', word_no='$word_no', family_member='$family_member', male='$male', female='$female', holding_no='$holding_no', nid_no='$nid_no', profession='$profession', home='$home', net_worth='$net_worth', annual_tax='$annual_tax', ablable_tax='$ablable_tax', due_tax='$due_tax', mobile_no='$mobile_no', status='$status',file_name='$file_name' WHERE id=$id";
     $update = mysqli_query($conn,$sql);
     if($update){
-      header("location:tax-holder-all.php?msg=করদাতা সম্পাদন সফল হয়েছে");
+      header("location:tax-holder-all.php?msg=dকরদাতা সম্পাদন সফল হয়েছে");
     }  
   }
 
@@ -341,7 +341,7 @@ if(isset($_POST['submit'])){
 
             <div>
             <label>অর্থ বছর</label>
-            <input <?php echo $vls_status;?>  type="number" disabled name="present_year" class="input"  value="<?php echo $data['present_year']?>"/>
+            <input  type="text" disabled name="present_year" class="input"  value="<?php echo $data['present_year']?>"/>
             </div>
 
             <div>

@@ -321,7 +321,15 @@ input,select,textarea{
 select option{
   background: skyblue;
 }
-
+.card1_link>a{
+  display: block;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+  text-align: center;
+  background: #028b79;
+  color: #fff;
+}
 
 
 

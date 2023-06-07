@@ -379,7 +379,7 @@ if(isset($_POST['submit'])){
 
                             <div>
                             <label>অর্থ বছর</label>
-                            <input type="number" disabled name="present_year" class="input"  value="<?php echo $data['present_year']?>"/>
+                            <input type="text" disabled name="present_year" class="input"  value="<?php echo $data['present_year']?>"/>
                             </div>
 
                             <div>
