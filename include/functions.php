@@ -130,6 +130,9 @@ $page_name = basename($_SERVER['PHP_SELF']);
 $website = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM website_setting WHERE id=1"));
 $mail = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM mail_setting WHERE id=1"));
 
+$year_left = 86400*365;
+$present_year = $time-$year_left;
+$present_year = date("Y",$present_year) ." - ". date("Y",time());
 
 
 

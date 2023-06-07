@@ -38,9 +38,7 @@ if(isset($_GET['year'])){
 if(isset($_SESSION['year'])){
     $year = $_SESSION['year'];
 }else{
-    $year_left = 86400*365;
-    $year_cal = $time-$year_left;
-    $year = date("Y",$year_cal) ." - ". date("Y",time());
+    $year = $present_year;
 }
 
 //union division

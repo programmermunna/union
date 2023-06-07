@@ -30,11 +30,7 @@ if(isset($_POST['submit'])){
   $due_tax = $_POST['due_tax'];
   $mobile_no = $_POST['mobile_no'];
 
-  $year_left = 86400*365;
-  $times = $time-$year_left;
-  $present_year = date("Y",$times) ." - ". date("Y",time());
-
- echo $file_name = $_FILES['file']['name'];
+  $file_name = $_FILES['file']['name'];
   $file_tmp = $_FILES['file']['tmp_name'];
   move_uploaded_file($file_tmp,"../upload/$file_name");
   if(empty($file_name)){
@@ -244,11 +240,7 @@ if(isset($_POST['submit'])){
 
             <div>
             <label>অর্থ বছর</label>
-            <input type="text" disabled class="input"  value="<?php 
-            $year_left = 86400*365;
-            $times = $time-$year_left;
-            echo date("Y",$times) ." - ". date("Y",time());
-            ?>"/>
+            <input type="text" disabled class="input"  value="<?php echo $present_year;?>"/>
             </div>
 
             <div>

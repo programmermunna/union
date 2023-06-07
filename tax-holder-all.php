@@ -16,9 +16,7 @@ if(isset($_GET['year'])){
 if(isset($_SESSION['year'])){
     $year = $_SESSION['year'];
 }else{
-    $year_left = 86400*365;
-    $year = $time-$year_left;
-    $year = date("Y",$year) ." - ". date("Y",time()); 
+    $year = $present_year; 
 }
 
 if(isset($_GET['village'])){

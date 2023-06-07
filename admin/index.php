@@ -1,7 +1,6 @@
 <?php include("common/header.php")?>
 <?php include("common/sidebar.php")?>
-<?php   
-     $present_year = date("Y",time());
+<?php
      $total_tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM person"));
      $pending_tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM person WHERE present_year='$present_year' AND status='Pending'"));
      $success_tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM person WHERE present_year='$present_year' AND status='Success'"));
