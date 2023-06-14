@@ -29,7 +29,29 @@
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">  
     <div class="container-fluid py-4">
 
-      <h4>সমস্ত হিসাব</h4>
+      
+      <div style="display: flex;justify-content:space-between;">
+        <div><h4>সমস্ত হিসাব</h4></div>
+        <div>
+          <!-- <form action="" method="GET">
+          <select class="select_bar division">
+            <option >বিভাগ বাছাই করুন</option>
+              <?php 
+              $divisions = mysqli_query($conn,"SELECT * FROM divisions");
+              while($division = mysqli_fetch_assoc($divisions)){ ?>
+              <option value="<?php echo $division['id'];?>"><?php echo $division['bn_name'];?></option>
+              <?php }?>
+            </select>
+          <select class="select_bar district">
+            <option >জেলা বাছাই করুন</option>
+            </select>
+          <select name="upazila" class="select_bar upazila">
+            <option >উপজেলা বাছাই করুন</option>
+          </select>
+          <input type="submit" value="খুজুন">
+          </form> -->
+        </div>
+      </div>
       <br>
       <div class="row">
         <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
@@ -235,52 +257,47 @@
       
       <div class="row">
         <div class="py-4">
-          <div class="card">
-    
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['bar']});
-      google.charts.setOnLoadCallback(drawChart);
+          <div class="card">    
+            <script type="text/javascript">
+              google.charts.load('current', {'packages':['bar']});
+              google.charts.setOnLoadCallback(drawChart);
 
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['অর্থবছর','অর্থবছরের কর', 'জমাকৃত কর', 'বাকি কর'],
-          <?php
-            $query="SELECT * FROM person GROUP BY present_year";
-            $res=mysqli_query($conn,$query);
-            while($data=mysqli_fetch_array($res)){
-              $present_year = $data['present_year'];
-              $annual_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(annual_tax) FROM person WHERE present_year = '$present_year'"));
-              $ablable_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(ablable_tax) FROM person WHERE present_year='$present_year' AND status='Success'"));
-              $due_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(due_tax) FROM person WHERE present_year='$present_year' AND status='Success'"));
-          
-              $annual_tax = $annual_tax['SUM(annual_tax)'];
-              $ablable_tax = $ablable_tax['SUM(ablable_tax)'];
-              $due_tax = $due_tax['SUM(due_tax)'];
-           ?>
-           ['<?php echo $present_year;?>',<?php echo $annual_tax;?>,<?php echo $ablable_tax;?>,<?php echo $due_tax;?>],   
-           <?php   
-            }
-           ?> 
-        ]);
+              function drawChart() {
+                var data = google.visualization.arrayToDataTable([
+                  ['অর্থবছর','অর্থবছরের কর', 'জমাকৃত কর', 'বাকি কর'],
+                  <?php
+                    $query="SELECT * FROM person GROUP BY present_year";
+                    $res=mysqli_query($conn,$query);
+                    while($data=mysqli_fetch_array($res)){
+                      $present_year = $data['present_year'];
+                      $annual_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(annual_tax) FROM person WHERE present_year = '$present_year'"));
+                      $ablable_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(ablable_tax) FROM person WHERE present_year='$present_year'"));
+                      $due_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(due_tax) FROM person WHERE present_year='$present_year'"));
+                  
+                      $annual_tax = $annual_tax['SUM(annual_tax)'];
+                      $ablable_tax = $ablable_tax['SUM(ablable_tax)'];
+                      $due_tax = $due_tax['SUM(due_tax)'];
+                  ?>
+                  ['<?php echo $present_year;?>',<?php echo $annual_tax;?>,<?php echo $ablable_tax;?>,<?php echo $due_tax;?>],   
+                  <?php   
+                    }
+                  ?> 
+                ]);
 
-        var options = {
-          chart: {
-            title: 'Tax Graph',
-            subtitle: 'Annual, Collection, and Due: 2022-<?php echo date("Y");?>',
-          },
-          bars: 'vertical' // Required for Material Bar Charts.
-        };
+                var options = {
+                  chart: {
+                    title: 'Tax Graph',
+                    subtitle: 'Annual, Collection, and Due: 2022-<?php echo date("Y");?>',
+                  },
+                  bars: 'vertical' // Required for Material Bar Charts.
+                };
 
-        var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+                var chart = new google.charts.Bar(document.getElementById('barchart_material'));
 
-        chart.draw(data, google.charts.Bar.convertOptions(options));
-      }
-    </script>
-         
-         <div id="barchart_material" style="width: 900px; height: 500px;padding:10px"></div>
-
-
-
+                chart.draw(data, google.charts.Bar.convertOptions(options));
+              }
+            </script>         
+            <div id="barchart_material" style="width: 900px; height: 500px;padding:10px"></div>
           </div>
         </div>
       </div>

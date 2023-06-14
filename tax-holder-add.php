@@ -223,7 +223,7 @@ if(isset($_POST['submit'])){
 
             <div>
             <label>ছবি</label>
-            <input type="file" name="file" class="input" />
+            <input type="file" name="file" class="input" accept="image/*" />
             </div> 
 
             <br>

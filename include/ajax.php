@@ -47,7 +47,7 @@ if(isset($_GET['reference']) && isset($_GET['admin_id'])){
         $villages = mysqli_query($conn,"SELECT * FROM village WHERE admin_id=$admin_id");
         echo "<option style='display:none;' selected disabled>গ্রাম বাছাই করুণ</option>";
         while($village = mysqli_fetch_assoc($villages)){ ?>
-        <option value="<?php echo $village['id']?>"><?php echo $village['name']?></option>
+        <option value="<?php echo $village['id']?>"><?php echo $village['bn_name']?></option>
     <?php }exit; }
 }
 
@@ -58,7 +58,7 @@ if(isset($_GET['reference']) && isset($_GET['union_id'])){
         $villages = mysqli_query($conn,"SELECT * FROM village WHERE admin_id = $union_id");
         echo "<option style='display:none;' selected disabled>গ্রাম বাছাই করুণ</option>";
         while($village = mysqli_fetch_assoc($villages)){ ?>
-    <option value="<?php echo $village['id']?>"><?php echo $village['name']?></option>
+    <option value="<?php echo $village['id']?>"><?php echo $village['bn_name']?></option>
     <?php }exit; }
 }
 
@@ -70,7 +70,7 @@ if(isset($_GET['reference']) && isset($_GET['admin_id'])){
         $villages = mysqli_query($conn,"SELECT * FROM village WHERE admin_id = $admin_id");
         echo "<option style='display:none;' selected disabled>গ্রাম বাছাই করুন</option>";
         while($village = mysqli_fetch_assoc($villages)){ ?>
-    <option value="<?php echo $village['id']?>"><?php echo $village['name']?></option>
+    <option value="<?php echo $village['id']?>"><?php echo $village['bn_name']?></option>
     <?php }exit; }
 }
 

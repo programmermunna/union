@@ -7,53 +7,68 @@
 							<div class="from">
 								<?php
 								if(isset($_POST['submit'])){ 
-									$exect_id = $_POST['exect_id'];
-									
-									if(isset($_POST['union'])){
-										$union = $_POST['union'];
-									}
-									if(isset($_POST['village'])){
-										$village = $_POST['village'];
-									}
-									if(isset($_POST['guardian_name'])){
-										$guardian_name = $_POST['guardian_name'];
-									}
-									if(isset($_POST['tax_holder_name'])){
-										$tax_holder_name = $_POST['tax_holder_name'];
-									}
-
+									$present_year = $_POST['present_year'];	 
+									$exect_id = $_POST['exect_id'];	
 									if(!empty($exect_id)){
 										if(is_numeric($exect_id)){
-											$sql = "SELECT * FROM person WHERE (id_no = $exect_id OR holding_no = $exect_id OR nid_no = $exect_id OR mobile_no = $exect_id)";
+											$sql = "SELECT * FROM person WHERE present_year='$present_year' AND (id_no = $exect_id OR holding_no = $exect_id OR nid_no = $exect_id OR mobile_no = $exect_id)";
 											$data = mysqli_fetch_assoc(mysqli_query($conn,$sql));
-											if($data>0){
-												$vlg_id = $data['village'];
-												$village = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM village WHERE id=$vlg_id"));
+											if($data){
+												$division = $data['division_id'];
+												$district = $data['district_id'];
+												$upazila = $data['upazila_id'];
+												$union = $data['union_id'];
+												$village = $data['village'];
+	
+												$division_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT bn_name FROM divisions WHERE id ='$division'")); 
+												 $district_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT bn_name FROM districts WHERE id ='$district'")); 
+												 $upazila_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT bn_name FROM upazilas WHERE id ='$upazila'")); 
+												 $union_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT bn_name FROM union_name WHERE id ='$union'")); 
+												 $village_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT bn_name FROM village WHERE id ='$village'")); 
 											}else{
-												echo "<h1 style='text-align:center'>No Data Found</h1>";
-												echo "<br>";
-												exit;
-												}
+											echo "<h1 style='text-align:center'>No Data Found</h1>";
+											echo "<h1 style='text-align:center'><a href='tax-check.php'>Back</a></h1>";
+											echo "<br>";
+											exit;
+											}
+
 										}else{
 											header("location:home.php");
 										}
-									}elseif(!empty($union) && !empty($village) && !empty($guardian_name) && !empty($tax_holder_name)){										
-										$sql = "SELECT * FROM person WHERE admin_id=$union AND village=$village AND guardian_name='$guardian_name' AND name='$tax_holder_name'";
+									}else{	
+									
+									if( isset($_POST['division']) && isset($_POST['district']) && isset($_POST['upazila']) && isset($_POST['union']) && isset($_POST['village']) && isset($_POST['guardian_name']) && isset($_POST['tax_holder_name']) ){
+									
+										$division = $_POST['division'];	
+										$district = $_POST['district'];	
+										$upazila = $_POST['upazila'];	
+										$union = $_POST['union'];	
+										$village = $_POST['village'];
+										$guardian_name = $_POST['guardian_name'];
+										$tax_holder_name = $_POST['tax_holder_name'];								 	
+																			
+										$sql = "SELECT * FROM person WHERE present_year='$present_year' AND division_id='$division' AND district_id='$district' AND upazila_id='$upazila' AND union_id='$union' AND village='$village' AND guardian_name='$guardian_name' AND name='$tax_holder_name'";
 										$data = mysqli_fetch_assoc(mysqli_query($conn,$sql));
-										if($data>0){
-											$vlg_id = $data['village'];
-											$village = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM village WHERE id=$vlg_id"));
-										}else{
+
+										$division = $data['division_id'];
+										$district = $data['district_id'];
+										$upazila = $data['upazila_id'];
+										$union = $data['union_id'];
+										$village = $data['village'];
+
+										$division_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT bn_name FROM divisions WHERE id ='$division'")); 
+										$district_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT bn_name FROM districts WHERE id ='$district'")); 
+										$upazila_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT bn_name FROM upazilas WHERE id ='$upazila'")); 
+										$union_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT bn_name FROM union_name WHERE id ='$union'")); 
+										$village_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT bn_name FROM village WHERE id ='$village'")); 
+									  }else{
 										echo "<h1 style='text-align:center'>No Data Found</h1>";
+										echo "<h1 style='text-align:center'><a href='tax-check.php'>Back</a></h1>";
 										echo "<br>";
 										exit;
-										}
-										
-									}else{
-										echo "<h1 style='text-align:center'>No Data Found</h1>";
-										echo "<br>";
-										exit;
+										}								
 									}
+
 								?>
 								<form action="">									
 									<div>
@@ -72,9 +87,29 @@
 										<input disabled type="text" name="guardian_name" value="<?php echo $data['guardian_name'] ?>" >
 									</div>
 									<div>
-										<label for="union">গ্রাম</label>
+										<label for="division">বিভাগ</label>
 										<br>
-										<input disabled type="text" name="village" value="<?php echo $village['name'] ?>" >
+										<input disabled type="text" name="division" value="<?php echo $division_name['bn_name'] ?>" >
+									</div>
+									<div>
+										<label for="district">জেলা</label>
+										<br>
+										<input disabled type="text" name="district" value="<?php echo $district_name['bn_name'] ?>" >
+									</div>
+									<div>
+										<label for="upzila">উপজেলা</label>
+										<br>
+										<input disabled type="text" name="upzila" value="<?php echo $upazila_name['bn_name'] ?>" >
+									</div>
+									<div>
+										<label for="union">ইউনিয়ন</label>
+										<br>
+										<input disabled type="text" name="union" value="<?php echo $union_name['bn_name'] ?>" >
+									</div>
+									<div>
+										<label for="village">গ্রাম</label>
+										<br>
+										<input disabled type="text" name="village" value="<?php echo $village_name['bn_name'] ?>" >
 									</div>
 									<div>
 										<label for="union">ওয়ার্ড নং</label>
@@ -159,23 +194,56 @@
 								</form>
 								<?php }else{ ?>
 								<form action="" method="POST">
-									<div>
-										<label for="union">ইউনিয়নের নাম</label>
-										<select name="union" id="union">
-										<option style='display:none;' selected disabled>ইউনিয়ন বাছাই করুণ</option>
+									<div style="display: flex;justify-content:space-between">
+										<div><h3>আপনার কর যাচাই করুন</h3></div>
+										<div>
+										<label for="present_year">অর্থবছর</label>
+										<select name="present_year">
 											<?php
-											$unions = mysqli_query($conn,"SELECT * FROM union_name");
-											while($union = mysqli_fetch_assoc($unions)){ ?>
-											<option value="<?php echo $union['admin_id']?>"><?php echo $union['bn_name']?></option>
+											$present_years = mysqli_query($conn,"SELECT * FROM person GROUP BY present_year ORDER BY present_year DESC");
+											while($present_year = mysqli_fetch_assoc($present_years)){ ?>
+											<option value="<?php echo $present_year['present_year']?>"><?php echo $present_year['present_year']?></option>
+											<?php }?>
+										</select>
+										</div>
+									</div>
+
+									<div>
+										<label for="union">বিভাগ</label>
+										<select name="division" class="select_bar division">
+											<option value="">বিভাগ বাছাই করুন</option>									
+											<?php 
+											$divisions = mysqli_query($conn,"SELECT * FROM divisions");
+											while($division = mysqli_fetch_assoc($divisions)){ ?>
+											<option value="<?php echo $division['id'];?>"><?php echo $division['bn_name'];?></option>
 											<?php }?>
 										</select>
 									</div>
 									<div>
-										<label for="village">গ্রামের নাম</label>
-										<select name="village" id="village">
-											<option style='display:none;' selected >গ্রাম বাছাই করুণ</option>
+										<label for="union">জেলা</label>
+										<select name="district" class="select_bar district">
+										
 										</select>
 									</div>
+									<div>
+										<label for="union">উপজেলা</label>
+										<select name="upazila" name="upazila" class="select_bar upazila">
+											
+										</select>
+									</div>
+									<div>
+										<label for="union">ইউনিয়ন</label>
+										<select name="union" name="union" class="select_bar union">
+										
+									</select>
+									</div>
+									<div>
+										<label for="union">গ্রাম</label>
+										<select name="village" name="village" class="select_bar village">
+										
+									</select>
+									</div>
+
 									<div>
 										<label for="guardian_name">করদাতার পিতা/স্বামী</label>
 										<br>
@@ -206,30 +274,28 @@
         </main>
 
 
-
-
-
-		
 <script>
-    $(document).ready(function(){  
-      $("#union").on("change",function(){
-        var admin_id = $(this).val();
-        $.ajax({
-            url:"include/ajax.php",
-            type:"GET",
-            data:
-            {
-              reference:"village of union in home page",
-              admin_id:admin_id,
-            },         
-            success:function(data){
-              $("#village").html(data);
-              }
-            });
+      $(".division").on("change",function(){
+        var division = $(this).val();
+        return opt_func("","districts","division_id",division,".district");
         })
 
-    })
 
+      $(".district").on("change",function(){
+        var district = $(this).val();
+        return opt_func("","upazilas","district_id",district,".upazila");
+        })
+
+      $(".upazila").on("change",function(){
+        var upazila = $(this).val();
+        return opt_func("","union_name","upazila_id",upazila,".union");
+        })
+
+      $(".union").on("change",function(){
+        var upazila = $(this).val();
+        return opt_func("","village","union_id",upazila,".village");
+        })
 </script>
+
 <?php include("common/home-footer.php")?>
 
