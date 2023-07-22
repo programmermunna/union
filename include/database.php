@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "union";
+$dbname = "mkiua";
 $conn = mysqli_connect($servername, $username, $password,$dbname);
 
 mysqli_query($conn,"SET CHARACTER SET utf8");

@@ -129,8 +129,8 @@ if(isset($_POST['submit'])){
               <label>পেশা <span class="requird_star">*</span></label>
               <br>
               <div class="pesa">
-                <label for="business">ব্যাবসাঃ</label>
-                <input type="radio" id="business" required name="profession" value="ব্যাবসা">
+                <label for="business">ব্যবসাঃ</label>
+                <input type="radio" id="business" required name="profession" value="ব্যবসা">
               </div>
               <div class="pesa">
                 <label for="job">চাকুরীঃ</label>

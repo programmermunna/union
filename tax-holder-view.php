@@ -90,10 +90,10 @@ $data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM person WHERE id='$i
               <label>পেশা <span class="requird_star">*</span></label>
               <br>
               <div class="pesa">
-                <label>ব্যাবসাঃ</label>
-                <input disabled type="radio" required name="profession" value="ব্যাবসা"
+                <label>ব্যবসাঃ</label>
+                <input disabled type="radio" required name="profession" value="ব্যবসা"
                 <?php
-                if($data['profession'] == 'ব্যাবসা'){
+                if($data['profession'] == 'ব্যবসা'){
                   echo "checked";
                 }
                 ?>
