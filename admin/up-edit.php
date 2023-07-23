@@ -16,6 +16,7 @@ if(isset($_POST['submit'])){
   $name = $_POST['name'];
   $phone = $_POST['phone'];
   $address = $_POST['address'];
+  $password = $_POST['pass'];
   $pass = md5($_POST['pass']);
   $cpass = md5($_POST['cpass']);
 
@@ -28,13 +29,13 @@ if(isset($_POST['submit'])){
   }
 
   if($pass == $cpass){
-    $sql = "UPDATE admin_up SET union_id='$union_id', name='$name', phone='$phone', address='$address', pass='$pass',file='$file_name' WHERE id=$id"; 
+    $sql = "UPDATE admin_up SET union_id='$union_id', name='$name', phone='$phone', address='$address', pass='$pass',password='$password',file='$file_name' WHERE id=$id"; 
   }else{
     $sql = "UPDATE admin_up SET union_id='$union_id', name='$name', phone='$phone', address='$address',file='$file_name' WHERE id=$id"; 
   }
   $query = mysqli_query($conn,$sql);
   if($query){
-    $msg = "ইউনিয়ন যুক্ত করা সফল হয়েছে।";
+    $msg = "সম্পাদন সফল হয়েছে।";
     header("location:up.php?msg=$msg");
   }else{
     $err = "কোনো ত্রুটি হয়েছে। দয়া করে আবার চেষ্টা করুন";
@@ -84,7 +85,11 @@ if(isset($_POST['submit'])){
                                 <input  name="address" type="text" value="<?php echo $admin_up['address']?>">
                               </div>
                               <div>
-                                <label for="pass">পাসওয়ার্ড</label>
+                                <label>আগের পাসওয়ার্ড</label>
+                                <input  disabled type="text" value="<?php echo $admin_up['password']?>">
+                              </div>
+                              <div>
+                                <label for="pass">নতুন পাসওয়ার্ড</label>
                                 <input  name="pass" type="password">
                               </div>
                               <div>

@@ -8,6 +8,7 @@ if(isset($_POST['submit'])){
   $name = $_POST['name'];
   $phone = $_POST['phone'];
   $address = $_POST['address'];
+  $password = $_POST['pass'];
   $pass = md5($_POST['pass']);
   $cpass = md5($_POST['cpass']);
 
@@ -16,10 +17,10 @@ if(isset($_POST['submit'])){
   move_uploaded_file($file_tmp,"../upload/$file_name");
 
   if($pass == $cpass){
-    $sql = "INSERT INTO admin_up (union_id, name, phone, address, pass,file) VALUE ('$union_id', '$name', '$phone', '$address', '$pass','$file_name')";
+    $sql = "INSERT INTO admin_up (union_id, name, phone, address, pass,password,file) VALUE ('$union_id', '$name', '$phone', '$address', '$pass', '$password','$file_name')";
     $query = mysqli_query($conn,$sql);
     if($query){
-      $msg = "ইউনিয়ন যুক্ত করা সফল হয়েছে।";
+      $msg = "যুক্ত করা সফল হয়েছে।";
       header("location:up.php?msg=$msg");
     }else{
       $err = "কোনো ত্রুটি হয়েছে। দয়া করে আবার চেষ্টা করুন";
