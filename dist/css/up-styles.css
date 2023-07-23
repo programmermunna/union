@@ -39,7 +39,6 @@
   width: 200px;
   background: #014DE0;
   visibility: hidden;
-  transition: .5s;
 }
 
 .header_nav>ul>li>ul>li{
@@ -58,6 +57,11 @@
 .header_nav>ul>li:hover ul{
   /* background: red; */
   visibility:visible;
+}
+
+.nav_dropdown_link>li>a>img{
+  width: 20px;
+  height: 20px;
 }
 
 

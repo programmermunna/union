@@ -134,22 +134,86 @@ if($up_id<1){
       <ul>
         <li><a href="up-home.php">স্বাগতম</a>
         </li>
-          <li><a href="#">গ্রাহক <i class="fa-solid fa-caret-down"></i></a></li>
-          <li><a href="#">কর জেনারেটর <i class="fa-solid fa-caret-down"></i></a></li>
-          <li><a href="#">হিসাব <i class="fa-solid fa-caret-down"></i></a></li>
-          <li><a href="#">প্রতিবেদন <i class="fa-solid fa-caret-down"></i></a></li>
-          <li><a href="#">টপলিষ্ট<i class="fa-solid fa-caret-down"></i></a></li>
-          <li><a href="#">বিল প্রিন্ট <i class="fa-solid fa-caret-down"></i></a></li>
-          <li><a href="#">ট্রেড লাইসেন্স <i class="fa-solid fa-caret-down"></i></a>
-          <li><a href="#">অন্যান্য রিপোর্ট <i class="fa-solid fa-caret-down"></i></a>
-            <ul>
-              <li><a href="#"><img style="width:20px;" src="https://file-rajshahi.portal.gov.bd/files/sirajganj.gov.bd/front_service_box/aba89bd3_9c7a_4898_98a0_be074d2dcc3e/5a2bbe70f9b1c78579a48a4620025416.png"> <p>স্বাগতম</p></a></li>
-              <li><a href="#"><img style="width:20px;" src="https://file-rajshahi.portal.gov.bd/files/sirajganj.gov.bd/front_service_box/aba89bd3_9c7a_4898_98a0_be074d2dcc3e/5a2bbe70f9b1c78579a48a4620025416.png"> <p>স্বাগতম</p></a></li>
-              <li><a href="#"><img style="width:20px;" src="https://file-rajshahi.portal.gov.bd/files/sirajganj.gov.bd/front_service_box/aba89bd3_9c7a_4898_98a0_be074d2dcc3e/5a2bbe70f9b1c78579a48a4620025416.png"> <p>স্বাগতম</p></a></li>
-              <li><a href="#"><img style="width:20px;" src="https://file-rajshahi.portal.gov.bd/files/sirajganj.gov.bd/front_service_box/aba89bd3_9c7a_4898_98a0_be074d2dcc3e/5a2bbe70f9b1c78579a48a4620025416.png"> <p>স্বাগতম</p></a>
-            </li>
+          <li><a href="#">হোম <i class="fa-solid fa-caret-down"></i></a>
+            <ul class="nav_dropdown_link">
+              <li><a href="#"><img src="upload/home.png" alt="Card Image" > পাসওয়ার্ড পরিবর্তন</a></li>
+              <li><a href="#"><img src="upload/home.png" alt="Card Image" > সর্বশেষ হোল্ডিং </a></li>
+              <li><a href="#"><img src="upload/home.png" alt="Card Image" > সিঙ্গেল ধার্য এডিট </a></li>
+              <li><a href="#"><img src="upload/home.png" alt="Card Image" > সচিব এপ্রুভ</a></li>
+              <li><a href="#"><img src="upload/home.png" alt="Card Image" > সার্চ হোল্ডিং</a></li>
             </ul>
         </li>
+          <li><a href="#">গ্রাহক <i class="fa-solid fa-caret-down"></i></a>
+            <ul class="nav_dropdown_link">
+              <li><a href="#"><img src="upload/grahok.png" alt="Card Image" > খানা প্রদানের তথ্য এন্ট্রি </a></li>
+              <li><a href="#"><img src="upload/grahok.png" alt="Card Image" > অফিস/অন্যান্য প্রতিষ্ঠানের তথ্য এন্ট্রি </a></li>
+              <li><a href="#"><img src="upload/grahok.png" alt="Card Image" > সদস্যের তথ্য এন্ট্রি</a></li>
+              <li><a href="#"><img src="upload/grahok.png" alt="Card Image" > খানা প্রদানের তালিকা</a></li>
+              <li><a href="#"><img src="upload/grahok.png" alt="Card Image" > খানা প্রদানের তথ্য এডিট</a></li>
+              <li><a href="#"><img src="upload/grahok.png" alt="Card Image" > সর্বশেষ হোল্ডিং</a></li>
+            </ul>
+          </li>
+          <li><a href="#">কর জেনারেটর <i class="fa-solid fa-caret-down"></i></a>
+            <ul class="nav_dropdown_link">
+            <li><a href="#"><img src="upload/kor-genarator.png" alt="Card Image" > সিঙ্গেল কিস্তি জেনারেটর</a></li>
+            <li><a href="#"><img src="upload/kor-genarator.png" alt="Card Image" > কিস্তি জেনারেটের তালিকা </a></li>
+            <li><a href="#"><img src="upload/kor-genarator.png" alt="Card Image" >  সিঙ্গেল ধার্য এডিট</a></li>
+          </ul>
+          </li>
+          <li><a href="#">হিসাব <i class="fa-solid fa-caret-down"></i></a>
+            <ul class="nav_dropdown_link">
+              <li><a href="#"><img src="upload/hisab.png" alt="Card Image" > টাকা জমার ফর্ম </a></li>
+              <li><a href="#"><img src="upload/hisab.png" alt="Card Image" > কিস্তির টাকা ডিলিট </a></li>
+              <li><a href="#"><img src="upload/hisab.png" alt="Card Image" > গ্রাম ভিক্তিক ধার্য </a></li>
+              <li><a href="#"><img src="upload/hisab.png" alt="Card Image" > ওয়ার্ড ভিত্তিক ধার্য </a></li>
+              <li><a href="#"><img src="upload/hisab.png" alt="Card Image" > অনলাইন ট্যাক্স আদ্যায়</a></li>
+            </ul>
+          </li>
+          <li><a href="#">প্রতিবেদন <i class="fa-solid fa-caret-down"></i></a>
+            <ul class="nav_dropdown_link">
+              <li><a href="#"><img src="upload/aday-bokeya.png" alt="Card Image" > প্রতিবেদন সংক্ষিপ্ত</a></li>
+              <li><a href="#"><img src="upload/aday-bokeya.png" alt="Card Image" > প্রতিবেদন বিস্তারিত </a></li>
+              <li><a href="#"><img src="upload/aday-bokeya.png" alt="Card Image" > আদায়ের তালিকা </a></li>
+              <li><a href="#"><img src="upload/aday-bokeya.png" alt="Card Image" > বকেয়া আদায়ের তালিকা</a></li>
+              <li><a href="#"><img src="upload/aday-bokeya.png" alt="Card Image" > বকেয়ার তালিকা</a></li>
+              <li><a href="#"><img src="upload/aday-bokeya.png" alt="Card Image" > আদায় রেজিস্টার</a></li>
+            </ul>
+          </li>
+          <li><a href="#">টপলিষ্ট<i class="fa-solid fa-caret-down"></i></a>
+            <ul class="nav_dropdown_link">
+              <li><a href="#"><img src="upload/dayli-posting.png" alt="Card Image" > ধার্য আদায় টপশীট</a></li>
+              <li><a href="#"><img src="upload/dayli-posting.png" alt="Card Image" > ডেইলি প্রোষ্টিং</a></li>
+              <li><a href="#"><img src="upload/dayli-posting.png" alt="Card Image" > ডেইলি পোষ্টিং টপশীট</a></li>
+            </ul>
+          </li>
+          <li><a href="#">বিল প্রিন্ট <i class="fa-solid fa-caret-down"></i></a>
+            <ul class="nav_dropdown_link">
+              <li><a href="#"><img src="upload/bill-print.png" alt="Card Image" > সমস্ত বিল প্রিন্ট</a></li>
+              <li><a href="#"><img src="upload/bill-print.png" alt="Card Image" > সিঙ্গেল বিল প্রিন্ট</a></li>
+              <li><a href="#"><img src="upload/bill-print.png" alt="Card Image" > সমস্ত বিল প্রিন্ট (পুরাতন)</a></li>
+              <li><a href="#"><img src="upload/bill-print.png" alt="Card Image" > সিঙ্গেল বিল প্রিন্ট (পুরাতন)</a></li>
+              <li><a href="#"><img src="upload/bill-print.png" alt="Card Image" > সমস্ত বিল প্রিন্ট -২</a></li>
+              <li><a href="#"><img src="upload/bill-print.png" alt="Card Image" > সিঙ্গেল বিল প্রিন্ট -২</a></li>
+            </ul>
+          </li>
+          <li><a href="#">ট্রেড লাইসেন্স <i class="fa-solid fa-caret-down"></i>
+            <ul class="nav_dropdown_link">
+              <li><a href="#"><img src="upload/tred-licence.png" alt="Card Image" > প্রতিষ্ঠানের তালিকা </a></li>
+              <li><a href="#"><img src="upload/tred-licence.png" alt="Card Image" > ফি ধার্যের তালিকা </a></li>
+              <li><a href="#"><img src="upload/tred-licence.png" alt="Card Image" > ফি আদায়ের তালিকা </a></li>
+              <li><a href="#"><img src="upload/tred-licence.png" alt="Card Image" > ফি বকেয়া তালিকা </a></li>
+              <li><a href="#"><img src="upload/tred-licence.png" alt="Card Image" > ফি জমা করুন </a></li>
+              <li><a href="#"><img src="upload/tred-licence.png" alt="Card Image" > লাইসেন্স নাম্বার লিখুন </a></li>
+            </ul>
+          </a>
+          <li><a href="#">অন্যান্য রিপোর্ট <i class="fa-solid fa-caret-down"></i></a>
+            <ul class="nav_dropdown_link">
+              <li><a href="#"><img src="upload/onnano.png" alt="Card Image" > অন্যান্য রিপোর্ট</a></li>
+              <li><a href="#"><img src="upload/onnano.png" alt="Card Image" > পেশাজীবির তালিকা </a></li>
+              <li><a href="#"><img src="upload/onnano.png" alt="Card Image" > অন্তর্বকালীন তালিকা </a></li>
+              <li><a href="#"><img src="upload/onnano.png" alt="Card Image" > পরিচয় নাগরিক সনদ</a></li>
+            </ul>
+          </li>
       </ul>
       </div>
       <div class="header_src">
@@ -171,7 +235,7 @@ if($up_id<1){
         <h2 class="heading">হোম</h2>
         <div class="card-content">
           <div class="image_item">
-            <img src="https://file-rajshahi.portal.gov.bd/files/sirajganj.gov.bd/front_service_box/aba89bd3_9c7a_4898_98a0_be074d2dcc3e/5a2bbe70f9b1c78579a48a4620025416.png" alt="Card Image" >
+            <img src="upload/home.png" alt="Card Image" >
           </div>
           <ul class="link-list">
             <li><a href="#"><i class="fa-solid fa-share"></i> পাসওয়ার্ড পরিবর্তন</a></li>
@@ -187,7 +251,7 @@ if($up_id<1){
         <h2 class="heading">গ্রাহক</h2>
         <div class="card-content">
           <div class="image_item">
-            <img src="https://file-rajshahi.portal.gov.bd/files/sirajganj.gov.bd/front_service_box/aba89bd3_9c7a_4898_98a0_be074d2dcc3e/5a2bbe70f9b1c78579a48a4620025416.png" alt="Card Image" >
+            <img src="upload/grahok.png" alt="Card Image" >
           </div>
           <ul class="link-list">
             <li><a href="#"><i class="fa-solid fa-share"></i> খানা প্রদানের তথ্য এন্ট্রি </a></li>
@@ -204,7 +268,7 @@ if($up_id<1){
         <h2 class="heading">কর জেনারেটর</h2>
         <div class="card-content">
           <div class="image_item">
-            <img src="https://file-rajshahi.portal.gov.bd/files/sirajganj.gov.bd/front_service_box/aba89bd3_9c7a_4898_98a0_be074d2dcc3e/5a2bbe70f9b1c78579a48a4620025416.png" alt="Card Image" >
+            <img src="upload/kor-genarator.png" alt="Card Image" >
           </div>
           <ul class="link-list">
             <li><a href="#"><i class="fa-solid fa-share"></i> সিঙ্গেল কিস্তি জেনারেটর</a></li>
@@ -218,7 +282,7 @@ if($up_id<1){
         <h2 class="heading">হিসাব</h2>
         <div class="card-content">
           <div class="image_item">
-            <img src="https://file-rajshahi.portal.gov.bd/files/sirajganj.gov.bd/front_service_box/aba89bd3_9c7a_4898_98a0_be074d2dcc3e/5a2bbe70f9b1c78579a48a4620025416.png" alt="Card Image" >
+            <img src="upload/hisab.png" alt="Card Image" >
           </div>
           <ul class="link-list">
             <li><a href="#"><i class="fa-solid fa-share"></i> টাকা জমার ফর্ম </a></li>
@@ -234,7 +298,7 @@ if($up_id<1){
         <h2 class="heading">আদায়/বকেয়া প্রতিবেদন</h2>
         <div class="card-content">
           <div class="image_item">
-            <img src="https://file-rajshahi.portal.gov.bd/files/sirajganj.gov.bd/front_service_box/aba89bd3_9c7a_4898_98a0_be074d2dcc3e/5a2bbe70f9b1c78579a48a4620025416.png" alt="Card Image" >
+            <img src="upload/aday-bokeya.png" alt="Card Image" >
           </div>
           <ul class="link-list">
             <li><a href="#"><i class="fa-solid fa-share"></i> প্রতিবেদন সংক্ষিপ্ত</a></li>
@@ -251,7 +315,7 @@ if($up_id<1){
         <h2 class="heading">টপলিষ্ট/ডেইলি পোষ্টিং</h2>
         <div class="card-content">
           <div class="image_item">
-            <img src="https://file-rajshahi.portal.gov.bd/files/sirajganj.gov.bd/front_service_box/aba89bd3_9c7a_4898_98a0_be074d2dcc3e/5a2bbe70f9b1c78579a48a4620025416.png" alt="Card Image" >
+            <img src="upload/dayli-posting.png" alt="Card Image" >
           </div>
           <ul class="link-list">
             <li><a href="#"><i class="fa-solid fa-share"></i> ধার্য আদায় টপশীট</a></li>
@@ -265,7 +329,7 @@ if($up_id<1){
         <h2 class="heading">বিল প্রিন্ট</h2>
         <div class="card-content">
           <div class="image_item">
-            <img src="https://file-rajshahi.portal.gov.bd/files/sirajganj.gov.bd/front_service_box/aba89bd3_9c7a_4898_98a0_be074d2dcc3e/5a2bbe70f9b1c78579a48a4620025416.png" alt="Card Image" >
+            <img src="upload/bill-print.png" alt="Card Image" >
           </div>
           <ul class="link-list">
             <li><a href="#"><i class="fa-solid fa-share"></i> সমস্ত বিল প্রিন্ট</a></li>
@@ -282,7 +346,7 @@ if($up_id<1){
         <h2 class="heading">ট্রেড লাইসেন্স</h2>
         <div class="card-content">
           <div class="image_item">
-            <img src="https://file-rajshahi.portal.gov.bd/files/sirajganj.gov.bd/front_service_box/aba89bd3_9c7a_4898_98a0_be074d2dcc3e/5a2bbe70f9b1c78579a48a4620025416.png" alt="Card Image" >
+            <img src="upload/tred-licence.png" alt="Card Image" >
           </div>
           <ul class="link-list">
             <li><a href="#"><i class="fa-solid fa-share"></i> প্রতিষ্ঠানের তালিকা </a></li>
@@ -299,7 +363,7 @@ if($up_id<1){
         <h2 class="heading">অন্যান্য</h2>
         <div class="card-content">
           <div class="image_item">
-            <img src="https://file-rajshahi.portal.gov.bd/files/sirajganj.gov.bd/front_service_box/aba89bd3_9c7a_4898_98a0_be074d2dcc3e/5a2bbe70f9b1c78579a48a4620025416.png" alt="Card Image" >
+            <img src="upload/onnano.png" alt="Card Image" >
           </div>
           <ul class="link-list">
             <li><a href="#"><i class="fa-solid fa-share"></i> অন্যান্য রিপোর্ট</a></li>
