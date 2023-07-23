@@ -1,4 +1,4 @@
-    <script>
+  <script>
       $(".union").on("change",function(){
       var upazila = $(this).val();
       return opt_func("../","village","union_id",upazila,".village");

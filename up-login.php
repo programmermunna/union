@@ -12,9 +12,9 @@ if($up_id>0){
 }
 
 if(isset($_POST['submit'])){
-    $phone = $_POST['phone'];
+    $union_id = $_POST['union_id'];
     $pass = md5($_POST['pass']);
-    $row = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM admin_up WHERE phone='$phone' AND pass='$pass'"));
+    $row = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM admin_up WHERE union_id='$union_id' AND pass='$pass'"));
     if($row>0){
     $up_id = $row['id'];
     $_SESSION['up_id'] = $up_id;
@@ -25,8 +25,6 @@ if(isset($_POST['submit'])){
       header("location:up-login.php?err=$err");
     }
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -67,8 +65,13 @@ if(isset($_POST['submit'])){
                 <br>
                 <form role="form" class="text-start" action="" method="POST">
                   <div class="input-group input-group-outline my-3">
-                    <label class="form-label">Phone</label>
-                  <input name="phone" type="number" class="form-control">
+                    <select style="padding:8px 10px;border-radius:5px;outline:2px solid #D81B60" name="union_id" class="input-group input-group-outline mb-3">
+                        <?php 
+                        $union = mysqli_query($conn,"SELECT * FROM union_name");
+                        while($data = mysqli_fetch_assoc($union)){ ?>
+                        <option value="<?php echo $data['id']?>"><?php echo $data['bn_name']?></option>
+                       <?php }?>
+                    </select>
                   </div>
                   <div class="input-group input-group-outline mb-3">
                     <label class="form-label">Password</label>

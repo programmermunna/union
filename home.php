@@ -73,9 +73,7 @@
 							<div class="card3_inner">
 								<div><a href="tax-check.php"><img class="item3_img" src="upload/tax_image.png" alt="image"></a></div>
 								<div><a href="home.php"><img class="item3_img" src="upload/note.png" alt="image"></a></div>
-
-							</div>
-							
+							</div>							
 						</div>
                     </div>
                 </div>

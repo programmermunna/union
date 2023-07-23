@@ -1,3 +1,11 @@
+.top_head{
+  padding: 5px;
+  text-align: center;
+  background:#9d41ff;
+  color: #ffc403;
+  font-size: 30px;
+}
+
 .header{
   display: flex;
   justify-content: space-between;
@@ -11,6 +19,7 @@
   display: flex;
   justify-content: space-between;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .header_nav>ul>li{
@@ -25,7 +34,7 @@
 }
 
 .header_nav>ul>li>a{
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .header_nav>ul>li>a:hover{
@@ -55,7 +64,6 @@
 }
 
 .header_nav>ul>li:hover ul{
-  /* background: red; */
   visibility:visible;
 }
 
@@ -69,35 +77,21 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .header_src>input{
   border-radius: 10px;
   padding: 3px 10px;
+  margin: 3px 10px;
   color: #000;
 }
 
 .header_btn{
-  background: #944530;
+  background: #4C217A;
   border-radius: 10px;
   padding: 5px 10px;
+  transition: .5s;
+}
+.header_btn:hover{
+  background: #9d41ff;
 }
 
 .content{
@@ -150,6 +144,9 @@
   color: #007bff;
   text-decoration: none;
 }
+.link-list li a:hover{
+  color: #9939ff;
+}
 
 
 
@@ -169,4 +166,21 @@
 }
 .dev>a:hover{
   color: #fff;
+}
+
+
+@media only screen and (max-width: 768px) {
+  .header{
+    display: block;
+  }
+  .header_src>input{
+    width: 100%;
+    margin:10px auto;
+  }
+  .header_btn{
+    text-align: center;
+  }
+  .card{
+    width: 100%;
+  }
 }

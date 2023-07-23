@@ -1,0 +1,208 @@
+<?php include("up/header.php"); ?>
+<?php 
+if(isset($_GET['session_destroy'])){
+    if($_GET['session_destroy'] == 'true'){
+        unset($_SESSION['village']);
+        header("location:up-tax-holder.php");
+    }
+}
+
+
+if(isset($_GET['year'])){
+  $year = $_SESSION['year'] = $_GET['year'];
+}
+if(isset($_SESSION['year'])){
+    $year = $_SESSION['year'];
+}else{
+    $year = $present_year; 
+}
+
+if(isset($_GET['village'])){
+    $_SESSION['village'] = $_GET['village'];
+}
+if(isset($_SESSION['village'])){
+    $sess_vlg = $_SESSION['village'];
+}else{
+    $sess_vlg = 0;
+}
+?>
+
+
+<div class="table_content_wrapper">
+<div class="page_title flex justify-between">
+    <h3 style="color:#000">করদাতার তালিকা</h4>
+    <select style="width: 200px;" class="input" id="year" name="year" onchange="window.location.href='up-tax-holder.php?year='+this.options [this.selectedIndex].value">
+        <option selected style="display:none;" value="<?php echo $year?>"><?php echo $year?></option>                            
+        <?php 
+        $years = mysqli_query($conn,"SELECT DISTINCT present_year FROM person WHERE admin_id=$id ORDER BY id DESC");
+        while($data = mysqli_fetch_assoc($years)){ ?>
+        <option value="<?php echo $data['present_year']?>"><?php echo $data['present_year']?></option>
+        <?php  }?>
+    </select>
+</div>
+<header class="table_header">
+    <div class="table_header_left">
+        <a href="up-tax-holder.php?session_destroy=true" class="px-4 py-2 text-sm bg-blue-600 text-white rounded focus:ring"><i class="fa-solid fa-rotate-right"></i> refresh</a>
+        <a href="up-tax-holder-export.php" class="px-4 py-2 text-sm bg-blue-600 text-white rounded focus:ring">Export Excel</a>
+    </div>
+
+    <div>
+        <form action="" method="GET">
+            <div class="table_header_right">
+            <select style="width: 350PX;" name="village" id="village" class="input">
+                <?php
+                if($sess_vlg > 0 ){ 
+                $select_village  = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM village WHERE admin_id=$id AND id=$sess_vlg"));
+                ?>
+                <option selected value="<?php echo $select_village['id']?>"><?php echo $select_village['bn_name']?></option>                                        
+                <?php  }else{ ?>
+                <option selected disabled>গ্রাম বাছাই করুণ</option>
+            <?php }?>
+
+                <?php
+                $villages = mysqli_query($conn,"SELECT * FROM village WHERE admin_id=$id");
+                while($village = mysqli_fetch_assoc($villages)){ ?>
+                    <option value="<?php echo $village['id']?>"><?php echo $village['bn_name']?></option>
+                <?php  }?>
+            </select>
+
+            <input style="cursor:pointer;color:#000;" type="submit" class="btn" value="খুজুন"/>
+        </div>
+    </form>
+    </div>
+
+    <form action="" method="GET">
+        <div class="table_header_right">
+            <input style="color:#000;" type="search" name="src" placeholder="করদাতা খুজুন" />
+            <input style="cursor:pointer;color:#000;" type="submit" class="btn" value="খুজুন"/>
+        </div>
+    </form>
+</header>
+
+<div class="table_parent">
+    <div class="table_sub_parent">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="table_th"><div class="table_th_div"><span>ক্রমিক নং.</span></div></th>
+                    <th class="table_th"><div class="table_th_div"><span>খানা প্রধানের ছবি</span></div></th>
+                    <th class="table_th"><div class="table_th_div"><span>আইডি নং.</span></div></th>
+                    <th class="table_th"><div class="table_th_div"><span>খানা প্রধানের নাম</span></div></th>
+                    <th class="table_th"><div class="table_th_div"><span>পিতা/স্বামীর নাম</span></div></th>
+                    <th class="table_th"><div class="table_th_div"><span>সদস্য সংখ্যা</span></div></th>
+                    <th class="table_th"><div class="table_th_div"><span>হোল্ডিং নং</span></div></th>
+                    <th class="table_th"><div class="table_th_div"><span>জাতীয় পরিচয়পত্র</span></div></th>
+                    <th class="table_th"><div class="table_th_div"><span>পেশা</span></div></th>
+                    <th class="table_th"><div class="table_th_div"><span>গৃহের বিবরন</span></div></th>
+                    <th class="table_th"><div class="table_th_div"><span>স্থাপনার মুল্য</span></div></th>
+                    <th class="table_th"><div class="table_th_div"><span>বার্ষিক কর</span></div></th>
+                    <th class="table_th"><div class="table_th_div"><span>নগদ কর</span></div></th>
+                    <th class="table_th"><div class="table_th_div"><span>বকেয়া কর</span></div></th>
+                    <th class="table_th"><div class="table_th_div"><span>অর্থ বছর</span></div></th>
+                    <th class="table_th"><div class="table_th_div"><span>মোবাইল নং</span></div></th>
+                    <th class="table_th"><div class="table_th_div"><span>স্টাটাস</span></div></th>
+                    <th class="table_th"><div class="table_th_div"><span>অবস্থা</span></div></th>
+                    <th class="table_th"><div class="table_th_div"><span>প্রতিক্রিয়া</span></div></th>
+                </tr>
+            </thead>
+            <tbody id="tax_holders_wrapper" class="text-sm">
+            <?php
+            if(isset($_GET['src'])){
+                $src = $_GET['src'];
+                $empSQL = "SELECT * FROM person WHERE admin_id=$id AND present_year='$year' AND (name LIKE '$src' OR mobile_no = '$src' OR nid_no = '$src' OR holding_no = '$src' OR guardian_name LIKE '$src')";
+            }elseif($sess_vlg > 0){
+                $empSQL = "SELECT * FROM person WHERE admin_id=$id AND present_year='$year' AND village = $sess_vlg ";
+            }else{
+                $empSQL = "SELECT * FROM person WHERE admin_id=$id AND present_year='$year' ";
+            }
+            $query = mysqli_query($conn, $empSQL);
+            $i = 0;
+            while($row = mysqli_fetch_assoc($query)){ $i++;
+            ?>
+                <tr>
+                    <td class="p-3 border whitespace-nowrap">
+                        <div class="text-center"><?php echo $i?></div>
+                    </td>
+                    <td class="p-3 border whitespace-nowrap">
+                        <div class="text-center">
+                            <img style="width: 50px;height:50px;margin:auto" src="upload/<?php echo $row['file_name']?>" alt="image">
+                        </div>
+                    </td>
+                    <td class="p-3 border whitespace-nowrap">
+                        <div class="text-center"><?php echo $row['id_no']?></div>
+                    </td>
+                    <td class="p-3 border whitespace-nowrap">
+                        <div class="text-center"><?php echo $row['name']?></div>
+                    </td>
+                    
+                    <td class="p-3 border whitespace-nowrap">
+                        <div class="text-center"><?php echo $row['guardian_name']?></div>
+                    </td>
+                    <td class="p-3 border whitespace-nowrap">
+                        <div class="text-center"><?php echo $row['family_member']?></div>
+                    </td>
+                    <td class="p-3 border whitespace-nowrap">
+                        <div class="text-center"><?php echo $row['holding_no']?></div>
+                    </td>
+                    <td class="p-3 border whitespace-nowrap">
+                        <div class="text-center"><?php echo $row['nid_no']?></div>
+                    </td>
+                    <td class="p-3 border whitespace-nowrap">
+                        <div class="text-center"><?php echo $row['profession']?></div>
+                    </td>
+                    <td class="p-3 border whitespace-nowrap">
+                        <div class="text-center"><?php echo $row['home']?></div>
+                    </td>
+                    <td class="p-3 border whitespace-nowrap">
+                        <div class="text-center">৳ <?php echo $row['net_worth']?></div>
+                    </td>
+                    <td class="p-3 border whitespace-nowrap">
+                        <div class="text-center">৳ <?php echo $row['annual_tax']?></div>
+                    </td>
+                    <td class="p-3 border whitespace-nowrap">
+                        <div class="text-center">৳ <?php echo $row['ablable_tax']?></div>
+                    </td>
+                    <td class="p-3 border whitespace-nowrap">
+                        <div class="text-center">৳ <?php echo $row['due_tax']?></div>
+                    </td>
+                    <td class="p-3 border whitespace-nowrap">
+                        <div class="text-center"><?php echo $row['present_year']?></div>
+                    </td>
+                    <td class="p-3 border whitespace-nowrap">
+                        <div class="text-center"><?php echo $row['mobile_no']?></div>
+                    </td>
+                    
+                    <td class="p-3 border whitespace-nowrap">
+                    <?php  if($row['status'] == 'Success'){ ?>
+                        <b><div style="color:green" class="text-center"><?php echo $row['status']?></div></b>
+                    <?php }else{ ?>
+                        <b><div style="color:red" class="text-center"><?php echo $row['status']?></div></b>
+                    <?php  }?>
+                    </td>
+
+                    <td class="p-3 border whitespace-nowrap">
+                    <?php  if($row['obostha'] == 'বহাল'){ ?>
+                        <b><div style="color:#fff;background:green;padding:5px;" class="text-center"><?php echo $row['obostha']?></div></b>
+                    <?php }else{ ?>
+                        <b><div style="color:#fff;background:red;padding:5px" class="text-center"><?php echo $row['obostha']?></div></b>
+                    <?php  }?>
+                    </td>
+
+                    <td class="p-3 border whitespace-nowrap">
+                        <div class="w-full flex_center gap-1">
+                            <a class="btn table_edit_btn"
+                                href="tax-holder-edit.php?id=<?php echo $row['id']?>">Edit</a>
+                            <a class="btn table_edit_btn"
+                                href="tax-holder-view.php?id=<?php echo $row['id']?>">View</a>
+                        </div>
+                    </td>
+                </tr>
+                <?php  } ?>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+
+<?php include("up/footer.php");?>
