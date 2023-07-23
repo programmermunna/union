@@ -5,6 +5,7 @@
 <?php
 if(isset($_GET['id'])){
   $id = $_GET['id'];
+  $unions = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM union_name WHERE id=$id"));
 }
 
 if(isset($_POST['submit'])){
@@ -32,7 +33,7 @@ if(isset($_POST['submit'])){
     header("location:union.php?msg=$msg");
   }
 }
-$unions = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM union_name WHERE id=$id"));
+
 
 ?>
   <div class="container-fluid py-4">

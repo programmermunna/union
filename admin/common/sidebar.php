@@ -18,6 +18,7 @@
     <li><a href="tax-holder.php">করদাতা</a></li>
     <hr>
     <li><a href="profile.php">আমার একাউন্ট</a></li>
+    <li><a href="up.php">ইউপি একাউন্ট</a></li>
     <li><a href="website-setting.php">ওয়েবসাইট</a></li>
     <li><a href="page-setting.php">পেজ</a></li>
     <li><a href="mail-setting.php">মেইল</a></li>
@@ -115,6 +116,14 @@
               <i class="material-icons opacity-10">person</i>
             </div>
             <span class="nav-link-text ms-1">আমার একাউন্ট</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="up.php">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">person</i>
+            </div>
+            <span class="nav-link-text ms-1">ইউপি একাউন্ট</span>
           </a>
         </li>
         <li class="nav-item">
