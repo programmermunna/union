@@ -1,0 +1,168 @@
+.header{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  height: unset;
+  color: #fff;
+
+}
+
+.header_nav>ul{
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.header_nav>ul>li{
+  position: relative;
+}
+
+.header_nav>ul>li:hover a{
+  color: red;
+}
+.header_nav>ul>li:hover ul li a{
+  color: #fff;  
+}
+
+.header_nav>ul>li>a{
+  font-size: 20px;
+}
+
+.header_nav>ul>li>a:hover{
+  color: red;
+}
+
+.header_nav>ul>li>ul{
+  position: absolute;
+  top: 30px;
+  left: 0;
+  width: 200px;
+  background: #014DE0;
+  visibility: hidden;
+  transition: .5s;
+}
+
+.header_nav>ul>li>ul>li{
+  border-bottom: 1px solid #2E77F6;
+}
+
+.header_nav>ul>li>ul>li:hover{
+  background: #000;
+}
+
+.header_nav>ul>li>ul>li>a{
+  display: flex;
+  padding: 5px;
+}
+
+.header_nav>ul>li:hover ul{
+  /* background: red; */
+  visibility:visible;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.header_src>input{
+  border-radius: 10px;
+  padding: 3px 10px;
+  color: #000;
+}
+
+.header_btn{
+  background: #944530;
+  border-radius: 10px;
+  padding: 5px 10px;
+}
+
+.content{
+  display: flex;
+  flex-wrap: wrap;
+  color: #fff;
+  justify-content: center;
+}
+.card {
+  margin:15px;
+  flex-wrap: wrap;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  max-width: 400px;
+  box-shadow: 0 2px 4px #0000001a;
+  width: 33%;
+
+}
+
+.heading {
+  width: 100%;
+  height: 50px;
+  font-size: 18px;
+  background: #4C217A;
+  text-align: center;
+}
+
+.card-content {
+  width: 100%;
+  display: inline-block;
+  padding: 20px;
+}
+.image_item{
+  width: 30%;
+  float: left;
+  padding: 10px;
+  justify-items: center;
+  background: #8080802d;
+  
+}
+
+.link-list {
+  list-style: none;
+  width: 70%;
+  float: right;
+  padding-left: 20px;
+}
+
+.link-list li a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+
+
+.dev{
+  background: #4C217A;
+  padding: 2px;
+  text-align: center;
+  color: #fff;
+  position: fixed;
+  bottom:0;
+  left: 0;
+  right: 0;
+  color: #ffc403;
+}
+.dev>a{
+  transition: .5s;
+}
+.dev>a:hover{
+  color: #fff;
+}

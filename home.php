@@ -63,7 +63,7 @@
 						<div class="card3">
 							<div class="card3_inner">
 								<div><a href="admin/"><img src="upload/super-admin.png" alt="image"></a></div>
-								<div><a href="login.php"><img src="upload/up-sochib.png" alt="image"></a></div>
+								<div><a href="up-login.php"><img src="upload/up-sochib.png" alt="image"></a></div>
 								<div><a href="login.php"><img src="upload/stuff.png" alt="image"></a></div>
 								<div><a href="nagoric-corner.php"><img src="upload/nagorik.png" alt="image"></a></div>
 							</div>
