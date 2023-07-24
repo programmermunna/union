@@ -1,5 +1,4 @@
-<?php include("include/functions.php");
-
+<?php include("../include/functions.php");
 
 setcookie('up_id', $id , time() - 2592000);
 if(isset($_SESSION['up_id'])){

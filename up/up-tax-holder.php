@@ -1,4 +1,4 @@
-<?php include("up/header.php"); ?>
+<?php include("header.php"); ?>
 <?php 
 if(isset($_GET['session_destroy'])){
     if($_GET['session_destroy'] == 'true'){
@@ -125,7 +125,7 @@ if(isset($_SESSION['village'])){
                     </td>
                     <td class="p-3 border whitespace-nowrap">
                         <div class="text-center">
-                            <img style="width: 50px;height:50px;margin:auto" src="upload/<?php echo $row['file_name']?>" alt="image">
+                            <img style="width: 50px;height:50px;margin:auto" src="../upload/<?php echo $row['file_name']?>" alt="image">
                         </div>
                     </td>
                     <td class="p-3 border whitespace-nowrap">
@@ -191,9 +191,9 @@ if(isset($_SESSION['village'])){
                     <td class="p-3 border whitespace-nowrap">
                         <div class="w-full flex_center gap-1">
                             <a class="btn table_edit_btn"
-                                href="tax-holder-edit.php?id=<?php echo $row['id']?>">Edit</a>
+                                href="up-tax-holder-edit.php?id=<?php echo $row['id']?>">Edit</a>
                             <a class="btn table_edit_btn"
-                                href="tax-holder-view.php?id=<?php echo $row['id']?>">View</a>
+                                href="up-tax-holder-view.php?id=<?php echo $row['id']?>">View</a>
                         </div>
                     </td>
                 </tr>
@@ -205,4 +205,4 @@ if(isset($_SESSION['village'])){
 </div>
 </div>
 
-<?php include("up/footer.php");?>
+<?php include("footer.php");?>

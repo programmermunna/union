@@ -40,8 +40,7 @@ if(isset($_POST['submit'])){
   }else{
     $err = "কোনো ত্রুটি হয়েছে। দয়া করে আবার চেষ্টা করুন";
     header("location:up-add.php?err=$err");
-  }
-  
+  }  
 }
 ?>
   <div class="container-fluid py-4">
