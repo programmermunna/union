@@ -82,7 +82,7 @@
                                         <div class="position-relative pt-2 text-center">
                                             <img src="upload/gram-adalat.jpg" style="width:100px;height:70px;" />
                                         </div>
-                                        <small class="thumbnail-label"><i>গ্রাম আদালত আবেদন</i></small>
+                                        <small class="thumbnail-label"><i>ওয়ার্ড আদালত আবেদন</i></small>
                                     </a>
                                 </div>
                                 <div>
@@ -234,11 +234,11 @@
             type:"GET",
             data:
             {
-              reference:"village of union in home page",
+              reference:"ward of union in home page",
               admin_id:admin_id,
             },         
             success:function(data){
-              $("#village").html(data);
+              $("#ward").html(data);
               }
             });
         })

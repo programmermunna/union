@@ -14,7 +14,7 @@ if(isset($_POST['submit'])){
   $upazila = $_POST['upazila'];
   $union = $_POST['union'];
   $admin_id = $_POST['union'];
-  $village = $_POST['village'];  
+  $ward = $_POST['ward'];  
 
   $word_no = $_POST['word_no'];
   $family_member = $_POST['family_member'];
@@ -37,11 +37,11 @@ if(isset($_POST['submit'])){
     $file_name = "avatar.jpg";
   } 
 
-  if( empty($id_no) || empty($name) || empty($guardian_name) || empty($division) || empty($district) || empty($upazila) || empty($union) || empty($village) || empty($family_member) || empty($net_worth)){
+  if( empty($id_no) || empty($name) || empty($guardian_name) || empty($division) || empty($district) || empty($upazila) || empty($union) || empty($ward) || empty($family_member) || empty($net_worth)){
     header("Location:tax-holder-add.php?err=সঠিক ভাবে ফরম পূরন করুন");
   }else{
-    $sql = "INSERT INTO person (admin_id,id_no,name,guardian_name,division_id,district_id,upazila_id,union_id,village,word_no,family_member,male,female,holding_no,nid_no,profession,home,net_worth,annual_tax,ablable_tax,due_tax,present_year,mobile_no,file_name,time) 
-    VALUES ('$admin_id','$id_no','$name','$guardian_name','$division','$district','$upazila','$union','$village','$word_no','$family_member','$male','$female','$holding_no','$nid_no','$profession','$home','$net_worth','$annual_tax','$ablable_tax','$due_tax','$present_year','$mobile_no','$file_name','$time')";
+    $sql = "INSERT INTO person (admin_id,id_no,name,guardian_name,division_id,district_id,upazila_id,union_id,ward,word_no,family_member,male,female,holding_no,nid_no,profession,home,net_worth,annual_tax,ablable_tax,due_tax,present_year,mobile_no,file_name,time) 
+    VALUES ('$admin_id','$id_no','$name','$guardian_name','$division','$district','$upazila','$union','$ward','$word_no','$family_member','$male','$female','$holding_no','$nid_no','$profession','$home','$net_worth','$annual_tax','$ablable_tax','$due_tax','$present_year','$mobile_no','$file_name','$time')";
     $insert = mysqli_query($conn,$sql);
     if($insert){
       header("location:tax-holder-add.php?msg=নতুন করদাতা যুক্ত হয়েছে");
@@ -118,9 +118,9 @@ if(isset($_POST['submit'])){
             </div>
 
             <div>
-            <label>গ্রাম <span class="requird_star" >* </span></label>
-            <select name="village" id="village" class="input village" required>
-              <option>গ্রাম বাছাই করুন</option>
+            <label>ওয়ার্ড <span class="requird_star" >* </span></label>
+            <select name="ward" id="ward" class="input ward" required>
+              <option>ওয়ার্ড বাছাই করুন</option>
             </select>
             </div>
 
@@ -286,7 +286,7 @@ if(isset($_POST['submit'])){
 
       $(".union").on("change",function(){
         var upazila = $(this).val();
-        return opt_func("../","village","union_id",upazila,".village");
+        return opt_func("../","ward","union_id",upazila,".ward");
         })
 </script>
   

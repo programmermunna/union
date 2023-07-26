@@ -7,9 +7,9 @@ if(isset($_GET['id'])){
 }
 $data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM person WHERE id=$id"));
 // $id = $data['admin_id'];
-$village_id = $data['village'];
-$village = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM village WHERE id=$village_id"));
-$vls_status = $village['edit_permision']; 
+$ward_id = $data['ward'];
+$ward = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM ward WHERE id=$ward_id"));
+$vls_status = $ward['edit_permision']; 
 if($vls_status == 'OFF'){
   $vls_status = "disabled";
 }else{
@@ -21,7 +21,7 @@ if(isset($_POST['submit'])){
   $id_no = $_POST['id_no'];
   $name = $_POST['name'];
   $guardian_name = $_POST['guardian_name'];
-  $village = $_POST['village'];
+  $ward = $_POST['ward'];
   $word_no = $_POST['word_no'];
   $family_member = $_POST['family_member'];
   $male = $_POST['male'];
@@ -45,10 +45,10 @@ if(isset($_POST['submit'])){
     $file_name = $data['file_name'];
   }
 
-  if( empty($id_no) || empty($name) || empty($guardian_name) || empty($village) || empty($family_member) || empty($word_no) || empty($net_worth)){
+  if( empty($id_no) || empty($name) || empty($guardian_name) || empty($ward) || empty($family_member) || empty($word_no) || empty($net_worth)){
     header("Location:up-tax-holder.php?err=দয়া করে আবার চেষ্টা করুন");
   }else{
-    $sql = "UPDATE person SET id_no='$id_no', name='$name', guardian_name='$guardian_name', village='$village', word_no='$word_no', family_member='$family_member', male='$male', female='$female', holding_no='$holding_no', nid_no='$nid_no', profession='$profession', home='$home', net_worth='$net_worth', annual_tax='$annual_tax', ablable_tax='$ablable_tax', due_tax='$due_tax', mobile_no='$mobile_no', status='$status',file_name='$file_name' WHERE id=$id";
+    $sql = "UPDATE person SET id_no='$id_no', name='$name', guardian_name='$guardian_name', ward='$ward', word_no='$word_no', family_member='$family_member', male='$male', female='$female', holding_no='$holding_no', nid_no='$nid_no', profession='$profession', home='$home', net_worth='$net_worth', annual_tax='$annual_tax', ablable_tax='$ablable_tax', due_tax='$due_tax', mobile_no='$mobile_no', status='$status',file_name='$file_name' WHERE id=$id";
     $update = mysqli_query($conn,$sql);
     if($update){
       header("location:up-tax-holder.php?msg=dকরদাতা সম্পাদন সফল হয়েছে");
@@ -129,18 +129,18 @@ if(isset($_POST['submit'])){
             </div>
 
             <div>
-            <label>গ্রাম <span class="requird_star" >* </span></label>
-            <select <?php echo $vls_status;?> name="village" id="village" class="input" required>
+            <label>ওয়ার্ড <span class="requird_star" >* </span></label>
+            <select <?php echo $vls_status;?> name="ward" id="ward" class="input" required>
             <?php 
-              $vlg_id = $data['village'];
-              $selected_village = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM village WHERE id=$vlg_id"));
+              $ward_id = $data['ward'];
+              $selected_ward = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM ward WHERE id=$ward_id"));
               ?>
-              <option value="<?php echo $selected_village['id']?>"><?php echo $selected_village['bn_name']?></option>
+              <option value="<?php echo $selected_ward['id']?>"><?php echo $selected_ward['bn_name']?></option>
 
               <?php 
-              $villages = mysqli_query($conn,"SELECT * FROM village WHERE admin_id=$id");
-              while($village = mysqli_fetch_assoc($villages)){ ?>
-                <option value="<?php echo $village['id']?>"><?php echo $village['bn_name']?></option>
+              $wards = mysqli_query($conn,"SELECT * FROM ward WHERE admin_id=$id");
+              while($ward = mysqli_fetch_assoc($wards)){ ?>
+                <option value="<?php echo $ward['id']?>"><?php echo $ward['bn_name']?></option>
              <?php }?>
             </select>
             </div>

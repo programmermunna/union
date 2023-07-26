@@ -4,7 +4,7 @@
      $total_tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM person"));
      $pending_tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM person WHERE present_year='$present_year' AND status='Pending'"));
      $success_tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM person WHERE present_year='$present_year' AND status='Success'"));
-     $village = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM village"));
+     $ward = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM ward"));
      $union = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM union_name"));
      
      $annual_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(annual_tax) FROM person"));
@@ -137,8 +137,8 @@
                 <i class="material-icons opacity-10">weekend</i>
               </div>
               <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">গ্রাম</p>
-                <h4 class="mb-0"><?php echo $village;?></h4>
+                <p class="text-sm mb-0 text-capitalize">ওয়ার্ড</p>
+                <h4 class="mb-0"><?php echo $ward;?></h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
@@ -408,11 +408,11 @@
                     </span>
 
                     <?php 
-                    $villages = mysqli_query($conn,"SELECT * FROM village ORDER BY id DESC LIMIT 4");
-                    while($village = mysqli_fetch_assoc($villages)){ ?>
+                    $wards = mysqli_query($conn,"SELECT * FROM ward ORDER BY id DESC LIMIT 4");
+                    while($ward = mysqli_fetch_assoc($wards)){ ?>
                     <div class="timeline-content">
-                      <h6 class="text-dark text-sm font-weight-bold mb-0"><?php echo $village['bn_name']?> <i style="color:green">যুক্ত করা হয়েছে</i></h6>
-                      <p class="text-secondary font-weight-bold text-xs mt-1 mb-0"><?php echo time_elapsed_string($village['time'],true);?></p>
+                      <h6 class="text-dark text-sm font-weight-bold mb-0"><?php echo $ward['bn_name']?> <i style="color:green">যুক্ত করা হয়েছে</i></h6>
+                      <p class="text-secondary font-weight-bold text-xs mt-1 mb-0"><?php echo time_elapsed_string($ward['time'],true);?></p>
                     </div>
                     <?php }?>
                 </div>

@@ -30,7 +30,7 @@ if(isset($_GET['session_destroy'])){
   $reload = $_GET['reload'];
   if($_GET['session_destroy'] == 'true'){
       unset($_SESSION['union']);
-      unset($_SESSION['village']);
+      unset($_SESSION['ward']);
       header("location:$page_name");
   }
 }
@@ -59,15 +59,15 @@ if(isset($_SESSION['union'])){
 }
 
 //vilage session
-if(isset($_GET['village'])){
-    if(is_numeric($_GET['village']) && !empty($_GET['village'])){
-      $_SESSION['village'] = $_GET['village'];
+if(isset($_GET['ward'])){
+    if(is_numeric($_GET['ward']) && !empty($_GET['ward'])){
+      $_SESSION['ward'] = $_GET['ward'];
     }
 }
-if(isset($_SESSION['village'])){
-    $sess_village = $_SESSION['village'];
+if(isset($_SESSION['ward'])){
+    $sess_ward = $_SESSION['ward'];
 }else{
-    $sess_village = 0;
+    $sess_ward = 0;
 }
 ?>
 

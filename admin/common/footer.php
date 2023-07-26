@@ -17,7 +17,7 @@
 
       $(".union").on("change",function(){
         var upazila = $(this).val();
-        return opt_func("../","village","union_id",upazila,".village");
+        return opt_func("../","union_name","union_id",upazila,".union");
         })
 </script>
 <script src="assets/js/plugins/perfect-scrollbar.min.js"></script>

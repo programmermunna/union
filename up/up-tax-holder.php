@@ -2,7 +2,7 @@
 <?php 
 if(isset($_GET['session_destroy'])){
     if($_GET['session_destroy'] == 'true'){
-        unset($_SESSION['village']);
+        unset($_SESSION['ward']);
         header("location:up-tax-holder.php");
     }
 }
@@ -17,11 +17,11 @@ if(isset($_SESSION['year'])){
     $year = $present_year; 
 }
 
-if(isset($_GET['village'])){
-    $_SESSION['village'] = $_GET['village'];
+if(isset($_GET['ward'])){
+    $_SESSION['ward'] = $_GET['ward'];
 }
-if(isset($_SESSION['village'])){
-    $sess_vlg = $_SESSION['village'];
+if(isset($_SESSION['ward'])){
+    $sess_vlg = $_SESSION['ward'];
 }else{
     $sess_vlg = 0;
 }
@@ -49,20 +49,20 @@ if(isset($_SESSION['village'])){
     <div>
         <form action="" method="GET">
             <div class="table_header_right">
-            <select style="width: 350PX;" name="village" id="village" class="input">
+            <select style="width: 350PX;" name="ward" id="ward" class="input">
                 <?php
                 if($sess_vlg > 0 ){ 
-                $select_village  = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM village WHERE admin_id=$id AND id=$sess_vlg"));
+                $select_ward  = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM ward WHERE admin_id=$id AND id=$sess_vlg"));
                 ?>
-                <option selected value="<?php echo $select_village['id']?>"><?php echo $select_village['bn_name']?></option>                                        
+                <option selected value="<?php echo $select_ward['id']?>"><?php echo $select_ward['bn_name']?></option>                                        
                 <?php  }else{ ?>
-                <option selected disabled>গ্রাম বাছাই করুণ</option>
+                <option selected disabled>ওয়ার্ড বাছাই করুণ</option>
             <?php }?>
 
                 <?php
-                $villages = mysqli_query($conn,"SELECT * FROM village WHERE admin_id=$id");
-                while($village = mysqli_fetch_assoc($villages)){ ?>
-                    <option value="<?php echo $village['id']?>"><?php echo $village['bn_name']?></option>
+                $wards = mysqli_query($conn,"SELECT * FROM ward WHERE admin_id=$id");
+                while($ward = mysqli_fetch_assoc($wards)){ ?>
+                    <option value="<?php echo $ward['id']?>"><?php echo $ward['bn_name']?></option>
                 <?php  }?>
             </select>
 
@@ -111,7 +111,7 @@ if(isset($_SESSION['village'])){
                 $src = $_GET['src'];
                 $empSQL = "SELECT * FROM person WHERE admin_id=$id AND present_year='$year' AND (name LIKE '$src' OR mobile_no = '$src' OR nid_no = '$src' OR holding_no = '$src' OR guardian_name LIKE '$src')";
             }elseif($sess_vlg > 0){
-                $empSQL = "SELECT * FROM person WHERE admin_id=$id AND present_year='$year' AND village = $sess_vlg ";
+                $empSQL = "SELECT * FROM person WHERE admin_id=$id AND present_year='$year' AND ward = $sess_vlg ";
             }else{
                 $empSQL = "SELECT * FROM person WHERE admin_id=$id AND present_year='$year' ";
             }

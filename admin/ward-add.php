@@ -5,16 +5,16 @@
 <?php
 if(isset($_POST['submit'])){
   $union = $_POST['union'];
-  $village = $_POST['village'];
+  $ward = $_POST['ward'];
 
-  $sql = "INSERT INTO village (admin_id,name,time) VALUE ('$union','$village','$time')";
+  $sql = "INSERT INTO ward (admin_id,bn_name,time) VALUE ('$union','$ward','$time')";
   $query = mysqli_query($conn,$sql);
   if($query){
-    $msg = "গ্রাম যুক্ত করা সফল হয়েছে।";
-    header("location:village-add.php?msg=$msg");
+    $msg = "ওয়ার্ড যুক্ত করা সফল হয়েছে।";
+    header("location:ward-add.php?msg=$msg");
   }else{
     $err = "কোনো ত্রুটি হয়েছে। দয়া করে আবার চেষ্টা করুন";
-    header("location:village-add.php?err=$err");
+    header("location:ward-add.php?err=$err");
   }
 }
 ?>
@@ -24,7 +24,7 @@ if(isset($_POST['submit'])){
           <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                <h6 class="text-white text-capitalize ps-3">গ্রাম সমূহ</h6>
+                <h6 class="text-white text-capitalize ps-3">ওয়ার্ড সমূহ</h6>
               </div>
             </div>
             <div class="card-body px-0 pb-2">
@@ -46,8 +46,8 @@ if(isset($_POST['submit'])){
                                 </select>
                               </div>
                               <div>
-                                <label for="village">গ্রামের নাম</label>
-                                <input required name="village" type="text">
+                                <label for="ward">ওয়ার্ডের নাম</label>
+                                <input required name="ward" type="text">
                               </div>
                           </div>
                           <div>                            

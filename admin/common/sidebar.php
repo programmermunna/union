@@ -14,7 +14,7 @@
     <li><a href="district.php">জেলা</a></li>
     <li><a href="upazila.php">উপজেলা</a></li>
     <li><a href="union.php">ইউনিয়ন</a></li>
-    <li><a href="village.php">গ্রাম</a></li>
+    <li><a href="ward.php">ওয়ার্ড</a></li>
     <li><a href="tax-holder.php">করদাতা</a></li>
     <hr>
     <li><a href="profile.php">আমার একাউন্ট</a></li>
@@ -93,11 +93,11 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="village.php">
+          <a class="nav-link text-white " href="ward.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
-            <span class="nav-link-text ms-1">গ্রাম</span>
+            <span class="nav-link-text ms-1">ওয়ার্ড</span>
           </a>
         </li>
         <li class="nav-item">

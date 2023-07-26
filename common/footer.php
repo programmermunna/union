@@ -1,7 +1,7 @@
   <script>
       $(".union").on("change",function(){
       var upazila = $(this).val();
-      return opt_func("../","village","union_id",upazila,".village");
+      return opt_func("../","ward","union_id",upazila,".ward");
       })
     </script>
     <!-- Main Content -->

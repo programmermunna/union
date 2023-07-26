@@ -7,7 +7,7 @@
     // $total_tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM person WHERE up_id=$id"));
     // $pending_tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM person WHERE up_id=$id AND present_year=$present_year AND status='Pending'"));
     // $success_tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM person WHERE up_id=$id AND present_year=$present_year AND status='Success'"));
-    // $village = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM village WHERE up_id=$id"));
+    // $ward = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM ward WHERE up_id=$id"));
     
     // $annual_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(annual_tax) FROM person WHERE up_id=$id"));
     // $ablable_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(ablable_tax) FROM person WHERE  up_id=$id  AND status='Success'"));
@@ -67,7 +67,7 @@ if(isset($_GET['session_destroy'])){
   $reload = $_GET['reload'];
   if($_GET['session_destroy'] == 'true'){
       unset($_SESSION['union']);
-      unset($_SESSION['village']);
+      unset($_SESSION['ward']);
       header("location:$page_name");
   }
 }
@@ -96,15 +96,15 @@ if(isset($_SESSION['union'])){
 }
 
 //vilage session
-if(isset($_GET['village'])){
-    if(is_numeric($_GET['village']) && !empty($_GET['village'])){
-      $_SESSION['village'] = $_GET['village'];
+if(isset($_GET['ward'])){
+    if(is_numeric($_GET['ward']) && !empty($_GET['ward'])){
+      $_SESSION['ward'] = $_GET['ward'];
     }
 }
-if(isset($_SESSION['village'])){
-    $sess_village = $_SESSION['village'];
+if(isset($_SESSION['ward'])){
+    $sess_ward = $_SESSION['ward'];
 }else{
-    $sess_village = 0;
+    $sess_ward = 0;
 }
 ?>
 
@@ -169,7 +169,7 @@ if(isset($_SESSION['village'])){
             <ul class="nav_dropdown_link">
               <li><a href="#"><img src="../upload/hisab.png" alt="Card Image" > টাকা জমার ফর্ম </a></li>
               <li><a href="#"><img src="../upload/hisab.png" alt="Card Image" > কিস্তির টাকা ডিলিট </a></li>
-              <li><a href="#"><img src="../upload/hisab.png" alt="Card Image" > গ্রাম ভিক্তিক ধার্য </a></li>
+              <li><a href="#"><img src="../upload/hisab.png" alt="Card Image" > ওয়ার্ড ভিক্তিক ধার্য </a></li>
               <li><a href="#"><img src="../upload/hisab.png" alt="Card Image" > ওয়ার্ড ভিত্তিক ধার্য </a></li>
               <li><a href="#"><img src="../upload/hisab.png" alt="Card Image" > অনলাইন ট্যাক্স আদ্যায়</a></li>
             </ul>

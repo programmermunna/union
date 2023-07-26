@@ -7,7 +7,7 @@
     $total_tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM person WHERE admin_id=$id"));
     $pending_tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM person WHERE admin_id=$id AND present_year=$present_year AND status='Pending'"));
     $success_tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM person WHERE admin_id=$id AND present_year=$present_year AND status='Success'"));
-    $village = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM village WHERE admin_id=$id"));
+    $ward = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM ward WHERE admin_id=$id"));
     
     $annual_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(annual_tax) FROM person WHERE admin_id=$id"));
     $ablable_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(ablable_tax) FROM person WHERE  admin_id=$id  AND status='Success'"));
@@ -135,12 +135,12 @@
               <div class="card_top">
                 <div class="card_top_icon from-blue-500 to-blue-600">&#x2637</div>
                 <div class="card_top_info">
-                  <p class="card_top_numbers"><?php echo $village?></p>                  
+                  <p class="card_top_numbers"><?php echo $ward?></p>                  
                 </div>
               </div>
               <div class="card_bottom">
                 <div class="card_percentage">
-                  <p style="margin: 0 auto;">গ্রাম</p>
+                  <p style="margin: 0 auto;">ওয়ার্ড</p>
                 </div>
                 <div class="card_line">
                   <div style="width: 100%" class="from-blue-500 via-blue-600 to-blue-700"></div>

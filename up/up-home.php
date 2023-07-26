@@ -56,7 +56,7 @@
           <ul class="link-list">
             <li><a href="#"><i class="fa-solid fa-share"></i> টাকা জমার ফর্ম </a></li>
             <li><a href="#"><i class="fa-solid fa-share"></i> কিস্তির টাকা ডিলিট </a></li>
-            <li><a href="#"><i class="fa-solid fa-share"></i> গ্রাম ভিক্তিক ধার্য </a></li>
+            <li><a href="#"><i class="fa-solid fa-share"></i> ওয়ার্ড ভিক্তিক ধার্য </a></li>
             <li><a href="#"><i class="fa-solid fa-share"></i> ওয়ার্ড ভিত্তিক ধার্য </a></li>
             <li><a href="#"><i class="fa-solid fa-share"></i> অনলাইন ট্যাক্স আদ্যায়</a></li>
           </ul>

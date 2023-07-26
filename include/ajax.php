@@ -15,7 +15,30 @@ if(isset($_GET['reference']) && isset($_GET['table']) && isset($_GET['cond']) &&
 
 
 
+//show section for ward selection in tax_holder all page
+if(isset($_GET['reference']) && isset($_GET['admin_id'])){
+    if($_GET['reference'] == 'ward of union in home page'){
+        $admin_id = $_GET['admin_id'];
+        $wards = mysqli_query($conn,"SELECT * FROM ward WHERE admin_id=$admin_id");
+        echo "<option style='display:none;' selected disabled>ওয়ার্ড বাছাই করুণ</option>";
+        while($ward = mysqli_fetch_assoc($wards)){ ?>
+        <option value="<?php echo $ward['id']?>"><?php echo $ward['bn_name']?></option>
+    <?php }exit; }
+}
 
+
+//admin section ajax
+
+//show ward for union selection in admin/tax-holder-add page
+if(isset($_GET['reference']) && isset($_GET['union_id'])){
+    if($_GET['reference'] == 'ward of union in admin/tax-holder-add page'){
+        $union_id = $_GET['union_id'];
+        $wards = mysqli_query($conn,"SELECT * FROM ward WHERE admin_id = $union_id");
+        echo "<option style='display:none;' selected disabled>ওয়ার্ড বাছাই করুণ</option>";
+        while($ward = mysqli_fetch_assoc($wards)){ ?>
+    <option value="<?php echo $ward['id']?>"><?php echo $ward['bn_name']?></option>
+    <?php }exit; }
+}
 
 //district of division in admin/union-add page
 if(isset($_GET['reference']) && isset($_GET['division'])){
@@ -40,37 +63,14 @@ if(isset($_GET['reference']) && isset($_GET['district'])){
     <?php }exit; }
 }
 
-//show section for village selection in tax_holder all page
+//show ward for union  in admin/tax-holder page
 if(isset($_GET['reference']) && isset($_GET['admin_id'])){
-    if($_GET['reference'] == 'village of union in home page'){
+    if($_GET['reference'] == 'ward of union in admin/tax-holder page'){
         $admin_id = $_GET['admin_id'];
-        $villages = mysqli_query($conn,"SELECT * FROM village WHERE admin_id=$admin_id");
-        echo "<option style='display:none;' selected disabled>গ্রাম বাছাই করুণ</option>";
-        while($village = mysqli_fetch_assoc($villages)){ ?>
-        <option value="<?php echo $village['id']?>"><?php echo $village['bn_name']?></option>
-    <?php }exit; }
-}
-
-//show village for union selection in admin/tax-holder-add page
-if(isset($_GET['reference']) && isset($_GET['union_id'])){
-    if($_GET['reference'] == 'village of union in admin/tax-holder-add page'){
-        $union_id = $_GET['union_id'];
-        $villages = mysqli_query($conn,"SELECT * FROM village WHERE admin_id = $union_id");
-        echo "<option style='display:none;' selected disabled>গ্রাম বাছাই করুণ</option>";
-        while($village = mysqli_fetch_assoc($villages)){ ?>
-    <option value="<?php echo $village['id']?>"><?php echo $village['bn_name']?></option>
-    <?php }exit; }
-}
-
-
-//show village for union  in admin/tax-holder page
-if(isset($_GET['reference']) && isset($_GET['admin_id'])){
-    if($_GET['reference'] == 'village of union in admin/tax-holder page'){
-        $admin_id = $_GET['admin_id'];
-        $villages = mysqli_query($conn,"SELECT * FROM village WHERE admin_id = $admin_id");
-        echo "<option style='display:none;' selected disabled>গ্রাম বাছাই করুন</option>";
-        while($village = mysqli_fetch_assoc($villages)){ ?>
-    <option value="<?php echo $village['id']?>"><?php echo $village['bn_name']?></option>
+        $wards = mysqli_query($conn,"SELECT * FROM ward WHERE admin_id = $admin_id");
+        echo "<option style='display:none;' selected disabled>ওয়ার্ড বাছাই করুন</option>";
+        while($ward = mysqli_fetch_assoc($wards)){ ?>
+    <option value="<?php echo $ward['id']?>"><?php echo $ward['bn_name']?></option>
     <?php }exit; }
 }
 

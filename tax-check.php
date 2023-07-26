@@ -18,13 +18,13 @@
 												$district = $data['district_id'];
 												$upazila = $data['upazila_id'];
 												$union = $data['union_id'];
-												$village = $data['village'];
+												$ward = $data['ward'];
 	
 												$division_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT bn_name FROM divisions WHERE id ='$division'")); 
 												 $district_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT bn_name FROM districts WHERE id ='$district'")); 
 												 $upazila_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT bn_name FROM upazilas WHERE id ='$upazila'")); 
 												 $union_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT bn_name FROM union_name WHERE id ='$union'")); 
-												 $village_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT bn_name FROM village WHERE id ='$village'")); 
+												 $ward_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT bn_name FROM ward WHERE id ='$ward'")); 
 											}else{
 											echo "<h1 style='text-align:center'>No Data Found</h1>";
 											echo "<h1 style='text-align:center'><a href='tax-check.php'>Back</a></h1>";
@@ -37,30 +37,30 @@
 										}
 									}else{	
 									
-									if( isset($_POST['division']) && isset($_POST['district']) && isset($_POST['upazila']) && isset($_POST['union']) && isset($_POST['village']) && isset($_POST['guardian_name']) && isset($_POST['tax_holder_name']) ){
+									if( isset($_POST['division']) && isset($_POST['district']) && isset($_POST['upazila']) && isset($_POST['union']) && isset($_POST['ward']) && isset($_POST['guardian_name']) && isset($_POST['tax_holder_name']) ){
 									
 										$division = $_POST['division'];	
 										$district = $_POST['district'];	
 										$upazila = $_POST['upazila'];	
 										$union = $_POST['union'];	
-										$village = $_POST['village'];
+										$ward = $_POST['ward'];
 										$guardian_name = $_POST['guardian_name'];
 										$tax_holder_name = $_POST['tax_holder_name'];								 	
 																			
-										$sql = "SELECT * FROM person WHERE present_year='$present_year' AND division_id='$division' AND district_id='$district' AND upazila_id='$upazila' AND union_id='$union' AND village='$village' AND guardian_name='$guardian_name' AND name='$tax_holder_name'";
+										$sql = "SELECT * FROM person WHERE present_year='$present_year' AND division_id='$division' AND district_id='$district' AND upazila_id='$upazila' AND union_id='$union' AND ward='$ward' AND guardian_name='$guardian_name' AND name='$tax_holder_name'";
 										$data = mysqli_fetch_assoc(mysqli_query($conn,$sql));
 
 										$division = $data['division_id'];
 										$district = $data['district_id'];
 										$upazila = $data['upazila_id'];
 										$union = $data['union_id'];
-										$village = $data['village'];
+										$ward = $data['ward'];
 
 										$division_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT bn_name FROM divisions WHERE id ='$division'")); 
 										$district_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT bn_name FROM districts WHERE id ='$district'")); 
 										$upazila_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT bn_name FROM upazilas WHERE id ='$upazila'")); 
 										$union_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT bn_name FROM union_name WHERE id ='$union'")); 
-										$village_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT bn_name FROM village WHERE id ='$village'")); 
+										$ward_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT bn_name FROM ward WHERE id ='$ward'")); 
 									  }else{
 										echo "<h1 style='text-align:center'>No Data Found</h1>";
 										echo "<h1 style='text-align:center'><a href='tax-check.php'>Back</a></h1>";
@@ -107,9 +107,9 @@
 										<input disabled type="text" name="union" value="<?php echo $union_name['bn_name'] ?>" >
 									</div>
 									<div>
-										<label for="village">গ্রাম</label>
+										<label for="ward">ওয়ার্ড</label>
 										<br>
-										<input disabled type="text" name="village" value="<?php echo $village_name['bn_name'] ?>" >
+										<input disabled type="text" name="ward" value="<?php echo $ward_name['bn_name'] ?>" >
 									</div>
 									<div>
 										<label for="union">ওয়ার্ড নং</label>
@@ -238,8 +238,8 @@
 									</select>
 									</div>
 									<div>
-										<label for="union">গ্রাম</label>
-										<select name="village" name="village" class="select_bar village">
+										<label for="union">ওয়ার্ড</label>
+										<select name="ward" name="ward" class="select_bar ward">
 										
 									</select>
 									</div>
@@ -293,7 +293,7 @@
 
       $(".union").on("change",function(){
         var upazila = $(this).val();
-        return opt_func("","village","union_id",upazila,".village");
+        return opt_func("","ward","union_id",upazila,".ward");
         })
 </script>
 

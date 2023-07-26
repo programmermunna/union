@@ -19,7 +19,7 @@ if(isset($_POST['submit'])){
   $upazila = $_POST['upazila'];
   $union = $_POST['union'];
   $admin_id = $_POST['union'];
-  $village = $_POST['village'];
+  $ward = $_POST['ward'];
 
 
   $word_no = $_POST['word_no'];
@@ -80,10 +80,10 @@ if(isset($_POST['submit'])){
     $file_name = $data['file_name'];
   } 
 
-  if( empty($admin_id) || empty($id_no) || empty($name) || empty($guardian_name) || empty($division) || empty($district) || empty($upazila) || empty($union) || empty($village)  || empty($family_member) || empty($word_no) || empty($net_worth)){
+  if( empty($admin_id) || empty($id_no) || empty($name) || empty($guardian_name) || empty($division) || empty($district) || empty($upazila) || empty($union) || empty($ward)  || empty($family_member) || empty($word_no) || empty($net_worth)){
     header("Location:tax-holder-add.php?err=সঠিক ভাবে ফরম পূরন করুন");
   }else{
-    $sql = "UPDATE person SET  admin_id='$admin_id', id_no='$id_no', name='$name', guardian_name='$guardian_name', division_id='$division', district_id='$district', upazila_id='$upazila', union_id='$union', village='$village', word_no='$word_no', family_member='$family_member', male='$male', female='$female', holding_no='$holding_no', nid_no='$nid_no', profession='$profession', home='$home', net_worth='$net_worth', annual_tax='$annual_tax', ablable_tax='$ablable_tax', due_tax='$due_tax', mobile_no='$mobile_no', status='$status',file_name='$file_name' WHERE id=$id";
+    $sql = "UPDATE person SET  admin_id='$admin_id', id_no='$id_no', name='$name', guardian_name='$guardian_name', division_id='$division', district_id='$district', upazila_id='$upazila', union_id='$union', ward='$ward', word_no='$word_no', family_member='$family_member', male='$male', female='$female', holding_no='$holding_no', nid_no='$nid_no', profession='$profession', home='$home', net_worth='$net_worth', annual_tax='$annual_tax', ablable_tax='$ablable_tax', due_tax='$due_tax', mobile_no='$mobile_no', status='$status',file_name='$file_name' WHERE id=$id";
     $update = mysqli_query($conn,$sql);
     if($update){
       header("location:tax-holder.php?msg=করদাতা সম্পাদন হয়েছে");
@@ -180,13 +180,13 @@ if(isset($_POST['submit'])){
                             </div>
 
                             <div>
-                            <label>গ্রাম <span class="requird_star" >* </span></label>
-                            <select name="village" id="village" class="input village" required>
+                            <label>ওয়ার্ড <span class="requird_star" >* </span></label>
+                            <select name="ward" id="ward" class="input ward" required>
                             <?php 
-                              $village_id =  $data['village'];
-                              $village_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM village WHERE id=$village_id"));
+                              $ward_id =  $data['ward'];
+                              $ward_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM ward WHERE id=$ward_id"));
                               ?>
-                              <option selected value="<?php echo $village_name['id'];?>"><?php echo $village_name['bn_name'];?></option>
+                              <option selected value="<?php echo $ward_name['id'];?>"><?php echo $ward_name['bn_name'];?></option>
                               
                             </select>
                             </div>
@@ -449,7 +449,7 @@ if(isset($_POST['submit'])){
 
       $(".union").on("change",function(){
         var upazila = $(this).val();
-        return opt_func("../","village","union_id",upazila,".village");
+        return opt_func("../","ward","union_id",upazila,".ward");
         })
 </script>
   

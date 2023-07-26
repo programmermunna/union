@@ -52,11 +52,11 @@
             type:"GET",
             data:
             {
-              reference:"village of union in home page",
+              reference:"ward of union in home page",
               admin_id:admin_id,
             },         
             success:function(data){
-              $("#village").html(data);
+              $("#ward").html(data);
               }
             });
         })

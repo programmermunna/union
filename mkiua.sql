@@ -73,7 +73,7 @@ INSERT INTO `districts` (`id`, `division_id`, `name`, `bn_name`, `lat`, `lon`, `
 (5, 1, 'Noakhali', 'নোয়াখালী', '22.869563', '91.099398', 'www.noakhali.gov.bd'),
 (6, 1, 'Chandpur', 'চাঁদপুর', '23.2332585', '90.6712912', 'www.chandpur.gov.bd'),
 (7, 1, 'Lakshmipur', 'লক্ষ্মীপুর', '22.942477', '90.841184', 'www.lakshmipur.gov.bd'),
-(8, 1, 'Chattogram', 'চট্টগ্রাম', '22.335109', '91.834073', 'www.chittagong.gov.bd'),
+(8, 1, 'Chattogram', 'চট্টওয়ার্ড', '22.335109', '91.834073', 'www.chittagong.gov.bd'),
 (9, 1, 'Coxsbazar', 'কক্সবাজার', '21.44315751', '91.97381741', 'www.coxsbazar.gov.bd'),
 (10, 1, 'Khagrachhari', 'খাগড়াছড়ি', '23.119285', '91.984663', 'www.khagrachhari.gov.bd'),
 (11, 1, 'Bandarban', 'বান্দরবান', '22.1953275', '92.2183773', 'www.bandarban.gov.bd'),
@@ -125,7 +125,7 @@ INSERT INTO `districts` (`id`, `division_id`, `name`, `bn_name`, `lat`, `lon`, `
 (57, 7, 'Gaibandha', 'গাইবান্ধা', '25.328751', '89.528088', 'www.gaibandha.gov.bd'),
 (58, 7, 'Thakurgaon', 'ঠাকুরগাঁও', '26.0336945', '88.4616834', 'www.thakurgaon.gov.bd'),
 (59, 7, 'Rangpur', 'রংপুর', '25.7558096', '89.244462', 'www.rangpur.gov.bd'),
-(60, 7, 'Kurigram', 'কুড়িগ্রাম', '25.805445', '89.636174', 'www.kurigram.gov.bd'),
+(60, 7, 'Kurigram', 'কুড়িওয়ার্ড', '25.805445', '89.636174', 'www.kurigram.gov.bd'),
 (61, 8, 'Sherpur', 'শেরপুর', '25.0204933', '90.0152966', 'www.sherpur.gov.bd'),
 (62, 8, 'Mymensingh', 'ময়মনসিংহ', '24.7465670', '90.4072093', 'www.mymensingh.gov.bd'),
 (63, 8, 'Jamalpur', 'জামালপুর', '24.937533', '89.937775', 'www.jamalpur.gov.bd'),
@@ -149,7 +149,7 @@ CREATE TABLE `divisions` (
 --
 
 INSERT INTO `divisions` (`id`, `name`, `bn_name`, `url`) VALUES
-(1, 'Chattagram', 'চট্টগ্রাম', 'www.chittagongdiv.gov.bd'),
+(1, 'Chattagram', 'চট্টওয়ার্ড', 'www.chittagongdiv.gov.bd'),
 (2, 'Rajshahi', 'রাজশাহী', 'www.rajshahidiv.gov.bd'),
 (3, 'Khulna', 'খুলনা', 'www.khulnadiv.gov.bd'),
 (4, 'Barisal', 'বরিশাল', 'www.barisaldiv.gov.bd'),
@@ -218,7 +218,7 @@ CREATE TABLE `person` (
   `district_id` int(255) NOT NULL,
   `upazila_id` int(255) NOT NULL,
   `union_id` int(255) NOT NULL,
-  `village` varchar(255) NOT NULL,
+  `ward` varchar(255) NOT NULL,
   `word_no` varchar(255) NOT NULL,
   `family_member` varchar(255) NOT NULL,
   `male` varchar(255) NOT NULL,
@@ -243,7 +243,7 @@ CREATE TABLE `person` (
 -- Dumping data for table `person`
 --
 
-INSERT INTO `person` (`admin_id`, `id`, `id_no`, `name`, `guardian_name`, `division_id`, `district_id`, `upazila_id`, `union_id`, `village`, `word_no`, `family_member`, `male`, `female`, `holding_no`, `nid_no`, `profession`, `home`, `net_worth`, `annual_tax`, `ablable_tax`, `due_tax`, `present_year`, `mobile_no`, `status`, `obostha`, `file_name`, `time`) VALUES
+INSERT INTO `person` (`admin_id`, `id`, `id_no`, `name`, `guardian_name`, `division_id`, `district_id`, `upazila_id`, `union_id`, `ward`, `word_no`, `family_member`, `male`, `female`, `holding_no`, `nid_no`, `profession`, `home`, `net_worth`, `annual_tax`, `ablable_tax`, `due_tax`, `present_year`, `mobile_no`, `status`, `obostha`, `file_name`, `time`) VALUES
 (345345, 1, 36992266, 'কেএম মনিরুল  ইসলাম (মনির)', 'মৃত আব্দর রহমান খান', 2, 12, 104, 1, '19', '১', '৭', '৪', '৩', '৩৪', '৮৮১১১৪০৭৬৫৩', 'ব্যবসা', 'আধাপাকা', 60000, 200, 200, 0, '2020 - 2021', '০১৭৬২৫৮৯৬১৫', 'Success', 'বহাল', 'monir.jpg', 1686113659),
 (345345, 74, 89008225, 'বারেক', 'তারেক', 2, 12, 104, 1, '22', '৭', '৫', '৩', '২', '১৬৫৮৫৮', '২৫৬৪৫৮৪১২', 'কৃষি', 'আধাপাকা', 200000, 200, 199, 0, '2020 - 2021', '012498525521', 'Success', 'বহাল', 'barek.jpg', 1686117700),
 (345345, 75, 10741993, 'নবাব', 'শফিক', 2, 12, 104, 1, '22', '৭', '৩', '২', '১', '৫৮৪৫৫৫', '২৬২৪১৫৬৪১৩', 'দিন-মজুর', 'কাঁচা', 100000, 100, 50, 50, '2020 - 2021', '019556552821', 'Success', 'বহাল', 'nobab.jpg', 1686117771),
@@ -346,7 +346,7 @@ INSERT INTO `upazilas` (`id`, `district_id`, `name`, `bn_name`, `url`) VALUES
 (2, 1, 'Barura', 'বরুড়া', 'barura.comilla.gov.bd'),
 (3, 1, 'Brahmanpara', 'ব্রাহ্মণপাড়া', 'brahmanpara.comilla.gov.bd'),
 (4, 1, 'Chandina', 'চান্দিনা', 'chandina.comilla.gov.bd'),
-(5, 1, 'Chauddagram', 'চৌদ্দগ্রাম', 'chauddagram.comilla.gov.bd'),
+(5, 1, 'Chauddagram', 'চৌদ্দওয়ার্ড', 'chauddagram.comilla.gov.bd'),
 (6, 1, 'Daudkandi', 'দাউদকান্দি', 'daudkandi.comilla.gov.bd'),
 (7, 1, 'Homna', 'হোমনা', 'homna.comilla.gov.bd'),
 (8, 1, 'Laksam', 'লাকসাম', 'laksam.comilla.gov.bd'),
@@ -469,7 +469,7 @@ INSERT INTO `upazilas` (`id`, `district_id`, `name`, `bn_name`, `url`) VALUES
 (125, 14, 'Shajahanpur', 'শাজাহানপুর', 'shajahanpur.bogra.gov.bd'),
 (126, 14, 'Dupchanchia', 'দুপচাচিঁয়া', 'dupchanchia.bogra.gov.bd'),
 (127, 14, 'Adamdighi', 'আদমদিঘি', 'adamdighi.bogra.gov.bd'),
-(128, 14, 'Nondigram', 'নন্দিগ্রাম', 'nondigram.bogra.gov.bd'),
+(128, 14, 'Nondigram', 'নন্দিওয়ার্ড', 'nondigram.bogra.gov.bd'),
 (129, 14, 'Sonatala', 'সোনাতলা', 'sonatala.bogra.gov.bd'),
 (130, 14, 'Dhunot', 'ধুনট', 'dhunot.bogra.gov.bd'),
 (131, 14, 'Gabtali', 'গাবতলী', 'gabtali.bogra.gov.bd'),
@@ -486,7 +486,7 @@ INSERT INTO `upazilas` (`id`, `district_id`, `name`, `bn_name`, `url`) VALUES
 (142, 15, 'Bagmara', 'বাগমারা', 'bagmara.rajshahi.gov.bd'),
 (143, 16, 'Natore Sadar', 'নাটোর সদর', 'natoresadar.natore.gov.bd'),
 (144, 16, 'Singra', 'সিংড়া', 'singra.natore.gov.bd'),
-(145, 16, 'Baraigram', 'বড়াইগ্রাম', 'baraigram.natore.gov.bd'),
+(145, 16, 'Baraigram', 'বড়াইওয়ার্ড', 'baraigram.natore.gov.bd'),
 (146, 16, 'Bagatipara', 'বাগাতিপাড়া', 'bagatipara.natore.gov.bd'),
 (147, 16, 'Lalpur', 'লালপুর', 'lalpur.natore.gov.bd'),
 (148, 16, 'Gurudaspur', 'গুরুদাসপুর', 'gurudaspur.natore.gov.bd'),
@@ -696,7 +696,7 @@ INSERT INTO `upazilas` (`id`, `district_id`, `name`, `bn_name`, `url`) VALUES
 (352, 45, 'Kishoreganj Sadar', 'কিশোরগঞ্জ সদর', 'kishoreganjsadar.kishoreganj.gov.bd'),
 (353, 45, 'Karimgonj', 'করিমগঞ্জ', 'karimgonj.kishoreganj.gov.bd'),
 (354, 45, 'Bajitpur', 'বাজিতপুর', 'bajitpur.kishoreganj.gov.bd'),
-(355, 45, 'Austagram', 'অষ্টগ্রাম', 'austagram.kishoreganj.gov.bd'),
+(355, 45, 'Austagram', 'অষ্টওয়ার্ড', 'austagram.kishoreganj.gov.bd'),
 (356, 45, 'Mithamoin', 'মিঠামইন', 'mithamoin.kishoreganj.gov.bd'),
 (357, 45, 'Nikli', 'নিকলী', 'nikli.kishoreganj.gov.bd'),
 (358, 46, 'Harirampur', 'হরিরামপুর', 'harirampur.manikganj.gov.bd'),
@@ -761,7 +761,7 @@ INSERT INTO `upazilas` (`id`, `district_id`, `name`, `bn_name`, `url`) VALUES
 (417, 55, 'Lalmonirhat Sadar', 'লালমনিরহাট সদর', 'sadar.lalmonirhat.gov.bd'),
 (418, 55, 'Kaliganj', 'কালীগঞ্জ', 'kaliganj.lalmonirhat.gov.bd'),
 (419, 55, 'Hatibandha', 'হাতীবান্ধা', 'hatibandha.lalmonirhat.gov.bd'),
-(420, 55, 'Patgram', 'পাটগ্রাম', 'patgram.lalmonirhat.gov.bd'),
+(420, 55, 'Patgram', 'পাটওয়ার্ড', 'patgram.lalmonirhat.gov.bd'),
 (421, 55, 'Aditmari', 'আদিতমারী', 'aditmari.lalmonirhat.gov.bd'),
 (422, 56, 'Syedpur', 'সৈয়দপুর', 'syedpur.nilphamari.gov.bd'),
 (423, 56, 'Domar', 'ডোমার', 'domar.nilphamari.gov.bd'),
@@ -789,7 +789,7 @@ INSERT INTO `upazilas` (`id`, `district_id`, `name`, `bn_name`, `url`) VALUES
 (445, 59, 'Pirgonj', 'পীরগঞ্জ', 'pirgonj.rangpur.gov.bd'),
 (446, 59, 'Kaunia', 'কাউনিয়া', 'kaunia.rangpur.gov.bd'),
 (447, 59, 'Pirgacha', 'পীরগাছা', 'pirgacha.rangpur.gov.bd'),
-(448, 60, 'Kurigram Sadar', 'কুড়িগ্রাম সদর', 'kurigramsadar.kurigram.gov.bd'),
+(448, 60, 'Kurigram Sadar', 'কুড়িওয়ার্ড সদর', 'kurigramsadar.kurigram.gov.bd'),
 (449, 60, 'Nageshwari', 'নাগেশ্বরী', 'nageshwari.kurigram.gov.bd'),
 (450, 60, 'Bhurungamari', 'ভুরুঙ্গামারী', 'bhurungamari.kurigram.gov.bd'),
 (451, 60, 'Phulbari', 'ফুলবাড়ী', 'phulbari.kurigram.gov.bd'),
@@ -840,10 +840,10 @@ INSERT INTO `upazilas` (`id`, `district_id`, `name`, `bn_name`, `url`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `village`
+-- Table structure for table `ward`
 --
 
-CREATE TABLE `village` (
+CREATE TABLE `ward` (
   `admin_id` int(255) NOT NULL,
   `id` int(255) NOT NULL,
   `union_id` int(255) NOT NULL,
@@ -853,10 +853,10 @@ CREATE TABLE `village` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `village`
+-- Dumping data for table `ward`
 --
 
-INSERT INTO `village` (`admin_id`, `id`, `union_id`, `bn_name`, `edit_permision`, `time`) VALUES
+INSERT INTO `ward` (`admin_id`, `id`, `union_id`, `bn_name`, `edit_permision`, `time`) VALUES
 (345345, 19, 1, 'চালা', 'ON', 0),
 (345345, 22, 1, 'মুকন্দগাতী', 'ON', 0),
 (345435, 24, 1, 'দুকুরিয়া', 'OFF', 0),
@@ -954,9 +954,9 @@ ALTER TABLE `upazilas`
   ADD KEY `district_id` (`district_id`);
 
 --
--- Indexes for table `village`
+-- Indexes for table `ward`
 --
-ALTER TABLE `village`
+ALTER TABLE `ward`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1030,9 +1030,9 @@ ALTER TABLE `upazilas`
   MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=495;
 
 --
--- AUTO_INCREMENT for table `village`
+-- AUTO_INCREMENT for table `ward`
 --
-ALTER TABLE `village`
+ALTER TABLE `ward`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --

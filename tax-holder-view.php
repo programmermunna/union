@@ -39,13 +39,13 @@ $data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM person WHERE id='$i
             </div>
 
             <div>
-            <label>গ্রাম <span class="requird_star" >* </span></label>
-            <select disabled name="village" id="village" class="input disabled" required>
+            <label>ওয়ার্ড <span class="requird_star" >* </span></label>
+            <select disabled name="ward" id="ward" class="input disabled" required>
             <?php 
-              $vlg_id = $data['village'];
-              $selected_village = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM village WHERE id=$vlg_id"));
+              $ward_id = $data['ward'];
+              $selected_ward = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM ward WHERE id=$ward_id"));
               ?>
-              <option value="<?php echo $selected_village['id']?>"><?php echo $selected_village['bn_name']?></option>
+              <option value="<?php echo $selected_ward['id']?>"><?php echo $selected_ward['bn_name']?></option>
             </select>
             </div>
 

@@ -3,8 +3,8 @@
           <button class="btn nav_btn"><span class="nav_icon dashboard_icon"> </span><span class="nav_text">ড্যাশবোর্ড</span></button>
         </a>
 
-        <a href="village.php">
-          <button class="btn nav_btn"><span class="nav_icon product_icon"> </span><span class="nav_text">গ্রাম</span></button>
+        <a href="ward.php">
+          <button class="btn nav_btn"><span class="nav_icon product_icon"> </span><span class="nav_text">ওয়ার্ড</span></button>
         </a>
         <a href="tax-holder-all.php">
           <button class="btn nav_btn"><span class="nav_icon seller_icon"> </span><span class="nav_text">করদাতা</span></button>

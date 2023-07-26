@@ -86,13 +86,13 @@ $data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM person WHERE id='$i
                             </div>
 
                             <div>
-                            <label>গ্রাম <span class="requird_star" >* </span></label>
-                            <select disabled name="village" id="village" class="input " required>
+                            <label>ওয়ার্ড <span class="requird_star" >* </span></label>
+                            <select disabled name="ward" id="ward" class="input " required>
                             <?php 
-                              $village_id =  $data['village'];
-                              $village_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM village WHERE id=$village_id"));
+                              $ward_id =  $data['ward'];
+                              $ward_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM ward WHERE id=$ward_id"));
                               ?>
-                              <option selected value="<?php echo $village_name['bn_name'];?>"><?php echo $village_name['bn_name'];?></option>
+                              <option selected value="<?php echo $ward_name['bn_name'];?>"><?php echo $ward_name['bn_name'];?></option>
                               
                             </select>
                             </div>
@@ -314,12 +314,12 @@ $data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM person WHERE id='$i
             type:"GET",
             data:
             {
-              reference:"village of union in admin/tax-holder-add page",
+              reference:"ward of union in admin/tax-holder-add page",
               union_id:union_id,
             },         
             success:function(data){
               console.log(data);
-              $("#village").html(data);
+              $("#ward").html(data);
               }
             });
         })

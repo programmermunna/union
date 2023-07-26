@@ -68,11 +68,11 @@
                       echo $union_name['bn_name'];}else{
                         echo "ইউনিয়ন বাছাই করুন";}?></option>
                   </select>
-                  <select name="village" name="village" class="select_bar village">
-                    <option ><?php if($sess_village >0){
-                      $village_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM village WHERE id=$sess_village"));
-                      echo $village_name['bn_name'];}else{
-                        echo "গ্রাম বাছাই করুন";}?></option>
+                  <select name="ward" name="ward" class="select_bar ward">
+                    <option ><?php if($sess_ward >0){
+                      $ward_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM ward WHERE id=$sess_ward"));
+                      echo $ward_name['bn_name'];}else{
+                        echo "ওয়ার্ড বাছাই করুন";}?></option>
                   </select>
                   <input type="submit" value="খুজুন">
                   </form>
@@ -120,8 +120,8 @@
                   if(isset($_GET['src'])){
                     $src = $_GET['src'];
                     $empSQL = "SELECT * FROM person WHERE present_year='$year' AND (name LIKE '$src' OR guardian_name LIKE '$src' OR id_no = '$src' OR mobile_no = '$src' OR nid_no = '$src' OR holding_no = '$src')";
-                  }elseif($sess_division > 0 && $sess_district > 0  && $sess_upazila > 0 && $sess_union > 0 && $sess_village > 0){
-                    $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union AND  village = $sess_village";
+                  }elseif($sess_division > 0 && $sess_district > 0  && $sess_upazila > 0 && $sess_union > 0 && $sess_ward > 0){
+                    $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union AND  ward = $sess_ward";
                   }elseif($sess_division > 0 && $sess_district > 0  && $sess_upazila > 0 && $sess_union > 0){
                     $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union";
                   }elseif($sess_division > 0 && $sess_district > 0  && $sess_upazila > 0){
@@ -226,9 +226,9 @@
 
               <?php 
                 
-              //   $annual_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(annual_tax) FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union AND  village = $sess_village"));
-              //   $ablable_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(ablable_tax) FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union AND  village = $sess_village"));
-              //   $due_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(due_tax) FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union AND  village = $sess_village"));
+              //   $annual_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(annual_tax) FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union AND  ward = $sess_ward"));
+              //   $ablable_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(ablable_tax) FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union AND  ward = $sess_ward"));
+              //   $due_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(due_tax) FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union AND  ward = $sess_ward"));
             
               // echo "_". $annual_tax = $annual_tax['SUM(annual_tax)'];
               // echo "_". $ablable_tax = $ablable_tax['SUM(ablable_tax)'];
@@ -243,8 +243,8 @@
                     var data = google.visualization.arrayToDataTable([
                       ['অর্থবছর','অর্থবছরের কর', 'জমাকৃত কর', 'বাকি কর'],
                       <?php
-                          if($sess_division > 0 && $sess_district > 0  && $sess_upazila > 0 && $sess_union > 0 && $sess_village > 0){
-                            $query = "SELECT * FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union AND  village = $sess_village  GROUP BY present_year";
+                          if($sess_division > 0 && $sess_district > 0  && $sess_upazila > 0 && $sess_union > 0 && $sess_ward > 0){
+                            $query = "SELECT * FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union AND  ward = $sess_ward  GROUP BY present_year";
                           }elseif($sess_division > 0 && $sess_district > 0  && $sess_upazila > 0 && $sess_union > 0){
                             $query = "SELECT * FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union  GROUP BY present_year";
                           }elseif($sess_division > 0 && $sess_district > 0  && $sess_upazila > 0){
@@ -258,11 +258,11 @@
                           }
                         $res=mysqli_query($conn,$query);
                         while($data=mysqli_fetch_array($res)){
-                          if($sess_division > 0 && $sess_district > 0  && $sess_upazila > 0 && $sess_union > 0 && $sess_village > 0){
+                          if($sess_division > 0 && $sess_district > 0  && $sess_upazila > 0 && $sess_union > 0 && $sess_ward > 0){
                             
-                          $annual_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(annual_tax) FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union AND  village = $sess_village"));
-                          $ablable_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(ablable_tax) FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union AND  village = $sess_village"));
-                          $due_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(due_tax) FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union AND  village = $sess_village"));
+                          $annual_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(annual_tax) FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union AND  ward = $sess_ward"));
+                          $ablable_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(ablable_tax) FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union AND  ward = $sess_ward"));
+                          $due_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(due_tax) FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union AND  ward = $sess_ward"));
 
                           }elseif($sess_division > 0 && $sess_district > 0  && $sess_upazila > 0 && $sess_union > 0){
                             
