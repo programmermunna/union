@@ -77,7 +77,7 @@
 
 
 
-.header_src>input{
+.header_src>form>input{
   border-radius: 10px;
   padding: 3px 10px;
   margin: 3px 10px;

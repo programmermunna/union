@@ -222,8 +222,10 @@ if(isset($_SESSION['village'])){
       </ul>
       </div>
       <div class="header_src">
+        <form action="up-search.php">
         <input type="search" placeholder="সার্চ হোল্ডিং..............">
-      </div>       
+      </form>      
+      </div>
       <div class="header_btn">
       <a href="up-logout.php">লগআউট</a>
       </div>       
