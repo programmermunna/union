@@ -14,7 +14,7 @@ if($id>0){
 if(isset($_POST['submit'])){
     $union_id = $_POST['union_id'];
     $pass = md5($_POST['pass']);
-    $row = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM union_name WHERE admin_id='$union_id' AND pass='$pass'"));
+    $row = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM unions WHERE admin_id='$union_id' AND pass='$pass'"));
     if($row>0){
     $id = $row['admin_id'];
     $_SESSION['admin_id'] = $id;
@@ -69,7 +69,7 @@ if(isset($_POST['submit'])){
                   <div class="input-group input-group-outline my-3">
                     <select style="padding:8px 10px;border-radius:5px;outline:2px solid #D81B60" name="union_id" class="input-group input-group-outline mb-3">
                         <?php 
-                        $union = mysqli_query($conn,"SELECT * FROM union_name");
+                        $union = mysqli_query($conn,"SELECT * FROM unions");
                         while($data = mysqli_fetch_assoc($union)){ ?>
                         <option value="<?php echo $data['admin_id']?>"><?php echo $data['bn_name']?></option>
                        <?php }?>

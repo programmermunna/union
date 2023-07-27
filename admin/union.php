@@ -56,9 +56,9 @@
                       <tbody>
                         <?php 
                         if($sess_upazila >0){
-                            $union = mysqli_query($conn,"SELECT * FROM union_name WHERE upazila_id=$sess_upazila");
+                            $union = mysqli_query($conn,"SELECT * FROM unions WHERE upazila_id=$sess_upazila");
                           }else{
-                            $union = mysqli_query($conn,"SELECT * FROM union_name");
+                            $union = mysqli_query($conn,"SELECT * FROM unions");
                           }
                         $i = 0;
                         while($row = mysqli_fetch_assoc($union)){                                                     
@@ -72,7 +72,7 @@
                           <td><?php echo $upazila['bn_name'];?></td>
                           <td>
                             <a class="btn btn-primary p-2" href="union-edit.php?id=<?php echo $row['id']?>">Edit</a>
-                            <a class="btn btn-primary p-2" href="union-delete.php?src=union&&table=union_name&&id=<?php echo $row['id']?>">Delete</a>
+                            <a class="btn btn-primary p-2" href="union-delete.php?src=union&&table=unions&&id=<?php echo $row['id']?>">Delete</a>
                           </td>
                         </tr>
                         <?php }?>

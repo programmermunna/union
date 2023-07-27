@@ -67,7 +67,7 @@ if(isset($_POST['submit'])){
                   <div class="input-group input-group-outline my-3">
                     <select style="padding:8px 10px;border-radius:5px;outline:2px solid #D81B60" name="union_id" class="input-group input-group-outline mb-3">
                         <?php 
-                        $union = mysqli_query($conn,"SELECT * FROM union_name");
+                        $union = mysqli_query($conn,"SELECT * FROM unions");
                         while($data = mysqli_fetch_assoc($union)){ ?>
                         <option value="<?php echo $data['id']?>"><?php echo $data['bn_name']?></option>
                        <?php }?>

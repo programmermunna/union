@@ -36,10 +36,10 @@ if(isset($_POST['submit'])){
                         <div class="profile">
                           <div style="display:block">
                               <div>
-                                <label for="union_name">ইউনিয়নের নাম</label>
+                                <label for="unions">ইউনিয়নের নাম</label>
                                 <select name="union" class="input">
                                   <?php 
-                                  $unions = mysqli_query($conn,"SELECT * FROM union_name");
+                                  $unions = mysqli_query($conn,"SELECT * FROM unions");
                                   while($union = mysqli_fetch_assoc($unions)){ ?>
                                     <option value="<?php echo $union['admin_id'];?>"><?php echo $union['bn_name'];?></option>
                                  <?php }?>

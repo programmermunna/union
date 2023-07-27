@@ -281,7 +281,7 @@ if(isset($_POST['submit'])){
 
       $(".upazila").on("change",function(){
         var upazila = $(this).val();
-        return opt_func("../","union_name","upazila_id",upazila,".union");
+        return opt_func("../","unions","upazila_id",upazila,".union");
         })
 
       $(".union").on("change",function(){

@@ -172,9 +172,9 @@ if(isset($_POST['submit'])){
                             <select name="union" id="union" class="input union" required>
                               <?php 
                               $union_id =  $data['union_id'];
-                              $union_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM union_name WHERE id=$union_id"));
+                              $unions = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM unions WHERE id=$union_id"));
                               ?>
-                              <option selected value="<?php echo $union_name['id'];?>"><?php echo $union_name['bn_name'];?></option>
+                              <option selected value="<?php echo $unions['id'];?>"><?php echo $unions['bn_name'];?></option>
                               
                             </select>
                             </div>
@@ -444,7 +444,7 @@ if(isset($_POST['submit'])){
 
       $(".upazila").on("change",function(){
         var upazila = $(this).val();
-        return opt_func("../","union_name","upazila_id",upazila,".union");
+        return opt_func("../","unions","upazila_id",upazila,".union");
         })
 
       $(".union").on("change",function(){

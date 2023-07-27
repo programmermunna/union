@@ -5,7 +5,7 @@
 <?php
 if(isset($_GET['id'])){
   $id = $_GET['id'];
-  $unions = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM union_name WHERE id=$id"));
+  $unions = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM unions WHERE id=$id"));
 }
 
 if(isset($_POST['submit'])){
@@ -18,13 +18,13 @@ if(isset($_POST['submit'])){
     $sql = "UPDATE union SET bn_name='$union' WHERE id=$id";    
   }elseif(!empty($old_pass) && !empty($new_pass) && !empty($c_pass) && !empty($union)){
     if($new_pass == $c_pass && !empty($old_pass)){
-      $check = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM union_name WHERE id=$id"));
+      $check = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM unions WHERE id=$id"));
       if($check){
-        $sql = "UPDATE union_name SET bn_name='$union' WHERE id=$id";
+        $sql = "UPDATE unions SET bn_name='$union' WHERE id=$id";
       }
     }
   }elseif($new_pass == $c_pass && !empty($old_pass)){
-    $check = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM union_name WHERE id=$id"));
+    $check = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM unions WHERE id=$id"));
   }
 
   $query = mysqli_query($conn,$sql);
@@ -55,7 +55,7 @@ if(isset($_POST['submit'])){
                           <div style="display:block">
                               <div>
                                 <label for="name">ইউনিয়নের নাম</label>
-                                <input type="text" name="union_name" value="<?php echo $unions['bn_name']?>">
+                                <input type="text" name="unions" value="<?php echo $unions['bn_name']?>">
                               </div>
                               <div>
                                 <label for="old_pass">আগের পাসওয়ার্ড</label>

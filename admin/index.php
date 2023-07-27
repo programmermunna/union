@@ -5,7 +5,7 @@
      $pending_tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM person WHERE present_year='$present_year' AND status='Pending'"));
      $success_tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM person WHERE present_year='$present_year' AND status='Success'"));
      $ward = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM ward"));
-     $union = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM union_name"));
+     $union = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM unions"));
      
      $annual_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(annual_tax) FROM person"));
      $ablable_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(ablable_tax) FROM person WHERE  status='Success'"));
@@ -395,7 +395,7 @@
                     </span>
                     
                     <?php 
-                    $unions = mysqli_query($conn,"SELECT * FROM union_name ORDER BY id DESC LIMIT 4");
+                    $unions = mysqli_query($conn,"SELECT * FROM unions ORDER BY id DESC LIMIT 4");
                     while($union = mysqli_fetch_assoc($unions)){ ?>
                     <div class="timeline-content">
                       <h6 class="text-dark text-sm font-weight-bold mb-0"><?php echo $union['bn_name']?><i style="color:orange"> যুক্ত করা হয়েছে</i></h6>

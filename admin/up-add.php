@@ -51,7 +51,7 @@ if(isset($_POST['submit'])){
                               <div>
                                 <label for="union">ইউনিয়নের নাম</label>
                                 <select class="input" name="union_id">
-                                  <?php $unions = mysqli_query($conn,"SELECT * FROM union_name");
+                                  <?php $unions = mysqli_query($conn,"SELECT * FROM unions");
                                   while($union = mysqli_fetch_assoc($unions)){ ?>
                                   <option value="<?php echo $union['id']?>"><?php echo $union['bn_name']?></option>
                                   <?php  }?>

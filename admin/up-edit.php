@@ -7,7 +7,7 @@ if(isset($_GET['id'])){
   $up_id = $_GET['id'];
   $admin_up = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM admin_up WHERE id=$id"));
   $union_id = $admin_up['union_id'];
-  $union = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM union_name WHERE id=$union_id"));
+  $union = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM unions WHERE id=$union_id"));
 }
 
 
@@ -65,7 +65,7 @@ if(isset($_POST['submit'])){
                                 <label for="union">ইউনিয়নের নাম</label>
                                 <select class="input" name="union_id">
                                   <?php ?> <option selected value="<?php echo $union['id'];?>"><?php echo $union['bn_name'];?></option> <?php ?>
-                                  <?php $unions = mysqli_query($conn,"SELECT * FROM union_name");
+                                  <?php $unions = mysqli_query($conn,"SELECT * FROM unions");
                                   while($union = mysqli_fetch_assoc($unions)){ ?>
                                   <option value="<?php echo $union['id']?>"><?php echo $union['bn_name']?></option>
                                   <?php  }?>

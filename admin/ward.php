@@ -56,7 +56,7 @@ if(isset($_GET['src'])){
                 <select class="select_bar" name="union" onchange="window.location.href='ward.php?union='+this.options [this.selectedIndex].value">
                   <option >ইউনিয়ন বাছাই করুণ</option>
                   <?php 
-                  $unions = mysqli_query($conn,"SELECT * FROM union_name");
+                  $unions = mysqli_query($conn,"SELECT * FROM unions");
                   while($union = mysqli_fetch_assoc($unions)){ ?>
                     <option value="<?php echo $union['admin_id'];?>"><?php echo $union['bn_name'];?></option>
                     <?php }?>
@@ -92,7 +92,7 @@ if(isset($_GET['src'])){
                         while($ward = mysqli_fetch_assoc($wards)){
                            $i++;
                            $admin_id = $ward['admin_id'];
-                           $union = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM union_name WHERE admin_id=$admin_id"));
+                           $union = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM unions WHERE admin_id=$admin_id"));
                         ?>
                         <tr>
                           <td><?php echo $i;?></td>

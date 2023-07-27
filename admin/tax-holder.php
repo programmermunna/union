@@ -64,8 +64,8 @@
                   </select>
                   <select name="union" name="union" class="select_bar union">
                     <option ><?php if($sess_union >0){
-                      $union_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM union_name WHERE id=$sess_union"));
-                      echo $union_name['bn_name'];}else{
+                      $unions = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM unions WHERE id=$sess_union"));
+                      echo $unions['bn_name'];}else{
                         echo "ইউনিয়ন বাছাই করুন";}?></option>
                   </select>
                   <select name="ward" name="ward" class="select_bar ward">
@@ -121,7 +121,7 @@
                     $src = $_GET['src'];
                     $empSQL = "SELECT * FROM person WHERE present_year='$year' AND (name LIKE '$src' OR guardian_name LIKE '$src' OR id_no = '$src' OR mobile_no = '$src' OR nid_no = '$src' OR holding_no = '$src')";
                   }elseif($sess_division > 0 && $sess_district > 0  && $sess_upazila > 0 && $sess_union > 0 && $sess_ward > 0){
-                    $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union AND  ward = $sess_ward";
+                    $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union AND ward = $sess_ward";
                   }elseif($sess_division > 0 && $sess_district > 0  && $sess_upazila > 0 && $sess_union > 0){
                     $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union";
                   }elseif($sess_division > 0 && $sess_district > 0  && $sess_upazila > 0){

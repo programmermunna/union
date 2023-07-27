@@ -78,9 +78,9 @@ $data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM person WHERE id='$i
                             <select disabled name="union" id="union" class="input " required>
                               <?php 
                               $union_id =  $data['union_id'];
-                              $union_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM union_name WHERE id=$union_id"));
+                              $unions = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM unions WHERE id=$union_id"));
                               ?>
-                              <option selected value="<?php echo $union_name['bn_name'];?>"><?php echo $union_name['bn_name'];?></option>
+                              <option selected value="<?php echo $unions['bn_name'];?>"><?php echo $unions['bn_name'];?></option>
                               
                             </select>
                             </div>

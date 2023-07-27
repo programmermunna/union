@@ -14,7 +14,7 @@ if(isset($_SESSION['admin_id'])){
 if($id<1){
     header('location:home.php');
 }
-$union = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM union_name WHERE admin_id=$id"));
+$union = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM unions WHERE admin_id=$id"));
 // if($union<1){
 //   header("location:home.php");
 // }

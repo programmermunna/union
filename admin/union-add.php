@@ -12,13 +12,13 @@ if(isset($_POST['submit'])){
   $pass = md5($_POST['pass']);
   $cpass = md5($_POST['cpass']);
 
-  $sql = "INSERT INTO union_name (admin_id,upazila_id,bn_name,pass,time) VALUE ('$admin_id','$upazila','$union','$pass',$time)";
+  $sql = "INSERT INTO unions (admin_id,upazila_id,bn_name,pass,time) VALUE ('$admin_id','$upazila','$union','$pass',$time)";
   $query = mysqli_query($conn,$sql);
   if($query){
     $msg = "ইউনিয়ন যুক্ত করা সফল হয়েছে।";
     header("location:union.php?msg=$msg");
   }
-  if($pass == $cpass && !empty($union_name)){    
+  if($pass == $cpass && !empty($unions)){    
   }else{
     $err = "কোনো ত্রুটি হয়েছে। দয়া করে আবার চেষ্টা করুন";
     header("location:union.php?err=$err");
@@ -43,7 +43,7 @@ if(isset($_POST['submit'])){
                         <div class="profile">
                           <div style="display:block">
                               <div>
-                                <label for="union_name">বিভাগ নাম</label>
+                                <label for="unions">বিভাগ নাম</label>
                                 <select class="input division" name="division" id="division">
                                   <option>সিলেক্ট বিভাগ</option>
                                   <?php $divisions = mysqli_query($conn,"SELECT * FROM divisions");

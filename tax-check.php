@@ -23,7 +23,7 @@
 												$division_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT bn_name FROM divisions WHERE id ='$division'")); 
 												 $district_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT bn_name FROM districts WHERE id ='$district'")); 
 												 $upazila_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT bn_name FROM upazilas WHERE id ='$upazila'")); 
-												 $union_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT bn_name FROM union_name WHERE id ='$union'")); 
+												 $unions = mysqli_fetch_assoc(mysqli_query($conn,"SELECT bn_name FROM unions WHERE id ='$union'")); 
 												 $ward_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT bn_name FROM ward WHERE id ='$ward'")); 
 											}else{
 											echo "<h1 style='text-align:center'>No Data Found</h1>";
@@ -59,7 +59,7 @@
 										$division_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT bn_name FROM divisions WHERE id ='$division'")); 
 										$district_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT bn_name FROM districts WHERE id ='$district'")); 
 										$upazila_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT bn_name FROM upazilas WHERE id ='$upazila'")); 
-										$union_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT bn_name FROM union_name WHERE id ='$union'")); 
+										$unions = mysqli_fetch_assoc(mysqli_query($conn,"SELECT bn_name FROM unions WHERE id ='$union'")); 
 										$ward_name = mysqli_fetch_assoc(mysqli_query($conn,"SELECT bn_name FROM ward WHERE id ='$ward'")); 
 									  }else{
 										echo "<h1 style='text-align:center'>No Data Found</h1>";
@@ -104,7 +104,7 @@
 									<div>
 										<label for="union">ইউনিয়ন</label>
 										<br>
-										<input disabled type="text" name="union" value="<?php echo $union_name['bn_name'] ?>" >
+										<input disabled type="text" name="union" value="<?php echo $unions['bn_name'] ?>" >
 									</div>
 									<div>
 										<label for="ward">ওয়ার্ড</label>
@@ -288,7 +288,7 @@
 
       $(".upazila").on("change",function(){
         var upazila = $(this).val();
-        return opt_func("","union_name","upazila_id",upazila,".union");
+        return opt_func("","unions","upazila_id",upazila,".union");
         })
 
       $(".union").on("change",function(){

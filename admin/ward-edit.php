@@ -7,7 +7,7 @@ if(isset($_GET['id'])){
   $ward_id = $_GET['id'];
   $ward = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM ward WHERE id=$ward_id"));
   $admin_id = $ward['admin_id'];
-  $union = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM union_name WHERE admin_id=$admin_id"));
+  $union = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM unions WHERE admin_id=$admin_id"));
 }else{
   header("location:ward.php");
 }
@@ -46,7 +46,7 @@ if(isset($_POST['submit'])){
                         <div class="profile">
                           <div style="display:block">
                               <div>
-                                <label for="union_name">ইউনিয়নের নাম</label>
+                                <label for="unions">ইউনিয়নের নাম</label>
                                 <select name="union" class="input">
                                     <option selected disabled value="<?php echo $union['admin_id'];?>"><?php echo $union['bn_name'];?></option>
                                 </select>

@@ -48,7 +48,7 @@ if($up_id<1){
   header('location:up-login.php');
 }
 
-$union = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM union_name WHERE id=$up_id"));
+$union = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM unions WHERE id=$up_id"));
 if($union<1){
   header("location:home.php");
 }
