@@ -100,22 +100,14 @@ if(isset($_SESSION['ward'])){
                                     <tr>
                                         <th class="table_th"><div class="table_th_div"><span>ক্রমিক নং.</span></div></th>
                                         <th class="table_th"><div class="table_th_div"><span>খানা প্রধানের ছবি</span></div></th>
-                                        <th class="table_th"><div class="table_th_div"><span>আইডি নং.</span></div></th>
                                         <th class="table_th"><div class="table_th_div"><span>খানা প্রধানের নাম</span></div></th>
                                         <th class="table_th"><div class="table_th_div"><span>পিতা/স্বামীর নাম</span></div></th>
-                                        <th class="table_th"><div class="table_th_div"><span>সদস্য সংখ্যা</span></div></th>
-                                        <th class="table_th"><div class="table_th_div"><span>হোল্ডিং নং</span></div></th>
-                                        <th class="table_th"><div class="table_th_div"><span>জাতীয় পরিচয়পত্র</span></div></th>
-                                        <th class="table_th"><div class="table_th_div"><span>পেশা</span></div></th>
-                                        <th class="table_th"><div class="table_th_div"><span>গৃহের বিবরন</span></div></th>
-                                        <th class="table_th"><div class="table_th_div"><span>স্থাপনার মুল্য</span></div></th>
-                                        <th class="table_th"><div class="table_th_div"><span>বার্ষিক কর</span></div></th>
-                                        <th class="table_th"><div class="table_th_div"><span>নগদ কর</span></div></th>
+                                        <th class="table_th"><div class="table_th_div"><span>বাৎসরিক গড় আয়</span></div></th>
+                                        <th class="table_th"><div class="table_th_div"><span>পুর্বের বকেয়া</span></div></th>
+                                        <th class="table_th"><div class="table_th_div"><span>বর্তমান কর</span></div></th>
+                                        <th class="table_th"><div class="table_th_div"><span>আদায়কৃত কর</span></div></th>
                                         <th class="table_th"><div class="table_th_div"><span>বকেয়া কর</span></div></th>
-                                        <th class="table_th"><div class="table_th_div"><span>অর্থ বছর</span></div></th>
-                                        <th class="table_th"><div class="table_th_div"><span>মোবাইল নং</span></div></th>
                                         <th class="table_th"><div class="table_th_div"><span>স্টাটাস</span></div></th>
-                                        <th class="table_th"><div class="table_th_div"><span>অবস্থা</span></div></th>
                                         <th class="table_th"><div class="table_th_div"><span>প্রতিক্রিয়া</span></div></th>
                                     </tr>
                                 </thead>
@@ -123,11 +115,11 @@ if(isset($_SESSION['ward'])){
                                 <?php
                                 if(isset($_GET['src'])){
                                     $src = $_GET['src'];
-                                    $empSQL = "SELECT * FROM person WHERE admin_id=$id AND present_year='$year' AND (name LIKE '$src' OR mobile_no = '$src' OR nid_no = '$src' OR holding_no = '$src' OR guardian_name LIKE '$src')";
+                                    $empSQL = "SELECT * FROM tax_holder WHERE admin_id=$id AND present_year='$year' AND (name LIKE '$src' OR mobile_no = '$src' OR nid_no = '$src' OR holding_no = '$src' OR guardian_name LIKE '$src')";
                                 }elseif($sess_vlg > 0){
-                                    $empSQL = "SELECT * FROM person WHERE admin_id=$id AND present_year='$year' AND ward = $sess_vlg ";
+                                    $empSQL = "SELECT * FROM tax_holder WHERE admin_id=$id AND present_year='$year' AND ward = $sess_vlg ";
                                 }else{
-                                    $empSQL = "SELECT * FROM person WHERE admin_id=$id AND present_year='$year' ";
+                                    $empSQL = "SELECT * FROM tax_holder WHERE admin_id=$id AND present_year='$year' ";
                                 }
                                 $query = mysqli_query($conn, $empSQL);
                                 $i = 0;
@@ -139,51 +131,29 @@ if(isset($_SESSION['ward'])){
                                         </td>
                                         <td class="p-3 border whitespace-nowrap">
                                             <div class="text-center">
-                                                <img style="width: 50px;height:50px;margin:auto" src="upload/<?php echo $row['file_name']?>" alt="image">
+                                                <img style="width: 50px;height:50px;margin:auto" src="upload/<?php echo $row['file']?>" alt="<?php echo $row['file']?>">
                                             </div>
                                         </td>
                                         <td class="p-3 border whitespace-nowrap">
-                                            <div class="text-center"><?php echo $row['id_no']?></div>
+                                            <div class="text-center"><?php echo $row['tax_holder_name']?></div>
                                         </td>
                                         <td class="p-3 border whitespace-nowrap">
-                                            <div class="text-center"><?php echo $row['name']?></div>
-                                        </td>
-                                        
-                                        <td class="p-3 border whitespace-nowrap">
-                                            <div class="text-center"><?php echo $row['guardian_name']?></div>
+                                            <div class="text-center">৳ <?php echo $row['father_hasbend_name']?></div>
                                         </td>
                                         <td class="p-3 border whitespace-nowrap">
-                                            <div class="text-center"><?php echo $row['family_member']?></div>
+                                            <div class="text-center">৳ <?php echo $row['annual_avg_income']?></div>
                                         </td>
                                         <td class="p-3 border whitespace-nowrap">
-                                            <div class="text-center"><?php echo $row['holding_no']?></div>
+                                            <div class="text-center">৳ <?php echo $row['previous_due']?></div>
                                         </td>
                                         <td class="p-3 border whitespace-nowrap">
-                                            <div class="text-center"><?php echo $row['nid_no']?></div>
+                                            <div class="text-center">৳ <?php echo $row['present_tax']?></div>
                                         </td>
                                         <td class="p-3 border whitespace-nowrap">
-                                            <div class="text-center"><?php echo $row['profession']?></div>
-                                        </td>
-                                        <td class="p-3 border whitespace-nowrap">
-                                            <div class="text-center"><?php echo $row['home']?></div>
-                                        </td>
-                                        <td class="p-3 border whitespace-nowrap">
-                                            <div class="text-center">৳ <?php echo $row['net_worth']?></div>
-                                        </td>
-                                        <td class="p-3 border whitespace-nowrap">
-                                            <div class="text-center">৳ <?php echo $row['annual_tax']?></div>
-                                        </td>
-                                        <td class="p-3 border whitespace-nowrap">
-                                            <div class="text-center">৳ <?php echo $row['ablable_tax']?></div>
+                                            <div class="text-center">৳ <?php echo $row['collect_tax']?></div>
                                         </td>
                                         <td class="p-3 border whitespace-nowrap">
                                             <div class="text-center">৳ <?php echo $row['due_tax']?></div>
-                                        </td>
-                                        <td class="p-3 border whitespace-nowrap">
-                                            <div class="text-center"><?php echo $row['present_year']?></div>
-                                        </td>
-                                        <td class="p-3 border whitespace-nowrap">
-                                            <div class="text-center"><?php echo $row['mobile_no']?></div>
                                         </td>
                                         
                                         <td class="p-3 border whitespace-nowrap">
@@ -194,13 +164,13 @@ if(isset($_SESSION['ward'])){
                                          <?php  }?>
                                         </td>
 
-                                        <td class="p-3 border whitespace-nowrap">
+                                        <!-- <td class="p-3 border whitespace-nowrap">
                                           <?php  if($row['obostha'] == 'বহাল'){ ?>
                                             <b><div style="color:#fff;background:green;padding:5px;" class="text-center"><?php echo $row['obostha']?></div></b>
                                            <?php }else{ ?>
                                             <b><div style="color:#fff;background:red;padding:5px" class="text-center"><?php echo $row['obostha']?></div></b>
                                          <?php  }?>
-                                        </td>
+                                        </td> -->
 
                                         <td class="p-3 border whitespace-nowrap">
                                             <div class="w-full flex_center gap-1">
