@@ -9,11 +9,11 @@ $data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM person WHERE id=$id
 // $id = $data['admin_id'];
 $ward_id = $data['ward'];
 $ward = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM ward WHERE id=$ward_id"));
-$vls_status = $ward['edit_permision']; 
-if($vls_status == 'OFF'){
-  $vls_status = "disabled";
+$ward_permission = $ward['edit_permision']; 
+if($ward_permission == 'OFF'){
+  $ward_permission = "disabled";
 }else{
-  $vls_status = "";
+  $ward_permission = "";
 }
 $sms_checkbox = "OFF";
 
@@ -37,7 +37,7 @@ if(isset($_POST['submit'])){
   $mobile_no = $_POST['mobile_no'];
   $status = $_POST['status'];
 
-  if($vls_status == ''){
+  if($ward_permission == ''){
   $file_name = $_FILES['file']['name'];
   $file_tmp = $_FILES['file']['tmp_name'];
   move_uploaded_file($file_tmp,"../upload/$file_name");
@@ -115,22 +115,22 @@ if(isset($_POST['submit'])){
 
             <div>
               <label>আইডি নং <span class="requird_star">*</span></label>
-              <input <?php echo $vls_status;?>  type="number" name="id_no" class="input" required value="<?php echo $data['id_no']?>"/>
+              <input <?php echo $ward_permission;?>  type="number" name="id_no" class="input" required value="<?php echo $data['id_no']?>"/>
             </div>
 
             <div>
             <label>করদাতার নাম <span class="requird_star">* </span></label>
-            <input <?php echo $vls_status;?>  type="text" name="name" class="input" required value="<?php echo $data['name']?>"/>
+            <input <?php echo $ward_permission;?>  type="text" name="name" class="input" required value="<?php echo $data['name']?>"/>
             </div>
 
             <div>
             <label>পিতা/স্বামীর নাম <span class="requird_star">* </span></label>
-            <input <?php echo $vls_status;?>  type="text" name="guardian_name" class="input" required value="<?php echo $data['guardian_name']?>"/>
+            <input <?php echo $ward_permission;?>  type="text" name="guardian_name" class="input" required value="<?php echo $data['guardian_name']?>"/>
             </div>
 
             <div>
             <label>ওয়ার্ড <span class="requird_star" >* </span></label>
-            <select <?php echo $vls_status;?> name="ward" id="ward" class="input" required>
+            <select <?php echo $ward_permission;?> name="ward" id="ward" class="input" required>
             <?php 
               $ward_id = $data['ward'];
               $selected_ward = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM ward WHERE id=$ward_id"));
@@ -147,24 +147,24 @@ if(isset($_POST['submit'])){
 
             <div>
             <label>ওয়ার্ড নং <span class="requird_star">*</span></label>
-            <input <?php echo $vls_status;?>  type="text" name="word_no" class="input"  required value="<?php echo $data['word_no']?>"/>
+            <input <?php echo $ward_permission;?>  type="text" name="word_no" class="input"  required value="<?php echo $data['word_no']?>"/>
             </div>
             
             <div>
             <label>পরিবারের সদস্য সংখ্যা <span class="requird_star">*</span></label>
-            <input <?php echo $vls_status;?>  type="text" name="family_member" class="input"  required value="<?php echo $data['family_member']?>"/>
+            <input <?php echo $ward_permission;?>  type="text" name="family_member" class="input"  required value="<?php echo $data['family_member']?>"/>
             </div>
 
             <br>
             <div class="radio_div">
               <div style="width:49%;float:left">
                 <label>পুরুষ</label>
-                <input <?php echo $vls_status;?>  type="text" name="male" class="input"  value="<?php echo $data['male']?>"/>
+                <input <?php echo $ward_permission;?>  type="text" name="male" class="input"  value="<?php echo $data['male']?>"/>
               </div>
                 
               <div style="width:49%;float:right">                  
                 <label>মহিলা</label>
-                <input <?php echo $vls_status;?>  type="text" name="female" class="input"  value="<?php echo $data['female']?>"/>
+                <input <?php echo $ward_permission;?>  type="text" name="female" class="input"  value="<?php echo $data['female']?>"/>
               </div>
             </div>
 
@@ -173,12 +173,12 @@ if(isset($_POST['submit'])){
             <br>
             <div>
             <label>হোল্ডিং নং</label>
-            <input <?php echo $vls_status;?>  type="text" name="holding_no" class="input" value="<?php echo $data['holding_no']?>"/>
+            <input <?php echo $ward_permission;?>  type="text" name="holding_no" class="input" value="<?php echo $data['holding_no']?>"/>
             </div>
 
             <div>
             <label>জাতীয় পরিচয়পত্র নং</label>
-            <input <?php echo $vls_status;?>  type="text" name="nid_no" class="input" value="<?php echo $data['nid_no']?>"/>
+            <input <?php echo $ward_permission;?>  type="text" name="nid_no" class="input" value="<?php echo $data['nid_no']?>"/>
             </div>
 
             <br>
@@ -187,7 +187,7 @@ if(isset($_POST['submit'])){
               <br>
               <div class="pesa">
                 <label for="business">ব্যবসাঃ</label>
-                <input <?php echo $vls_status;?>  type="radio" id="business" required name="profession" value="ব্যবসা"
+                <input <?php echo $ward_permission;?>  type="radio" id="business" required name="profession" value="ব্যবসা"
                 <?php
                 if($data['profession'] == 'ব্যবসা'){
                   echo "checked";
@@ -197,7 +197,7 @@ if(isset($_POST['submit'])){
               </div>
               <div class="pesa">
                 <label for="job">চাকুরীঃ</label>
-                <input <?php echo $vls_status;?>  type="radio" id="job" required name="profession" value="চাকুরি"
+                <input <?php echo $ward_permission;?>  type="radio" id="job" required name="profession" value="চাকুরি"
                 <?php
                 if($data['profession'] == 'চাকুরি'){
                   echo "checked";
@@ -207,7 +207,7 @@ if(isset($_POST['submit'])){
               </div>
               <div class="pesa">
                 <label for="farmer">কৃষিঃ</label>
-                <input <?php echo $vls_status;?>  type="radio" id="farmer" required name="profession" value="কৃষি"
+                <input <?php echo $ward_permission;?>  type="radio" id="farmer" required name="profession" value="কৃষি"
                 <?php
                 if($data['profession'] == 'কৃষি'){
                   echo "checked";
@@ -217,7 +217,7 @@ if(isset($_POST['submit'])){
               </div>
               <div class="pesa">
                 <label for="labor">দিন-মজুরঃ</label>
-                <input <?php echo $vls_status;?>  type="radio" id="labor" required name="profession" value="দিন-মজুর"
+                <input <?php echo $ward_permission;?>  type="radio" id="labor" required name="profession" value="দিন-মজুর"
                 <?php
                 if($data['profession'] == 'দিন-মজুর'){
                   echo "checked";
@@ -227,7 +227,7 @@ if(isset($_POST['submit'])){
               </div>
               <div class="pesa">
                 <label for="expatriate">প্রবাসীঃ</label>
-                <input <?php echo $vls_status;?>  type="radio" id="expatriate" required name="profession" value="প্রবাসী"
+                <input <?php echo $ward_permission;?>  type="radio" id="expatriate" required name="profession" value="প্রবাসী"
                 <?php
                 if($data['profession'] == 'প্রবাসী'){
                   echo "checked";
@@ -237,7 +237,7 @@ if(isset($_POST['submit'])){
               </div>
               <div class="pesa">
                 <label for="worker">শ্রমিকঃ</label>
-                <input <?php echo $vls_status;?>  type="radio" id="worker" required name="profession" value="শ্রমিক"
+                <input <?php echo $ward_permission;?>  type="radio" id="worker" required name="profession" value="শ্রমিক"
                 <?php
                 if($data['profession'] == 'শ্রমিক'){
                   echo "checked";
@@ -256,7 +256,7 @@ if(isset($_POST['submit'])){
               <br>              
               <div class="pesa">
                 <label for="kacha">কাঁচাঃ</label>
-                <input <?php echo $vls_status;?>  type="radio" id="kacha" required name="home" value="কাঁচা"
+                <input <?php echo $ward_permission;?>  type="radio" id="kacha" required name="home" value="কাঁচা"
                 <?php
                 if($data['home'] == 'কাঁচা'){
                   echo "checked";
@@ -267,7 +267,7 @@ if(isset($_POST['submit'])){
               
               <div class="pesa">
                 <label for="paka">পাকাঃ</label>
-                <input <?php echo $vls_status;?>  type="radio" id="paka" required name="home" value="পাকা"
+                <input <?php echo $ward_permission;?>  type="radio" id="paka" required name="home" value="পাকা"
                 <?php
                 if($data['home'] == 'পাকা'){
                   echo "checked";
@@ -278,7 +278,7 @@ if(isset($_POST['submit'])){
               
               <div class="pesa">
                 <label for="adhapaka">আধাপাকাঃ</label>
-                <input <?php echo $vls_status;?>  type="radio" id="adhapaka" required name="home" value="আধাপাকা"
+                <input <?php echo $ward_permission;?>  type="radio" id="adhapaka" required name="home" value="আধাপাকা"
                 <?php
                 if($data['home'] == 'আধাপাকা'){
                   echo "checked";
@@ -289,7 +289,7 @@ if(isset($_POST['submit'])){
               
               <div class="pesa">
                 <label for="building">বিল্ডিংঃ</label>
-                <input <?php echo $vls_status;?>  type="radio" id="building" required name="home" value="বিল্ডিং"
+                <input <?php echo $ward_permission;?>  type="radio" id="building" required name="home" value="বিল্ডিং"
                 <?php
                 if($data['home'] == 'বিল্ডিং'){
                   echo "checked";
@@ -300,7 +300,7 @@ if(isset($_POST['submit'])){
               
               <div class="pesa">
                 <label for="tinset">টিনসেটঃ</label>
-                <input <?php echo $vls_status;?>  type="radio" id="tinset" required name="home" value="টিনসেট"
+                <input <?php echo $ward_permission;?>  type="radio" id="tinset" required name="home" value="টিনসেট"
                 <?php
                 if($data['home'] == 'টিনসেট'){
                   echo "checked";
@@ -316,12 +316,12 @@ if(isset($_POST['submit'])){
             
             <div>
             <label>স্থাপনার মুল্য <span class="requird_star">*</span></label>
-            <input <?php echo $vls_status;?>  type="number" name="net_worth" class="input"  required value="<?php echo $data['net_worth']?>"/>
+            <input <?php echo $ward_permission;?>  type="number" name="net_worth" class="input"  required value="<?php echo $data['net_worth']?>"/>
             </div>
 
             <div>
             <label>বার্ষিক কর</label>
-            <input <?php echo $vls_status;?>  type="number" name="annual_tax" class="input"  value="<?php echo $data['annual_tax']?>"/>
+            <input <?php echo $ward_permission;?>  type="number" name="annual_tax" class="input"  value="<?php echo $data['annual_tax']?>"/>
             </div>
 
             <div>
@@ -341,13 +341,13 @@ if(isset($_POST['submit'])){
 
             <div>
             <label>মোবাইল নং</label>
-            <input <?php echo $vls_status;?>  type="text" name="mobile_no" class="input"  value="<?php echo $data['mobile_no']?>"/>
+            <input <?php echo $ward_permission;?>  type="text" name="mobile_no" class="input"  value="<?php echo $data['mobile_no']?>"/>
             </div>            
 
             <div>
             <label>ছবি</label>
             <img style="width:120px" src="../upload/<?php echo $data['file_name']?>" alt="image">            
-            <input <?php echo $vls_status;?>  type="file" name="file" class="input"  value="<?php echo $data['file_name']?>"/>
+            <input <?php echo $ward_permission;?>  type="file" name="file" class="input"  value="<?php echo $data['file_name']?>"/>
             </div>
 
             <div>
@@ -365,11 +365,11 @@ if(isset($_POST['submit'])){
 
 
             <div class="sms_check">
-              <input <?php echo $vls_status;?>  type="checkbox" name="sms_checkbox" class="input" value="odsfdsf"/>
+              <input <?php echo $ward_permission;?>  type="checkbox" name="sms_checkbox" class="input" value="odsfdsf"/>
               <span>করদাতার মোবাইলে SMS পাঠাতে এটি নির্বাচন করুন</span>
             </div> 
 
-            <input <?php echo $vls_status;?>  class="btn submit_btn" name="submit" type="submit" value="সম্পাদন  করুন" />
+            <input <?php echo $ward_permission;?>  class="btn submit_btn" name="submit" type="submit" value="সম্পাদন  করুন" />
           </form>
         </div>
       </section>

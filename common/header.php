@@ -15,9 +15,9 @@ if($id<1){
     header('location:home.php');
 }
 $union = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM unions WHERE admin_id=$id"));
-// if($union<1){
-//   header("location:home.php");
-// }
+if($union<1){
+  header("location:home.php");
+}
 $union_id = $union['id'];
 $upazila_id = $union['upazila_id'];
 $upazilas = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM upazilas WHERE id=$upazila_id"));

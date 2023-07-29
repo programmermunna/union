@@ -457,6 +457,9 @@ li.main-category.cat:hover .category-wrap {
   width: 25px;
   height: 25px;
 }
+.tax_holder_img{
+  width: 200px;
+}
 
 @media only screen and (max-width: 678px) {
   .pesa{
