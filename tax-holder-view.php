@@ -498,7 +498,6 @@ $admin_id = $id;
             <img class="tax_holder_img" src="upload/<?php echo $data['file']?>" alt="<?php echo $data['file']?>">
             </div> 
 
-            <input class="btn submit_btn" name="submit" type="submit" value="সেভ করুন" value="<?php echo $data['village']?>" />
           </form>
         </div>
       </section>

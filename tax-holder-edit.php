@@ -173,6 +173,8 @@ if(isset($_POST['submit'])){
   $previous_due = $_POST['previous_due'];
   $present_tax = $_POST['present_tax'];
   $annual_rent = $_POST['annual_rent'];
+  $collect_tax = $_POST['collect_tax'];
+  $due_tax = $_POST['due_tax'];
   $status = $_POST['status'];
 
   if($ward_permission == ''){
@@ -193,8 +195,8 @@ if(isset($_POST['submit'])){
     }  
   }
 
-}else{  
-    $sql = "UPDATE tax_holder SET collect_tax='$collect_tax',due_tax='$due_tax', status='$status' WHERE id=$id";
+}else{
+    $sql = "UPDATE tax_holder SET collect_tax='$collect_tax',due_tax='$due_tax', status='$status' WHERE id=$src_id";
     $update = mysqli_query($conn,$sql);
     if($update){
       header("location:tax-holder-all.php?msg=করদাতা সম্পাদন সফল হয়েছে");
