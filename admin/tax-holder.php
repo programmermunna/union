@@ -95,22 +95,15 @@
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ক্রমিক নং</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ছবি</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">আইডি নং</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">নাম</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">খানা প্রধানের নাম</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">পিতা/স্বামীর নাম</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">সদস্য সংখ্যা</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">হোল্ডিং</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">জাতীয় পরিচয়পত্র</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">পেশা</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">গৃহের বিবরন</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">স্থাপনার মূল্য</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">বার্ষিক কর</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">নগদ কর</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">বাৎসরিক গড় আয়</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">পুর্বের বকেয়া</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">বর্তমান কর</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">আদায়কৃত কর</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">বকেয়া কর</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">অর্থ বছর</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">মোবাইল নং</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">স্টাটাস</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">অবস্থা</th>
+                      <!-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">অবস্থা</th> -->
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">প্রতিক্রিয়া</th>
                     </tr>
                   </thead>
@@ -131,7 +124,7 @@
                   }elseif($sess_division > 0){
                     $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  division_id = $sess_division";
                   }else{
-                    $empSQL = "SELECT * FROM person WHERE present_year='$year'";
+                    $empSQL = "SELECT * FROM tax_holder WHERE present_year='$year'";
                   }
                   
                   $query = mysqli_query($conn,$empSQL);
@@ -146,51 +139,30 @@
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>
-                            <img src="../upload/<?php echo $data['file_name'];?>" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
+                            <img src="../upload/<?php echo $data['file'];?>" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
                           </div>
                         </div>
-                      </td>                      
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-secondary text-xs font-weight-bold"><?php echo $data['id_no'];?></span>
                       </td>
                       <td class="align-middle text-center text-sm">
-                        <span class="text-secondary text-xs font-weight-bold"><?php echo $data['name'];?></span>
+                        <span class="text-secondary text-xs font-weight-bold"><?php echo $data['tax_holder_name'];?></span>
                       </td>
                       <td class="align-middle text-center text-sm">
-                        <span class="text-secondary text-xs font-weight-bold"><?php echo $data['guardian_name'];?></span>
+                        <span class="text-secondary text-xs font-weight-bold"><?php echo $data['father_hasbend_name'];?></span>
                       </td>
                       <td class="align-middle text-center text-sm">
-                        <span class="text-secondary text-xs font-weight-bold"><?php echo $data['family_member'];?></span>
+                        <span class="text-secondary text-xs font-weight-bold">৳ <?php echo $data['annual_avg_income'];?></span>
                       </td>
                       <td class="align-middle text-center text-sm">
-                        <span class="text-secondary text-xs font-weight-bold"><?php echo $data['holding_no'];?></span>
+                        <span class="text-secondary text-xs font-weight-bold">৳ <?php echo $data['previous_due'];?></span>
                       </td>
                       <td class="align-middle text-center text-sm">
-                        <span class="text-secondary text-xs font-weight-bold"><?php echo $data['nid_no'];?></span>
+                        <span class="text-secondary text-xs font-weight-bold">৳ <?php echo $data['present_tax'];?></span>
                       </td>
                       <td class="align-middle text-center text-sm">
-                        <span class="text-secondary text-xs font-weight-bold"><?php echo $data['profession'];?></span>
+                        <span class="text-secondary text-xs font-weight-bold">৳ <?php echo $data['collect_tax'];?></span>
                       </td>
                       <td class="align-middle text-center text-sm">
-                        <span class="text-secondary text-xs font-weight-bold"><?php echo $data['home'];?></span>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-secondary text-xs font-weight-bold"><?php echo $data['net_worth'];?></span>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-secondary text-xs font-weight-bold"><?php echo $data['annual_tax'];?></span>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-secondary text-xs font-weight-bold"><?php echo $data['ablable_tax'];?></span>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-secondary text-xs font-weight-bold"><?php echo $data['due_tax'];?></span>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-secondary text-xs font-weight-bold"><?php echo $data['present_year'];?></span>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-secondary text-xs font-weight-bold"><?php echo $data['mobile_no'];?></span>
+                        <span class="text-secondary text-xs font-weight-bold">৳ <?php echo $data['due_tax'];?></span>
                       </td>
 
                       <td class="align-middle text-center">
@@ -201,14 +173,14 @@
                         <?php }?>
                       </td>
 
-                      </td>
-                      <td class="align-middle text-center">
-                        <?php if($data['obostha']=='বহাল'){ ?>
-                          <a href="remove.php?action=বাতিল&&id=<?php echo $data['id'];?>"><span class="text-xs font-weight-bold badge badge-sm bg-gradient-success"><?php echo $data['obostha'];?></span></a>
-                        <?php }else{?>
-                          <a href="remove.php?action=বহাল&&id=<?php echo $data['id'];?>"><span class="text-xs font-weight-bold badge badge-sm bg-gradient-danger"><?php echo $data['obostha'];?></span></a>
-                        <?php }?>                      
-                      </td>
+                        <!-- </td>
+                        <td class="align-middle text-center">
+                          <?php if($data['obostha']=='বহাল'){ ?>
+                            <a href="remove.php?action=বাতিল&&id=<?php echo $data['id'];?>"><span class="text-xs font-weight-bold badge badge-sm bg-gradient-success"><?php echo $data['obostha'];?></span></a>
+                          <?php }else{?>
+                            <a href="remove.php?action=বহাল&&id=<?php echo $data['id'];?>"><span class="text-xs font-weight-bold badge badge-sm bg-gradient-danger"><?php echo $data['obostha'];?></span></a>
+                          <?php }?>                      
+                        </td> -->
 
                       <td style="text-align:center">
                         <a href="tax-holder-edit.php?id=<?php echo $data['id'];?>" class="badge badge-sm bg-gradient-success">Edit</a>

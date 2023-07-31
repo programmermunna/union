@@ -26,6 +26,7 @@ if(isset($_POST['submit'])){
   $religion = $_POST['religion'];
   $profession = $_POST['profession'];
   $nolkup = $_POST['nolkup'];
+  
   $toilet = $_POST['toilet'];
   $relation_1 = $_POST['relation_1'];
   $relation_type_1 = $_POST['relation_type_1'];
@@ -368,7 +369,7 @@ if(isset($_POST['submit'])){
 
             <div>
             <label>বাৎসরিক ভাড়া<span class="requird_star">* </span></label>
-            <input type="text" name="annual_rent" class="input" required placeholder="0"/>
+            <input type="text" name="annual_rent" class="input" required placeholder="20000"/>
             </div>
 
             <div class="radio_div">
