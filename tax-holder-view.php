@@ -496,8 +496,7 @@ $admin_id = $id;
             <div>
             <label>ছবি</label>
             <img class="tax_holder_img" src="upload/<?php echo $data['file']?>" alt="<?php echo $data['file']?>">
-            </div> 
-
+            </div>
           </form>
         </div>
       </section>

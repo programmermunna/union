@@ -617,7 +617,7 @@ if(isset($_POST['submit'])){
 
 
             <div class="sms_check">
-              <input type="checkbox" name="sms_checkbox" class="input" value="odsfdsf"value="<?php echo $data['village']?>" />
+              <input type="checkbox" name="sms_checkbox" class="input" value="<?php echo $data['village']?>" />
               <span>করদাতার মোবাইলে SMS পাঠাতে এটি নির্বাচন করুন</span>
             </div> 
 
