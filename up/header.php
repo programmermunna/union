@@ -118,7 +118,7 @@ if(isset($_SESSION['ward'])){
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://kit.fontawesome.com/6788eb3be6.js" crossorigin="anonymous"></script>
 
-    <link rel="icon" type="image/png" href="upload/<?php echo $website['favicon']?>">
+    <link rel="icon" type="image/png" href="../upload/<?php echo $website['favicon']?>">
 
     <link href='https://fonts.googleapis.com/css?family=Anek Bangla' rel='stylesheet'>
 

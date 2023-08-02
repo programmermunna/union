@@ -1,159 +1,29 @@
-<!-- Header -->
-<?php include("common/header.php");?>
-<!-- Header -->
-<?php
-if(isset($_GET['id'])){
-  $src_id = $_GET['id'];
-}else{
-  header("Location:tax-holder-all.php");
-}
+<?php include("common/home-header.php");?>
+
+<?php if(isset($_POST['submit'])){
+$src_id = 6;
 $data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM tax_holder WHERE id=$src_id"));
-$word_id = $data['ward'];
-$ward = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM ward WHERE id=$word_id"));
 
-$gender = $data['gender'];
-switch ($gender) {
-  case "পুরুষ":
-    $check_gender1 = 'checked';
-    break;
-  case "মহিলা":
-    $check_gender2 = 'checked';
-    break;
-  case "অন্যান্য":
-    $check_gender3 = 'checked';
-    break;
+
+$word_id = $data['ward']; 
+$wards = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM ward WHERE id=$word_id"));
+$union_id = $wards['union_id'];
+$unions = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM unions WHERE id=$union_id"));
+$upazila_id = $unions['upazila_id']; 
+$upazilas = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM upazilas WHERE id=$upazila_id"));
+$district_id = $upazilas['district_id'];
+$districts = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM districts WHERE id=$district_id"));
+$division_id = $districts['division_id'];
+$divisions = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM divisions WHERE id=$division_id"));
+
 }
-
-$religion = $data['religion'];
-switch ($religion) {
-  case "ইসলাম":
-    $check_religion1 = 'checked';
-    break;
-  case "হিন্দু":
-    $check_religion2 = 'checked';
-    break;
-  case "খ্রিষ্টান":
-    $check_religion3 = 'checked';
-    break;
-  case "বৌদ্ধ":
-    $check_religion4 = 'checked';
-    break;
-  case "অন্যান্য":
-    $check_religion5 = 'checked';
-    break;
-}
-
-$profession = $data['profession'];
-switch ($profession) {
-  case "ব্যবসা":
-    $check_profession1 = 'checked';
-    break;
-  case "চাকুরী":
-    $check_profession2 = 'checked';
-    break;
-  case "কৃষি":
-    $check_profession3 = 'checked';
-    break;
-  case "দিন-মজুর":
-    $check_profession4 = 'checked';
-    break;
-  case "প্রবাসীঃ":
-    $check_profession5 = 'checked';
-    break;
-  case "শ্রমিক":
-    $check_profession6 = 'checked';
-    break;
-}
-
- $nolkup = $data['nolkup'];
-switch ($nolkup) {
-  case "হ্যা":
-    $check_nolkup1 = 'checked';
-    break;
-  case "না":
-    $check_nolkup2 = 'checked';
-    break;
-}
-
-$toilet = $data['toilet'];
-switch ($toilet) {
-  case "পাকা":
-    $check_toilet1 = 'checked';
-    break;
-  case "কাচা":
-    $check_toilet2 = 'checked';
-    break;
-  case "নাই":
-    $check_toilet3 = 'checked';
-    break;
-}
-
-$home = $data['home'];
-switch ($home) {
-  case "কাঁচা":
-    $check_home1 = 'checked';
-    break;
-  case "পাকা":
-    $check_home2 = 'checked';
-    break;
-  case "আধাপাকা":
-    $check_home3 = 'checked';
-    break;
-  case "বিল্ডিং":
-    $check_home4 = 'checked';
-    break;
-  case "টিনসেট":
-    $check_home5 = 'checked';
-    break;
-}
-
-$home_type = $data['home_type'];
-switch ($home_type) {
-  case "আবাসিক":
-    $check_home_type1 = 'checked';
-    break;
-  case "বানিজ্যিক":
-    $check_home_type2 = 'checked';
-    break;
-}
-
-$home_owner = $data['home_owner'];
-switch ($home_owner) {
-  case "নিজে বসবাস":
-    $check_home_owner1 = 'checked';
-    break;
-  case "ভাড়া দেওয়া":
-    $check_home_owner2 = 'checked';
-    break;
-  case "উভয়":
-    $check_home_owner3 = 'checked';
-    break;
-}
-
-$ward_permission = $ward['edit_permision']; 
-if($ward_permission == 'OFF'){
-  $ward_permission = "disabled";
-}else{
-  $ward_permission = "";
-}
-$sms_checkbox = "OFF";
-
-
-$present_year;
-$admin_id = $id;
-
-?>   
-    <!-- Main Content -->
-    <main class="main_content">
-<!-- Side Navbar Links -->
-<?php include("common/sidebar.php");?>
-<!-- Side Navbar Links -->
-
-      <!-- Page Content -->
-      <section class="content_wrapper">
-        <!-- Page Main Content -->
-        <div class="add_page_main_content">         
-          
+print_r($data); exit;
+?>
+        <main>
+            <section class="hero" style="padding:30px 0">
+                <div class="container">
+                    <div class="hero-inners">
+						<div class="card2">							
           <form id="edit_tax_holder_form" action="" method="POST" enctype="multipart/form-data">
             <div>
             <label>ওয়ার্ড সিলেক্ট করুন<span class="requird_star" >* </span></label>
@@ -493,13 +363,12 @@ $admin_id = $id;
             <img class="tax_holder_img" src="upload/<?php echo $data['file']?>" alt="<?php echo $data['file']?>">
             </div>
           </form>
-        </div>
-      </section>
-      <!-- Page Content -->
-    </main>
+							</div>
+						</div>
+                    </div>
+                </div>
+            </section>
+        </main>
 
-<!-- Side Navbar Links -->
-<?php include("common/footer.php");?>
-<!-- Side Navbar Links -->
-
+<?php include("common/home-footer.php")?>
 
