@@ -1,11 +1,64 @@
 <?php include("common/home-header.php");?>
+
+<?php
+
+	$exect_id = '';
+	$ward = '';
+	$father_hasbend_name = '';
+	$tax_holder_name = ''; 
+	$present_year = $present_year; 
+
+if(isset($_POST['submit'])){
+	$exect_id = $_POST['exect_id'];	
+	$father_hasbend_name = $_POST['father_hasbend_name'];
+	$tax_holder_name = $_POST['tax_holder_name'];
+	$present_year = $_POST['present_year'];
+
+	if(isset($_POST['ward'])){
+		$ward = $_POST['ward'];		
+	}else{
+		$ward = '';
+	};
+	
+	if(!empty($exect_id)){
+		$exect_id = $_POST['exect_id'];
+		$data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM tax_holder WHERE present_year='$present_year' AND ( holding=$exect_id OR phone=$exect_id OR nid_no=$exect_id) "));
+		if(!$data){header("location:tax-check.php");}
+	}elseif(!empty($ward)){
+		$ward = $_POST['ward'];
+		$father_hasbend_name = $_POST['father_hasbend_name'];
+		$tax_holder_name = $_POST['tax_holder_name'];
+		$data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM tax_holder WHERE present_year='$present_year' AND ward='$ward' AND father_hasbend_name='$father_hasbend_name' AND tax_holder_name='$tax_holder_name'"));
+		if(!$data){header("location:tax-check.php");}
+	}else{
+		header("location:tax-check.php");
+	}
+
+	
+	$word_id = $data['ward'];
+	$ward = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM ward WHERE id=$word_id"));
+	$union_id = $ward['union_id'];
+	$unions = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM unions WHERE id=$union_id"));
+	$upazila_id = $unions['upazila_id']; 
+	$upazilas = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM upazilas WHERE id=$upazila_id"));
+	$district_id = $upazilas['district_id'];
+	$districts = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM districts WHERE id=$district_id"));
+	$division_id = $districts['division_id'];
+	$divisions = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM divisions WHERE id=$division_id"));
+
+	include("tax-result.php"); exit;
+	
+	}
+
+
+?>
         <main>
             <section class="hero" style="padding:30px 0">
                 <div class="container">
                     <div class="hero-inners">
 						<div class="card2">
 							<div class="from">
-								<form action="tax-result.php" method="POST">
+								<form action="" method="POST">
 									<div style="display: flex;justify-content:space-between">
 										<div><h3>আপনার কর যাচাই করুন</h3></div>
 										<div>
@@ -57,9 +110,9 @@
 									</div>
 
 									<div>
-										<label for="guardian_name">করদাতার পিতা/স্বামী</label>
+										<label for="father_hasbend_name">করদাতার পিতা/স্বামী</label>
 										<br>
-										<input  name="guardian_name" type="text" >
+										<input  name="father_hasbend_name" type="text" >
 									</div>
 									<div>
 										<label for="tax_holder_name">করদাতার নাম</label>
@@ -90,7 +143,6 @@
         var division = $(this).val();
         return opt_func("","districts","division_id",division,".district");
         })
-
 
       $(".district").on("change",function(){
         var district = $(this).val();

@@ -316,7 +316,8 @@ select {
 }
 
 input,select,textarea{
-  background: linear-gradient(rgb(135, 207, 235),rgba(255, 255, 255, 0.226)) ;
+  /* background: linear-gradient(rgb(135, 207, 235),rgba(255, 255, 255, 0.226)) ; */
+  background: linear-gradient(45deg, black, #00aeff) ;
 }
 select option{
   background: skyblue;
@@ -331,6 +332,10 @@ select option{
   color: #fff;
 }
 
+
+.tax_result>div{
+  margin: 10px 0;
+}
 
 
 
@@ -428,5 +433,8 @@ select option{
   .counter>div>p{
     font-size: 12px;
   }
+  .hero {
+    text-align: left;
+}
  
 }
