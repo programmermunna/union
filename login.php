@@ -8,7 +8,7 @@ if(isset($_SESSION['admin_id'])){
   $id = 0;
 }
 if($id>0){
-    header('location:index.php');
+    header('location:tax-holder-all.php');
 }
 
 if(isset($_POST['submit'])){
@@ -19,7 +19,7 @@ if(isset($_POST['submit'])){
     $id = $row['admin_id'];
     $_SESSION['admin_id'] = $id;
     setcookie('admin_id', $id , time()+2592000);
-    header('location:index.php?msg=আপনাকে স্বাগতম');
+    header('location:tax-holder-all.php?msg=আপনাকে স্বাগতম');
     }else{
       $err = "দয়া করে আবার চেষ্টা করুন।";
       header("location:login.php?err=$err");

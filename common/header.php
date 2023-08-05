@@ -97,7 +97,7 @@ if(isset($_SESSION['ward'])){
         <div class="header_left">
           <!-- LOGO -->
           <div class="header_brand">
-            <a href="index.php" class="go_home">
+            <a href="tax-holder-all.php" class="go_home">
               <div>
                 <?php if($website['logo']=""){ ?>               
                   <img style="width:150px;height:50px" src="upload/<?php echo $website['logo'];?>" alt="">

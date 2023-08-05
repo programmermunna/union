@@ -23,9 +23,9 @@ if(isset($_GET['ward'])){
     $_SESSION['ward'] = $_GET['ward'];
 }
 if(isset($_SESSION['ward'])){
-    $sess_vlg = $_SESSION['ward'];
+    $sess_ward = $_SESSION['ward'];
 }else{
-    $sess_vlg = 0;
+    $sess_ward = 0;
 }
 ?> 
 <!-- Main Content -->
@@ -36,7 +36,6 @@ if(isset($_SESSION['ward'])){
 
     <!-- Page Content -->
     <section class="content_wrapper">
-
         <!-- Page Main Content -->
         <section class="page_main_content">
             <div class="main_content_container">
@@ -47,7 +46,7 @@ if(isset($_SESSION['ward'])){
                         <select style="width: 200px;" class="input" id="year" name="year" onchange="window.location.href='tax-holder-all.php?year='+this.options [this.selectedIndex].value">
                             <option selected style="display:none;" value="<?php echo $year?>"><?php echo $year?></option>                            
                             <?php 
-                            $years = mysqli_query($conn,"SELECT DISTINCT present_year FROM person WHERE admin_id=$id ORDER BY id DESC");
+                            $years = mysqli_query($conn,"SELECT DISTINCT present_year FROM tax_holder WHERE admin_id=$id ORDER BY id DESC");
                             while($data = mysqli_fetch_assoc($years)){ ?>
                             <option value="<?php echo $data['present_year']?>"><?php echo $data['present_year']?></option>
                             <?php  }?>
@@ -61,12 +60,11 @@ if(isset($_SESSION['ward'])){
                         </div>
 
                         <div>
-                            <form action="" method="GET">
                                 <div class="table_header_right">
-                                <select style="width: 350PX;" name="ward" id="ward" class="input">
+                                <select style="width: 350PX;"  onchange="window.location.href='tax-holder-all.php?ward='+this.options [this.selectedIndex].value" name="ward" id="ward" class="input">
                                     <?php
-                                    if($sess_vlg > 0 ){ 
-                                    $select_ward  = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM ward WHERE admin_id=$id AND id=$sess_vlg"));
+                                    if($sess_ward > 0 ){ 
+                                    $select_ward  = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM ward WHERE admin_id=$id AND id=$sess_ward"));
                                     ?>
                                     <option selected value="<?php echo $select_ward['id']?>"><?php echo $select_ward['bn_name']?></option>                                        
                                     <?php  }else{ ?>
@@ -79,15 +77,12 @@ if(isset($_SESSION['ward'])){
                                         <option value="<?php echo $ward['id']?>"><?php echo $ward['bn_name']?></option>
                                     <?php  }?>
                                 </select>
-
-                                <input style="cursor:pointer;" type="submit" class="btn" value="খুজুন"/>
                             </div>
-                        </form>
                         </div>
 
                         <form action="" method="GET">
                             <div class="table_header_right">
-                                <input type="search" name="src" placeholder="করদাতা খুজুন" />
+                                <input type="search" name="src" placeholder="করদাতা খুজুন" value="<?php if(isset($_GET['src'])){echo $_GET['src'];}?>"/>
                                 <input style="cursor:pointer;" type="submit" class="btn" value="খুজুন"/>
                             </div>
                         </form>
@@ -115,9 +110,9 @@ if(isset($_SESSION['ward'])){
                                 <?php
                                 if(isset($_GET['src'])){
                                     $src = $_GET['src'];
-                                    $empSQL = "SELECT * FROM tax_holder WHERE admin_id=$id AND present_year='$year' AND (name LIKE '$src' OR mobile_no = '$src' OR nid_no = '$src' OR holding_no = '$src' OR guardian_name LIKE '$src')";
-                                }elseif($sess_vlg > 0){
-                                    $empSQL = "SELECT * FROM tax_holder WHERE admin_id=$id AND present_year='$year' AND ward = $sess_vlg ";
+                                    $empSQL = "SELECT * FROM tax_holder WHERE admin_id = '$id' AND present_year = '$year' AND (tax_holder_name LIKE '$src' OR phone = '$src' OR nid_no = '$src' OR holding = '$src')";
+                                }elseif($sess_ward > 0){
+                                    $empSQL = "SELECT * FROM tax_holder WHERE admin_id=$id AND present_year='$year' AND ward = '$sess_ward'";
                                 }else{
                                     $empSQL = "SELECT * FROM tax_holder WHERE admin_id=$id AND present_year='$year' ";
                                 }
@@ -138,7 +133,7 @@ if(isset($_SESSION['ward'])){
                                             <div class="text-center"><?php echo $row['tax_holder_name']?></div>
                                         </td>
                                         <td class="p-3 border whitespace-nowrap">
-                                            <div class="text-center">৳ <?php echo $row['father_hasbend_name']?></div>
+                                            <div class="text-center"><?php echo $row['father_hasbend_name']?></div>
                                         </td>
                                         <td class="p-3 border whitespace-nowrap">
                                             <div class="text-center">৳ <?php echo $row['annual_avg_income']?></div>

@@ -141,11 +141,9 @@ if(isset($_SESSION['ward'])){
         </li>
           <li><a href="#">হোম <i class="fa-solid fa-caret-down"></i></a>
             <ul class="nav_dropdown_link">
+              <li><a href="up-dashboard.php"><img src="../upload/home.png" alt="Card Image" > সমস্ত তথ্য</a></li>
               <li><a href="up-tax-holder.php"><img src="../upload/home.png" alt="Card Image" > করদাতার তালিকা</a></li>
               <li><a href="up-tax-holder-add"><img src="../upload/home.png" alt="Card Image" > করদাতা যুক্ত করুন </a></li>
-              <li><a href="#"><img src="../upload/home.png" alt="Card Image" > সিঙ্গেল ধার্য এডিট </a></li>
-              <li><a href="#"><img src="../upload/home.png" alt="Card Image" > সচিব এপ্রুভ</a></li>
-              <li><a href="#"><img src="../upload/home.png" alt="Card Image" > সার্চ হোল্ডিং</a></li>
             </ul>
         </li>
           <li><a href="#">গ্রাহক <i class="fa-solid fa-caret-down"></i></a>

@@ -1,7 +1,7 @@
 <!-- Header -->
 <?php include("common/header.php");?>
 <!-- Header -->
-<?php 
+<?php header("location:tax-holder-all.php");
      
     $present_year = date("Y",time());
     $total_tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM person WHERE admin_id=$id"));

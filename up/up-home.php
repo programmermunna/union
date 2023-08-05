@@ -7,11 +7,9 @@
             <img src="../upload/home.png" alt="Card Image" >
           </div>
           <ul class="link-list">
+            <li><a href="up-dashboard.php"><i class="fa-solid fa-share"></i> সমস্ত তথ্য</a></li>
             <li><a href="up-tax-holder.php"><i class="fa-solid fa-share"></i> করদাতার তালিকা</a></li>
             <li><a href="up-tax-holder-add"><i class="fa-solid fa-share"></i> করদাতা যুক্ত করুন </a></li>
-            <li><a href="#"><i class="fa-solid fa-share"></i> সিঙ্গেল ধার্য এডিট </a></li>
-            <li><a href="#"><i class="fa-solid fa-share"></i> সচিব এপ্রুভ</a></li>
-            <li><a href="#"><i class="fa-solid fa-share"></i> সার্চ হোল্ডিং</a></li>
           </ul>
         </div>
       </div>
