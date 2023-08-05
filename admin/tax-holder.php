@@ -180,20 +180,7 @@
               </div>
               
               <div class="card p-5"> 
-                
-              
-
-              <?php 
-                
-              //   $annual_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(annual_tax) FROM tax_holder WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union AND  ward = $sess_ward"));
-              //   $ablable_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(ablable_tax) FROM tax_holder WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union AND  ward = $sess_ward"));
-              //   $due_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(due_tax) FROM tax_holder WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union AND  ward = $sess_ward"));
-            
-              // echo "_". $annual_tax = $annual_tax['SUM(annual_tax)'];
-              // echo "_". $ablable_tax = $ablable_tax['SUM(ablable_tax)'];
-              // echo "_". $due_tax = $due_tax['SUM(due_tax)'];
-              ?>
-
+         
                   <script type="text/javascript">
                   google.charts.load('current', {'packages':['bar']});
                   google.charts.setOnLoadCallback(drawChart);
@@ -224,7 +211,7 @@
                           $ablable_tax = $ablable_tax['SUM(collect_tax)'];
                           $due_tax = $due_tax['SUM(due_tax)'];
                       ?>
-                      ['<?php echo $year;?>',<?php echo $annual_tax;?>,<?php echo $ablable_tax;?>,<?php echo $due_tax;?>],   
+                      ['<?php echo $year;?>',<?php echo $annual_tax;?>,<?php echo $ablable_tax;?>,<?php echo $due_tax;?>],
                       <?php   
                         }
                       ?> 
