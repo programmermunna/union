@@ -3,72 +3,102 @@
 header('Content-Type:application/xls');
 header('Content-Disposition:attachment;filename=report.xls');
 
-  if(isset($_GET['src'])){
-    $src = $_GET['src'];
-    $empSQL = "SELECT * FROM person WHERE present_year='$year' AND (name LIKE '$src' OR guardian_name LIKE '$src' OR id_no = '$src' OR mobile_no = '$src' OR nid_no = '$src' OR holding_no = '$src')";
-  }elseif($sess_division > 0 && $sess_district > 0  && $sess_upazila > 0 && $sess_union > 0 && $sess_ward > 0){
-    $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union AND  ward = $sess_ward";
-  }elseif($sess_division > 0 && $sess_district > 0  && $sess_upazila > 0 && $sess_union > 0){
-    $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union";
-  }elseif($sess_division > 0 && $sess_district > 0  && $sess_upazila > 0){
-    $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila";
-  }elseif($sess_division > 0 && $sess_district > 0){
-    $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district";
-  }elseif($sess_division > 0){
-    $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  division_id = $sess_division";
-  }else{
-    $empSQL = "SELECT * FROM person WHERE present_year='$year'";
-  }
+//session Year
+if(isset($_SESSION['year'])){
+    $year = $_SESSION['year'];
+}else{
+    $year = $present_year;
+}
+
+
+//session ward
+if(isset($_SESSION['ward'])){
+    $sess_ward = $_SESSION['ward'];
+}else{
+    $sess_ward = 0;
+}
+
+if($sess_ward > 0){
+  $empSQL = "SELECT * FROM tax_holder WHERE present_year='$year' AND ward = $sess_ward";
+}else{
+  $empSQL = "SELECT * FROM tax_holder WHERE present_year='$year' ";
+}
 
 $res = mysqli_query($conn, $empSQL);
 ?>
     <table>
             <tr style="font-weight:bolder;">
                 <td>ক্রমিক নং</td>
-                <td>আইডি নং</td>
-                <td>করদাতার নাম</td>
+                <td>ওয়ার্ড </td>
+                <td>খানা প্রধানের নাম</td>
                 <td>পিতা/স্বামীর নাম</td>
-                <td>ওয়ার্ড</td>
-                <td>ওয়ার্ড নং</td>
-                <td>পরিবারের সদস্য সংখ্যা</td>
-                <td>পুরুষ</td>
-                <td>মহিলা</td>
-                <td>হোল্ডিং নং</td>
-                <td>জাতীয় পরিচয়পত্র নং</td>
+                <td>মাতার নাম</td>
+                <td>গ্রাম/পাড়া</td>
+                <td>জন্ম তারিখ</td>
+                <td>জন্ম নিবন্ধন </td>
+                <td>এনআইডি নাম্বার</td>
+                <td>হোল্ডিং নাম্বার</td>
+                <td>শিক্ষাগত যোগ্যতা </td>
+                <td>মোবাইল নাম্বার</td>
+                <td>সামাজিক সুবিধা ১</td>
+                <td>সামাজিক সুবিধা ২</td>
+                <td>সামাজিক সুবিধা ৩</td>
+                <td>খানা প্রধানের লিঙ্গ </td>
+                <td>খানা প্রধানের ধর্ম</td>
                 <td>পেশা</td>
-                <td>গৃহের বিবরন</td>
-                <td>স্থাপনার মুল্য</td>
-                <td>বার্ষিক কর</td>
-                <td>নগদ কর</td>
+                <td>নলকুপ আছে কিনা</td>
+                <td>পায়খানার ধরন</td>
+                <td>সদস্যের নাম লিখুন</td>
+                <td>সদস্যের সম্পর্ক লিখুন</td>
+                <td>সদস্যের নাম লিখুন</td>
+                <td>সদস্যের সম্পর্ক লিখুন</td>
+                <td>অবকাঠামোর ধরন</td>
+                <td>অবকাঠামোর ধরন</td>
+                <td>বাৎসরিক ভাড়া</td>
+                <td>বসবাসের ধরন</td>
+                <td>পুর্বের বকেয়া </td>
+                <td>বর্তমান কর</td>
+                <td>আদায়কৃত কর</td>
                 <td>বকেয়া কর</td>
-                <td>অর্থ বছর</td>
-                <td>মোবাইল নং</td>
                 <td>স্টাটাস</td>
-                <td>অবস্থা</td>
             </tr>
-            <?php while($row=mysqli_fetch_assoc($res)){?>
+            <?php while($row=mysqli_fetch_assoc($res)){
+              $word_id = $row['ward'];
+              $word = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM ward WHERE id=$word_id"));?>
 	        <tr>
-                <td><?php echo $row['id'];?></td>
-                <td><?php echo $row['id_no'];?></td>
-                <td><?php echo $row['name'];?></td>
-                <td><?php echo $row['guardian_name'];?></td>
-                <td><?php echo $row['ward'];?></td>
-                <td><?php echo $row['word_no'];?></td>
-                <td><?php echo $row['family_member'];?></td>
-                <td><?php echo $row['male'];?></td>
-                <td><?php echo $row['female'];?></td>
-                <td><?php echo $row['holding_no'];?></td>
+          <td><?php echo $row['id'];?></td>
+                <td><?php echo $word['bn_name'];?></td>
+                <td><?php echo $row['tax_holder_name'];?></td>
+                <td><?php echo $row['father_hasbend_name'];?></td>
+                <td><?php echo $row['mother_name'];?></td>
+                <td><?php echo $row['village'];?></td>
+                <td><?php echo $row['date_of_birth'];?></td>
+                <td><?php echo $row['birth_date'];?></td>
                 <td><?php echo $row['nid_no'];?></td>
+                <td><?php echo $row['holding'];?></td>
+                <td><?php echo $row['education'];?></td>
+                <td><?php echo $row['phone'];?></td>
+                <td><?php echo $row['social_benifit_1'];?></td>
+                <td><?php echo $row['social_benifit_2'];?></td>
+                <td><?php echo $row['social_benifit_3'];?></td>
+                <td><?php echo $row['gender'];?></td>
+                <td><?php echo $row['religion'];?></td>
                 <td><?php echo $row['profession'];?></td>
+                <td><?php echo $row['nolkup'];?></td>
+                <td><?php echo $row['toilet'];?></td>
+                <td><?php echo $row['relation_1'];?></td>
+                <td><?php echo $row['relation_type_1'];?></td>
+                <td><?php echo $row['relation_2'];?></td>
+                <td><?php echo $row['relation_type_2'];?></td>
                 <td><?php echo $row['home'];?></td>
-                <td><?php echo $row['net_worth'];?></td>
-                <td><?php echo $row['annual_tax'];?></td>
-                <td><?php echo $row['ablable_tax'];?></td>
+                <td><?php echo $row['home_owner'];?></td>
+                <td><?php echo $row['annual_rent'];?></td>
+                <td><?php echo $row['home_owner'];?></td>
+                <td><?php echo $row['previous_due'];?></td>
+                <td><?php echo $row['present_tax'];?></td>
+                <td><?php echo $row['collect_tax'];?></td>
                 <td><?php echo $row['due_tax'];?></td>
-                <td><?php echo $row['present_year'];?></td>
-                <td><?php echo $row['mobile_no'];?></td>
                 <td><?php echo $row['status'];?></td>
-                <td><?php echo $row['obostha'];?></td>
             </tr>
 <?php }?>
     </table>

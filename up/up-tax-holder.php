@@ -54,7 +54,7 @@ if(isset($_SESSION['ward'])){
                         <div class="table_header_left">
                             <a href="up-tax-holder.php?session_destroy=true" class="px-4 py-2 text-sm bg-blue-600 text-white rounded focus:ring"><i class="fa-solid fa-rotate-right"></i> refresh</a>
                             <a href="up-tax-holder-add.php" class="px-4 py-2 text-sm bg-blue-600 text-white rounded focus:ring">Add New</a>
-                            <a href="up-tax-holder-export.php" class="px-4 py-2 text-sm bg-blue-600 text-white rounded focus:ring">Export Excel</a>
+                            <a href="../tax-holder-export.php" class="px-4 py-2 text-sm bg-blue-600 text-white rounded focus:ring">Export Excel</a>
                         </div>
 
                         <div>

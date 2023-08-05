@@ -19,7 +19,7 @@
                   <select class="input" id="year" name="year" onchange="window.location.href='tax-holder.php?year='+this.options [this.selectedIndex].value">
                     <option selected style="display:none;" value="<?php echo $year?>"><?php echo $year?></option>
                     <?php 
-                    $years = mysqli_query($conn,"SELECT DISTINCT present_year FROM person ORDER BY id DESC");
+                    $years = mysqli_query($conn,"SELECT DISTINCT present_year FROM tax_holder ORDER BY id DESC");
                     while($data = mysqli_fetch_assoc($years)){ ?>
                     <option value="<?php echo $data['present_year']?>"><?php echo $data['present_year']?></option>
                     <?php  }?>
@@ -102,8 +102,7 @@
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">বর্তমান কর</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">আদায়কৃত কর</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">বকেয়া কর</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">স্টাটাস</th>
-                      <!-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">অবস্থা</th> -->
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">স্টাটাস</th> 
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">প্রতিক্রিয়া</th>
                     </tr>
                   </thead>
@@ -112,26 +111,23 @@
                   <?php 
                   if(isset($_GET['src'])){
                     $src = $_GET['src'];
-                    $empSQL = "SELECT * FROM person WHERE present_year='$year' AND (name LIKE '$src' OR guardian_name LIKE '$src' OR id_no = '$src' OR mobile_no = '$src' OR nid_no = '$src' OR holding_no = '$src')";
+                    $empSQL = "SELECT * FROM tax_holder WHERE present_year='$year' AND (tax_holder_name LIKE '$src' OR phone = '$src' OR nid_no = '$src' OR holding = '$src')";
                   }elseif($sess_division > 0 && $sess_district > 0  && $sess_upazila > 0 && $sess_union > 0 && $sess_ward > 0){
-                    $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union AND ward = $sess_ward";
+                    $empSQL = "SELECT * FROM tax_holder WHERE present_year='$year' AND ward = $sess_ward";
                   }elseif($sess_division > 0 && $sess_district > 0  && $sess_upazila > 0 && $sess_union > 0){
-                    $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union";
+                    $empSQL = "SELECT * FROM tax_holder WHERE present_year='$year'";
                   }elseif($sess_division > 0 && $sess_district > 0  && $sess_upazila > 0){
-                    $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila";
+                    $empSQL = "SELECT * FROM tax_holder WHERE present_year='$year'";
                   }elseif($sess_division > 0 && $sess_district > 0){
-                    $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district";
+                    $empSQL = "SELECT * FROM tax_holder WHERE present_year='$year'";
                   }elseif($sess_division > 0){
-                    $empSQL = "SELECT * FROM person WHERE present_year='$year' AND  division_id = $sess_division";
+                    $empSQL = "SELECT * FROM tax_holder WHERE present_year='$year'";
                   }else{
                     $empSQL = "SELECT * FROM tax_holder WHERE present_year='$year'";
                   }
                   
                   $query = mysqli_query($conn,$empSQL);
-                  $i=0;
-                  while($data= mysqli_fetch_assoc($query)){ 
-                    $i++;
-                    ?>
+                  while($data= mysqli_fetch_assoc($query)){ ?>
                     <tr>
                       <td class="align-middle text-center text-sm">
                         <span class="text-secondary text-xs font-weight-bold"><?php echo $data['id'];?></span>
@@ -173,15 +169,6 @@
                         <?php }?>
                       </td>
 
-                        <!-- </td>
-                        <td class="align-middle text-center">
-                          <?php if($data['obostha']=='বহাল'){ ?>
-                            <a href="remove.php?action=বাতিল&&id=<?php echo $data['id'];?>"><span class="text-xs font-weight-bold badge badge-sm bg-gradient-success"><?php echo $data['obostha'];?></span></a>
-                          <?php }else{?>
-                            <a href="remove.php?action=বহাল&&id=<?php echo $data['id'];?>"><span class="text-xs font-weight-bold badge badge-sm bg-gradient-danger"><?php echo $data['obostha'];?></span></a>
-                          <?php }?>                      
-                        </td> -->
-
                       <td style="text-align:center">
                         <a href="tax-holder-edit.php?id=<?php echo $data['id'];?>" class="badge badge-sm bg-gradient-success">Edit</a>
                         <a href="tax-holder-view.php?id=<?php echo $data['id'];?>" class="badge badge-sm bg-gradient-success">View</a>
@@ -198,9 +185,9 @@
 
               <?php 
                 
-              //   $annual_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(annual_tax) FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union AND  ward = $sess_ward"));
-              //   $ablable_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(ablable_tax) FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union AND  ward = $sess_ward"));
-              //   $due_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(due_tax) FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union AND  ward = $sess_ward"));
+              //   $annual_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(annual_tax) FROM tax_holder WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union AND  ward = $sess_ward"));
+              //   $ablable_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(ablable_tax) FROM tax_holder WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union AND  ward = $sess_ward"));
+              //   $due_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(due_tax) FROM tax_holder WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union AND  ward = $sess_ward"));
             
               // echo "_". $annual_tax = $annual_tax['SUM(annual_tax)'];
               // echo "_". $ablable_tax = $ablable_tax['SUM(ablable_tax)'];
@@ -215,62 +202,29 @@
                     var data = google.visualization.arrayToDataTable([
                       ['অর্থবছর','অর্থবছরের কর', 'জমাকৃত কর', 'বাকি কর'],
                       <?php
-                          if($sess_division > 0 && $sess_district > 0  && $sess_upazila > 0 && $sess_union > 0 && $sess_ward > 0){
-                            $query = "SELECT * FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union AND  ward = $sess_ward  GROUP BY present_year";
-                          }elseif($sess_division > 0 && $sess_district > 0  && $sess_upazila > 0 && $sess_union > 0){
-                            $query = "SELECT * FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union  GROUP BY present_year";
-                          }elseif($sess_division > 0 && $sess_district > 0  && $sess_upazila > 0){
-                            $query = "SELECT * FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila  GROUP BY present_year";
-                          }elseif($sess_division > 0 && $sess_district > 0){
-                            $query = "SELECT * FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district  GROUP BY present_year";
-                          }elseif($sess_division > 0){
-                            $query = "SELECT * FROM person WHERE present_year='$year' AND  division_id = $sess_division  GROUP BY present_year";
+                          if($sess_ward > 0){
+                            $query = "SELECT * FROM tax_holder WHERE present_year='$year' AND  ward = '$sess_ward'  GROUP BY present_year";
                           }else{
-                            $query="SELECT * FROM person WHERE present_year='$year' GROUP BY present_year";
+                            $query="SELECT * FROM tax_holder WHERE present_year='$year' GROUP BY present_year";
                           }
                         $res=mysqli_query($conn,$query);
                         while($data=mysqli_fetch_array($res)){
-                          if($sess_division > 0 && $sess_district > 0  && $sess_upazila > 0 && $sess_union > 0 && $sess_ward > 0){
-                            
-                          $annual_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(annual_tax) FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union AND  ward = $sess_ward"));
-                          $ablable_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(ablable_tax) FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union AND  ward = $sess_ward"));
-                          $due_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(due_tax) FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union AND  ward = $sess_ward"));
-
-                          }elseif($sess_division > 0 && $sess_district > 0  && $sess_upazila > 0 && $sess_union > 0){
-                            
-                            $annual_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(annual_tax) FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union"));
-                            $ablable_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(ablable_tax) FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union"));
-                            $due_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(due_tax) FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila AND  union_id = $sess_union"));
-  
-                          }elseif($sess_division > 0 && $sess_district > 0  && $sess_upazila > 0){
-                            
-                            $annual_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(annual_tax) FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila"));
-                            $ablable_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(ablable_tax) FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila"));
-                            $due_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(due_tax) FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district AND  upazila_id = $sess_upazila"));
-  
-                          }elseif($sess_division > 0 && $sess_district > 0){
-                            
-                            $annual_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(annual_tax) FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district"));
-                            $ablable_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(ablable_tax) FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district"));
-                            $due_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(due_tax) FROM person WHERE present_year='$year' AND  division_id = $sess_division AND  district_id = $sess_district"));
-  
-                          }elseif($sess_division > 0){
-                            
-                            $annual_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(annual_tax) FROM person WHERE present_year='$year' AND  division_id = $sess_division"));
-                            $ablable_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(ablable_tax) FROM person WHERE present_year='$year' AND  division_id = $sess_division"));
-                            $due_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(due_tax) FROM person WHERE present_year='$year' AND  division_id = $sess_division"));
+                          if($sess_ward > 0){
+                            $annual_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(present_tax) FROM tax_holder WHERE present_year = '$year' AND ward='$sess_ward' "));
+                            $ablable_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(collect_tax) FROM tax_holder WHERE present_year='$year' AND ward='$sess_ward' "));
+                            $due_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(due_tax) FROM tax_holder WHERE present_year='$year' AND ward='$sess_ward' "));
   
                           }else{                            
-                            $annual_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(annual_tax) FROM person WHERE present_year = '$present_year'"));
-                            $ablable_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(ablable_tax) FROM person WHERE present_year='$present_year'"));
-                            $due_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(due_tax) FROM person WHERE present_year='$present_year'"));
+                            $annual_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(present_tax) FROM tax_holder WHERE present_year = '$year'"));
+                            $ablable_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(collect_tax) FROM tax_holder WHERE present_year='$year'"));
+                            $due_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(due_tax) FROM tax_holder WHERE present_year='$year'"));
                           }
 
-                          $annual_tax = $annual_tax['SUM(annual_tax)'];
-                          $ablable_tax = $ablable_tax['SUM(ablable_tax)'];
+                          $annual_tax = $annual_tax['SUM(present_tax)'];
+                          $ablable_tax = $ablable_tax['SUM(collect_tax)'];
                           $due_tax = $due_tax['SUM(due_tax)'];
                       ?>
-                      ['<?php echo $present_year;?>',<?php echo $annual_tax;?>,<?php echo $ablable_tax;?>,<?php echo $due_tax;?>],   
+                      ['<?php echo $year;?>',<?php echo $annual_tax;?>,<?php echo $ablable_tax;?>,<?php echo $due_tax;?>],   
                       <?php   
                         }
                       ?> 
@@ -279,7 +233,7 @@
                     var options = {
                       chart: {
                         title: 'Tax Graph',
-                        subtitle: 'Annual, Collection, and Due: 2022-<?php echo date("Y");?>',
+                        subtitle: 'Annual, Collection, and Due: <?php echo $year;?>',
                       },
                       bars: 'vertical' // Required for Material Bar Charts.
                     };
