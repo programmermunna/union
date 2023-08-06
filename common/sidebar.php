@@ -9,26 +9,16 @@
         <a href="tax-holder-all.php">
           <button class="btn nav_btn"><span class="nav_icon seller_icon"> </span><span class="nav_text">করদাতা</span></button>
         </a>
-
-        <div class="relative">
-          <button class="btn nav_btn nav_btn_toggler">
-            <span class="nav_icon setting_icon2"> </span>
-            <span class="nav_text">সেটিংস</span>
-            <span class="nav_toggle_icon">+</span>
-          </button>
-          <div class="hidden hide_nav_items nav_items">            
-            <a href="./home.php">
-              <button class="sub_link">হোম</button>
-            </a>
-            <a href="admin/">
-              <button class="sub_link">অ্যাডমিন প্যানেল</button>
-            </a>
-            <a href="logout.php">
-              <button class="sub_link">লগআউট</button>
-            </a>
-          </div>
-        </div>
-
+        <a href="./home.php">
+          <button class="btn nav_btn"><span class="nav_icon seller_icon"> </span><span class="nav_text">হোম</span></button>
+        </a>
+        <a href="admin/">
+          <button class="btn nav_btn"><span class="nav_icon seller_icon"> </span><span class="nav_text">অ্যাডমিন প্যানেল</span></button>
+        </a>
+        <a href="logout.php">
+          <button class="btn nav_btn"><span class="nav_icon seller_icon"> </span><span class="nav_text">লগআউট</span></button>
+        </a>
+       
         <!-- Toggle Nav Text -->
         <div id="toggle_nav_text">
           <button class="btn">

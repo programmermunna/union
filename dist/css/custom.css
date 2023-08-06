@@ -476,3 +476,30 @@ li.main-category.cat:hover .category-wrap {
 
 }
 
+
+
+.content_wrapper,.page_title,.table_header,.table_header_left{
+  background: rebeccapurple;
+}
+#edit_tax_holder_form{
+  background: darksalmon;
+}
+.add_page_title{
+  background: turquoise;
+}
+.side_nav{
+  background: turquoise;
+}
+
+.table_parent,.table_th{
+  background: cadetblue;
+}
+.page_title {
+  color: #fff;
+}
+.card{
+background: linear-gradient(90deg, #4CA1AF, #C4E0E5);
+}
+.header_btn {
+  height: 35px;
+}
