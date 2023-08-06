@@ -108,19 +108,18 @@ if(isset($_SESSION['ward'])){
                                 <?php
                                 if(isset($_GET['src'])){
                                     $src = $_GET['src'];
-                                    $empSQL = "SELECT * FROM tax_holder WHERE admin_id = '$id' AND present_year = '$year' AND (tax_holder_name LIKE '$src' OR phone = '$src' OR nid_no = '$src' OR holding = '$src')";
+                                    $empSQL = "SELECT * FROM tax_holder WHERE admin_id = '$id' AND present_year = '$year' AND ( id = '$src' OR tax_holder_name LIKE '$src' OR phone = '$src' OR nid_no = '$src' OR holding = '$src')";
                                 }elseif($sess_ward > 0){
                                     $empSQL = "SELECT * FROM tax_holder WHERE admin_id=$id AND present_year='$year' AND ward = '$sess_ward'";
                                 }else{
                                     $empSQL = "SELECT * FROM tax_holder WHERE admin_id=$id AND present_year='$year' ";
                                 }
                                 $query = mysqli_query($conn, $empSQL);
-                                $i = 0;
-                                while($row = mysqli_fetch_assoc($query)){ $i++;
+                                while($row = mysqli_fetch_assoc($query)){
                                 ?>
                                     <tr>
                                         <td class="p-3 border whitespace-nowrap">
-                                            <div class="text-center"><?php echo $i?></div>
+                                            <div class="text-center"><?php echo $row['id']?></div>
                                         </td>
                                         <td class="p-3 border whitespace-nowrap">
                                             <div class="text-center">

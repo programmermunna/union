@@ -1,36 +1,6 @@
 <?php include("../include/functions.php");?>
 
 
-
-<?php      
-    // $present_year = date("Y",time());
-    // $total_tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM person WHERE up_id=$id"));
-    // $pending_tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM person WHERE up_id=$id AND present_year=$present_year AND status='Pending'"));
-    // $success_tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM person WHERE up_id=$id AND present_year=$present_year AND status='Success'"));
-    // $ward = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM ward WHERE up_id=$id"));
-    
-    // $annual_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(annual_tax) FROM person WHERE up_id=$id"));
-    // $ablable_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(ablable_tax) FROM person WHERE  up_id=$id  AND status='Success'"));
-    // $due_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(due_tax) FROM person WHERE up_id=$id AND status='Success'"));
-
-    // $annual_tax = $annual_tax['SUM(annual_tax)'];
-    // $ablable_tax = $ablable_tax['SUM(ablable_tax)'];
-    // $due_tax = $due_tax['SUM(due_tax)'];
-    
-
-    // //this year data
-    // $this_year_annual_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(annual_tax) FROM person WHERE up_id=$id AND present_year=$present_year"));
-    // $this_year_ablable_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(ablable_tax) FROM person WHERE  up_id=$id  AND status='Success' AND present_year=$present_year"));
-    // $this_year_due_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(due_tax) FROM person WHERE up_id=$id AND status='Success' AND present_year=$present_year"));
-
-    // $this_year_annual_tax = $this_year_annual_tax['SUM(annual_tax)'];
-    // $this_year_ablable_tax = $this_year_ablable_tax['SUM(ablable_tax)'];
-    // $this_year_due_tax = $this_year_due_tax['SUM(due_tax)'];
-
-?>
-
-
-
 <?php
 
 if(isset($_SESSION['up_id'])){
@@ -220,8 +190,8 @@ if(isset($_SESSION['ward'])){
       </ul>
       </div>
       <div class="header_src">
-        <form action="up-search.php">
-        <input type="search" placeholder="সার্চ হোল্ডিং..............">
+        <form action="up-tax-holder-view" method="GET">
+        <input type="search" name="id" placeholder="সার্চ হোল্ডিং..............">
       </form>      
       </div>
       <div class="header_btn">

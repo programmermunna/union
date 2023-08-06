@@ -6,6 +6,7 @@ if(isset($_GET['id'])){
   $id = $_GET['id'];
 }
 $data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM tax_holder WHERE id='$id'"));
+if(!$data){ header("Location:up-tax-holder.php?err=Data not found!");}
 $ward_id = $data['ward'];
 $ward = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM ward WHERE id='$ward_id'"));
 $gender = $data['gender'];
