@@ -1,6 +1,6 @@
 <?php include("common/home-header.php")?>
 <?php 
-
+  
 if(isset($_POST['submit'])){
     $email = $_POST['email']; 
     $subject = $_POST['subject'];
