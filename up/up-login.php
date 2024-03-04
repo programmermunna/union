@@ -81,7 +81,7 @@ if(isset($_POST['submit'])){
                     <button name="submit" type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Login</button>
                   </div>
                   <div class="text-center">
-                    <a href="home.php">Return Home</a>
+                    <a href="../home.php">Return Home</a>
                   </div>                 
                   
                 </form>

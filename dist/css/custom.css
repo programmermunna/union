@@ -479,27 +479,47 @@ li.main-category.cat:hover .category-wrap {
 
 
 .content_wrapper,.page_title,.table_header,.table_header_left{
-  background: rebeccapurple;
+  background: cornflowerblue;
 }
 #edit_tax_holder_form{
-  background: darksalmon;
-}
-.add_page_title{
-  background: turquoise;
-}
-.side_nav{
-  background: turquoise;
+  background: deepskyblue;
+  color: #fff !important;
 }
 
+::placeholder{
+  color:#9e9d9d !important;
+}
+
+input,select{
+  background: #fff !important;
+}
+.add_page_title{
+  background: #fff;
+}
+.side_nav{
+  background: deepskyblue;
+}
+.table{
+  color:#fff;
+}
 .table_parent,.table_th{
-  background: cadetblue;
+  background: cornflowerblue;
+  color: #fff;
 }
 .page_title {
   color: #fff;
 }
 .card{
-background: linear-gradient(90deg, #4CA1AF, #C4E0E5);
+/* background: linear-gradient(90deg, #4CA1AF, #C4E0E5); */
+background: #fff;
 }
 .header_btn {
   height: 35px;
 }
+.submit_btn{
+  color: #000 !important;
+}
+.kslider{
+  height: 450px !important;
+}
+

@@ -15,7 +15,7 @@
             this.find(".kslider").height(setting.height).append("<div class='kslider-controls'></div>");
         
             if(setting.forvPrevBtns){
-            current.find('.kslider-controls').append("<div class='forv-prev-btns-container'> <a href='javascript:void(0)' class='forv-prev-btns prev-btn'></a> <a href='javascript:void(0)' class='forv-prev-btns forv-btn'></a></div>");
+            current.find('.kslider-controls').append("<div class='forv-prev-btns-container'> <a href='javascript:void(0)' class='forv-prev-btns prev-btn'><span style='color:#00ABFB !important;font-size:50px;'>&#8676;</span></a> <a href='javascript:void(0)' class='forv-prev-btns forv-btn'><span style='color:#00ABFB !important;font-size:50px;'>&#8677;</span></a></div>");
             current.find('.kslider-controls .prev-btn').click(function(){
                 var activeItem = current.find(".kslider-item.active-item");
                 var activeDot = current.find(".slider-dot.active-dot");

@@ -1,0 +1,26 @@
+[08-Jan-2024 22:02:58 America/New_York] PHP Warning:  Undefined variable $id in /home/munna/mkiua.com/admin/logout.php on line 3
+[04-Mar-2024 06:53:28 America/New_York] PHP Warning:  Trying to access array offset on null in /home/munna/mkiua.com/admin/tax-holder-view.php on line 15
+[04-Mar-2024 06:53:28 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1 in /home/munna/mkiua.com/admin/tax-holder-view.php:16
+Stack trace:
+#0 /home/munna/mkiua.com/admin/tax-holder-view.php(16): mysqli_query()
+#1 {main}
+  thrown in /home/munna/mkiua.com/admin/tax-holder-view.php on line 16
+[04-Mar-2024 06:54:35 America/New_York] PHP Warning:  Trying to access array offset on null in /home/munna/mkiua.com/admin/tax-holder-edit.php on line 15
+[04-Mar-2024 06:54:35 America/New_York] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1 in /home/munna/mkiua.com/admin/tax-holder-edit.php:16
+Stack trace:
+#0 /home/munna/mkiua.com/admin/tax-holder-edit.php(16): mysqli_query()
+#1 {main}
+  thrown in /home/munna/mkiua.com/admin/tax-holder-edit.php on line 16
+[04-Mar-2024 07:03:28 America/New_York] PHP Warning:  Undefined array key "reload" in /home/munna/mkiua.com/admin/common/header.php on line 22
+[04-Mar-2024 07:24:07 America/New_York] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in /home/munna/mkiua.com/admin/ward-edit.php:56
+Stack trace:
+#0 {main}
+  thrown in /home/munna/mkiua.com/admin/ward-edit.php on line 56
+[04-Mar-2024 07:57:54 America/New_York] PHP Warning:  Undefined array key "bn_name" in /home/munna/mkiua.com/admin/union-edit.php on line 12
+[04-Mar-2024 07:57:54 America/New_York] PHP Warning:  Undefined variable $sql in /home/munna/mkiua.com/admin/union-edit.php on line 30
+[04-Mar-2024 07:57:54 America/New_York] PHP Fatal error:  Uncaught ValueError: mysqli_query(): Argument #2 ($query) cannot be empty in /home/munna/mkiua.com/admin/union-edit.php:30
+Stack trace:
+#0 /home/munna/mkiua.com/admin/union-edit.php(30): mysqli_query()
+#1 {main}
+  thrown in /home/munna/mkiua.com/admin/union-edit.php on line 30
+[04-Mar-2024 08:11:36 America/New_York] PHP Warning:  Undefined variable $id in /home/munna/mkiua.com/admin/logout.php on line 3

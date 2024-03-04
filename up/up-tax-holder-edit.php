@@ -628,7 +628,7 @@ if(isset($_POST['submit'])){
     </main>
 
 <!-- Side Navbar Links -->
-<?php include("common/footer.php");?>
+<?php include("footer.php");?>
 <!-- Side Navbar Links -->
 
 

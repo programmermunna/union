@@ -269,7 +269,7 @@ if(isset($_POST['submit'])){
             <div class="radio_div">
               <div style="width:49%;float:left">
                 <label>সদস্যের নাম লিখুন</label>
-                <input type="text" name="relation_1" class="input" />
+                <input type="text" name="relation_1" class="input" placeholder="প্রথম সদস্যের নাম লিখুন"/>
               </div>
                 
               <div style="width:49%;float:right">                  
@@ -293,7 +293,7 @@ if(isset($_POST['submit'])){
             <div class="radio_div">
               <div style="width:49%;float:left">
                 <label>সদস্যের নাম লিখুন</label>
-                <input type="text" name="relation_2" class="input" />
+                <input type="text" name="relation_2" class="input" placeholder="দ্বিতীয় সদস্যের নাম লিখুন"/>
               </div>                
               <div style="width:49%;float:right">                  
                 <label>সদস্যের সম্পর্ক লিখুন</label>
@@ -365,8 +365,8 @@ if(isset($_POST['submit'])){
 
 
             <div>
-            <label>বাৎসরিক ভাড়া<span class="requird_star">* </span></label>
-            <input type="text" name="annual_rent" class="input" required placeholder="20000"/>
+            <label>অবকাঠামোর আনুমানিক মূল্য<span class="requird_star">* </span></label>
+            <input type="text" name="annual_rent" class="input" required placeholder="অবকাঠামোর আনুমানিক মূল্য"/>
             </div>
 
             <div class="radio_div">
@@ -417,7 +417,7 @@ if(isset($_POST['submit'])){
             </div> 
 
             <br>
-            <input class="btn submit_btn" name="submit" type="submit" value="সেভ করুন" />
+            <input style="color:#000" class="btn submit_btn" name="submit" type="submit" value="সেভ করুন" />
           </form>
         </div>
       </section>

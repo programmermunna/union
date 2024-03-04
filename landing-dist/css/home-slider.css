@@ -42,25 +42,25 @@
         cursor: pointer;
         &.prev-btn { 
         left: 10px;
-        &:before{
+        /* &:before{
             content: "";
             border-style: solid;
             border-width: 10px 12px;
             border-color: transparent $element-color transparent transparent;
             display: inline-block;
             margin-left: -9px;
-        }
+        } */
         }
         &.forv-btn { 
         right: 10px;
-        &:before{
+        /* &:before{
             content: "";
             border-style: solid;
             border-width: 10px 12px;
             border-color: transparent transparent transparent $element-color;
             display: inline-block;
             margin-left: 9px;
-        }
+        } */
         }
     }
     .slider-dots-container{

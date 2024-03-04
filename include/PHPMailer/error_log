@@ -1,0 +1,10 @@
+[17-Feb-2024 14:35:49 America/New_York] PHP Fatal error:  __autoload() is no longer supported, use spl_autoload_register() instead in /home/munna/mkiua.com/include/PHPMailer/PHPMailerAutoload.php on line 45
+[17-Feb-2024 14:36:00 America/New_York] PHP Fatal error:  Uncaught Error: Class "PHPMailer" not found in /home/munna/mkiua.com/include/PHPMailer/class.phpmaileroauth.php:26
+Stack trace:
+#0 {main}
+  thrown in /home/munna/mkiua.com/include/PHPMailer/class.phpmaileroauth.php on line 26
+[17-Feb-2024 14:36:25 America/New_York] PHP Warning:  require(vendor/autoload.php): Failed to open stream: No such file or directory in /home/munna/mkiua.com/include/PHPMailer/get_oauth_token.php on line 18
+[17-Feb-2024 14:36:25 America/New_York] PHP Fatal error:  Uncaught Error: Failed opening required 'vendor/autoload.php' (include_path='.:/opt/alt/php83/usr/share/pear:/opt/alt/php83/usr/share/php:/usr/share/pear:/usr/share/php') in /home/munna/mkiua.com/include/PHPMailer/get_oauth_token.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/munna/mkiua.com/include/PHPMailer/get_oauth_token.php on line 18

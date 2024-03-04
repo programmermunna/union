@@ -113,78 +113,78 @@ if(isset($_SESSION['ward'])){
             <ul class="nav_dropdown_link">
               <li><a href="up-dashboard.php"><img src="../upload/home.png" alt="Card Image" > সমস্ত তথ্য</a></li>
               <li><a href="up-tax-holder.php"><img src="../upload/home.png" alt="Card Image" > করদাতার তালিকা</a></li>
-              <li><a href="up-tax-holder-add"><img src="../upload/home.png" alt="Card Image" > করদাতা যুক্ত করুন </a></li>
+              <li><a href="up-tax-holder-add.php"><img src="../upload/home.png" alt="Card Image" > করদাতা যুক্ত করুন </a></li>
             </ul>
         </li>
           <li><a href="#">গ্রাহক <i class="fa-solid fa-caret-down"></i></a>
             <ul class="nav_dropdown_link">
-              <li><a href="#"><img src="../upload/grahok.png" alt="Card Image" > খানা প্রদানের তথ্য এন্ট্রি </a></li>
-              <li><a href="#"><img src="../upload/grahok.png" alt="Card Image" > অফিস/অন্যান্য প্রতিষ্ঠানের তথ্য এন্ট্রি </a></li>
-              <li><a href="#"><img src="../upload/grahok.png" alt="Card Image" > সদস্যের তথ্য এন্ট্রি</a></li>
+              <li><a href="up-search.php"><img src="../upload/grahok.png" alt="Card Image" > খানা প্রদানের তথ্য এন্ট্রি </a></li>
+              <li><a href="up-search.php"><img src="../upload/grahok.png" alt="Card Image" > অফিস/অন্যান্য প্রতিষ্ঠানের তথ্য এন্ট্রি </a></li>
+              <li><a href="up-search.php"><img src="../upload/grahok.png" alt="Card Image" > সদস্যের তথ্য এন্ট্রি</a></li>
               <li><a href="up-tax-holder.php"><img src="../upload/grahok.png" alt="Card Image" > খানা প্রদানের তালিকা</a></li>
-              <li><a href="#"><img src="../upload/grahok.png" alt="Card Image" > খানা প্রদানের তথ্য এডিট</a></li>
-              <li><a href="#"><img src="../upload/grahok.png" alt="Card Image" > সর্বশেষ হোল্ডিং</a></li>
+              <li><a href="up-search.php"><img src="../upload/grahok.png" alt="Card Image" > খানা প্রদানের তথ্য এডিট</a></li>
+              <li><a href="up-search.php"><img src="../upload/grahok.png" alt="Card Image" > সর্বশেষ হোল্ডিং</a></li>
             </ul>
           </li>
           <li><a href="#">কর জেনারেটর <i class="fa-solid fa-caret-down"></i></a>
             <ul class="nav_dropdown_link">
-            <li><a href="#"><img src="../upload/kor-genarator.png" alt="Card Image" > সিঙ্গেল কিস্তি জেনারেটর</a></li>
-            <li><a href="#"><img src="../upload/kor-genarator.png" alt="Card Image" > কিস্তি জেনারেটের তালিকা </a></li>
-            <li><a href="#"><img src="../upload/kor-genarator.png" alt="Card Image" >  সিঙ্গেল ধার্য এডিট</a></li>
+            <li><a href="up-search.php"><img src="../upload/kor-genarator.png" alt="Card Image" > সিঙ্গেল কিস্তি জেনারেটর</a></li>
+            <li><a href="up-search.php"><img src="../upload/kor-genarator.png" alt="Card Image" > কিস্তি জেনারেটের তালিকা </a></li>
+            <li><a href="up-search.php"><img src="../upload/kor-genarator.png" alt="Card Image" >  সিঙ্গেল ধার্য এডিট</a></li>
           </ul>
           </li>
           <li><a href="#">হিসাব <i class="fa-solid fa-caret-down"></i></a>
             <ul class="nav_dropdown_link">
-              <li><a href="#"><img src="../upload/hisab.png" alt="Card Image" > টাকা জমার ফর্ম </a></li>
-              <li><a href="#"><img src="../upload/hisab.png" alt="Card Image" > কিস্তির টাকা ডিলিট </a></li>
-              <li><a href="#"><img src="../upload/hisab.png" alt="Card Image" > ওয়ার্ড ভিক্তিক ধার্য </a></li>
-              <li><a href="#"><img src="../upload/hisab.png" alt="Card Image" > ওয়ার্ড ভিত্তিক ধার্য </a></li>
-              <li><a href="#"><img src="../upload/hisab.png" alt="Card Image" > অনলাইন ট্যাক্স আদ্যায়</a></li>
+              <li><a href="up-search.php"><img src="../upload/hisab.png" alt="Card Image" > টাকা জমার ফর্ম </a></li>
+              <li><a href="up-search.php"><img src="../upload/hisab.png" alt="Card Image" > কিস্তির টাকা ডিলিট </a></li>
+              <li><a href="up-search.php"><img src="../upload/hisab.png" alt="Card Image" > ওয়ার্ড ভিক্তিক ধার্য </a></li>
+              <li><a href="up-search.php"><img src="../upload/hisab.png" alt="Card Image" > ওয়ার্ড ভিত্তিক ধার্য </a></li>
+              <li><a href="up-search.php"><img src="../upload/hisab.png" alt="Card Image" > অনলাইন ট্যাক্স আদ্যায়</a></li>
             </ul>
           </li>
           <li><a href="#">প্রতিবেদন <i class="fa-solid fa-caret-down"></i></a>
             <ul class="nav_dropdown_link">
-              <li><a href="#"><img src="../upload/aday-bokeya.png" alt="Card Image" > প্রতিবেদন সংক্ষিপ্ত</a></li>
-              <li><a href="#"><img src="../upload/aday-bokeya.png" alt="Card Image" > প্রতিবেদন বিস্তারিত </a></li>
-              <li><a href="#"><img src="../upload/aday-bokeya.png" alt="Card Image" > আদায়ের তালিকা </a></li>
-              <li><a href="#"><img src="../upload/aday-bokeya.png" alt="Card Image" > বকেয়া আদায়ের তালিকা</a></li>
-              <li><a href="#"><img src="../upload/aday-bokeya.png" alt="Card Image" > বকেয়ার তালিকা</a></li>
-              <li><a href="#"><img src="../upload/aday-bokeya.png" alt="Card Image" > আদায় রেজিস্টার</a></li>
+              <li><a href="up-search.php"><img src="../upload/aday-bokeya.png" alt="Card Image" > প্রতিবেদন সংক্ষিপ্ত</a></li>
+              <li><a href="up-search.php"><img src="../upload/aday-bokeya.png" alt="Card Image" > প্রতিবেদন বিস্তারিত </a></li>
+              <li><a href="up-search.php"><img src="../upload/aday-bokeya.png" alt="Card Image" > আদায়ের তালিকা </a></li>
+              <li><a href="up-search.php"><img src="../upload/aday-bokeya.png" alt="Card Image" > বকেয়া আদায়ের তালিকা</a></li>
+              <li><a href="up-search.php"><img src="../upload/aday-bokeya.png" alt="Card Image" > বকেয়ার তালিকা</a></li>
+              <li><a href="up-search.php"><img src="../upload/aday-bokeya.png" alt="Card Image" > আদায় রেজিস্টার</a></li>
             </ul>
           </li>
           <li><a href="#">টপলিষ্ট<i class="fa-solid fa-caret-down"></i></a>
             <ul class="nav_dropdown_link">
-              <li><a href="#"><img src="../upload/dayli-posting.png" alt="Card Image" > ধার্য আদায় টপশীট</a></li>
-              <li><a href="#"><img src="../upload/dayli-posting.png" alt="Card Image" > ডেইলি প্রোষ্টিং</a></li>
-              <li><a href="#"><img src="../upload/dayli-posting.png" alt="Card Image" > ডেইলি পোষ্টিং টপশীট</a></li>
+              <li><a href="up-search.php"><img src="../upload/dayli-posting.png" alt="Card Image" > ধার্য আদায় টপশীট</a></li>
+              <li><a href="up-search.php"><img src="../upload/dayli-posting.png" alt="Card Image" > ডেইলি প্রোষ্টিং</a></li>
+              <li><a href="up-search.php"><img src="../upload/dayli-posting.png" alt="Card Image" > ডেইলি পোষ্টিং টপশীট</a></li>
             </ul>
           </li>
           <li><a href="#">বিল প্রিন্ট <i class="fa-solid fa-caret-down"></i></a>
             <ul class="nav_dropdown_link">
-              <li><a href="#"><img src="../upload/bill-print.png" alt="Card Image" > সমস্ত বিল প্রিন্ট</a></li>
-              <li><a href="#"><img src="../upload/bill-print.png" alt="Card Image" > সিঙ্গেল বিল প্রিন্ট</a></li>
-              <li><a href="#"><img src="../upload/bill-print.png" alt="Card Image" > সমস্ত বিল প্রিন্ট (পুরাতন)</a></li>
-              <li><a href="#"><img src="../upload/bill-print.png" alt="Card Image" > সিঙ্গেল বিল প্রিন্ট (পুরাতন)</a></li>
-              <li><a href="#"><img src="../upload/bill-print.png" alt="Card Image" > সমস্ত বিল প্রিন্ট -২</a></li>
-              <li><a href="#"><img src="../upload/bill-print.png" alt="Card Image" > সিঙ্গেল বিল প্রিন্ট -২</a></li>
+              <li><a href="up-search.php"><img src="../upload/bill-print.png" alt="Card Image" > সমস্ত বিল প্রিন্ট</a></li>
+              <li><a href="up-search.php"><img src="../upload/bill-print.png" alt="Card Image" > সিঙ্গেল বিল প্রিন্ট</a></li>
+              <li><a href="up-search.php"><img src="../upload/bill-print.png" alt="Card Image" > সমস্ত বিল প্রিন্ট (পুরাতন)</a></li>
+              <li><a href="up-search.php"><img src="../upload/bill-print.png" alt="Card Image" > সিঙ্গেল বিল প্রিন্ট (পুরাতন)</a></li>
+              <li><a href="up-search.php"><img src="../upload/bill-print.png" alt="Card Image" > সমস্ত বিল প্রিন্ট -২</a></li>
+              <li><a href="up-search.php"><img src="../upload/bill-print.png" alt="Card Image" > সিঙ্গেল বিল প্রিন্ট -২</a></li>
             </ul>
           </li>
           <li><a href="#">ট্রেড লাইসেন্স <i class="fa-solid fa-caret-down"></i>
             <ul class="nav_dropdown_link">
-              <li><a href="#"><img src="../upload/tred-licence.png" alt="Card Image" > প্রতিষ্ঠানের তালিকা </a></li>
-              <li><a href="#"><img src="../upload/tred-licence.png" alt="Card Image" > ফি ধার্যের তালিকা </a></li>
-              <li><a href="#"><img src="../upload/tred-licence.png" alt="Card Image" > ফি আদায়ের তালিকা </a></li>
-              <li><a href="#"><img src="../upload/tred-licence.png" alt="Card Image" > ফি বকেয়া তালিকা </a></li>
-              <li><a href="#"><img src="../upload/tred-licence.png" alt="Card Image" > ফি জমা করুন </a></li>
-              <li><a href="#"><img src="../upload/tred-licence.png" alt="Card Image" > লাইসেন্স নাম্বার লিখুন </a></li>
+              <li><a href="up-search.php"><img src="../upload/tred-licence.png" alt="Card Image" > প্রতিষ্ঠানের তালিকা </a></li>
+              <li><a href="up-search.php"><img src="../upload/tred-licence.png" alt="Card Image" > ফি ধার্যের তালিকা </a></li>
+              <li><a href="up-search.php"><img src="../upload/tred-licence.png" alt="Card Image" > ফি আদায়ের তালিকা </a></li>
+              <li><a href="up-search.php"><img src="../upload/tred-licence.png" alt="Card Image" > ফি বকেয়া তালিকা </a></li>
+              <li><a href="up-search.php"><img src="../upload/tred-licence.png" alt="Card Image" > ফি জমা করুন </a></li>
+              <li><a href="up-search.php"><img src="../upload/tred-licence.png" alt="Card Image" > লাইসেন্স নাম্বার লিখুন </a></li>
             </ul>
           </a>
           <li><a href="#">অন্যান্য রিপোর্ট <i class="fa-solid fa-caret-down"></i></a>
             <ul class="nav_dropdown_link">
-              <li><a href="#"><img src="../upload/onnano.png" alt="Card Image" > অন্যান্য রিপোর্ট</a></li>
-              <li><a href="#"><img src="../upload/onnano.png" alt="Card Image" > পেশাজীবির তালিকা </a></li>
-              <li><a href="#"><img src="../upload/onnano.png" alt="Card Image" > অন্তর্বকালীন তালিকা </a></li>
-              <li><a href="#"><img src="../upload/onnano.png" alt="Card Image" > পরিচয় নাগরিক সনদ</a></li>
+              <li><a href="up-search.php"><img src="../upload/onnano.png" alt="Card Image" > অন্যান্য রিপোর্ট</a></li>
+              <li><a href="up-search.php"><img src="../upload/onnano.png" alt="Card Image" > পেশাজীবির তালিকা </a></li>
+              <li><a href="up-search.php"><img src="../upload/onnano.png" alt="Card Image" > অন্তর্বকালীন তালিকা </a></li>
+              <li><a href="up-search.php"><img src="../upload/onnano.png" alt="Card Image" > পরিচয় নাগরিক সনদ</a></li>
             </ul>
           </li>
       </ul>

@@ -1288,8 +1288,7 @@ h3{
 /* Add Page Content */
 
 .add_page_main_content{
-  margin-left: auto;
-  margin-right: auto;
+  margin:20px auto;
   width: 100%;
   overflow: hidden;
   border-radius: 0.25rem;

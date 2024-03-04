@@ -33,7 +33,7 @@
 						</div>
 						<div class="card2">
 							<div class="kslider-wrapper" id="testSlider">
-								<div class="kslider">
+								<div class="kslider" >
 									<div class="kslider-items-container">
 									<div class="kslider-item item1"><img src="upload/shohid-minar.jpg" alt=""></div>
 									<div class="kslider-item item2"><img src="upload/sritishoud.jpg" alt=""></div>
