@@ -62,7 +62,7 @@ $res = mysqli_query($conn, $empSQL);
             </tr>
             <?php while($row=mysqli_fetch_assoc($res)){
                 $word_id = $row['ward'];
-                $word = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM ward WHERE id=$word_id"));                
+                $word = mysqli_fetch_assoc(mysqli_query($conn,"SELECT bn_name FROM ward WHERE id=$word_id"));                
                 ?>
 	        <tr>
                 <td><?php echo $row['id'];?></td>
