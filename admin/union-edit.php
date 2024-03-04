@@ -55,7 +55,7 @@ if(isset($_POST['submit'])){
                           <div style="display:block">
                               <div>
                                 <label for="name">ইউনিয়নের নাম</label>
-                                <input type="text" name="unions" value="<?php echo $unions['bn_name']?>">
+                                <input type="text" name="bn_name" value="<?php echo $unions['bn_name']?>">
                               </div>
                               <div>
                                 <label for="old_pass">আগের পাসওয়ার্ড</label>

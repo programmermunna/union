@@ -5,7 +5,7 @@
 <?php
 if(isset($_GET['id'])){
   $up_id = $_GET['id'];
-  $admin_up = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM admin_up WHERE id=$id"));
+  $admin_up = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM admin_up WHERE id=$up_id"));
   $union_id = $admin_up['union_id'];
   $union = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM unions WHERE id=$union_id"));
 }
@@ -29,9 +29,9 @@ if(isset($_POST['submit'])){
   }
 
   if($pass == $cpass){
-    $sql = "UPDATE admin_up SET union_id='$union_id', name='$name', phone='$phone', address='$address', pass='$pass',password='$password',file='$file_name' WHERE id=$id"; 
+    $sql = "UPDATE admin_up SET union_id='$union_id', name='$name', phone='$phone', address='$address', pass='$pass',password='$password',file='$file_name' WHERE id=$up_id"; 
   }else{
-    $sql = "UPDATE admin_up SET union_id='$union_id', name='$name', phone='$phone', address='$address',file='$file_name' WHERE id=$id"; 
+    $sql = "UPDATE admin_up SET union_id='$union_id', name='$name', phone='$phone', address='$address',file='$file_name' WHERE id=$up_id"; 
   }
   $query = mysqli_query($conn,$sql);
   if($query){

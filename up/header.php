@@ -18,14 +18,16 @@ if($up_id<1){
   header('location:up-login.php');
 }
 
-$union = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM unions WHERE id=$up_id"));
-if($union<1){
+
+$admin_up = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM admin_up WHERE id=$up_id"));
+if($admin_up<1){
   header("location:home.php");
 }
 
-$id = $union['admin_id'];
+$id = $admin_up['id'];
+$union_id = $admin_up['union_id'];
+$union = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM unions WHERE id=$union_id"));
 
-$union_id = $union['id'];
 $upazila_id = $union['upazila_id'];
 $upazilas = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM upazilas WHERE id=$upazila_id"));
 $district_id = $upazilas['district_id'];

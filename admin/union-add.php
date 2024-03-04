@@ -9,20 +9,30 @@ if(isset($_POST['submit'])){
   $upazila = $_POST['upazila'];
   $union = $_POST['union'];
   $admin_id = rand(1000,99999999);
-  $pass = md5($_POST['pass']);
-  $cpass = md5($_POST['cpass']);
+  $pass = $_POST['pass'];
+  $cpass = $_POST['cpass'];
+  
+  if($pass === $cpass && !empty($union)){
+    $pass = md5($pass);
+    $sql = "INSERT INTO unions (admin_id,upazila_id,bn_name,pass,time) VALUE ('$admin_id','$upazila','$union','$pass',$time)";
+    $query = mysqli_query($conn,$sql);
 
-  $sql = "INSERT INTO unions (admin_id,upazila_id,bn_name,pass,time) VALUE ('$admin_id','$upazila','$union','$pass',$time)";
-  $query = mysqli_query($conn,$sql);
-  if($query){
-    $msg = "ইউনিয়ন যুক্ত করা সফল হয়েছে।";
-    header("location:union.php?msg=$msg");
-  }
-  if($pass == $cpass && !empty($unions)){    
+      if($query){
+        $msg = "ইউনিয়ন যুক্ত করা সফল হয়েছে।";
+        header("location:union.php?msg=$msg");
+      }else{
+      $err = "কোনো ত্রুটি হয়েছে। দয়া করে আবার চেষ্টা করুন";
+      header("location:union.php?err=$err");
+    }
+       
   }else{
     $err = "কোনো ত্রুটি হয়েছে। দয়া করে আবার চেষ্টা করুন";
     header("location:union.php?err=$err");
   }
+
+
+
+
 }
 ?>
   <div class="container-fluid py-4">
@@ -43,7 +53,7 @@ if(isset($_POST['submit'])){
                         <div class="profile">
                           <div style="display:block">
                               <div>
-                                <label for="unions">বিভাগ নাম</label>
+                                <label for="unions">বিভাগ নাম sdfdsf</label>
                                 <select class="input division" name="division" id="division">
                                   <option>সিলেক্ট বিভাগ</option>
                                   <?php $divisions = mysqli_query($conn,"SELECT * FROM divisions");

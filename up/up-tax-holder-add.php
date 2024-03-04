@@ -4,7 +4,12 @@
 <?php
 
 $present_year;
-$admin_id = $id;
+
+$admin_up = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM admin_up WHERE id=$id"));
+$union_id = $admin_up['union_id'];
+$admin_up = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM unions WHERE id=$union_id"));
+$admin_id = $admin_up['admin_id'];
+
 if(isset($_POST['submit'])){
   $ward = $_POST['ward'];
   $village = $_POST['village'];
@@ -81,7 +86,7 @@ if(isset($_POST['submit'])){
             <select name="ward" id="ward" class="input" required>
               <option style="display:none;">নির্বাচন করুন</option>
               <?php 
-              $wards = mysqli_query($conn,"SELECT * FROM ward WHERE admin_id=$id");
+              $wards = mysqli_query($conn,"SELECT * FROM ward WHERE admin_id=$admin_id");
               while($ward = mysqli_fetch_assoc($wards)){ ?>
                 <option value="<?php echo $ward['id']?>"><?php echo $ward['bn_name']?></option>
              <?php }?>
@@ -392,22 +397,22 @@ if(isset($_POST['submit'])){
             
             <div>
             <label>পুর্বের বকেয়া <span class="requird_star">*</span></label>
-            <input type="text" name="previous_due" class="input"  required value="0"/>
+            <input type="number" name="previous_due" class="input"  required value="0"/>
             </div>  
             
             <div>
             <label>বর্তমান কর <span class="requird_star">*</span></label>
-            <input type="text" name="present_tax" class="input"  required value="0"/>
+            <input type="number" name="present_tax" class="input"  required value="0"/>
             </div>
 
             <div>
             <label>আদায়কৃত কর <span class="requird_star">*</span></label>
-            <input type="text" name="collect_tax" class="input"  required />
+            <input type="number" name="collect_tax" class="input"  required value="0" />
             </div>  
 
             <div>
             <label>বকেয়া কর <span class="requird_star">*</span></label>
-            <input type="text" name="due_tax" class="input"  required />
+            <input type="number" name="due_tax" class="input"  required  value="0" />
             </div>  
 
 

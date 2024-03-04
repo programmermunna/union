@@ -4,10 +4,14 @@
   
 <?php
 if(isset($_POST['submit'])){
-  $union = $_POST['union'];
+  $unions = $_POST['union'];
   $ward = $_POST['ward'];
 
-  $sql = "INSERT INTO ward (admin_id,bn_name,time) VALUE ('$union','$ward','$time')";
+  $union = explode("_",$unions);
+  $admin_id = $union[0];
+  $union_id = $union[1];
+
+  $sql = "INSERT INTO ward (admin_id,union_id,bn_name,time) VALUE ('$admin_id','$union_id','$ward','$time')";
   $query = mysqli_query($conn,$sql);
   if($query){
     $msg = "ওয়ার্ড যুক্ত করা সফল হয়েছে।";
@@ -41,7 +45,7 @@ if(isset($_POST['submit'])){
                                   <?php 
                                   $unions = mysqli_query($conn,"SELECT * FROM unions");
                                   while($union = mysqli_fetch_assoc($unions)){ ?>
-                                    <option value="<?php echo $union['admin_id'];?>"><?php echo $union['bn_name'];?></option>
+                                    <option value="<?php echo $union['admin_id']."_".$union['id'];?>"><?php echo $union['bn_name'];?></option>
                                  <?php }?>
                                 </select>
                               </div>

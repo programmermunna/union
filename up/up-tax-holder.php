@@ -26,7 +26,12 @@ if(isset($_SESSION['ward'])){
     $sess_ward = $_SESSION['ward'];
 }else{
     $sess_ward = 0;
-}
+} 
+
+$admin_up = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM admin_up WHERE id=$id"));
+$union_id = $admin_up['union_id'];
+$admin_up = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM unions WHERE id=$union_id"));
+$admin_id = $admin_up['admin_id'];
 ?> 
 <!-- Main Content -->
 <main class="main_content"> 
@@ -44,7 +49,7 @@ if(isset($_SESSION['ward'])){
                         <select style="width: 200px;" class="input" id="year" name="year" onchange="window.location.href='up-tax-holder.php?year='+this.options [this.selectedIndex].value">
                             <option selected style="display:none;" value="<?php echo $year?>"><?php echo $year?></option>                            
                             <?php 
-                            $years = mysqli_query($conn,"SELECT DISTINCT present_year FROM tax_holder WHERE admin_id=$id ORDER BY id DESC");
+                            $years = mysqli_query($conn,"SELECT DISTINCT present_year FROM tax_holder WHERE admin_id=$admin_id ORDER BY id DESC");
                             while($data = mysqli_fetch_assoc($years)){ ?>
                             <option value="<?php echo $data['present_year']?>"><?php echo $data['present_year']?></option>
                             <?php  }?>
@@ -62,7 +67,7 @@ if(isset($_SESSION['ward'])){
                                 <select style="width: 350PX;"  onchange="window.location.href='up-tax-holder.php?ward='+this.options [this.selectedIndex].value" name="ward" id="ward" class="input">
                                     <?php
                                     if($sess_ward > 0 ){ 
-                                    $select_ward  = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM ward WHERE admin_id=$id AND id=$sess_ward"));
+                                    $select_ward  = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM ward WHERE admin_id=$admin_id AND id=$sess_ward"));
                                     ?>
                                     <option selected value="<?php echo $select_ward['id']?>"><?php echo $select_ward['bn_name']?></option>                                        
                                     <?php  }else{ ?>
@@ -70,7 +75,7 @@ if(isset($_SESSION['ward'])){
                                    <?php }?>
 
                                     <?php
-                                    $wards = mysqli_query($conn,"SELECT * FROM ward WHERE admin_id=$id");
+                                    $wards = mysqli_query($conn,"SELECT * FROM ward WHERE admin_id=$admin_id");
                                     while($ward = mysqli_fetch_assoc($wards)){ ?>
                                         <option value="<?php echo $ward['id']?>"><?php echo $ward['bn_name']?></option>
                                     <?php  }?>
@@ -108,11 +113,11 @@ if(isset($_SESSION['ward'])){
                                 <?php
                                 if(isset($_GET['src'])){
                                     $src = $_GET['src'];
-                                    $empSQL = "SELECT * FROM tax_holder WHERE admin_id = '$id' AND present_year = '$year' AND ( id = '$src' OR tax_holder_name LIKE '$src' OR phone = '$src' OR nid_no = '$src' OR holding = '$src')";
+                                    $empSQL = "SELECT * FROM tax_holder WHERE admin_id = '$admin_id' AND present_year = '$year' AND ( id = '$src' OR tax_holder_name LIKE '$src' OR phone = '$src' OR nid_no = '$src' OR holding = '$src')";
                                 }elseif($sess_ward > 0){
-                                    $empSQL = "SELECT * FROM tax_holder WHERE admin_id=$id AND present_year='$year' AND ward = '$sess_ward'";
+                                    $empSQL = "SELECT * FROM tax_holder WHERE admin_id=$admin_id AND present_year='$year' AND ward = '$sess_ward'";
                                 }else{
-                                    $empSQL = "SELECT * FROM tax_holder WHERE admin_id=$id AND present_year='$year' ";
+                                    $empSQL = "SELECT * FROM tax_holder WHERE admin_id=$admin_id AND present_year='$year' ";
                                 }
                                 $query = mysqli_query($conn, $empSQL);
                                 while($row = mysqli_fetch_assoc($query)){

@@ -28,6 +28,7 @@
                         <tr>
                           <th>ছবি</th>
                           <th>নাম</th>
+                          <th>ইউনিয়ন</th>
                           <th>ফোন</th>
                           <th>ঠিকানা</th>
                           <th>প্রতিক্রিয়া</th>
@@ -35,10 +36,16 @@
                       </thead>
                       <tbody>
                         <?php $up = mysqli_query($conn,"SELECT * FROM admin_up");
-                        while($row = mysqli_fetch_assoc($up)){ ?>
+                        while($row = mysqli_fetch_assoc($up)){
+                          $union_id= $row['union_id'];
+                          $union = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM unions WHERE id=$union_id"));
+                          $union_name = $union['bn_name'];
+
+                        ?>
                         <tr>
                           <td><img style="width:40px" src="../upload/<?php echo $row['file'];?>"></td>
                           <td><?php echo $row['name'];?></td>
+                          <td><?php echo $union_name;?></td>
                           <td><?php echo $row['phone'];?></td>
                           <td><?php echo $row['address'];?></td>
                           <td>

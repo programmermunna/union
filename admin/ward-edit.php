@@ -18,7 +18,7 @@ if(isset($_POST['submit'])){
   $sql = "UPDATE ward SET bn_name='$ward' WHERE id=$ward_id";
   $query = mysqli_query($conn,$sql);
   if($query){
-    $msg = "ওয়ার্ড যুক্ত করা সফল হয়েছে।";
+    $msg = "ওয়ার্ড সম্পাদন করা সফল হয়েছে।";
     header("location:ward.php?msg=$msg");
   }else{
     $err = "কোনো ত্রুটি হয়েছে। দয়া করে আবার চেষ্টা করুন";
