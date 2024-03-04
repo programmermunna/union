@@ -65,7 +65,7 @@ if(isset($_POST['submit'])){
 										<label for="present_year">অর্থবছর</label>
 										<select name="present_year">
 											<?php
-											$present_years = mysqli_query($conn,"SELECT * FROM person GROUP BY present_year ORDER BY present_year DESC");
+											$present_years = mysqli_query($conn,"SELECT * FROM tax_holder GROUP BY present_year ORDER BY present_year DESC");
 											while($present_year = mysqli_fetch_assoc($present_years)){ ?>
 											<option value="<?php echo $present_year['present_year']?>"><?php echo $present_year['present_year']?></option>
 											<?php }?>
