@@ -1,14 +1,21 @@
 <?php include("header.php"); ?>
 <?php
+
+
+    $admin_up = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM admin_up WHERE id=$id"));
+    $union_id = $admin_up['union_id'];
+    $admin_up = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM unions WHERE id=$union_id"));
+    $admin_id = $admin_up['admin_id'];
+
     // $present_year = date("Y",time());
-    $total_tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM tax_holder WHERE admin_id=$id"));
-    $success_tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM tax_holder WHERE admin_id=$id AND status='Success'"));
-    $pending_tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM tax_holder WHERE admin_id=$id AND status='Pending'"));
-    $ward = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM ward WHERE admin_id=$id"));
+    $total_tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM tax_holder WHERE admin_id=$admin_id"));
+    $success_tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM tax_holder WHERE admin_id=$admin_id AND status='Success'"));
+    $pending_tax_holder = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM tax_holder WHERE admin_id=$admin_id AND status='Pending'"));
+    $ward = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM ward WHERE admin_id=$admin_id"));
     
-    $present_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(present_tax) FROM tax_holder WHERE admin_id=$id"));
-    $collect_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(collect_tax) FROM tax_holder WHERE  admin_id=$id  AND status='Success'"));
-    $due_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(due_tax) FROM tax_holder WHERE admin_id=$id AND status='Success'"));
+    $present_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(present_tax) FROM tax_holder WHERE admin_id=$admin_id"));
+    $collect_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(collect_tax) FROM tax_holder WHERE  admin_id=$admin_id  AND status='Success'"));
+    $due_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(due_tax) FROM tax_holder WHERE admin_id=$admin_id AND status='Success'"));
 
     $present_tax = $present_tax['SUM(present_tax)'];
     $collect_tax = $collect_tax['SUM(collect_tax)'];
@@ -16,9 +23,9 @@
     
 
     //this year data
-    $this_year_present_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(present_tax) FROM tax_holder WHERE admin_id=$id AND present_year='$present_year'"));
-    $this_year_collect_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(collect_tax) FROM tax_holder WHERE  admin_id=$id  AND status='Success' AND present_year='$present_year'"));
-    $this_year_due_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(due_tax) FROM tax_holder WHERE admin_id=$id AND status='Success' AND present_year='$present_year'"));
+    $this_year_present_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(present_tax) FROM tax_holder WHERE admin_id=$admin_id AND present_year='$present_year'"));
+    $this_year_collect_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(collect_tax) FROM tax_holder WHERE  admin_id=$admin_id  AND status='Success' AND present_year='$present_year'"));
+    $this_year_due_tax = mysqli_fetch_assoc(mysqli_query($conn,"SELECT SUM(due_tax) FROM tax_holder WHERE admin_id=$admin_id AND status='Success' AND present_year='$present_year'"));
 
     $this_year_present_tax = $this_year_present_tax['SUM(present_tax)'];
     $this_year_collect_tax = $this_year_collect_tax['SUM(collect_tax)'];
